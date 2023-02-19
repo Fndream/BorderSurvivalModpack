@@ -354,8 +354,9 @@
 
 ## 📩 官方下载源
 
-#### 本仓库
-[Github-Releases](https://github.com/Fndream/BorderSurvivalModpack/releases)
+#### ❓ 为什么在github上没有发布资源？
+github上传文件名不支持中文，而地图资源含有中文，强行翻译不被强迫症所允许。<br/>
+本仓库将主用于记录更新日志。以本仓库文档为准。
 
 #### 蓝奏云
 
