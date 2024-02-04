@@ -375,15 +375,10 @@
 github上传文件名不支持中文，而地图资源含有中文，强行翻译不被强迫症所允许。<br/>
 本仓库主用于记录更新日志。以本仓库文档为准。
 
-#### 蓝奏云
-
 [1.20](https://wwu.lanzn.com/b00y3zp2f) 密码:```c1nz```<br/>
 [1.19](https://wwu.lanzouw.com/b00vsa7gd) 密码 ```6a2q```<br/>
 [1.18](https://www.lanzouw.com/b00v4y7da) 密码 ```8ira```<br/>
 [1.17](https://www.lanzouw.com/b00umc2uh) 密码 ```a9qw```
-
-#### 百度网盘
-[百度网盘](https://pan.baidu.com/s/1LSIsnwqKeoyhgYqwp7Z0hw) 密码 ```wst4```
 
 ## 📔 使用方式
 
