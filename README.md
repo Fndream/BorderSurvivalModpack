@@ -1,4 +1,4 @@
-<div align=center><img src=https://s2.loli.net/2024/02/03/D2FWZATjptu8n5w.jpg width=50% ></img></div>
+<div align=center><img src=https://s2.loli.net/2024/02/03/D2FWZATjptu8n5w.jpg width=50% ></img><br/><a href="https://github.com/Fndream/BorderSurvivalModpack?tab=readme-ov-file#-%E4%BD%BF%E7%94%A8%E5%8D%8F%E8%AE%AE">下载</a></div>
 
 ## 📓 简介
 这是一个以原版生存为主要玩法的原版边界生存系列。从拥窄的区块开局，用智慧觅取资源，用勇气战胜黑夜，用自己的双手一步步展开世界。
