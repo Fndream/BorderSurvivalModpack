@@ -35,9 +35,8 @@
 
 加入配方
 
-
-| --- | --- | --- |
 | ![草方块.png](https://s2.loli.net/2024/02/03/qjnVlFyBu7dcgvx.png) | ![刷怪笼.png](https://s2.loli.net/2024/02/03/h7G3gVyRCrIZlMA.png) | ![皮革冶炼.png](https://s2.loli.net/2024/02/03/UZOT5jFaYWRVNpi.png) |
+| --- | --- | --- |
 
 
 加入部分刷怪蛋配方，可自行通过工作台中小绿书搜索。配方会在获得对应掉落物后解锁，例如鸡需要生鸡肉，豹猫需要鱼，骷髅需要骨头，悦灵需要紫水晶。
@@ -116,28 +115,39 @@
   传说曾有一位神秘商人受神之嫉妒，被禁锢在一片樱花山谷之中。躁动的怪物一直欲图夺取神商身上的宝物，每当月夜降临时，樱山之谷中便会产生无尽的乱潮。<br/>
   ❗ **该地图需至少使用8.1.2以上版本的整合包进行游玩。**
 
+
   <img src=https://s2.loli.net/2024/02/09/y8Bd5G6Ol4joZ7p.jpg width=50%/>
+
 
   ### 至暗之笼 — 雪藏遗城
   前方是永无休止的怪物，冲破游荡的怪物之笼，前方却是恐怖的……<br/>
   至暗的城市，咆哮的怪物，…终将消耗殆尽，点燃……会是希望，还是……
+
   
   <img src=https://s2.loli.net/2023/02/18/J35re9QCwX1Mcpi.jpg width=50%/>
 
+
   ### 泽中净土 — 环沼平原
   是环绕着红沼森林的金合欢平原！
+
   
   <img src=https://s2.loli.net/2024/02/04/FdEeJUGvwigLHY2.jpg width=50%/>
 
+
   ### 岸海三栖 - 沿海集落
   环绕三种群系的海岸之上，存在着一个十分热闹的海上集落，他们很期待你的到访。
+
   
   <img src=https://s2.loli.net/2024/02/03/A9ORPUl5favGswV.jpg width=50%/>
 
+
   ### 山巅繁樱 - 樱花平原
   围着陡峭山峰的樱花森林。
+
   
   <img src=https://s2.loli.net/2024/02/03/YSuUlOWIMdR5kGc.jpg width=50%/>
+
+  
 </details>
 
 
