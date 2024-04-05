@@ -40,8 +40,8 @@
 
 加入部分刷怪蛋配方，可自行通过工作台中小绿书搜索。配方会在获得对应掉落物后解锁，例如鸡需要生鸡肉，豹猫需要鱼，骷髅需要骨头，悦灵需要紫水晶。
 
-![刷怪蛋第1页.png](https://s2.loli.net/2024/04/05/8lYaSUzFqIXrsEb.png)
-![刷怪蛋第2页.png](https://s2.loli.net/2024/04/05/93XxPEvpwIM5sVu.png)
+| ![刷怪蛋第1页.png](https://s2.loli.net/2024/04/05/8lYaSUzFqIXrsEb.png) | ![刷怪蛋第2页.png](https://s2.loli.net/2024/04/05/93XxPEvpwIM5sVu.png)
+| --- | --- |
 
 #### 🎣 钓鱼
 在钓鱼时，可能会获得一些群系特有物品。<br/>
