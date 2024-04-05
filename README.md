@@ -35,8 +35,8 @@
 
 加入配方
 
-| ![草方块.png](https://s2.loli.net/2024/02/03/qjnVlFyBu7dcgvx.png) | ![刷怪笼.png](https://s2.loli.net/2024/02/03/h7G3gVyRCrIZlMA.png) | ![皮革冶炼.png](https://s2.loli.net/2024/02/03/UZOT5jFaYWRVNpi.png) |
-| --- | --- | --- |
+| ![草方块.png](https://s2.loli.net/2024/02/03/qjnVlFyBu7dcgvx.png) | ![刷怪笼.png](https://s2.loli.net/2024/02/03/h7G3gVyRCrIZlMA.png) | ![皮革冶炼.png](https://s2.loli.net/2024/02/03/UZOT5jFaYWRVNpi.png) | ![鞘翅.png](https://s2.loli.net/2024/04/05/Kxyb8kS1ljvLcr4.png) | ![三叉戟.png](https://s2.loli.net/2024/04/05/hRvwJYzoMliy3CB.png) |
+| --- | --- | --- | --- | --- |
 
 加入部分刷怪蛋配方，可自行通过工作台中小绿书搜索。配方会在获得对应掉落物后解锁，例如鸡需要生鸡肉，豹猫需要鱼，骷髅需要骨头，悦灵需要紫水晶。
 
