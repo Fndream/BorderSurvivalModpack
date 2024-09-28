@@ -167,16 +167,16 @@
 </details>
 
 ## 📖 注意事项
-**游戏规则**<br/>
-❗ 即使开启死亡不掉落，死亡后也会掉落经验。<br/>
+* **游戏规则**<br/>
+❗ 即使开启死亡不掉落，死亡后也会掉落经验。<br/><br/>
 ❗ 不推荐关闭生物破坏性行为，下面的指令一般被用于苦力怕防爆，但该指令会导致村民无法拾取物品、猪灵无法拾取金锭、怪物无法捡起盔甲工具。<br/>
-```/gamerule mobGriefing false```
+```/gamerule mobGriefing false```<br/><br/>
 ✅ 若要恢复破坏性行为，请使用以下指令：<br/>
-```/gamerule mobGriefing true```
+```/gamerule mobGriefing true```<br/><br/>
 ✅ 如若需要苦力怕防爆效果，推荐使用以下指令：<br/>
-```/gamerule creeperGriefing false```
+```/gamerule creeperGriefing false```<br/><br/>
 ✅ 如若需要阻止末影人搬土，推荐使用以下指令：<br/>
-```/gamerule endmanGriefing false```
+```/gamerule endmanGriefing false```<br/><br/>
 ✅ 如若需要阻止僵尸拆门，推荐使用以下指令：<br/>
 ```/gamerule zombieGriefing false```
 
