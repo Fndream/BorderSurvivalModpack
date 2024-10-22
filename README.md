@@ -282,4 +282,4 @@ github上传文件名不支持中文，而地图资源含有中文，强行翻�
 ❗ **切勿直接覆盖整个存档！若区块文件被覆盖将无法挽回！请在进行操作之前备份好存档，并清楚你正在做什么。**
 
 ## 疑难杂症
-遇到其他困难，请发起[issues](https://github.com/Fndream/BorderSurvivalModpack/issues)提问，或添加QQ交流群提问：1014233122。
+遇到任何无法自行解决的困难，请发起[issues](https://github.com/Fndream/BorderSurvivalModpack/issues)提问，或添加QQ交流群提问：1014233122。
