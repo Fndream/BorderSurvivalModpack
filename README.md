@@ -179,7 +179,9 @@
 ✅ 如若需要阻止末影人搬土，推荐使用以下指令：<br/>
 ```/gamerule endmanGriefing false```<br/><br/>
 ✅ 如若需要阻止僵尸拆门，推荐使用以下指令：<br/>
-```/gamerule zombieGriefing false```
+```/gamerule zombieGriefing false```<br/><br/>
+✅ 如若需要恶魂火球防爆，推荐使用以下指令：<br/>
+```/gamerule ghastGriefing false```
 
 * **环境与配置**<br/>
 ❗ 本系列需要至少**Java21**以上才能运行。<br/>
