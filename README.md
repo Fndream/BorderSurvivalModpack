@@ -146,10 +146,10 @@
   <img src=https://s2.loli.net/2024/04/24/PNREuIxUg8YfjdB.jpg width=50%/>
 
   ### 虚无
-  适合喜欢空岛的建筑玩家。雪原群系，建筑需要考虑积雪问题，前期节奏较慢，颇为烧脑且废肝。<br/>
+  适合喜欢空岛的建筑玩家。前期节奏较慢，颇为烧脑且废肝。<br/>
   **生存压力较低，但资源获取难度极高，谨慎游玩。**
 
-  <img src=https://s2.loli.net/2024/04/17/nSbXdK7trCUTOAP.jpg width=50%/>
+  <img src="https://s2.loli.net/2024/11/10/hwDlXEUGjWnIKSR.jpg" width=50%/>
   
   ### 泽中净土 — 环沼平原
   环绕着红沼森林的金合欢平原。
