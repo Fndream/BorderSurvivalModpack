@@ -1,4 +1,4 @@
-<div align=center><a href="https://smms.app/image/kLa5fdyXBI16rUw" target="_blank"><img src="https://s2.loli.net/2025/01/15/kLa5fdyXBI16rUw.png" ></a><br/><a href="https://github.com/Fndream/BorderSurvivalModpack?tab=readme-ov-file#-%E4%BD%BF%E7%94%A8%E5%8D%8F%E8%AE%AE">下载</a></div>
+<div align=center><img src="https://s2.loli.net/2025/01/15/kLa5fdyXBI16rUw.png" ><br/><a href="https://github.com/Fndream/BorderSurvivalModpack?tab=readme-ov-file#-%E4%BD%BF%E7%94%A8%E5%8D%8F%E8%AE%AE">下载</a></div>
 
 ## 📓 简介
 这是一个以原版生存为主要玩法的原版边界生存地图系列。从狭隘的空间启程，用智慧觅取资源，用勇气挑战昼夜，用经验拓展世界边界。适合对原版特性有一定了解的玩家挑战。
@@ -130,7 +130,7 @@
   
   ❗ **建议开启防爆**。
 
-  <a href="https://smms.app/image/TOIY5We4lygtjd9" target="_blank"><img src="https://s2.loli.net/2025/01/15/TOIY5We4lygtjd9.jpg" width="50%" ></a>
+  <img src="https://s2.loli.net/2025/01/15/TOIY5We4lygtjd9.jpg" width="50%" >
   
   ### 幽螈世界 — 棘茂洞穴
   传说，曾有一片美西螈的国度·····
@@ -145,7 +145,7 @@
   
   ——某位神匠遗落的日记
 
-  <a href="https://s2.loli.net/2024/08/17/7eRkbMnO4S1cw8Q.jpg" target="_blank"><img src="https://s2.loli.net/2024/08/17/7eRkbMnO4S1cw8Q.jpg" width="50%" ></a>
+  <img src="https://s2.loli.net/2024/08/17/7eRkbMnO4S1cw8Q.jpg" width="50%" >
  
   ### 守护 — 护樱山
   传说，曾有一位神匠受天之妒，被禁锢在一片繁樱山谷之中。躁动的怪物一直欲图夺取神匠身上的宝物，每当月夜降临，樱山之谷便会产生无尽的乱潮。<br/>
