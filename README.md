@@ -1,4 +1,4 @@
-<div align=center><a href="https://smms.app/image/Hup58Y7C9aDyXvh" target="_blank"><img src="https://s2.loli.net/2024/08/17/Hup58Y7C9aDyXvh.jpg" ></a><br/><a href="https://github.com/Fndream/BorderSurvivalModpack?tab=readme-ov-file#-%E4%BD%BF%E7%94%A8%E5%8D%8F%E8%AE%AE">下载</a></div>
+<div align=center><a href="https://smms.app/image/kLa5fdyXBI16rUw" target="_blank"><img src="https://s2.loli.net/2025/01/15/kLa5fdyXBI16rUw.png" ></a><br/><a href="https://github.com/Fndream/BorderSurvivalModpack?tab=readme-ov-file#-%E4%BD%BF%E7%94%A8%E5%8D%8F%E8%AE%AE">下载</a></div>
 
 ## 📓 简介
 这是一个以原版生存为主要玩法的原版边界生存地图系列。从狭隘的空间启程，用智慧觅取资源，用勇气挑战昼夜，用经验拓展世界边界。适合对原版特性有一定了解的玩家挑战。
