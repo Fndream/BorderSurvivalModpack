@@ -333,3 +333,6 @@ github上传文件名不支持中文，而地图资源含有中文，强行翻�
 
 ## 疑难杂症
 遇到任何无法自行解决的困难，请发起[issues](https://github.com/Fndream/BorderSurvivalModpack/issues)提问，或添加QQ交流群提问：1014233122。
+
+## 鸣谢
+感谢该系列所用到的所有模组资源包的制作者！
