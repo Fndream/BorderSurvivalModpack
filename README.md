@@ -229,7 +229,9 @@
 ✅ 如若需要阻止僵尸拆门，推荐使用以下指令：<br/>
 ```/gamerule zombieGriefing false```<br/><br/>
 ✅ 如若需要恶魂火球防爆，推荐使用以下指令：<br/>
-```/gamerule ghastGriefing false```
+```/gamerule ghastGriefing false```<br/><br/>
+✅ 如若需要恶魂火球防爆，推荐使用以下指令：<br/>
+```/gamerule ravagerGriefing false```
 
 * **环境与配置**<br/>
 ❗ 本系列需要至少**Java21**以上才能运行。<br/>
