@@ -199,7 +199,7 @@
   ### 富饶空域 - 丰林森屿
   树种丰富，地形平坦，临近云端的富饶之境。推荐游玩。
 
-  <img src="https://s2.loli.net/2025/04/12/um7fipkwjDF83QX.jpg" width=50%/>
+  <img src="https://s2.loli.net/2025/04/12/quvBVKos9b1zxFN.jpg" width=50%/>
 
   ### 珊雨竹陆 — 雨林海岛
   含有珊瑚、雨林、竹林、的小岛。
