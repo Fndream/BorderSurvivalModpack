@@ -1,4 +1,4 @@
-<div align=center><img src="https://s2.loli.net/2025/01/24/lw6dom4iYgaWPHT.jpg" ><br/><a href="https://github.com/Fndream/BorderSurvivalModpack?tab=readme-ov-file#-%E4%BD%BF%E7%94%A8%E5%8D%8F%E8%AE%AE">下载</a></div>
+<div align=center><img src="https://s2.loli.net/2025/04/11/AVyKw4XuJ6m5plF.jpg" ><br/><a href="https://github.com/Fndream/BorderSurvivalModpack?tab=readme-ov-file#-%E4%BD%BF%E7%94%A8%E5%8D%8F%E8%AE%AE">下载</a></div>
 
 ## 📓 简介
 这是一个以原版生存为主要玩法的原版边界生存地图系列。从狭隘的空间启程，以智慧觅取资源，以勇气宣战昼夜，以经验开拓世界边界。适合对原版特性有一定了解、喜欢探索机制、建造温馨小窝的玩家尝试。
@@ -142,6 +142,7 @@
 | **雪藏遗城** | **二周年** | **⭐⭐⭐⭐⭐** |
 | **虚无** | **虚无型** | **⭐⭐⭐⭐⭐** |
 | **凛冰域脉** | **放大化** | **⭐⭐⭐⭐** |
+| **丰林森屿** | **浮屿型** | **⭐⭐⭐** |
 | **雨林海岛** | **原版型** | **⭐⭐⭐** |
 | **环沼平原** | **原版型** | **⭐⭐⭐** |
 | **樱花平原** | **原版型** | **⭐⭐** |
@@ -184,16 +185,21 @@
   
   <img src=https://s2.loli.net/2023/02/18/J35re9QCwX1Mcpi.jpg width=50%/>
 
-  ### 极冰之域 — 凛冰域脉
-  极寒的地域，高耸入云的山峰，破溃的冰锥，无垠冰封的冻洋。该地图资源十分稀缺，生存难度与资源获取难度较高。
-
-  <img src=https://s2.loli.net/2024/04/24/PNREuIxUg8YfjdB.jpg width=50%/>
-
   ### 虚无
   适合喜欢空岛的建筑玩家。前期节奏较慢，颇为烧脑且废肝。<br/>
   **该地图资源获取难度极高！谨慎游玩！**
 
   <img src="https://s2.loli.net/2025/03/19/8EzMyS1nCgJ45dV.jpg" width=50%/>
+
+  ### 极冰之域 — 凛冰域脉
+  极寒的地域，高耸入云的山峰，破溃的冰锥，无垠冰封的冻洋。该地图资源十分稀缺，生存难度与资源获取难度较高。
+
+  <img src=https://s2.loli.net/2024/04/24/PNREuIxUg8YfjdB.jpg width=50%/>
+
+  ### 富饶空域 - 丰林森屿
+  树种丰富，地形平坦，临近云端的富饶之境。推荐游玩。
+
+  <img src="https://s2.loli.net/2025/04/11/dlchN8mVb9FZ1u3.jpg"  width=50%/>
 
   ### 珊雨竹陆 — 雨林海岛
   含有珊瑚、雨林、竹林、的小岛。
