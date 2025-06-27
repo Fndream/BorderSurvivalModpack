@@ -1,5 +1,3 @@
-<div align=center><img src="https://i.mcmod.cn/modpack/cover/20250617/1750163668_7949_jIIk.jpg" width="50%"></div>
-
 ## 📓 简介
 
 这是一个以原版生存为主要玩法的原版边界生存地图系列。从狭隘的空间启程，以智慧觅取资源，以勇气宣战昼夜，以经验开拓世界边界。适合对原版特性有一定了解的玩家挑战。
@@ -200,105 +198,20 @@
 **❗ 必须使用专用地图存档，如果自行创建世界，将无法正常进行游戏。**<br>
 **❗ 地图按综合难度从高到低排序。越高的星级往往代表着越高的生存难度或资源获取难度。**
 
-<div style="overflow-x: auto;">
-<table style="table-layout: fixed; width: 100%;">
-  <colgroup>
-    <col style="width: 160px;">
-    <col style="width: 15%; min-width: 130px; white-space: nowrap;">
-    <col style="width: 50%;">
-    <col style="width: 10%; min-width: 80px; white-space: nowrap;">
-    <col style="width: 15%; min-width: 100px; white-space: nowrap;">
-  </colgroup>
-  <thead>
-    <tr>
-      <th>预览图</th>
-      <th>地图名称</th>
-      <th>描述</th>
-      <th>类型</th>
-      <th>难度</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td><img src="https://resource-api.xyeidc.com/client/pics/e0aaf757" width="160" height="90"></td>
-      <td style="white-space: nowrap;"><span style="color: rgb(84, 141, 212);">咒世永夜</span><br><span style="color: rgb(84, 141, 212);">夜屿苍园</span></td>
-      <td>上苍失色之域，诅咒与永夜轮回......<br>与群魔共舞......与乱潮共生......<br><br><b>该地图分为永夜版与常规版，</b><br><b>上述描述为永夜版。</b><br><b>永夜版为该地图默认设定版本，</b><br><b>常规版为难度削弱版</b></td>
-      <td style="white-space: nowrap;"><span style="color: rgb(84, 141, 212);">五周年</span></td>
-      <td style="white-space: nowrap;"><span style="color:red">生存：</span>🌟🌟🌟🌟🌟<br><span style="color:green">资源：</span>🌟🌟🌟🌟🌟</td>
-    </tr>
-    <tr>
-      <td><img src="https://resource-api.xyeidc.com/client/pics/3c078894" width="160" height="90"><br><img src="https://resource-api.xyeidc.com/client/pics/2f8df366" width="160" height="90"></td>
-      <td style="white-space: nowrap;"><span style="color: rgb(51, 102, 51);">幽螈世界</span><br><span style="color: rgb(51, 102, 51);">繁茂洞穴</span></td>
-      <td>传说，曾有一片美西螈的国度<br>它的植被广茂无垠……<br>它的黑暗无边无际……<br>它的子民自池洼中舞跃……<br>它的怪物遍布空洞大地……<br>它是繁茂壮丽的洞穴……<br>它是贫瘠匮乏的世界……<br>它是幽暗无光的维度……<br>亦是星光点缀的乐园……<br>——某位神匠遗落的日记<br><br><b>在该地图中尽可能拉大视距，</b><br><b>将获得更好的视觉体验。</b></td>
-      <td style="white-space: nowrap;"><span style="color: rgb(51, 102, 51);">四周年</span></td>
-      <td style="white-space: nowrap;"><span style="color:red">生存：</span>🌟🌟🌟🌟🌟<br><span style="color:green">资源：</span>⭐⭐⭐⭐⭐</td>
-    </tr>
-    <tr>
-      <td><img src="https://resource-api.xyeidc.com/client/pics/32e1e65b" width="160" height="90"></td>
-      <td style="white-space: nowrap;"><span style="color: rgb(127, 127, 127);">虚无</span></td>
-      <td>适合喜欢空岛建筑的玩家。<br><br><b>建议在具有充裕时间，</b><br><b>且熟知原版特性及核心特性的情况下尝试。</b></td>
-      <td style="white-space: nowrap;"><span style="color: rgb(127, 127, 127);">虚空型</span></td>
-      <td style="white-space: nowrap;"><span style="color:red">生存：</span>🌟🌟🌟🌟🌟<br><span style="color:green">资源：</span>🌟🌟🌟🌟🌟</td>
-    </tr>
-    <tr>
-      <td><img src="https://resource-api.xyeidc.com/client/pics/5133c0f0" width="160" height="90"></td>
-      <td style="white-space: nowrap;"><span style="color: rgb(204, 51, 204);">守护</span><br><span style="color: rgb(204, 51, 204);">护樱山</span></td>
-      <td>传说，曾有一位神匠遭天之妒，<br>被禁锢在一片繁樱山谷之中。<br>神匠维持着世界边界的稳定，<br>躁动的怪物一直欲图夺取神匠的宝物。<br>每当月夜降临，山谷中便会产生无尽的乱潮。</td>
-      <td style="white-space: nowrap;"><span style="color: rgb(204, 51, 204);">三周年</span></td>
-      <td style="white-space: nowrap;"><span style="color:red">生存：</span>⭐⭐⭐⭐⭐<br><span style="color:green">资源：</span>⭐⭐⭐⭐⭐</td>
-    </tr>
-    <tr>
-      <td><img src="https://resource-api.xyeidc.com/client/pics/5e26883a" width="160" height="90"></td>
-      <td style="white-space: nowrap;"><span style="color: rgb(49, 133, 155);">至暗牢笼</span><br><span style="color: rgb(49, 133, 155);">雪藏遗城</span></td>
-      <td>前方是永无休止的怪物，<br>冲破游荡的怪物之笼，前方却是恐怖的……<br>至暗的城市，咆哮的怪物，<br>…终将消耗殆尽，点燃……会是希望，还是……</td>
-      <td style="white-space: nowrap;"><span style="color: rgb(49, 133, 155);">二周年</span></td>
-      <td style="white-space: nowrap;"><span style="color:red">生存：</span>⭐⭐⭐⭐<br><span style="color:green">资源：</span>⭐⭐⭐</td>
-    </tr>
-    <tr>
-      <td><img src="https://resource-api.xyeidc.com/client/pics/aac795d1" width="160" height="90"></td>
-      <td style="white-space: nowrap;"><span style="color: rgb(227, 108, 9);">富饶空域</span><br><span style="color: rgb(227, 108, 9);">丰林森屿</span></td>
-      <td>树种丰富，地形平坦，临近云端的富饶之境。<br>推荐游玩。</td>
-      <td style="white-space: nowrap;"><span style="color: rgb(227, 108, 9);">浮屿型</span></td>
-      <td style="white-space: nowrap;">⭐⭐⭐⭐</td>
-    </tr>
-    <tr>
-      <td><img src="https://resource-api.xyeidc.com/client/pics/294fee1c" width="160" height="90"></td>
-      <td style="white-space: nowrap;"><span style="color: rgb(0, 176, 240);">极冰之域</span><br><span style="color: rgb(0, 176, 240);">凛冰域脉</span></td>
-      <td>极寒的地域，高耸入云的山峰，<br>破溃的冰锥，无垠冰封的冻洋。</td>
-      <td style="white-space: nowrap;"><span style="color: rgb(0, 176, 240);">放大化</span></td>
-      <td style="white-space: nowrap;">⭐⭐⭐⭐</td>
-    </tr>
-    <tr>
-      <td><img src="https://resource-api.xyeidc.com/client/pics/d2693f0a" width="160" height="90"></td>
-      <td style="white-space: nowrap;"><span style="color: rgb(0, 176, 80);">珊雨竹陆</span><br><span style="color: rgb(0, 176, 80);">雨林海岛</span></td>
-      <td>含有珊瑚海、雨林、竹林的海岛。</td>
-      <td style="white-space: nowrap;"><span style="color: rgb(0, 176, 80);">原版型</span></td>
-      <td style="white-space: nowrap;">⭐⭐⭐</td>
-    </tr>
-    <tr>
-      <td><img src="https://resource-api.xyeidc.com/client/pics/3d3122d7" width="160" height="90"></td>
-      <td style="white-space: nowrap;"><span style="color: rgb(146, 208, 80);">泽中净土</span><br><span style="color: rgb(146, 208, 80);">环沼平原</span></td>
-      <td>1.19主题地图。<br>环绕着红树林沼泽的金合欢平原。</td>
-      <td style="white-space: nowrap;"><span style="color: rgb(255, 192, 0);">原版型</span></td>
-      <td style="white-space: nowrap;">⭐⭐⭐</td>
-    </tr>
-    <tr>
-      <td><img src="https://resource-api.xyeidc.com/client/pics/7ddcf4da" width="160" height="90"></td>
-      <td style="white-space: nowrap;"><span style="color: rgb(204, 51, 204);">山巅繁樱</span><br><span style="color: rgb(204, 51, 204);">樱花平原</span></td>
-      <td>1.20主题地图。<br>围绕着陡峭山峰的樱花森林与平原群系。</td>
-      <td style="white-space: nowrap;"><span style="color: rgb(255, 192, 0);">原版型</span></td>
-      <td style="white-space: nowrap;">⭐⭐</td>
-    </tr>
-    <tr>
-      <td><img src="https://resource-api.xyeidc.com/client/pics/3c3735a9" width="160" height="90"></td>
-      <td style="white-space: nowrap;"><span style="color: rgb(255, 192, 0);">岸海三栖</span><br><span style="color: rgb(255, 192, 0);">沿海集落</span></td>
-      <td>环绕三种群系的海岸之上，<br>存在着一个十分热闹的海上集落。<br>珊瑚海群系，适合喜欢靠海、<br>海底建筑的玩家。<br>该系列第一张海岛村庄纪念地图，<br>资源最丰富的地图。</td>
-      <td style="white-space: nowrap;"><span style="color: rgb(255, 192, 0);">原版型</span></td>
-      <td style="white-space: nowrap;">⭐</td>
-    </tr>
-  </tbody>
-</table>
-</div>
+|预览图|地图名称|描述|类型|难度|
+|-----|-----|-----|-----|-----|
+|<img src="https://resource-api.xyeidc.com/client/pics/e0aaf757" width="160px" height="90px">|<span style='color: rgb(84, 141, 212);'>**咒世永夜**</span><br><span style='color: rgb(84, 141, 212);'>**夜屿苍园**</span>|上苍失色之域，诅咒与永夜轮回......<br>与群魔共舞......与乱潮共生......<br><br>**该地图分为永夜版与常规版，**<br>**上述描述为永夜版。**<br>**永夜版为该地图默认设定版本，**<br>**常规版为难度削弱版。**|<span style='color: rgb(84, 141, 212);'>**五周年**</span>|<span style='color:red'>**生存：**</span>🌟🌟🌟🌟🌟<br><span style='color:green'>**资源：**</span>🌟🌟🌟🌟🌟|
+|<img src="https://resource-api.xyeidc.com/client/pics/3c078894" width="160px" height="90px"><br><img src="https://resource-api.xyeidc.com/client/pics/2f8df366" width="160px" height="90px">|<span style='color: rgb(51, 102, 51);'>**幽螈世界**</span><br><span style='color: rgb(51, 102, 51);'>**繁茂洞穴**</span>|传说，曾有一片美西螈的国度……<br>它的植被广茂无垠……<br>它的黑暗无边无际……<br>它的子民自池洼中舞跃……<br>它的怪物遍布空洞大地……<br>它是繁茂壮丽的洞穴……<br>它是贫瘠匮乏的世界……<br>它是幽暗无光的维度……<br>亦是星光点缀的乐园……<br>——某位神匠遗落的日记<br><br>**在该地图中尽可能拉大视距，**<br>**将获得更好的视觉体验。**|<span style='color: rgb(51, 102, 51);'>**四周年**</span>|<span style='color:red'>**生存：**</span>🌟🌟🌟🌟🌟<br><span style='color:green'>**资源：**</span>⭐⭐⭐⭐⭐|
+|<img src="https://resource-api.xyeidc.com/client/pics/32e1e65b" width="160px" height="90px">|<span style='color: rgb(127, 127, 127);'>**虚无**</span>|适合喜欢空岛建筑的玩家。<br><br>**建议在具有充裕时间，**<br>**且熟知原版特性及核心特性的情况下尝试。**|<span style='color: rgb(127, 127, 127);'>**虚空型**</span>|<span style='color:red'>**生存：**</span>🌟🌟🌟🌟🌟<br><span style='color:green'>**资源：**</span>🌟🌟🌟🌟🌟|
+|<img src="https://resource-api.xyeidc.com/client/pics/5133c0f0" width="160px" height="90px">|<span style='color: rgb(204, 51, 204);'>**守护**</span><br><span style='color: rgb(204, 51, 204);'>**护樱山**</span>|传说，曾有一位神匠遭天之妒，<br>被禁锢在一片繁樱山谷之中。<br>神匠维持着世界边界的稳定，<br>躁动的怪物一直欲图夺取神匠的宝物。<br>每当月夜降临，山谷中便会产生无尽的乱潮。|<span style='color: rgb(204, 51, 204);'>**三周年**</span>|<span style='color:red'>**生存：**</span>⭐⭐⭐⭐⭐<br><span style='color:green'>**资源：**</span>⭐⭐⭐⭐⭐|
+|<img src="https://resource-api.xyeidc.com/client/pics/5e26883a" width="160px" height="90px">|<span style='color: rgb(49, 133, 155);'>**至暗牢笼**</span><br><span style='color: rgb(49, 133, 155);'>**雪藏遗城**</span>|前方是永无休止的怪物，<br>冲破游荡的怪物之笼，前方却是恐怖的……<br>至暗的城市，咆哮的怪物，<br>…终将消耗殆尽，点燃……会是希望，还是……|<span style='color: rgb(49, 133, 155);'>**二周年**</span>|<span style='color:red'>**生存：**</span>⭐⭐⭐⭐<br><span style='color:green'>**资源：**</span>⭐⭐⭐|
+|<img src="https://resource-api.xyeidc.com/client/pics/aac795d1" width="160px" height="90px">|<span style='color: rgb(227, 108, 9);'>**富饶空域**</span><br><span style='color: rgb(227, 108, 9);'>**丰林森屿**</span>|树种丰富，地形平坦，临近云端的富饶之境。<br>推荐游玩。|<span style='color: rgb(227, 108, 9);'>**浮屿型**</span>|⭐⭐⭐⭐|
+|<img src="https://resource-api.xyeidc.com/client/pics/294fee1c" width="160px" height="90px">|<span style='color: rgb(0, 176, 240);'>**极冰之域**</span><br><span style='color: rgb(0, 176, 240);'>**凛冰域脉**</span>|极寒的地域，高耸入云的山峰，<br>破溃的冰锥，无垠冰封的冻洋。|<span style='color: rgb(0, 176, 240);'>**放大化**</span>|⭐⭐⭐⭐|
+|<img src="https://resource-api.xyeidc.com/client/pics/d2693f0a" width="160px" height="90px">|<span style='color: rgb(0, 176, 80);'>**珊雨竹陆**</span><br><span style='color: rgb(0, 176, 80);'>**雨林海岛**</span>|含有珊瑚海、雨林、竹林的海岛。|<span style='color: rgb(0, 176, 80);'>**原版型**</span>|⭐⭐⭐|
+|<img src="https://resource-api.xyeidc.com/client/pics/3d3122d7" width="160px" height="90px">|<span style='color: rgb(146, 208, 80);'>**泽中净土**</span><br><span style='color: rgb(146, 208, 80);'>**环沼平原**</span>|1.19主题地图。<br>环绕着红树林沼泽的金合欢平原。|<span style='color: rgb(255, 192, 0);'>**原版型**</span>|⭐⭐⭐|
+|<img src="https://resource-api.xyeidc.com/client/pics/7ddcf4da" width="160px" height="90px">|<span style='color: rgb(204, 51, 204);'>**山巅繁樱**</span><br><span style='color: rgb(204, 51, 204);'>**樱花平原**</span>|1.20主题地图。<br>围绕着陡峭山峰的樱花森林与平原群系。|<span style='color: rgb(255, 192, 0);'>**原版型**</span>|⭐⭐|
+|<img src="https://resource-api.xyeidc.com/client/pics/3c3735a9" width="160px" height="90px">|<span style='color: rgb(255, 192, 0);'>**岸海三栖**</span><br><span style='color: rgb(255, 192, 0);'>**沿海集落**</span>|环绕三种群系的海岸之上，<br>存在着一个十分热闹的海上集落。<br>珊瑚海群系，适合喜欢靠海、<br>海底建筑的玩家。<br>该系列第一张海岛村庄纪念地图，<br>资源最丰富的地图。|<span style='color: rgb(255, 192, 0);'>**原版型**</span>|⭐|
+
 ## 🎓 模组快捷键
 
 - **在整合包中为部分模组的功能进行了快捷键配置：**
@@ -366,7 +279,7 @@
 
 - 若未来该系列决定更新到更高的Minecraft版本后，旧版本将不再维护。
 - ❗ **该系列不保留且不推荐游玩历史版本，禁止一切历史版本的二次传播。**
-- ❗ **若您下载该系列资源，请遵守使用协议，未经授权禁止在公共场合（包括但不限于社区、网站、网盘、资源群）对该系列资源文件进行二次上传、转载或发布。**
+- ❗ **若您下载该系列资源，请遵守[使用协议](https://github.com/Fndream/BorderSurvivalModpack?tab=readme-ov-file#-%E4%BD%BF%E7%94%A8%E5%8D%8F%E8%AE%AE)，未经授权禁止在公共场合（包括但不限于社区、网站、网盘、资源群）对该系列资源文件进行二次上传、转载或发布。**
 
 ## 📖 常见问题
 
@@ -402,16 +315,3 @@
 - A：服务端的地毯模组需要单独为存档配置：请将 **config/carpet/default_carpet.conf** 文件复制到存档(一般为world)目录下，并将该文件重命名为 **carpet.conf**，之后重启服务端即可。
 
 若遇到其他疑难杂症或困难，或以上问题根据步骤并没有解决，需要保持交流，请尝试进入群聊进行提问：1014233122。
-
-## © 使用协议
-#### 本文档内容
-在未经授权的情况下，您不可对本文档内容(包括文字、图片)进行摘抄或转载。
-
-#### 本系列资源
-✅ 您可以将本系列用于单人游戏、多人联机、服务端联机、实况录制。
-
-❌ 在未经授权的情况下，您不可将本系列原资源或修改后的资源进行二次转载或发布。二次发布定义为在包括但不限于(网盘、资源网站、社区、群聊等公开场合)上传本系列资源文件进行公开分享或发布。
-
-❌ 您不可将本系列资源用于任何商业用途。
-
-❌ 本系列不适用于服务器形式，您不可也无法将本系列用于任何服务器用途，使用服务端联机除外。
