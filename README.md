@@ -1,3 +1,5 @@
+<div align=center><img src="https://i.mcmod.cn/modpack/cover/20250617/1750163668_7949_jIIk.jpg" width="50%"></div>
+
 ## 📓 简介
 
 这是一个以原版生存为主要玩法的原版边界生存地图系列。从狭隘的空间启程，以智慧觅取资源，以勇气宣战昼夜，以经验开拓世界边界。适合对原版特性有一定了解的玩家挑战。
@@ -34,7 +36,7 @@
 
 - 常规默认模式。
 
-**🌗 昼夜模式**
+**<span style="color: rgb(192, 0, 0);">🔴 昼夜模式<sup>[扩展]</sup></span>**
 
 - 昼夜模式的白天十分祥和，与禁锢模式并无区别。
 - 在昼夜模式的夜晚，刷怪上限与刷怪数量将会提高，怪物穿戴装甲的概率将会提高一倍，且怪物将无视光照等级刷新。
@@ -42,14 +44,14 @@
 - ❗ **昼夜模式和禁锢模式并非是创造、生存、简单、困难等游戏模式，而是一种策略。**
 - ❗ **若想要体验绝望级生存难度，推荐从开局便始终保持昼夜模式。在较高难度的地图中将更为疯狂。**
 
-**🌙 昼夜模式 - 永恒之夜**
+**<span style="color: rgb(192, 0, 0);">🌙 昼夜模式 - 永恒之夜<sup>[扩展]</sup></span>**
 
 - 在昼夜模式的夜晚即将抵达白昼时，若边界等级至少拥有100级，永恒之夜将会降临。之后将在度过0-4个昼夜模式游戏日后再次降临。
 - 永恒之夜降临后，世界出生点周围将会出现异界的永夜骑士。
 - 受永夜骑士的影响，时间会被禁锢在他们降临的那一刻，且世界将陷入永恒的雷暴之中。
 - 只有将所有降临的永夜骑士全部击败，才可解除其对世界的影响。
 
-**🥀 永夜骑士**
+**<span style="color: rgb(192, 0, 0);">🥀 永夜骑士<sup>[扩展]</sup></span>**
 
 - 永夜骑士的生命值取决于其降临时的边界等级。
 - 当永夜骑士周围不存在玩家时，永夜骑士将持续恢复生命值。
@@ -58,7 +60,7 @@
 - 而怪物们为了应对永夜骑士，将必定穿戴装甲，且会穿戴更高品质的装甲。
 - 只有将所有降临的永夜骑士全部击败，才可解除其对世界的影响。
 
-**🧊 永恒雨夜 / 永恒雪夜**
+**🧊 <span style="color: rgb(0, 112, 192);">永恒雨夜</span> <span style="color: rgb(192, 0, 0);">/</span> <span style="color: rgb(127, 127, 127);">永恒雪夜</span><span style="color: rgb(192, 0, 0);"><sup>[扩展]</sup></span>**
 
 - 当永恒之夜降临时，根据距永恒之夜下次降临所剩的游戏日数，世界边界将会染上凶红、夕橙、灿金、邃蓝、黯紫五种色彩。
 - 每当累计度过3次永恒之夜后，下次永恒之夜将会降临亡灵军团或灾厄军团。
@@ -70,46 +72,46 @@
 - ❗ **若不希望永恒雪夜的自然积雪影响存档氛围，请提前使用以下指令将积雪厚度设置为0：**
 -  > /gamerule snowAccumulationHeight 0
 
-**🏹 永恒神兵**
+<span style="color: rgb(192, 0, 0);">**🏹 永恒神兵<sup>[特殊]</sup></span>**
 
-- 当永夜骑士被玩家或被视为玩家的生物击败后，有1%的概率会掉落其手持的武器。
-- 若击败者主手持有抢夺效果，每级抢夺将提高15%掠夺成功率。
-- 永恒神兵具有消失诅咒，不会被火焰或熔岩摧毁。
+- **<span style="color: rgb(192, 0, 0);">当永夜骑士被玩家或被视为玩家的生物击败后，有1%的概率会掉落其手持的武器。</span>**
+- **<span style="color: rgb(192, 0, 0);">若击败者主手持有抢夺效果，每级抢夺将提高15%掠夺成功率。</span>**
+- **<span style="color: rgb(191, 191, 191);">永恒神兵具有消失诅咒，不会被火焰或熔岩摧毁。</span>**
 
-**💙 永恒之心**
+<span style="color: rgb(0, 112, 192);">**💙 永恒之心<sup>[特殊]</sup></span>**
 
-- 当永恒军团首领被击败后，有50%的概率会掉落永恒之心。
-- 若永恒之心破碎，在当前或下次永恒之夜中，永夜骑士将不再团结一心。
-- 右键使用可使永恒之心破碎。
+- **<span style="color: rgb(0, 112, 192);">当永恒军团首领被击败后，有50%的概率会掉落永恒之心。</span>**
+- **<span style="color: rgb(0, 112, 192);">若永恒之心破碎，在当前或下次永恒之夜中，永夜骑士将不再团结一心。</span>**
+- **<span style="color: rgb(191, 191, 191);">右键使用可使永恒之心破碎。</span>**
 <hr>
 
-**🔆 神匠**
+**🔆 <span style="color: rgb(227, 108, 9);">神匠<sup>[扩展]</sup></span>**
 
 - 突破了世界的法则，与永夜骑士颇有渊源，从祂手中可以兑换到一些超脱常理的物品。同时，因其为世界之虫(bug)，所有怪物都欲图消灭祂。
 
-**🍀 聚灵石**
+**🍀 <span style="color: rgb(0, 176, 80);">聚灵石<sup>[特殊]</sup></span>**
 
-- 切灵以筑基石，示灵以聚实物。
-- 可通过切石机转换为基础建材。
-- 当被置于任意物品展示框中时，将会聚集周围 33x33x33 范围内的物品到其自身位置。
-- 当聚灵石所在的物品展示框被附着在箱子、木桶、潜影盒上时，聚灵石仅会聚集其附着容器中存在的物品类型。若容器为空，则不会聚集任何物品。
-- 当一个物品实体周围存在多个有效的聚灵石时，该物品将分裂为若干个物品实体被这些聚灵石平均聚集。
-- 当一个物品实体周围同时存在“容器聚灵石”与“通用聚灵石”时，物品实体会先被后者堆叠聚集，之后再被前者二次聚集。
+- <span style="color: rgb(0, 176, 80);">**切灵以筑基石，示灵以聚实物。**</span>
+- <span style="color: rgb(191, 191, 191);">**可通过切石机转换为基础建材。**</span>
+- <span style="color: rgb(191, 191, 191);">**当被置于任意物品展示框中时，将会聚集周围 33x33x33 范围内的物品到其自身位置。**</span>
+- <span style="color: rgb(191, 191, 191);">**当聚灵石所在的物品展示框被附着在箱子、木桶、潜影盒上时，聚灵石仅会聚集其附着容器中存在的物品类型。若容器为空，则不会聚集任何物品。**</span>
+- <span style="color: rgb(191, 191, 191);">**当一个物品实体周围存在多个有效的聚灵石时，该物品将分裂为若干个物品实体被这些聚灵石平均聚集。**</span>
+- <span style="color: rgb(191, 191, 191);">**当一个物品实体周围同时存在“容器聚灵石”与“通用聚灵石”时，物品实体会先被后者堆叠聚集，之后再被前者二次聚集。**</span>
 
-**✨ 无损灵器**
+**<span style="color: rgb(247, 150, 70);">✨ 无损灵器<sup>[特殊]</sup></span>**
 
-- 混沌之星：当副手手持时，将持续恢复生命。
-- 御灵盾：当副手手持时，将间隔刷新护盾。
-- 裁灵剪：当副手手持时，将持续获得急迫。
-- 萝灵竿：当副手手持时，将持续获得迅捷。
-- 诡异灵竿：当副手手持时，将持续获得迅捷。
-- 旋灵重锤：当副手手持时，将持续获得力量。
-- 翱灵王翅：当副手手持时，将持续获得缓降。
-- 翱灵翼甲：当副手手持时，将持续获得缓降。
-- 海之祝福：当副手手持时，将持续获得潮涌能量。
-- 瀚海灵戟：当副手手持时，将持续获得海豚的恩惠。
-- 狼灵铠：当副手手持或被狼穿戴时，持有者将持续获得抗性提升。
-- 燧灵火石：当副手手持时，玩家自身、永夜骑士、夜骑、神匠、灾厄村民、女巫、流浪商人、流商羊驼将持续发光。
+- <span style="color: rgb(191, 191, 191);">**混沌之星：当副手手持时，将持续恢复生命。**</span>
+- <span style="color: rgb(191, 191, 191);">**御灵盾：当副手手持时，将间隔刷新护盾。**</span>
+- <span style="color: rgb(191, 191, 191);">**裁灵剪：当副手手持时，将持续获得急迫。**</span>
+- <span style="color: rgb(191, 191, 191);">**萝灵竿：当副手手持时，将持续获得迅捷<sup>[v11.19.2]</sup>。**</span>
+- <span style="color: rgb(191, 191, 191);">**诡异灵竿：当副手手持时，将持续获得迅捷<sup>[v11.19.2]</sup>。**</span>
+- <span style="color: rgb(191, 191, 191);">**旋灵重锤：当副手手持时，将持续获得力量<sup>[v11.19.2]</sup>。**</span>
+- <span style="color: rgb(191, 191, 191);">**翱灵王翅：当副手手持时，将持续获得缓降。**</span>
+- <span style="color: rgb(191, 191, 191);">**翱灵翼甲：当副手手持时，将持续获得缓降。**</span>
+- <span style="color: rgb(191, 191, 191);">**海之祝福：当副手手持时，将持续获得潮涌能量。**</span>
+- <span style="color: rgb(191, 191, 191);">**瀚海灵戟：当副手手持时，将持续获得海豚的恩惠<sup>[v11.19.2]</sup>。**</span>
+- <span style="color: rgb(191, 191, 191);">**狼灵铠：当副手手持或被狼穿戴时，持有者或穿戴者将持续获得抗性提升<sup>[v11.20]</sup>。**</span>
+- <span style="color: rgb(191, 191, 191);">**燧灵火石：当副手手持时，玩家自身、永夜骑士、夜骑、神匠、灾厄村民、女巫、流浪商人、流商羊驼将持续发光。**</span>
 <hr>
 
 **📋️ 功能牌**
@@ -119,22 +121,22 @@
 - 切换模式：在昼夜模式与禁锢模式之间切换，无法在永夜状态下使用。
 - 召唤神匠：在玩家当前位置生成神匠，每个游戏日只能召唤一次，世界中最多存在一只。
 - 若功能牌被损毁，可通过以下指令获取并通过创造模式放置：
-- > /function border_survival:get_sign
+- >  /function border_survival:get_sign
 <hr>
 
 **🎣 钓鱼**
 
 - 在钓鱼时，可能会获得一些群系特有物品。
 - 垃圾奖池加入：海草、海带、甘蔗、仙人掌、竹子、海泡菜、可可豆、海晶碎片、海晶砂粒、珊瑚、珊瑚扇、紫颂花。
-- 宝藏奖池加入：紫水晶母岩、黑曜石、冰、浮冰、蓝冰、？？？。
+- 宝藏奖池加入：紫水晶母岩、黑曜石、冰、浮冰、蓝冰、**<span style="color: rgb(255, 192, 0);">？？？<sup>[v11.20]</sup></span>**。
 
 **🐱 猫**
 
-- 礼物加入：枯萎的灌木、树叶、冰、浮冰、蓝冰。
+- 礼物加入：枯萎的灌木<sup>[v11.10]</sup>、树叶<sup>[v11.9]</sup>、冰、浮冰、蓝冰。
 
 **🌹 嗅探兽**
 
-- 刨挖加入：蒲公英、虞美人、兰花、绒球葱、蓝花美耳草、郁金香、滨菊、矢车菊、铃兰、张开的眼眸花、孢子花。
+- 刨挖加入：蒲公英、虞美人、兰花、绒球葱、蓝花美耳草、郁金香、滨菊、矢车菊、铃兰、张开的眼眸花、孢子花<sup>[v11.13]</sup>。
 
 **🐽 猪灵**
 
@@ -150,22 +152,28 @@
 - 试炼密室宝库-普通、试炼密室不祥宝库-普通加入：旋风棒。
 <hr>
 
-**⚫ 末影龙**
+**⚫ 末影龙<sup>[v11.13]</sup>**
 
 - 末影龙被击败后将在末地祭坛生成：龙首。
 - 重生的末影龙被击败后也会在末地祭坛生成：龙蛋、龙首。
 - 重生的末影龙被击败后将掉落1300点经验值。
 
-**🍖 掉落物**
+**🍖 掉落物<sup>[v11.10]</sup>**
 
-- 被永夜骑士、监守者、远古守卫者、守卫者击败的生物视为被玩家击败。
+- 被永夜骑士<sup>[v11.14]</sup>、监守者、远古守卫者、守卫者击败的生物视为被玩家击败。
 <hr>
 
 **💡 合成配方**
 
-- 加入方块配方：草方块、深板岩圆石、深板岩、凝灰岩、方解石。
-- 加入特殊配方：皮革冶炼、刷怪笼、刷怪蛋、三叉戟、鞘翅、末地传送门框架、混沌之星。
+- 加入方块配方：草方块<sup>[v11.2]</sup>、深板岩圆石<sup>[v11.2]</sup>、深板岩<sup>[v11.2]</sup>、凝灰岩<sup>[v11.2]</sup>、方解石<sup>[v11.3]</sup>。
+- 加入特殊配方：皮革冶炼、刷怪笼、刷怪蛋、三叉戟、鞘翅、末地传送门框架、**<span style="color: rgb(192, 0, 0);">混沌之星<sup>[扩展]</sup></span>**。
 - **❗ 在获得对应材料后将自动解锁配方，可通过工作台左侧小绿书查看。**
+
+|<img src="https://resource-api.xyeidc.com/client/pics/f628a393" width="260px" height="120px">|<img src="https://resource-api.xyeidc.com/client/pics/8df0c556" width="260px" height="120px">|<img src="https://resource-api.xyeidc.com/client/pics/bb8ba02a" width="260px" height="120px">|
+|-----|-----|-----|
+|<img src="https://resource-api.xyeidc.com/client/pics/57e878a7" width="260px" height="120px">|<img src="https://resource-api.xyeidc.com/client/pics/586b95c9" width="260px" height="120px">|<img src="https://resource-api.xyeidc.com/client/pics/4f102568" width="260px" height="120px">|
+|<img src="https://resource-api.xyeidc.com/client/pics/4ba9566c" width="260px" height="120px">|<img src="https://resource-api.xyeidc.com/client/pics/b70ba755" width="260px" height="120px">|<img src="https://resource-api.xyeidc.com/client/pics/fdd32af4" width="260px" height="120px">|
+|<img src="https://resource-api.xyeidc.com/client/pics/b16770a8" width="260px" height="120px">|<img src="https://resource-api.xyeidc.com/client/pics/549783cb" width="260px" height="120px">|<img src="https://resource-api.xyeidc.com/client/pics/9e060265" width="260px" height="120px">|
 <hr>
 
 **🌿 地毯 (carpet mod)**
@@ -189,127 +197,22 @@
 
 ## 🧭 地图
 
-**❗ 必须使用专用地图存档，如果自行创建世界，将无法正常进行游戏。**
-
+**❗ 必须使用专用地图存档，如果自行创建世界，将无法正常进行游戏。**<br>
 **❗ 地图按综合难度从高到低排序。越高的星级往往代表着越高的生存难度或资源获取难度。**
 
-### 🤍 咒世永夜 - 夜屿苍园
-- 类型：五周年
-- 难度：🌟🌟🌟🌟🌟
-
-上苍失色之域，诅咒与永夜轮回......
-
-与群魔共舞......与乱潮共生......
-
-❗ **该地图分为永夜版与常规版，上述描述为永夜版。**
-
-❗ **永夜版为该地图默认设定版本，常规版为难度削弱版。**
-
-![夜屿苍园](https://resource-api.xyeidc.com/client/pics/b1424c15)
-
-### 🍀 幽螈世界 - 繁茂洞穴
-- 类型：四周年
-- 难度：🌟🌟🌟🌟🌟
-
-传说，曾有一片美西螈的国度·····
-
-它的植被广茂无垠，它的黑暗无边无际……
-
-它的子民自池洼中舞跃，它的怪物遍布空洞大地……
-
-它是繁茂壮丽的洞穴，它是贫瘠匮乏的世界……
-
-它是幽暗无光的维度……亦是星光点缀的乐园……
-
-——某位神匠遗落的日记
-
-❗ **在该地图中尽可能拉大视距将获得更好的视觉体验。**
-
-![繁茂洞穴](https://resource-api.xyeidc.com/client/pics/45987e14)
-
-### 🔴 虚无
-- 类型：虚空型
-- 难度：🌟🌟🌟🌟🌟
-
-适合喜欢空岛建筑的玩家。
-
-❗ **建议在具有充裕时间、且熟知原版特性及核心特性的情况下尝试。**
-
-![虚无](https://resource-api.xyeidc.com/client/pics/f212bfb0)
-
-### 🌸 守护 - 护樱山
-- 类型：三周年
-- 难度：⭐⭐⭐⭐⭐
-
-传说，曾有一位神匠受天之妒，被禁锢在一片繁樱山谷之中。
-
-神匠维持着世界边界的稳定，躁动的怪物一直欲图夺取神匠的宝物。
-
-每当月夜降临，繁樱山谷中便会产生无尽的乱潮。
-
-![护樱山](https://resource-api.xyeidc.com/client/pics/a21d3f9d)
-
-### ⚫ 至暗牢笼 - 雪藏遗城
-- 类型：二周年
-- 难度：⭐⭐⭐⭐⭐
-
-前方是永无休止的怪物，冲破游荡的怪物之笼，前方却是恐怖的……
-
-至暗的城市，咆哮的怪物，…终将消耗殆尽，点燃……会是希望，还是…...
-
-![雪藏遗城](https://resource-api.xyeidc.com/client/pics/ea2634f0)
-
-### 🌳 富饶空域 - 丰林森屿
-- 类型：浮屿型
-- 难度：⭐⭐⭐⭐
-
-树种丰富，地形平坦，临近云端的富饶之境。推荐游玩。
-
-![丰林森屿](https://resource-api.xyeidc.com/client/pics/818b9e69)
-
-### 🧊 极冰之域 - 凛冰域脉
-- 类型：放大化
-- 难度：⭐⭐⭐⭐
-
-极寒的地域，高耸入云的山峰，破溃的冰锥，无垠冰封的冻洋。
-
-![凛冰域脉](https://resource-api.xyeidc.com/client/pics/11e61784)
-
-### 🌿 珊雨竹陆 - 雨林海岛
-- 类型：原版型
-- 难度：⭐⭐⭐
-
-含有珊瑚海、雨林、竹林的海岛。
-
-![雨林海岛](https://resource-api.xyeidc.com/client/pics/6f52928c)
-
-### 🌿 泽中净土 - 环沼平原
-- 类型：原版型
-- 难度：⭐⭐⭐
-
-1.19主题地图。环绕着红树林沼泽的金合欢平原。
-
-![环沼平原](https://resource-api.xyeidc.com/client/pics/cbd93559)
-
-### 🌿 山巅繁樱 - 樱花平原
-- 类型：原版型
-- 难度：⭐⭐
-
-1.20主题地图。围绕着陡峭山峰的樱花森林与平原群系。
-
-![樱花平原](https://resource-api.xyeidc.com/client/pics/6390c6c4)
-
-### 🌿 岸海三栖 - 沿海集落
-- 类型：原版型
-- 难度：⭐
-
-环绕三种群系的海岸之上，存在着一个十分热闹的海上集落。
-
-珊瑚海群系，适合喜欢靠海、海底建筑的玩家。
-
-该系列第一张海岛村庄纪念地图，资源最丰富的地图。
-
-![沿海集落](https://resource-api.xyeidc.com/client/pics/bc7784ab)
+|预览图|地图名称|描述|类型|难度|
+|-----|-----|-----|-----|-----|
+|<img src="https://resource-api.xyeidc.com/client/pics/e0aaf757" width="160px" height="90px">|<span style='color: rgb(84, 141, 212);'>**咒世永夜**</span><br><span style='color: rgb(84, 141, 212);'>**夜屿苍园**</span>|上苍失色之域，诅咒与永夜轮回......<br>与群魔共舞......与乱潮共生......<br><br>**该地图分为永夜版与常规版，上述描述为永夜**<br>**版。**<br>**永夜版为该地图默认设定版本，常规版为难度**<br>**削弱版**|<span style='color: rgb(84, 141, 212);'>**五周年**</span>|<span style='color:red'>**生存：**</span>🌟🌟🌟🌟🌟<br><span style='color:green'>**资源：**</span>🌟🌟🌟🌟🌟|
+|<img src="https://resource-api.xyeidc.com/client/pics/3c078894" width="160px" height="90px"><br><img src="https://resource-api.xyeidc.com/client/pics/2f8df366" width="160px" height="90px">|<span style='color: rgb(51, 102, 51);'>**幽螈世界**</span><br><span style='color: rgb(51, 102, 51);'>**繁茂洞穴**</span>|传说，曾有一片美西螈的国度<br>它的植被广茂无垠......<br>它的黑暗无边无际......<br>它的子民自池洼中舞跃......<br>它的怪物遍布空洞大地......<br>它是繁茂壮丽的洞穴......<br>它是贫瘠匮乏的世界......<br>它是幽暗无光的维度......<br>亦是星光点缀的乐园......<br>——某位神匠遗落的日记<br><br>**在该地图中尽可能拉大视距将获得更好的视觉**<br>**体验。**|<span style='color: rgb(51, 102, 51);'>**四周年**</span>|<span style='color:red'>**生存：**</span>🌟🌟🌟🌟🌟<br><span style='color:green'>**资源：**</span>⭐⭐⭐⭐⭐|
+|<img src="https://resource-api.xyeidc.com/client/pics/32e1e65b" width="160px" height="90px">|<span style='color: rgb(127, 127, 127);'>**虚无**</span>|适合喜欢空岛建筑的玩家。<br><br>**建议在具有充裕时间、且熟知原版特性及核心**<br>**特性的情况下尝试。**|<span style='color: rgb(127, 127, 127);'>**虚空型**</span>|<span style='color:red'>**生存：**</span>🌟🌟🌟🌟🌟<br><span style='color:green'>**资源：**</span>🌟🌟🌟🌟🌟|
+|<img src="https://resource-api.xyeidc.com/client/pics/5133c0f0" width="160px" height="90px">|<span style='color: rgb(204, 51, 204);'>**守护**</span><br><span style='color: rgb(204, 51, 204);'>**护樱山**</span>|传说，曾有一位神匠受天之妒，被禁锢在一片<br>繁樱山谷之中。<br>神匠维持着世界边界的稳定，躁动的怪物一直<br>欲图夺取神匠的宝物。<br>每当月夜降临，繁樱山谷中便会产生无尽的乱<br>潮。|<span style='color: rgb(204, 51, 204);'>**三周年**</span>|<span style='color:red'>**生存：**</span>⭐⭐⭐⭐⭐<br><span style='color:green'>**资源：**</span>⭐⭐⭐⭐⭐|
+|<img src="https://resource-api.xyeidc.com/client/pics/5e26883a" width="160px" height="90px">|<span style='color: rgb(49, 133, 155);'>**至暗牢笼**</span><br><span style='color: rgb(49, 133, 155);'>**雪藏遗城**</span>|前方是永无休止的怪物，冲破游荡的怪物之<br>笼，前方却是恐怖的……<br>至暗的城市，咆哮的怪物，…终将消耗殆尽，<br>点燃……会是希望，还是…...|<span style='color: rgb(49, 133, 155);'>**二周年**</span>|<span style='color:red'>**生存：**</span>⭐⭐⭐⭐<br><span style='color:green'>**资源：**</span>⭐⭐⭐|
+|<img src="https://resource-api.xyeidc.com/client/pics/aac795d1" width="160px" height="90px">|<span style='color: rgb(227, 108, 9);'>**富饶空域**</span><br><span style='color: rgb(227, 108, 9);'>**丰林森屿**</span>|树种丰富，地形平坦，临近云端的富饶之境。<br>推荐游玩。|<span style='color: rgb(227, 108, 9);'>**浮屿型**</span>|⭐⭐⭐⭐|
+|<img src="https://resource-api.xyeidc.com/client/pics/294fee1c" width="160px" height="90px">|<span style='color: rgb(0, 176, 240);'>**极冰之域**</span><br><span style='color: rgb(0, 176, 240);'>**凛冰域脉**</span>|极寒的地域，高耸入云的山峰，<br>破溃的冰锥，无垠冰封的冻洋。|<span style='color: rgb(0, 176, 240);'>**放大化**</span>|⭐⭐⭐⭐|
+|<img src="https://resource-api.xyeidc.com/client/pics/d2693f0a" width="160px" height="90px">|<span style='color: rgb(0, 176, 80);'>**珊雨竹陆**</span><br><span style='color: rgb(0, 176, 80);'>**雨林海岛**</span>|含有珊瑚海、雨林、竹林的海岛。|<span style='color: rgb(0, 176, 80);'>**原版型**</span>|⭐⭐⭐|
+|<img src="https://resource-api.xyeidc.com/client/pics/3d3122d7" width="160px" height="90px">|<span style='color: rgb(146, 208, 80);'>**泽中净土**</span><br><span style='color: rgb(146, 208, 80);'>**环沼平原**</span>|1.19主题地图。<br>环绕着红树林沼泽的金合欢平原。|<span style='color: rgb(255, 192, 0);'>**原版型**</span>|⭐⭐⭐|
+|<img src="https://resource-api.xyeidc.com/client/pics/7ddcf4da" width="160px" height="90px">|<span style='color: rgb(204, 51, 204);'>**山巅繁樱**</span><br><span style='color: rgb(204, 51, 204);'>**樱花平原**</span>|1.20主题地图。<br>围绕着陡峭山峰的樱花森林与平原群系。|<span style='color: rgb(255, 192, 0);'>**原版型**</span>|⭐⭐|
+|<img src="https://resource-api.xyeidc.com/client/pics/3c3735a9" width="160px" height="90px">|<span style='color: rgb(255, 192, 0);'>**岸海三栖**</span><br><span style='color: rgb(255, 192, 0);'>**沿海集落**</span>|环绕三种群系的海岸之上，存在着一个十分热<br>闹的海上集落。<br>珊瑚海群系，适合喜欢靠海、海底建筑的玩家<br>该系列第一张海岛村庄纪念地图，资源最丰富<br>的地图。|<span style='color: rgb(255, 192, 0);'>**原版型**</span>|⭐|
 
 ## 🎓 模组快捷键
 
@@ -345,19 +248,19 @@
 **✅ 若要恢复破坏性行为，请使用以下指令：**
 - > /gamerule mobGriefing true
 
-**✅ 如若需要苦力怕防爆效果，推荐使用以下指令：**
+**✅ <span style="color: rgb(51, 153, 102);">如若需要苦力怕防爆效果，推荐使用以下指令：<sup>[v10.0.5]</sup></span>**
 - > /gamerule creeperGriefing false
 
-**✅ 如若需要阻止末影人搬土，推荐使用以下指令：**
+**✅ <span style="color: rgb(204, 51, 204);">如若需要阻止末影人搬土，推荐使用以下指令：<sup>[v10.0.5]</sup></span>**
 - > /gamerule endmanGriefing false
 
-**✅ 如若需要阻止僵尸拆门，推荐使用以下指令：**
+**✅ <span style="color: rgb(51, 153, 51);">如若需要阻止僵尸拆门，推荐使用以下指令：<sup>[v10.0.5]</sup></span>**
 - > /gamerule zombieGriefing false
 
-**✅ 如若需要恶魂火球防爆，推荐使用以下指令：**
+**✅ <span style="color: rgb(192, 0, 0);">如若需要恶魂火球防爆，推荐使用以下指令：<sup>[v10.3.1]</sup></span>**
 - > /gamerule ghastGriefing false
 
-**✅ 如若需要阻止劫掠兽破坏，推荐使用以下指令：**
+**✅ <span style="color: rgb(127, 127, 127);">如若需要阻止劫掠兽破坏，推荐使用以下指令：<sup>[v11.12]</sup></span>**
 - > /gamerule ravagerGriefing false
 
 **配置需求**
@@ -414,3 +317,16 @@
 - A：服务端的地毯模组需要单独为存档配置：请将 **config/carpet/default_carpet.conf** 文件复制到存档(一般为world)目录下，并将该文件重命名为 **carpet.conf**，之后重启服务端即可。
 
 若遇到其他疑难杂症或困难，或以上问题根据步骤并没有解决，需要保持交流，请尝试进入群聊进行提问：1014233122。
+
+## © 使用协议
+**本文档内容**
+在未经授权的情况下，您不可对本文档内容(包括文字、图片)进行摘抄或转载。
+
+**本系列资源**
+✅ 您可以将本系列用于单人游戏、多人联机、服务端联机、实况录制。
+
+❌ 在未经授权的情况下，您不可将本系列原资源或修改后的资源进行二次转载或发布。二次发布定义为在包括但不限于(网盘、资源网站、社区、群聊等公开场合)上传本系列资源文件进行公开分享或发布。
+
+❌ 您不可将本系列资源用于任何商业用途。
+
+❌ 本系列不适用于服务器形式，您不可也无法将本系列用于任何服务器用途，使用服务端联机除外。
