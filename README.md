@@ -201,6 +201,8 @@
 ❗**必须使用专用地图存档，如果自行创建世界，将无法正常进行游戏。**<br>
 ❗**地图按综合难度从高到低排序。越高的星级往往代表着越高的生存难度或资源获取难度。**
 
+<div style="white-space:nowrap">
+  
 | 预览图 | 地图名称 | 描述 | 类型 | 难度 |
 | :--- | :--- | :--- | :--- | :--- |
 | <img src="https://github.com/Fndream/BorderSurvivalModpack/blob/master/原图1.21.10/虚无.jpg" width="160" height="90"> | 虚无 | 适合喜欢空岛建筑、长期生存的玩家游玩。<br>建议在具有充裕时间、且熟知原版特性及核心特性的情况下尝试。 | 虚空型 | 🌟🌟🌟🌟🌟 |
@@ -215,6 +217,8 @@
 | <img src="https://github.com/Fndream/BorderSurvivalModpack/blob/master/原图1.21.10/环沼平原.jpg" width="160" height="90"> | 泽中净土<br>环沼平原 | 1.19主题地图。环绕着红树林沼泽的金合欢平原与平原村庄。 | 原版型 | ⭐⭐ |
 | <img src="https://github.com/Fndream/BorderSurvivalModpack/blob/master/原图1.21.10/樱花平原.jpg" width="160" height="90"> | 山巅繁樱<br>樱花平原 | 1.20主题地图。围绕着陡峭山峰的樱花森林与平原心湖。 | 原版型 | ⭐⭐ |
 | <img src="https://github.com/Fndream/BorderSurvivalModpack/blob/master/原图1.21.10/沿海集落.jpg" width="160" height="90"> | 岸海三栖<br>沿海集落 | 环绕三种群系的海岸之上，存在着一个十分热闹的海上集落。<br>珊瑚海群系，适合喜欢靠海、海底建筑的玩家。<br>该系列第一张地图《海岛村庄》的纪念地图。 | 原版型 | ⭐ |
+
+</div>
 
 ## 🎓 模组快捷键
 
