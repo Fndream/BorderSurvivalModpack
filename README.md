@@ -1,502 +1,532 @@
-<div align="center"><img src="https://raw.githubusercontent.com/Fndream/BorderSurvivalModpack/refs/heads/master/环杉屿.jpg"></div>
+# 🏝️ 边界生存地图系列 (Border Survival)
+
+<div align="center">
+    <img src="https://raw.githubusercontent.com/Fndream/BorderSurvivalModpack/refs/heads/master/环杉屿.jpg" alt="环杉屿预览图" width="80%">
+</div>
+
+---
+
+## 📖 目录
+- [📓 简介](#-简介)
+- [📗 游前须知](#-游前须知)
+- [🌊 核心特性](#-核心特性)
+  - [📕 关于世界边界](#-关于世界边界)
+  - [🥬 边界能量](#-边界能量)
+  - [💠 边界模式](#-边界模式)
+  - [🌙 昼夜模式 - 永恒之夜](#-昼夜模式---永恒之夜)
+  - [🐎 永夜骑士](#-永夜骑士)
+  - [💙 永恒之心](#-永恒之心)
+  - [🐈 边界维系者](#-边界维系者)
+  - [🔆 神匠](#-神匠)
+  - [🍀 聚灵石](#-聚灵石)
+  - [✨ 无损灵器](#-无损灵器)
+  - [📋️ 功能牌](#️-功能牌)
+  - [🎣 钓鱼](#-钓鱼)
+  - [🐱 猫](#-猫)
+  - [🌹 嗅探兽](#-嗅探兽)
+  - [🐽 猪灵](#-猪灵)
+  - [💎 战利品箱](#-战利品箱)
+  - [⚫ 末影龙](#-末影龙)
+  - [🍖 掉落物](#-掉落物)
+  - [💡 合成配方](#-合成配方)
+  - [🌿 地毯 (Carpet Mod)](#-地毯-carpet-mod)
+  - [📙 砂轮增强 (Grind-Enchantments Mod)](#-砂轮增强-grind-enchantments-mod)
+- [🧭 地图](#-地图)
+- [🎓 模组快捷键](#-模组快捷键)
+- [📖 注意事项](#-注意事项)
+  - [游戏规则](#游戏规则)
+  - [配置需求](#配置需求)
+  - [关于模组](#关于模组)
+  - [存档升级](#存档升级)
+  - [历史版本](#历史版本)
+- [📖 常见问题](#-常见问题)
+- [© 使用协议](#-使用协议)
+
+---
 
 ## 📓 简介
 
-这是一个以原版生存为主要玩法的原版边界生存地图系列。从狭隘的空间启程，以智慧觅取资源，以勇气宣战昼夜，以经验开拓世界边界。适合对原版特性有一定了解的玩家。
+这是一个以**原版生存**为主要玩法的原版边界生存地图系列。从狭隘的空间启程，以智慧觅取资源，以勇气宣战昼夜，以经验开拓世界边界。适合对原版特性有一定了解的玩家。
 
 ## 📗 游前须知
 
-该系列并非常规整合包，它的本体由专属地图与核心模组组成，整合包中仅包含辅助性模组，安装整合包后务必导入专属地图才可正常进行游戏！
+- 该系列并非常规整合包，它的本体由**专属地图**与**核心模组**组成。整合包中仅包含辅助性模组，安装整合包后**务必导入专属地图**才可正常进行游戏！
+- 该系列与原版生存并无任何区别。因该系列的第一位玩家喜欢世界边界的特效，自此诞生了该系列的最初版本。
+- 因边界限制，或群系或结构的独有资源产生了额外的获取方式，这些特性被称为**核心特性**。
+- 当遇到困难时，查阅并结合 **Minecraft Wiki** 所描述的原版特性，以及下方介绍的核心特性，或许可以获得有效的帮助。
+- 建议搭配自己喜欢的**资源包**、**光影包**进行游玩。
 
-该系列与原版生存并无任何区别，因该系列的第一位玩家喜欢世界边界的特效，自此一发不可收拾无法自拔，由此诞生了该系列的最初版本。
-
-而因边界限制，或群系或结构的独有资源产生了额外的获取方式，这些特性被称为核心特性。
-
-当遇到困难时，查阅并结合Minecraft wiki所描述的原版特性，以及下方介绍的核心特性，或许可以获得有效的帮助。
-
-建议搭配自己喜欢的资源包、光影包进行游玩。
+---
 
 ## 🌊 核心特性
 
-**📕 关于世界边界**
+### 📕 关于世界边界
+世界边界是 Minecraft 1.8 加入的特性，它是一堵淡蓝色透明的动态斜线光墙。
 
-世界边界是Minecraft1.8加入的特性，它是一堵淡蓝色透明的动态斜线光墙。
+**边界拥有三种状态：**
+- **常规**：颜色为蓝色。
+- **收缩中**：颜色为红色。
+- **扩展中**：颜色为绿色。
 
-世界边界拥有三种状态：
+**边界特性：**
+- 玩家无法越出边界、无法操作边界外的方块。
+- 边界外不会生成生物。
+- 边界外的工作方块、部分红石元件无法正常运行。
+- 边界外面没有空气，如果离开边界一定范围，则会受到窒息伤害。
 
-常规：颜色为蓝色。<br>
-收缩中：颜色为红色。<br>
-扩展中：颜色为绿色。
+### 🥬 边界能量
+- 边界能量即为**世界边界大小**。
+- 可通过消耗经验等级进行 **“边界升级”** ，提升边界能量。
 
-玩家无法越出边界、无法操作边界外的方块。<br>
-边界外不会生成生物。<br>
-边界外的工作方块、部分红石元件无法正常运行。<br>
-边界外面没有空气，如果离开边界一定范围，则会受到窒息伤害，即使因此死亡的信息为在墙里窒息而亡或脱离世界。
+### 💠 边界模式
+含有**禁锢**、**昼夜**两种模式，可在游戏中进行切换。
 
-**🥬 边界能量**
+| 模式 | 特性 |
+| :--- | :--- |
+| **🔵 禁锢模式** | 常规默认模式。 |
+| **🌗 昼夜模式** | - **白昼**：与禁锢模式并无区别。<br>- **黑夜**：刷怪上限与单次刷怪数量提高；怪物穿戴装甲的概率提高；怪物无视光照等级刷新。<br>- **黑夜**：边界能量拥有 50 级以上时，额外扩展一倍空间。 |
 
-边界能量即为世界边界大小。<br>
-可通过消耗经验等级进行"边界升级"，提升边界能量。
+### 🌙 昼夜模式 - 永恒之夜
+- 在昼夜模式的夜晚即将抵达白昼时，若边界能量至少拥有 **50 级**，每度过 0-4 个日月便有可能降临一次 **永恒之夜**。
+- 永恒之夜降临后，世界出生点周围将会出现异界的 **永夜骑士**。
+- 受永夜骑士影响，时间会被禁锢，世界将陷入**永恒的雷暴**之中。
+- 只有将所有降临的永夜骑士全部击败，才可解除其对世界的影响。
 
-**💠 边界模式**
+#### 🧊 永恒雨夜 / 永恒雪夜
+- 永夜骑士降临时会干扰世界边界，边界可能会染上 **苍白、凶红、黯紫、邃蓝、夕橙、灿金** 六种色彩。
+- 根据干扰程度的不同，永夜骑士的生命值上限会得到不同程度的提高，且世界气候将会发生紊乱。
+- **灿金、夕橙、邃蓝状态**：所有生物群系都将异常降雨。
+- **黯紫、凶红、苍白状态**：所有生物群系都将异常降雪。
+- 当永夜骑士被全部击败后，异常气候会恢复正常，世界边界会逐渐恢复，并会以色彩预示下次永恒之夜的到来。
 
-含有禁锢、昼夜两种模式，可在游戏中进行切换。
+> **❗ 提示**：若不希望永恒雪夜的自然积雪影响存档氛围，请提前使用以下指令将积雪厚度设置为 0：
+> ```
+> /gamerule snowAccumulationHeight 0
+> ```
 
-**🔵 禁锢模式**
+### 🐎 永夜骑士
+- 永夜骑士会无时不刻地窃取边界能量并转化为其自身的生命值上限。
+- 当其周围不存在玩家时，将持续恢复生命值。
+- 当其受到伤害时，将干扰世界生成更多怪物。
+- 其会引起附近怪物的仇恨，但怪物们仍然会优先攻击玩家。
+- 而怪物们为了应对永夜骑士，穿戴装甲的概率将进一步提高。
 
-常规默认模式。
+#### 🏹 永恒神兵
+- 永夜骑士被玩家击败后，有 **1%** 的概率掉落其手持的武器。
+- 若击败者主手持有抢夺，每级抢夺会提高 **12%** 概率。
+> **注**：永恒神兵具有消失诅咒，不会被火焰或熔岩摧毁。
 
-**🌗 昼夜模式**
+### 💙 永恒之心
+- 每累计终结 **3 次** 永恒之夜，下次永恒之夜将会降临 **亡灵军团** 或 **灾厄军团**。
+- 每累计终结 **8 次** 永恒之夜，下次永恒之夜将会降临 **永夜军团**。
+- 军团首领被击败后，有 **50%** 的概率会掉落一颗**永恒之心**。
+> **右键使用**可以摧毁永恒之心，在当前或下次永恒之夜中，永夜骑士将不再团结一心。
 
-昼夜模式的白天和夜晚拥有不同的特性：
+---
 
-白昼：与禁锢模式并无区别。<br>
-黑夜：刷怪上限与单次刷怪数量提高，怪物穿戴装甲的概率提高，且怪物无视光照等级刷新。<br>
-黑夜：边界能量拥有50级以上时，额外扩展一倍空间。
+### 🐈 边界维系者
+- 维系者会降生在世界出生点，维系着边界能量的稳定。
+- 若世界出生点周围不存在维系者，边界能量将持续流失。
+- 维系者距离世界出生点过远时，会尝试回到世界出生点。
+- 若维系者死亡，会在一段时间后重新降生于世界出生点。
+- 当维系者附近存在神匠时，会为附近所有玩家提供治疗。
+- 同时，因其为世界之虫 (bug)，所有怪物都欲图消灭祂。
 
-昼夜模式和禁锢模式并非简单、困难等游戏模式，而是自由切换的策略。
+### 🔆 神匠
+- 突破了世界的法则，与永夜骑士颇有渊源，从祂手中可以兑换到一些超脱常理的物品。
+- 同时，因其为世界之虫 (bug)，所有怪物都欲图消灭祂。
 
-**🌙 昼夜模式 - 永恒之夜**
+### 🍀 聚灵石
+**切灵以筑基石，示灵以聚实物。**
 
-在昼夜模式的夜晚即将抵达白昼时，若边界能量至少拥有50级，每度过0-4个日月便有可能降临一次永恒之夜。<br>
-永恒之夜降临后，世界出生点周围将会出现异界的永夜骑士。<br>
-受永夜骑士影响，时间会被禁锢在他们降临的那一刻，世界将陷入永恒的雷暴之中。<br>
-只有将所有降临的永夜骑士全部击败，才可解除其对世界的影响。
+- **转换建材**：可通过切石机转换为一定数量的基础建材。
+- **聚集物品**：
+    - 副手手持或被置于任意物品展示框中时，会聚集周围 `33x33x33` 范围内的物品到其自身位置。
+    - 当所在的物品展示框被附着在箱子、木桶、潜影盒上时，仅会聚集其附着容器中存在的物品类型。
+    - 被附着在空容器上时，不会聚集任何物品。
+    - 当一个物品实体周围存在多个有效的聚灵石时，该物品会分裂为若干个物品实体被这些聚灵石平均聚集。
+    - 当一个物品实体周围同时存在“容器聚灵石”与“通用聚灵石”时，物品实体会先被后者堆叠聚集，之后再被前者二次聚集。
 
-**🧊 永恒雨夜 / 永恒雪夜**
-
-永夜骑士降临时会干扰世界边界，边界可能会染上苍白、凶红、黯紫、邃蓝、夕橙、灿金六种色彩。<br>
-根据干扰程度的不同，永夜骑士的生命值上限会得到不同程度的提高，且世界气候将会发生紊乱。<br>
-处于灿金、夕橙、邃蓝状态时，所有生物群系都将异常降雨，无论温暖或寒冷。<br>
-处于黯紫、凶红、苍白状态时，所有生物群系都将异常降雪，无论寒冷或温暖。<br>
-当永夜骑士被全部击败后，异常气候会恢复正常，世界边界会逐渐恢复，并会以色彩预示下次永恒之夜的到来。
-
-❗**若不希望永恒雪夜的自然积雪影响存档氛围，请提前使用以下指令将积雪厚度设置为0：**<br>
-```/gamerule snowAccumulationHeight 0```
-
-🐎 **永夜骑士**
-
-永夜骑士会无时不刻的窃取边界能量并转化为其自身的生命值上限。<br>
-当其周围不存在玩家时，将持续恢复生命值。<br>
-当其受到伤害时，将干扰世界生成更多怪物。<br>
-其会引起附近怪物的仇恨，但怪物们仍然会优先攻击玩家。<br>
-而怪物们为了应对永夜骑士，穿戴装甲的概率将进一步提高。
-
-**🏹 永恒神兵**
-
-永夜骑士被玩家击败后，有1%的概率掉落其手持的武器。<br>
-若击败者主手持有抢夺，每级抢夺会提高12%概率。
-> 永恒神兵具有消失诅咒，不会被火焰或熔岩摧毁。
-
-**💙 永恒之心**
-
-每累计终结3次永恒之夜，下次永恒之夜将会降临亡灵军团或灾厄军团。<br>
-每累计终结8次永恒之夜，下次永恒之夜将会降临永夜军团。<br>
-军团首领被击败后，有50%的概率会掉落一颗永恒之心。
-> 右键使用可以摧毁永恒之心，在当前或下次永恒之夜中，永夜骑士将不再团结一心。
-<hr>
-
-**🐈 边界维系者**
-
-维系者会降生在世界出生点，维系着边界能量的稳定。<br>
-若世界出生点周围不存在维系者，边界能量将持续流失。<br>
-维系者距离世界出生点过远时，会尝试回到世界出生点。<br>
-若维系者死亡，会在一段时间后重新降生于世界出生点。<br>
-当维系者附近存在神匠时，会为附近所有玩家提供治疗。<br>
-同时，因其为世界之虫(bug)，所有怪物都欲图消灭祂。
-
-**🔆 神匠**
-
-突破了世界的法则，与永夜骑士颇有渊源，从祂手中可以兑换到一些超脱常理的物品。<br/>
-同时，因其为世界之虫(bug)，所有怪物都欲图消灭祂。
-
-**🍀 聚灵石**
-
-切灵以筑基石，示灵以聚实物。
-
-转换建材：可通过切石机转换为一定数量的基础建材。<br>
-聚集物品：<br>
-副手手持或被置于任意物品展示框中时，会聚集周围 33x33x33 范围内的物品到其自身位置。<br>
-当所在的物品展示框被附着在箱子、木桶、潜影盒上时，仅会聚集其附着容器中存在的物品类型。<br>
-被附着在空容器上时，不会聚集任何物品。<br>
-当一个物品实体周围存在多个有效的聚灵石时，该物品会分裂为若干个物品实体被这些聚灵石平均聚集。<br>
-当一个物品实体周围同时存在“容器聚灵石”与“通用聚灵石”时，物品实体会先被后者堆叠聚集，之后再被前者二次聚集。
-
-**✨ 无损灵器**
-
+### ✨ 无损灵器
 副手手持时，会获得对应的效果：
 
-混沌之星：生命恢复<br>
-裁灵剪：急迫<br>
-御灵盾：伤害吸收<br>
-萝灵竿：迅捷<br>
-诡异灵竿：迅捷<br>
-海之祝福：潮涌能量<br>
-瀚海灵戟：海豚的恩惠<br>
-旋灵重锤：力量<br>
-翱灵王翅：缓降<br>
-翱灵翼甲：缓降<br>
-狼灵铠：抗性提升；被狼穿戴时，还会每5秒获得一次瞬间治疗。<br>
-燧灵火石：手持玩家自身、永夜骑士、神匠、灾厄村民、女巫、流浪商人、流商羊驼将会持续发光。
-<hr>
+| 灵器 | 效果 |
+| :--- | :--- |
+| 混沌之星 | 生命恢复 |
+| 裁灵剪 | 急迫 |
+| 御灵盾 | 伤害吸收 |
+| 萝灵竿 | 迅捷 |
+| 诡异灵竿 | 迅捷 |
+| 海之祝福 | 潮涌能量 |
+| 瀚海灵戟 | 海豚的恩惠 |
+| 旋灵重锤 | 力量 |
+| 翱灵王翅 | 缓降 |
+| 翱灵翼甲 | 缓降 |
+| 狼灵铠 | 抗性提升；被狼穿戴时，还会每 5 秒获得一次瞬间治疗。 |
+| 燧灵火石 | 手持玩家自身、永夜骑士、神匠、灾厄村民、女巫、流浪商人、流商羊驼将会持续发光。 |
 
-**📋️ 功能牌**
+---
 
+### 📋️ 功能牌
 由地图提供的功能牌碑，含有以下三种功能牌。
 
-- 边界升级：消耗经验等级提升边界能量。
-- 切换模式：在昼夜模式与禁锢模式之间切换，无法在永夜状态下使用。
-- 召唤神匠：在玩家当前位置生成神匠，每个游戏日只能召唤一次，世界中最多存在一只。
-  
-若功能牌被损毁，可通过以下指令获取并通过创造模式放置：<br>
-```/function border_survival:get_sign```
-<hr>
+- **边界升级**：消耗经验等级提升边界能量。
+- **切换模式**：在昼夜模式与禁锢模式之间切换，无法在永夜状态下使用。
+- **召唤神匠**：在玩家当前位置生成神匠，每个游戏日只能召唤一次，世界中最多存在一只。
 
-**🎣 钓鱼**
+> **❗ 若功能牌被损毁**，可通过以下指令获取并通过创造模式放置：
+> ```
+> /function border_survival:get_sign
+> ```
 
-在钓鱼时，可能会获得一些群系特有物品。<br>
-垃圾奖池加入：海草、海带、甘蔗、仙人掌、竹子、海泡菜、可可豆、海晶碎片、海晶砂粒、珊瑚、珊瑚扇、紫颂花。<br>
-宝藏奖池加入：紫水晶母岩、黑曜石、冰、浮冰、蓝冰、？？？。
+---
 
-**🐱 猫**
+### 🎣 钓鱼
+在钓鱼时，可能会获得一些群系特有物品。
 
-礼物加入：树叶。
+- **垃圾奖池加入**：海草、海带、甘蔗、仙人掌、竹子、海泡菜、可可豆、海晶碎片、海晶砂粒、珊瑚、珊瑚扇、紫颂花。
+- **宝藏奖池加入**：紫水晶母岩、黑曜石、冰、浮冰、蓝冰、？？？。
 
-**🌹 嗅探兽**
+### 🐱 猫
+- **礼物加入**：树叶。
 
-刨挖加入：蒲公英、虞美人、兰花、绒球葱、蓝花美耳草、郁金香、滨菊、矢车菊、铃兰、张开的眼眸花、孢子花、枯萎的灌木。
+### 🌹 嗅探兽
+- **刨挖加入**：蒲公英、虞美人、兰花、绒球葱、蓝花美耳草、郁金香、滨菊、矢车菊、铃兰、张开的眼眸花、孢子花、枯萎的灌木。
 
-**🐽 猪灵**
+### 🐽 猪灵
+- **以物换物加入**：烈焰棒、地狱疣、凋灵骷髅头颅。
 
-以物换物加入：烈焰棒、地狱疣、凋灵骷髅头颅。
+### 💎 战利品箱
+| 战利品箱 | 加入物品 |
+| :--- | :--- |
+| 平原村庄小屋 | 向日葵、玫瑰、牡丹、丁香、粉红色花簇、发光地衣 |
+| 沉船补给箱 | 苍白苔藓块、苍白垂须 |
+| 埋藏的宝藏 | 海龟蛋 |
+| 末地城宝藏 | 潜影壳 |
+| 金合欢村庄小屋 | 犰狳鳞甲 |
+| 堡垒遗迹疣猪兽棚 | 绯红菌岩、诡异菌岩 |
+| 试炼密室宝库-普通、试炼密室不祥宝库-普通 | 旋风棒 |
 
-**💎 战利品箱**
+---
 
-平原村庄小屋加入：向日葵、玫瑰、牡丹、丁香、粉红色花簇、发光地衣。<br>
-沉船补给箱加入：苍白苔藓块、苍白垂须。<br>
-埋藏的宝藏加入：海龟蛋。<br>
-末地城宝藏加入：潜影壳。<br>
-金合欢村庄小屋加入：犰狳鳞甲。<br>
-堡垒遗迹疣猪兽棚加入：绯红菌岩、诡异菌岩。<br>
-试炼密室宝库-普通、试炼密室不祥宝库-普通加入：旋风棒。
-<hr>
+### ⚫ 末影龙
+- 末影龙被击败后将在末地祭坛生成：**龙首**。
+- 重生的末影龙被击败后也会在末地祭坛生成：**龙蛋、龙首**。
+- 重生的末影龙被击败后将掉落 **1300 点** 经验值。
 
-**⚫ 末影龙**
+### 🍖 掉落物
+被 **永夜骑士、监守者、远古守卫者、守卫者** 击败的生物视为被玩家击败。
 
-末影龙被击败后将在末地祭坛生成：龙首。<br>
-重生的末影龙被击败后也会在末地祭坛生成：龙蛋、龙首。<br>
-重生的末影龙被击败后将掉落1300点经验值。
+---
 
-**🍖 掉落物**
+### 💡 合成配方
+- **加入方块配方**：草方块、深板岩圆石、深板岩、凝灰岩、方解石。
+- **加入特殊配方**：皮革冶炼、刷怪笼、刷怪蛋、三叉戟、鞘翅、末地传送门框架、混沌之星。
 
-被永夜骑士、监守者、远古守卫者、守卫者击败的生物视为被玩家击败。
-<hr>
+> **❗ 提示**：在获得对应材料后将自动解锁配方，可通过工作台左侧小绿书查看。
 
-**💡 合成配方**
+#### 合成表示例
+| 草方块 | 深板岩圆石 | 深板岩 |
+| :---: | :---: | :---: |
+| <img src="https://raw.githubusercontent.com/Fndream/BorderSurvivalModpack/refs/heads/master/合成表/草方块.png" width="260px" height="120px"> | <img src="https://raw.githubusercontent.com/Fndream/BorderSurvivalModpack/refs/heads/master/合成表/深板岩圆石.png" width="260px" height="120px"> | <img src="https://raw.githubusercontent.com/Fndream/BorderSurvivalModpack/refs/heads/master/合成表/深板岩.png" width="260px" height="120px"> |
+| **凝灰岩** | **方解石** | **皮革** |
+| <img src="https://raw.githubusercontent.com/Fndream/BorderSurvivalModpack/refs/heads/master/合成表/凝灰岩.png" width="260px" height="120px"> | <img src="https://raw.githubusercontent.com/Fndream/BorderSurvivalModpack/refs/heads/master/合成表/方解石.png" width="260px" height="120px"> | <img src="https://raw.githubusercontent.com/Fndream/BorderSurvivalModpack/refs/heads/master/合成表/皮革.png" width="260px" height="120px"> |
+| **刷怪笼** | **刷怪蛋** | **三叉戟** |
+| <img src="https://raw.githubusercontent.com/Fndream/BorderSurvivalModpack/refs/heads/master/合成表/刷怪笼新.png" width="260px" height="120px"> | <img src="https://raw.githubusercontent.com/Fndream/BorderSurvivalModpack/refs/heads/master/合成表/刷怪蛋.png" width="260px" height="120px"> | <img src="https://raw.githubusercontent.com/Fndream/BorderSurvivalModpack/refs/heads/master/合成表/三叉戟.png" width="260px" height="120px"> |
+| **鞘翅** | **末地传送门框架** | **混沌之星** |
+| <img src="https://raw.githubusercontent.com/Fndream/BorderSurvivalModpack/refs/heads/master/合成表/鞘翅.png" width="260px" height="120px"> | <img src="https://raw.githubusercontent.com/Fndream/BorderSurvivalModpack/refs/heads/master/合成表/末地传送门框架.png" width="260px" height="120px"> | <img src="https://raw.githubusercontent.com/Fndream/BorderSurvivalModpack/refs/heads/master/合成表/混沌之星.png" width="260px" height="120px"> |
 
-加入方块配方：草方块、深板岩圆石、深板岩、凝灰岩、方解石。<br>
-加入特殊配方：皮革冶炼、刷怪笼、刷怪蛋、三叉戟、鞘翅、末地传送门框架、混沌之星。<br>
-❗**在获得对应材料后将自动解锁配方，可通过工作台左侧小绿书查看。**
+---
 
-|<img src="https://raw.githubusercontent.com/Fndream/BorderSurvivalModpack/refs/heads/master/合成表/草方块.png" width="260px" height="120px">|<img src="https://raw.githubusercontent.com/Fndream/BorderSurvivalModpack/refs/heads/master/合成表/深板岩圆石.png" width="260px" height="120px">|<img src="https://raw.githubusercontent.com/Fndream/BorderSurvivalModpack/refs/heads/master/合成表/深板岩.png" width="260px" height="120px">|
-|-----|-----|-----|
-|<img src="https://raw.githubusercontent.com/Fndream/BorderSurvivalModpack/refs/heads/master/合成表/凝灰岩.png" width="260px" height="120px">|<img src="https://raw.githubusercontent.com/Fndream/BorderSurvivalModpack/refs/heads/master/合成表/方解石.png" width="260px" height="120px">|<img src="https://raw.githubusercontent.com/Fndream/BorderSurvivalModpack/refs/heads/master/合成表/皮革.png" width="260px" height="120px">|
-|<img src="https://raw.githubusercontent.com/Fndream/BorderSurvivalModpack/refs/heads/master/合成表/刷怪笼新.png" width="260px" height="120px">|<img src="https://raw.githubusercontent.com/Fndream/BorderSurvivalModpack/refs/heads/master/合成表/刷怪蛋.png" width="260px" height="120px">|<img src="https://raw.githubusercontent.com/Fndream/BorderSurvivalModpack/refs/heads/master/合成表/三叉戟.png" width="260px" height="120px">|
-|<img src="https://raw.githubusercontent.com/Fndream/BorderSurvivalModpack/refs/heads/master/合成表/鞘翅.png" width="260px" height="120px">|<img src="https://raw.githubusercontent.com/Fndream/BorderSurvivalModpack/refs/heads/master/合成表/末地传送门框架.png" width="260px" height="120px">|<img src="https://raw.githubusercontent.com/Fndream/BorderSurvivalModpack/refs/heads/master/合成表/混沌之星.png" width="260px" height="120px">|
-<hr>
+### 🌿 地毯 (Carpet Mod)
+**默认开启以下特性：**
+- 沙子可再生：圆石被掉落的铁砧砸中后转变为沙子。
+- 灵魂沙转变：因沙子上的火焰而死的生物将沙子转变为灵魂沙。
+- 海绵可再生：守卫者被闪电击中转变为远古守卫者。
+- 可再生凋灵骷髅：骷髅被闪电击中转变为凋灵骷髅。
+- 珊瑚可再生：可通过骨粉催熟珊瑚。
+- 潜影贝重生：潜影贝会在末地城刷新。
+- 蜘蛛骑士掉落附魔金苹果。
+- 假人驻留：退出游戏时会保留假人。
+- 假人钓鱼：假人可以自动钓鱼。
+- 假人背包：右键可打开假人的背包。
+- 假人末影箱：蹲下右键可打开假人的末影箱。
 
-**🌿 地毯 (carpet mod)**
+### 📙 砂轮增强 (Grind-Enchantments Mod)
+- 可通过砂轮将物品的附魔提取到书中。
+- 或将附魔书中的第一行附魔分离到另一本书中。
 
-**默认开启以下特性：**<br>
-沙子可再生：圆石被掉落的铁砧砸中后转变为沙子。<br>
-灵魂沙转变：因沙子上的火焰而死的生物将沙子转变为灵魂沙。<br>
-海绵可再生：守卫者被闪电击中转变为远古守卫者。<br>
-可再生凋灵骷髅：骷髅被闪电击中转变为凋灵骷髅。<br>
-珊瑚可再生：可通过骨粉催熟珊瑚。<br>
-潜影贝重生：潜影贝会在末地城刷新。<br>
-蜘蛛骑士掉落附魔金苹果。<br>
-假人驻留：退出游戏时会保留假人。<br>
-假人钓鱼：假人可以自动钓鱼。<br>
-假人背包：右键可打开假人的背包。<br>
-假人末影箱：蹲下右键可打开假人的末影箱。
-
-**📙 砂轮增强 (grind-enchantments mod)**
-
-可通过砂轮将物品的附魔提取到书中，或将附魔书中的第一行附魔分离到另一本书中。
+---
 
 ## 🧭 地图
 
-🎉 特别感谢 [klinbee](https://modrinth.com/user/Klinbee) 授权本系列使用 “[RevampedFloatingIslands](https://modrinth.com/datapack/revamped-floating-islands)” 与 “[BetterCaveWorlds](https://modrinth.com/datapack/better-cave-worlds)” 数据包！<br>
-❗**必须使用专用地图存档，如果自行创建世界，将无法正常进行游戏。**<br>
-❗**地图按综合难度从高到低排序。越高的星级往往代表着越高的生存难度或资源获取难度。**
+> 🎉 **特别感谢** [klinbee](https://modrinth.com/user/Klinbee) 授权本系列使用 “[RevampedFloatingIslands](https://modrinth.com/datapack/revamped-floating-islands)” 与 “[BetterCaveWorlds](https://modrinth.com/datapack/better-cave-worlds)” 数据包！
+>
+> **❗ 重要提示**：
+> 1. **必须使用专用地图存档**，如果自行创建世界，将无法正常进行游戏。
+> 2. 地图按**综合难度从高到低**排序。越高的星级往往代表着越高的生存难度或资源获取难度。
 
 <details>
-<summary><b>虚无</b> - 虚空型 - 🌟🌟🌟🌟🌟</summary>
+<summary><b>虚无</b> - 虚空型 - 🌟🌟🌟🌟🌟 (点击展开)</summary>
 
-📘 适合喜欢空岛建筑、长期生存的玩家游玩。<br>
-❗ 建议在具有充裕时间、且熟知原版特性及核心特性的情况下尝试。
+📘 **描述**：适合喜欢空岛建筑、长期生存的玩家游玩。<br>
+❗ **建议**：在具有充裕时间、且熟知原版特性及核心特性的情况下尝试。
 
-<img src="https://raw.githubusercontent.com/Fndream/BorderSurvivalModpack/refs/heads/master/原图1.21.10/虚无.jpg" height="360">
+<img src="https://raw.githubusercontent.com/Fndream/BorderSurvivalModpack/refs/heads/master/原图1.21.10/虚无.jpg" height="360" alt="虚无地图预览">
 
 </details>
 
 <details>
-<summary><b>咒世永夜 夜屿苍园</b> - 五周年 - 🌟🌟🌟🌟🌟</summary>
+<summary><b>咒世永夜 夜屿苍园</b> - 五周年 - 🌟🌟🌟🌟🌟 (点击展开)</summary>
 
-🌙 上苍失色之域，诅咒与永夜轮回......与群魔共舞......与乱潮共生......<br>
-🎉 该地图的非露天植被由[klinbee](https://modrinth.com/user/Klinbee)的[BetterCaveWorlds](https://modrinth.com/datapack/better-cave-worlds)数据包生成！
+🌙 **描述**：上苍失色之域，诅咒与永夜轮回......与群魔共舞......与乱潮共生......<br>
+🎉 **注**：该地图的非露天植被由 [klinbee](https://modrinth.com/user/Klinbee) 的 [BetterCaveWorlds](https://modrinth.com/datapack/better-cave-worlds) 数据包生成！
 
-<img src="https://raw.githubusercontent.com/Fndream/BorderSurvivalModpack/refs/heads/master/原图1.21.10/夜屿苍园.jpg" height="360">
-
-</details>
-
-<details>
-<summary><b>幽螈世界 繁茂洞穴</b> - 四周年 - ⭐⭐⭐⭐⭐</summary>
-
-🍀 传说，曾有一片美西螈的国度。<br>
-🍀 它的植被广茂无垠，它的黑暗无边无际……<br>
-🍀 它的子民自池洼中舞跃，它的怪物遍布空洞大地……<br>
-🍀 它是繁茂壮丽的洞穴，它是贫瘠匮乏的世界……<br>
-🍀 它是幽暗无光的维度，亦是星光点缀的乐园……<br>
-🍀 ——某位神匠遗落的日记
-
-**❗ 在该地图中尽可能调高视距将获得更好的视觉体验。** <br>
-**❗ 建议使用 J 键与 ←→ 箭头键调整舒适的夜视程度。**
-
-<img src="https://raw.githubusercontent.com/Fndream/BorderSurvivalModpack/refs/heads/master/原图1.21.10/繁茂洞穴.jpg" height="360">
+<img src="https://raw.githubusercontent.com/Fndream/BorderSurvivalModpack/refs/heads/master/原图1.21.10/夜屿苍园.jpg" height="360" alt="夜屿苍园地图预览">
 
 </details>
 
 <details>
-<summary><b>世外桃源 繁樱山谷</b> - 三周年 - ⭐</summary>
+<summary><b>幽螈世界 繁茂洞穴</b> - 四周年 - ⭐⭐⭐⭐⭐ (点击展开)</summary>
 
-🌸 曾经，有一位神匠遭天之妒，被禁锢在一片繁樱山谷之中。<br>
-🌸 现在，当月夜降临，此地仍会产生无尽的乱潮。<br>
-🌸 但不同的是，维系者接管了此方世界的镇守之任。
+🍀 **描述**：
 
-<img src="https://raw.githubusercontent.com/Fndream/BorderSurvivalModpack/refs/heads/master/原图1.21.10/繁樱山谷.jpg" height="360">
+传说，曾有一片美西螈的国度。<br>
+它的植被广茂无垠，它的黑暗无边无际……<br>
+它的子民自池洼中舞跃，它的怪物遍布空洞大地……<br>
+它是繁茂壮丽的洞穴，它是贫瘠匮乏的世界……<br>
+它是幽暗无光的维度，亦是星光点缀的乐园……<br>
+——某位神匠遗落的日记
 
-</details>
+❗ **提示**：
+1. 在该地图中尽可能调高视距将获得更好的视觉体验。
+2. 建议使用 **J 键**与 **←→ 箭头键**调整舒适的夜视程度。
 
-<details>
-<summary><b>竹丛茂葱 棘府洞天</b> - 洞穴型 - ⭐⭐⭐⭐⭐</summary>
-
-📘 棘巧试炼主题地图，试炼密室旁的温馨洞天。<br>
-🎉 该地图地形由[klinbee](https://modrinth.com/user/Klinbee)的[BetterCaveWorlds](https://modrinth.com/datapack/better-cave-worlds)数据包生成！
-
-<img src="https://raw.githubusercontent.com/Fndream/BorderSurvivalModpack/refs/heads/master/原图1.21.10/棘府洞天.jpg" height="360">
-
-</details>
-
-<details>
-<summary><b>湖峦圣地 环杉屿</b> - 浮屿型 - ⭐⭐⭐</summary>
-
-📘 群杉环绕的浮空孤屿，筑城者的圣地。<br>
-🎉 该地图地形由[klinbee](https://modrinth.com/user/Klinbee)的[RevampedFloatingIslands](https://modrinth.com/datapack/revamped-floating-islands)数据包生成！
-
-<img src="https://raw.githubusercontent.com/Fndream/BorderSurvivalModpack/refs/heads/master/原图1.21.10/环杉屿.jpg" height="360">
+<img src="https://raw.githubusercontent.com/Fndream/BorderSurvivalModpack/refs/heads/master/原图1.21.10/繁茂洞穴.jpg" height="360" alt="繁茂洞穴地图预览">
 
 </details>
 
 <details>
-<summary><b>荒旱之境 繁茂森屿</b> - 浮屿型 - ⭐⭐⭐</summary>
+<summary><b>世外桃源 繁樱山谷</b> - 三周年 - ⭐ (点击展开)</summary>
 
-📘 陶瓦山与雨林的分界处，位于巨大繁茂浮屿上方的孤屿。<br>
-🎉 该地图地形由[klinbee](https://modrinth.com/user/Klinbee)的[RevampedFloatingIslands](https://modrinth.com/datapack/revamped-floating-islands)数据包生成！
+🌸 **描述**：曾经，有一位神匠遭天之妒，被禁锢在一片繁樱山谷之中。现在，当月夜降临，此地仍会产生无尽的乱潮。但不同的是，维系者接管了此方世界的镇守之任。
 
-<img src="https://raw.githubusercontent.com/Fndream/BorderSurvivalModpack/refs/heads/master/原图1.21.10/繁茂森屿.jpg" height="360">
-
-</details>
-
-<details>
-<summary><b>极冰之域 凛冰域脉</b> - 放大化 - ⭐⭐⭐⭐</summary>
-
-📘 极寒的地域，高耸入云的山峰，破溃的冰锥，无垠冰封的冻洋。
-
-<img src="https://raw.githubusercontent.com/Fndream/BorderSurvivalModpack/refs/heads/master/原图1.21.10/凛冰域脉.jpg" height="360">
+<img src="https://raw.githubusercontent.com/Fndream/BorderSurvivalModpack/refs/heads/master/原图1.21.10/繁樱山谷.jpg" height="360" alt="繁樱山谷地图预览">
 
 </details>
 
 <details>
-<summary><b>珊雨竹陆 雨林海岛</b> - 原版型 - ⭐⭐⭐</summary>
+<summary><b>竹丛茂葱 棘府洞天</b> - 洞穴型 - ⭐⭐⭐⭐⭐ (点击展开)</summary>
 
-📘 含有珊瑚海、雨林、竹林的海岛。
+📘 **描述**：棘巧试炼主题地图，试炼密室旁的温馨洞天。<br>
+🎉 **注**：该地图地形由 [klinbee](https://modrinth.com/user/Klinbee) 的 [BetterCaveWorlds](https://modrinth.com/datapack/better-cave-worlds) 数据包生成！
 
-<img src="https://raw.githubusercontent.com/Fndream/BorderSurvivalModpack/refs/heads/master/原图1.21.10/雨林海岛.jpg" height="360">
-
-</details>
-
-<details>
-<summary><b>泽中净土 环沼平原</b> - 原版型 - ⭐⭐</summary>
-
-📘 1.19主题地图。环绕着红树林沼泽的金合欢平原与平原村庄。
-
-<img src="https://raw.githubusercontent.com/Fndream/BorderSurvivalModpack/refs/heads/master/原图1.21.10/环沼平原.jpg" height="360">
+<img src="https://raw.githubusercontent.com/Fndream/BorderSurvivalModpack/refs/heads/master/原图1.21.10/棘府洞天.jpg" height="360" alt="棘府洞天地图预览">
 
 </details>
 
 <details>
-<summary><b>山巅繁樱 樱花平原</b> - 原版型 - ⭐⭐</summary>
+<summary><b>湖峦圣地 环杉屿</b> - 浮屿型 - ⭐⭐⭐ (点击展开)</summary>
 
-📘 1.20主题地图。围绕着陡峭山峰的樱花森林与平原心湖。
+📘 **描述**：群杉环绕的浮空孤屿，筑城者的圣地。<br>
+🎉 **注**：该地图地形由 [klinbee](https://modrinth.com/user/Klinbee) 的 [RevampedFloatingIslands](https://modrinth.com/datapack/revamped-floating-islands) 数据包生成！
 
-<img src="https://raw.githubusercontent.com/Fndream/BorderSurvivalModpack/refs/heads/master/原图1.21.10/樱花平原.jpg" height="360">
+<img src="https://raw.githubusercontent.com/Fndream/BorderSurvivalModpack/refs/heads/master/原图1.21.10/环杉屿.jpg" height="360" alt="环杉屿地图预览">
 
 </details>
 
 <details>
-<summary><b>岸海三栖 沿海集落</b> - 原版型 - ⭐</summary>
+<summary><b>荒旱之境 繁茂森屿</b> - 浮屿型 - ⭐⭐⭐ (点击展开)</summary>
 
-📘 环绕三种群系的海岸之上，存在着一个十分热闹的海上集落。<br>
-📘 珊瑚海群系，适合喜欢靠海、海底建筑的玩家。<br>
-📘 该系列第一张地图《海岛村庄》的纪念地图。
+📘 **描述**：陶瓦山与雨林的分界处，位于巨大繁茂浮屿上方的孤屿。<br>
+🎉 **注**：该地图地形由 [klinbee](https://modrinth.com/user/Klinbee) 的 [RevampedFloatingIslands](https://modrinth.com/datapack/revamped-floating-islands) 数据包生成！
 
-<img src="https://raw.githubusercontent.com/Fndream/BorderSurvivalModpack/refs/heads/master/原图1.21.10/沿海集落.jpg" height="360">
+<img src="https://raw.githubusercontent.com/Fndream/BorderSurvivalModpack/refs/heads/master/原图1.21.10/繁茂森屿.jpg" height="360" alt="繁茂森屿地图预览">
 
 </details>
+
+<details>
+<summary><b>极冰之域 凛冰域脉</b> - 放大化 - ⭐⭐⭐⭐ (点击展开)</summary>
+
+📘 **描述**：极寒的地域，高耸入云的山峰，破溃的冰锥，无垠冰封的冻洋。
+
+<img src="https://raw.githubusercontent.com/Fndream/BorderSurvivalModpack/refs/heads/master/原图1.21.10/凛冰域脉.jpg" height="360" alt="凛冰域脉地图预览">
+
+</details>
+
+<details>
+<summary><b>珊雨竹陆 雨林海岛</b> - 原版型 - ⭐⭐⭐ (点击展开)</summary>
+
+📘 **描述**：含有珊瑚海、雨林、竹林的海岛。
+
+<img src="https://raw.githubusercontent.com/Fndream/BorderSurvivalModpack/refs/heads/master/原图1.21.10/雨林海岛.jpg" height="360" alt="雨林海岛地图预览">
+
+</details>
+
+<details>
+<summary><b>泽中净土 环沼平原</b> - 原版型 - ⭐⭐ (点击展开)</summary>
+
+📘 **描述**：1.19主题地图。环绕着红树林沼泽的金合欢平原与平原村庄。
+
+<img src="https://raw.githubusercontent.com/Fndream/BorderSurvivalModpack/refs/heads/master/原图1.21.10/环沼平原.jpg" height="360" alt="环沼平原地图预览">
+
+</details>
+
+<details>
+<summary><b>山巅繁樱 樱花平原</b> - 原版型 - ⭐⭐ (点击展开)</summary>
+
+📘 **描述**：1.20主题地图。围绕着陡峭山峰的樱花森林与平原心湖。
+
+<img src="https://raw.githubusercontent.com/Fndream/BorderSurvivalModpack/refs/heads/master/原图1.21.10/樱花平原.jpg" height="360" alt="樱花平原地图预览">
+
+</details>
+
+<details>
+<summary><b>岸海三栖 沿海集落</b> - 原版型 - ⭐ (点击展开)</summary>
+
+📘 **描述**：环绕三种群系的海岸之上，存在着一个十分热闹的海上集落。珊瑚海群系，适合喜欢靠海、海底建筑的玩家。该系列第一张地图《海岛村庄》的纪念地图。
+
+<img src="https://raw.githubusercontent.com/Fndream/BorderSurvivalModpack/refs/heads/master/原图1.21.10/沿海集落.jpg" height="360" alt="沿海集落地图预览">
+
+</details>
+
+---
 
 ## 🎓 模组快捷键
 
-**在整合包中为部分模组的功能进行了快捷键配置：**<br>
-使用 **鼠标右键** 点击村民交易项进行一键交易。<br>
-使用 **R** 整理背包/箱子。(需将鼠标放在物品上，空格子不生效)<br>
-使用 **Shift** 预览潜影盒内容。<br>
-使用 **G、J、↑、↓、←、→** 调整Gamma、夜视值。<br>
-使用 **F6** 开启摄像机模式 (tweakeroo灵魂出窍)。<br>
-使用 **F7** 显示光照等级。<br>
-使用 **F8** 查看史莱姆区块。(使用该功能之前，请先用/seed指令为minihud绑定当前世界种子)<br>
-使用 **F9** 查看结构区块。<br>
-使用 **B** 查看群系边界。<br>
-使用 **\[** 开关灵活放置方块。<br>
-使用 **\]** 开关方块快速放置。<br>
-使用 **右shift** 开关伪潜行。<br>
-滑动 **滚轮** 移动单个物品。<br>
-使用 **shift + 左键** 移动一组物品。<br>
-使用 **shift + 左键按住 + 拖动鼠标** 快速移动多组物品。<br>
-使用 **shift + 左键按住 + 拖动鼠标 + Q** 快速丢出多组物品。<br>
-使用 **alt + 左键** 移动所有相同物品。<br>
-使用 **shift + alt + 左键** 移动所有物品。
+**在整合包中为部分模组的功能进行了快捷键配置：**
+
+| 快捷键 | 功能 |
+| :--- | :--- |
+| **鼠标右键** 点击村民交易项 | 一键交易 |
+| **R** | 整理背包/箱子 (需将鼠标放在物品上) |
+| **Shift** | 预览潜影盒内容 |
+| **G, J, ↑, ↓, ←, →** | 调整 Gamma、夜视值 |
+| **F6** | 开启摄像机模式 (Tweakeroo灵魂出窍) |
+| **F7** | 显示光照等级 |
+| **F8** | 查看史莱姆区块 (需先用 `/seed` 为 Minihud 绑定世界种子) |
+| **F9** | 查看结构区块 |
+| **B** | 查看群系边界 |
+| **\[** | 开关灵活放置方块 |
+| **\]** | 开关方块快速放置 |
+| **右 Shift** | 开关伪潜行 |
+| **滑动滚轮** | 移动单个物品 |
+| **Shift + 左键** | 移动一组物品 |
+| **Shift + 左键按住 + 拖动鼠标** | 快速移动多组物品 |
+| **Shift + 左键按住 + 拖动鼠标 + Q** | 快速丢出多组物品 |
+| **Alt + 左键** | 移动所有相同物品 |
+| **Shift + Alt + 左键** | 移动所有物品 |
+
+---
 
 ## 📖 注意事项
 
-**游戏规则**
+### 游戏规则
+- ❗ **即使开启死亡不掉落，死亡后也会掉落经验。**
+- ❗ **即使开启死亡不掉落，消失诅咒也会生效。**
+- ❌ **不要关闭生物破坏性行为**：下面的指令一般被用于苦力怕防爆，但该指令会导致村民无法拾取物品、猪灵无法拾取金锭、怪物无法捡起盔甲工具。
+    ```
+    /gamerule mobGriefing false
+    ```
+- ✅ **推荐使用针对性的游戏规则：**
+    | 需求 | 指令 |
+    | :--- | :--- |
+    | 恢复所有破坏性行为 | ```/gamerule mobGriefing true``` |
+    | 苦力怕防爆 | ```/gamerule creeperGriefing false``` |
+    | 阻止末影人搬土 | ```/gamerule endmanGriefing false``` |
+    | 阻止僵尸拆门 | ```/gamerule zombieGriefing false``` |
+    | 恶魂火球防爆 | ```/gamerule ghastGriefing false``` |
+    | 阻止劫掠兽破坏 | ```/gamerule ravagerGriefing false``` |
 
-❗ **即使开启死亡不掉落，死亡后也会掉落经验。**<br>
-❗ **即使开启死亡不掉落，消失诅咒也会生效。**
+### 配置需求
+- ❗ **该系列需要至少 Java 21 以上才能运行。**
+- 该系列大多数为优化辅助模组，且本身就是原版。只要对应版本的原版生存能够流畅游玩即可。
+- **内存建议**：一般 2048M - 3072M 足够使用。若视距较大 (如 16, 20, 24)，建议适当增加分配。
 
-**❌ 不要关闭生物破坏性行为，下面的指令一般被用于苦力怕防爆，但该指令会导致村民无法拾取物品、猪灵无法拾取金锭、怪物无法捡起盔甲工具。**<br>
-```/gamerule mobGriefing false```
+### 关于模组
+- ❗ **被标注了 `[核心]` 标签的模组不可删除。**
+- 其余模组可随意增加或删除，并建议添加例如 `[自加]` 等前缀以方便在更新整合包时替换模组。
 
-**✅ 若要恢复破坏性行为，请使用以下指令：**<br>
-```/gamerule mobGriefing true```
+### 存档升级
+- 该系列的所有地图均为原版存档，且整合包不会加入任何含有新物品方块的模组。
+- 这意味着，您可以直接将旧版本的存档 (例如 1.21.1) 升级到新版本 (如 1.21.4) 的整合包中游玩。
+- ❗ **虚无地图没有地形，永远不会产生区块升级问题。**
+- ❗ **无论如何，在升级之前请备份好存档，以免发生意外。**
 
-**✅ 若需要苦力怕防爆效果，推荐使用以下指令：**<br>
-```/gamerule creeperGriefing false```
+#### 1.21.4 至 1.21.10 升级说明
+由于 12.0 版本中部分特殊地图的世界生成方式及玩法特性发生了不兼容变动：
+- **可以直接升级的地图存档**：沿海集落、樱花平原、环沼平原、雨林海岛、凛冰域脉。
+- **需要升级数据包的地图存档**：护樱山、虚无。
+    > **数据包升级方法**：下载新版地图，先删除原存档中的 `datapacks` 目录，然后将其替换为新版地图中的 `datapacks` 目录。(务必先删除再替换，不可直接覆盖)
+- **需要数据处理的地图存档**：1.21.4 版本的丰林森屿、雪藏遗城、繁茂洞穴、夜屿苍园存档需要进行细致的数据处理才可兼容 1.21.10，如若需要，可通过 issues 联系作者进行协助。
 
-**✅ 若需要阻止末影人搬土，推荐使用以下指令：**<br>
-```/gamerule endmanGriefing false```
+### 历史版本
+- 若未来该系列更新到更高的 Minecraft 版本后，**旧版本将不再维护**。
+- ❗ **该系列不保留且不推荐游玩历史版本，禁止一切历史版本的二次传播。**
+- ❗ **若您下载该系列资源，请遵守[使用协议](#-使用协议)，未经授权禁止在公共场合（包括但不限于社区、网站、网盘、资源群）对该系列资源文件进行二次上传、转载或发布。**
 
-**✅ 若需要阻止僵尸拆门，推荐使用以下指令：**<br>
-```/gamerule zombieGriefing false```
-
-**✅ 若需要恶魂火球防爆，推荐使用以下指令：**<br>
-```/gamerule ghastGriefing false```
-
-**✅ 若需要阻止劫掠兽破坏，推荐使用以下指令：**<br>
-```/gamerule ravagerGriefing false```
-<hr>
-
-**配置需求**
-
-❗**该系列需要至少Java21以上才能运行。**<br>
-该系列大多数为优化辅助模组，且本身就是原版。只要对应版本的原版生存能够流畅游玩即可。<br>
-对于内存，根据具体情况分配。一般2048M-3072M足够使用。若视距拉的比较大，比如16,20,24，那还是建议多分配一点。
-<hr>
-
-**关于模组**
-
-❗**被标注了[核心]标签的模组不可删除，其余模组可随意增加或删除，并建议添加例如[自加]等前缀以方便在更新整合包时替换模组。**
-<hr>
-
-**存档升级**
-
-该系列的所有地图均为原版存档，且整合包不会加入任何含有新物品方块的模组。<br>
-这也就意味着，您可以直接将旧版本的存档，例如1.21.1已游玩过的棘茂洞穴存档，直接升级到1.21.4版本的整合包中游玩。<br>
-只要Minecraft本身对存档的版本升级没有问题。<br>
-❗**虚无地图没有地形，永远不会产生区块升级问题。**<br>
-❗**无论如何，在升级之前请备份好存档，以免发生意外。**
-<hr>
-
-**由于12.0版本中部分特殊地图的世界生成方式及玩法特性发生了不兼容变动，部分1.21.4版本的地图存档无法升级至1.21.10。**
-
-- 可以直接升级的地图存档：沿海集落、樱花平原、环沼平原、雨林海岛、凛冰域脉。
-- 需要升级数据包的地图存档：护樱山、虚无。<br>
-数据包升级方法：下载新版地图，先删除原存档中的datapacks目录，然后将其替换为新版地图中的datapacks目录。(务必先删除再替换，不可直接覆盖)
-- 1.21.4版本的丰林森屿、雪藏遗城、繁茂洞穴、夜屿苍园存档需要进行细致的数据处理才可兼容1.21.10，如若需要，可通过issues联系作者进行协助。
-<hr>
-
-**历史版本**
-
-若未来该系列决定更新到更高的Minecraft版本后，旧版本将不再维护。<br>
-❗ **该系列不保留且不推荐游玩历史版本，禁止一切历史版本的二次传播。**<br>
-❗ **若您下载该系列资源，请遵守[使用协议](https://github.com/Fndream/BorderSurvivalModpack?tab=readme-ov-file#-%E4%BD%BF%E7%94%A8%E5%8D%8F%E8%AE%AE)，未经授权禁止在公共场合（包括但不限于社区、网站、网盘、资源群）对该系列资源文件进行二次上传、转载或发布。**
-<hr>
+---
 
 ## 📖 常见问题
 
 **Q：如何更新整合包以获取最新版特性？**
 
-A：替换模组，保留原版本（推荐）：下载新版整合包 -> 使用启动器安装一个新版整合包作为临时版本 -> 删除原整合包版本mods目录中自带的模组文件 -> 将刚才安装的新整合包版本mods目录下的所有文件添加到原整合包版本的mods目录中。
+**A：** 替换模组，保留原版本 (推荐)
+1. 下载新版整合包。
+2. 使用启动器安装一个新版整合包作为临时版本。
+3. 删除原整合包版本 `mods` 目录中自带的模组文件。
+4. 将刚才安装的新整合包版本 `mods` 目录下的所有文件添加到原整合包版本的 `mods` 目录中。
 
-B：迁移资源，重装新版本：下载并安装新版整合包 -> 将原整合包版本中的：config(模组配置文件夹)、mods(文件夹中自己加入的模组文件)、resourcepacks(资源包文件夹)、saves(存档文件夹)、screenshots(截图文件夹)、shaderpacks(光影文件夹) 剪切或复制到新整合包版本目录中。
-<hr>
+**B：** 迁移资源，重装新版本
+1. 下载并安装新版整合包。
+2. 将原整合包版本中的以下文件夹剪切或复制到新整合包版本目录中：
+    - `config` (模组配置文件夹)
+    - `mods` (文件夹中自己加入的模组文件)
+    - `resourcepacks` (资源包文件夹)
+    - `saves` (存档文件夹)
+    - `screenshots` (截图文件夹)
+    - `shaderpacks` (光影文件夹)
+
+---
 
 **Q：功能牌损坏如何获得？**
-
-A：使用以下指令获得，需创造模式放置有效。<br>
+**A：** 使用以下指令获得，需创造模式放置有效。
 ```/function border_survival:get_sign```
-<hr>
 
 **Q：功能牌右键没反应？**
-
-A：这是由于模组没有被加载导致的，请检查整合包是否安装正确，且启动的游戏版本名是否为整合包所安装的版本名。
-<hr>
+**A：** 这是由于模组没有被加载导致的，请检查整合包是否安装正确，且启动的游戏版本名是否为整合包所安装的版本名。
 
 **Q：指令无法使用？**
-
-A：绝大多数指令都需要作弊权限才可使用。在单人模式中，通过键盘左上角的 **ESC键** 呼出菜单之后，使用鼠标点击 **对局域网开放** 按钮，将 **允许作弊: 关** 更改为 **允许作弊: 开**，之后使用鼠标点击创建局域网世界按钮便可更改作弊权限。
-
-B：在服务端环境下，需要通过服务端控制台使用 **/op <玩家名称>** 指令给予玩家作弊权限才可使用。
-<hr>
+**A：** 绝大多数指令都需要作弊权限才可使用。
+- **单人模式**：按 `ESC` -> 点击 **对局域网开放** -> 将 **允许作弊: 关** 更改为 **允许作弊: 开** -> 点击 **创建局域网世界**。
+- **服务端**：需要通过服务端控制台使用 `/op <玩家名称>` 指令给予玩家作弊权限。
 
 **Q：进入末地为什么直接死亡？**
-
-A：因边界等级不足，边界未扩展到末地黑曜石平台坐标，传送门将玩家传送到末地主岛后，距离边界过远，故而窒息而死。请将边界等级至少提升至200级后，再尝试进入末地。
-<hr>
+**A：** 因边界等级不足，边界未扩展到末地黑曜石平台坐标，传送门将玩家传送到末地主岛后，距离边界过远，故而窒息而死。请将边界等级至少提升至 **200 级** 后，再尝试进入末地。
 
 **Q：为何不刷怪？**
-
-A：请检查是否为和平模式，如果遇到地图默认为和平模式的情况，请提供地图名称反馈修复。
-
-B：因边界外部不会刷怪，如果边界等级小于10级，刷怪效率会较为缓慢。
-<hr>
+**A：**
+1. 请检查是否为和平模式。如果遇到地图默认为和平模式的情况，请提供地图名称反馈修复。
+2. 因边界外部不会刷怪，如果边界等级小于 10 级，刷怪效率会较为缓慢。
 
 **Q：放置方块延迟？区块加载卡顿？活塞动画不流畅？**
-
-A：这可能是动态光源导致的，请尝试关闭动态光源：ESC->模组->RyoamicLights->右侧配置->动态光源: 关，或仅关闭方块实体的动态光源。
-<hr>
+**A：** 这可能是动态光源导致的，请尝试关闭动态光源：
+`ESC` -> `模组` -> `RyoamicLights` -> `右侧配置` -> `动态光源: 关`，或仅关闭方块实体的动态光源。
 
 **Q：搭建的服务端覆盖整合包模组后无法正常启动？**
+**A：** 服务端需删除 **`[更高级联机设置]mcwifipnp`** 模组才可正常运行。
 
-A：服务端需删除 **[更高级联机设置]mcwifipnp** 模组才可正常运行。
-<hr>
+**Q：搭建的服务端默认没有开启地毯 (Carpet) 模组的任何功能？**
+**A：** 服务端的地毯模组需要单独为存档配置：
+1. 将 `config/carpet/default_carpet.conf` 文件复制到存档 (一般为 `world`) 目录下。
+2. 将该文件重命名为 `carpet.conf`。
+3. 重启服务端即可。
 
-**Q：搭建的服务端默认没有开启地毯carpet模组的任何功能？**
+---
 
-A：服务端的地毯模组需要单独为存档配置：请将 **config/carpet/default_carpet.conf** 文件复制到存档(一般为world)目录下，并将该文件重命名为 **carpet.conf**，之后重启服务端即可。
-<hr>
+> **若遇到其他疑难杂症或困难，或以上问题根据步骤并没有解决，需要保持交流，请尝试进入群聊进行提问：`1014233122`。**
 
-若遇到其他疑难杂症或困难，或以上问题根据步骤并没有解决，需要保持交流，请尝试进入群聊进行提问：1014233122。
+---
 
 ## © 使用协议
 
@@ -504,10 +534,7 @@ A：服务端的地毯模组需要单独为存档配置：请将 **config/carpet
 在未经授权的情况下，您不可对本仓库的文档、图片进行摘抄或转载。
 
 #### 本系列资源
-✅ 您可以将本系列用于单人游戏、多人联机、服务端联机、实况录制。
-
-❌ 在未经授权的情况下，您不可将本系列原资源或修改后的资源进行二次转载或发布。二次发布定义为在包括但不限于(网盘、资源网站、社区、群聊等公开场合)上传本系列资源文件进行公开分享或发布。
-
-❌ 您不可将本系列资源用于任何商业用途。
-
-❌ 本系列不适用于服务器形式，您不可也无法将本系列用于任何服务器用途，使用服务端联机除外。
+- ✅ **允许**：您可以将本系列用于单人游戏、多人联机、服务端联机、实况录制。
+- ❌ **禁止**：在未经授权的情况下，您不可将本系列原资源或修改后的资源进行二次转载或发布。二次发布定义为在包括但不限于 (网盘、资源网站、社区、群聊等公开场合) 上传本系列资源文件进行公开分享或发布。
+- ❌ **禁止**：您不可将本系列资源用于任何商业用途。
+- ❌ **禁止**：本系列不适用于服务器形式，您不可也无法将本系列用于任何服务器用途，使用服务端联机除外。
