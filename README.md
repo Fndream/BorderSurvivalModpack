@@ -267,9 +267,9 @@
 > 2. 地图按**综合难度从高到低**排序。越高的星级往往代表着越高的生存难度或资源获取难度。
 
 <details>
-<summary><b>虚无</b> - 虚空型 - 🌟🌟🌟🌟🌟 (点击展开)</summary>
+<summary>⛅ <b>虚无</b> - 虚空型 - 🌟🌟🌟🌟🌟 (点击展开)</summary>
 
-📘 **描述**：适合喜欢空岛建筑、长期生存的玩家游玩。<br>
+⛅ **描述**：适合喜欢空岛建筑、长期生存的玩家游玩。<br>
 ❗ **建议**：在具有充裕时间、且熟知原版特性及核心特性的情况下尝试。
 
 <img src="https://raw.githubusercontent.com/Fndream/BorderSurvivalModpack/refs/heads/master/原图1.21.10/虚无.jpg" height="360" alt="虚无地图预览">
@@ -277,7 +277,7 @@
 </details>
 
 <details>
-<summary><b>咒世永夜 夜屿苍园</b> - 五周年 - 🌟🌟🌟🌟🌟 (点击展开)</summary>
+<summary>🌙 <b>咒世永夜 夜屿苍园</b> - 五周年 - 🌟🌟🌟🌟🌟 (点击展开)</summary>
 
 🌙 **描述**：上苍失色之域，诅咒与永夜轮回......与群魔共舞......与乱潮共生......<br>
 🎉 **注**：该地图的非露天植被由 [klinbee](https://modrinth.com/user/Klinbee) 的 [BetterCaveWorlds](https://modrinth.com/datapack/better-cave-worlds) 数据包生成！
@@ -287,7 +287,7 @@
 </details>
 
 <details>
-<summary><b>幽螈世界 繁茂洞穴</b> - 四周年 - ⭐⭐⭐⭐⭐ (点击展开)</summary>
+<summary>🍀 <b>幽螈世界 繁茂洞穴</b> - 四周年 - ⭐⭐⭐⭐⭐ (点击展开)</summary>
 
 🍀 **描述**：
 
@@ -307,7 +307,7 @@
 </details>
 
 <details>
-<summary><b>世外桃源 繁樱山谷</b> - 三周年 - ⭐ (点击展开)</summary>
+<summary>🌸 <b>世外桃源 繁樱山谷</b> - 三周年 - ⭐ (点击展开)</summary>
 
 🌸 **描述**：
 
@@ -320,9 +320,9 @@
 </details>
 
 <details>
-<summary><b>竹丛茂葱 棘府洞天</b> - 洞穴型 - ⭐⭐⭐⭐⭐ (点击展开)</summary>
+<summary>🌿 <b>竹丛茂葱 棘府洞天</b> - 洞穴型 - ⭐⭐⭐⭐⭐ (点击展开)</summary>
 
-📘 **描述**：棘巧试炼主题地图，试炼密室旁的温馨洞天。<br>
+🌿 **描述**：棘巧试炼主题地图，试炼密室旁的温馨洞天。<br>
 🎉 **注**：该地图地形由 [klinbee](https://modrinth.com/user/Klinbee) 的 [BetterCaveWorlds](https://modrinth.com/datapack/better-cave-worlds) 数据包生成！
 
 <img src="https://raw.githubusercontent.com/Fndream/BorderSurvivalModpack/refs/heads/master/原图1.21.10/棘府洞天.jpg" height="360" alt="棘府洞天地图预览">
@@ -330,9 +330,9 @@
 </details>
 
 <details>
-<summary><b>湖峦圣地 环杉屿</b> - 浮屿型 - ⭐⭐⭐ (点击展开)</summary>
+<summary>🌲 <b>湖峦圣地 环杉屿</b> - 浮屿型 - ⭐⭐⭐ (点击展开)</summary>
 
-📘 **描述**：群杉环绕的浮空孤屿，筑城者的圣地。<br>
+🌲 **描述**：群杉环绕的浮空孤屿，筑城者的圣地。<br>
 🎉 **注**：该地图地形由 [klinbee](https://modrinth.com/user/Klinbee) 的 [RevampedFloatingIslands](https://modrinth.com/datapack/revamped-floating-islands) 数据包生成！
 
 <img src="https://raw.githubusercontent.com/Fndream/BorderSurvivalModpack/refs/heads/master/原图1.21.10/环杉屿.jpg" height="360" alt="环杉屿地图预览">
@@ -340,9 +340,9 @@
 </details>
 
 <details>
-<summary><b>荒旱之境 繁茂森屿</b> - 浮屿型 - ⭐⭐⭐ (点击展开)</summary>
+<summary>🫑 <b>荒旱之境 繁茂森屿</b> - 浮屿型 - ⭐⭐⭐ (点击展开)</summary>
 
-📘 **描述**：陶瓦山与雨林的分界处，位于巨大繁茂浮屿上方的孤屿。<br>
+🫑 **描述**：陶瓦山与雨林的分界处，位于巨大繁茂浮屿上方的孤屿。<br>
 🎉 **注**：该地图地形由 [klinbee](https://modrinth.com/user/Klinbee) 的 [RevampedFloatingIslands](https://modrinth.com/datapack/revamped-floating-islands) 数据包生成！
 
 <img src="https://raw.githubusercontent.com/Fndream/BorderSurvivalModpack/refs/heads/master/原图1.21.10/繁茂森屿.jpg" height="360" alt="繁茂森屿地图预览">
@@ -350,45 +350,45 @@
 </details>
 
 <details>
-<summary><b>极冰之域 凛冰域脉</b> - 放大化 - ⭐⭐⭐⭐ (点击展开)</summary>
+<summary>🧊 <b>极冰之域 凛冰域脉</b> - 放大化 - ⭐⭐⭐⭐ (点击展开)</summary>
 
-📘 **描述**：极寒的地域，高耸入云的山峰，破溃的冰锥，无垠冰封的冻洋。
+🧊 **描述**：极寒的地域，高耸入云的山峰，破溃的冰锥，无垠冰封的冻洋。
 
 <img src="https://raw.githubusercontent.com/Fndream/BorderSurvivalModpack/refs/heads/master/原图1.21.10/凛冰域脉.jpg" height="360" alt="凛冰域脉地图预览">
 
 </details>
 
 <details>
-<summary><b>珊雨竹陆 雨林海岛</b> - 原版型 - ⭐⭐⭐ (点击展开)</summary>
+<summary>🌴 <b>珊雨竹陆 雨林海岛</b> - 原版型 - ⭐⭐⭐ (点击展开)</summary>
 
-📘 **描述**：含有珊瑚海、雨林、竹林的海岛。
+🌴 **描述**：含有珊瑚海、雨林、竹林的海岛。
 
 <img src="https://raw.githubusercontent.com/Fndream/BorderSurvivalModpack/refs/heads/master/原图1.21.10/雨林海岛.jpg" height="360" alt="雨林海岛地图预览">
 
 </details>
 
 <details>
-<summary><b>泽中净土 环沼平原</b> - 原版型 - ⭐⭐ (点击展开)</summary>
+<summary>🐸 <b>泽中净土 环沼平原</b> - 原版型 - ⭐⭐ (点击展开)</summary>
 
-📘 **描述**：1.19主题地图。环绕着红树林沼泽的金合欢平原与平原村庄。
+🐸 **描述**：1.19主题地图。环绕着红树林沼泽的金合欢平原与平原村庄。
 
 <img src="https://raw.githubusercontent.com/Fndream/BorderSurvivalModpack/refs/heads/master/原图1.21.10/环沼平原.jpg" height="360" alt="环沼平原地图预览">
 
 </details>
 
 <details>
-<summary><b>山巅繁樱 樱花平原</b> - 原版型 - ⭐⭐ (点击展开)</summary>
+<summary>🌸 <b>山巅繁樱 樱花平原</b> - 原版型 - ⭐⭐ (点击展开)</summary>
 
-📘 **描述**：1.20主题地图。围绕着陡峭山峰的樱花森林与平原心湖。
+🌸 **描述**：1.20主题地图。围绕着陡峭山峰的樱花森林与平原心湖。
 
 <img src="https://raw.githubusercontent.com/Fndream/BorderSurvivalModpack/refs/heads/master/原图1.21.10/樱花平原.jpg" height="360" alt="樱花平原地图预览">
 
 </details>
 
 <details>
-<summary><b>岸海三栖 沿海集落</b> - 原版型 - ⭐ (点击展开)</summary>
+<summary>⌛ <b>岸海三栖 沿海集落</b> - 原版型 - ⭐ (点击展开)</summary>
 
-📘 **描述**：环绕三种群系的海岸之上，存在着一个十分热闹的海上集落。珊瑚海群系，适合喜欢靠海、海底建筑的玩家。该系列第一张地图《海岛村庄》的纪念地图。
+⌛ **描述**：环绕三种群系的海岸之上，存在着一个十分热闹的海上集落。珊瑚海群系，适合喜欢靠海、海底建筑的玩家。该系列第一张地图《海岛村庄》的纪念地图。
 
 <img src="https://raw.githubusercontent.com/Fndream/BorderSurvivalModpack/refs/heads/master/原图1.21.10/沿海集落.jpg" height="360" alt="沿海集落地图预览">
 
