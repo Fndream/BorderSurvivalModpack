@@ -431,7 +431,7 @@
 - ✅ **推荐使用针对性的游戏规则：**
     | 需求 | 指令 |
     | :--- | :--- |
-    | 恢复所有破坏性行为 | ```/gamerule mobGriefing true``` |
+    | 恢复原版破坏性行为 | ```/gamerule mobGriefing true``` |
     | 苦力怕防爆 | ```/gamerule creeperGriefing false``` |
     | 阻止末影人搬土 | ```/gamerule endmanGriefing false``` |
     | 阻止僵尸拆门 | ```/gamerule zombieGriefing false``` |
@@ -513,7 +513,7 @@
 ---
 
 **Q：为何不刷怪？**<br>
-**A：**
+
 1. 请检查是否为和平模式。如果遇到地图默认为和平模式的情况，请提供地图名称反馈修复。
 2. 因边界外部不会刷怪，如果边界等级小于 10 级，刷怪效率会较为缓慢。
 
