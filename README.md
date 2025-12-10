@@ -309,7 +309,11 @@
 <details>
 <summary><b>世外桃源 繁樱山谷</b> - 三周年 - ⭐ (点击展开)</summary>
 
-🌸 **描述**：曾经，有一位神匠遭天之妒，被禁锢在一片繁樱山谷之中。现在，当月夜降临，此地仍会产生无尽的乱潮。但不同的是，维系者接管了此方世界的镇守之任。
+🌸 **描述**：
+
+曾经，有一位神匠遭天之妒，被禁锢在一片繁樱山谷之中。<br>
+现在，当月夜降临，此地仍会产生无尽的乱潮。<br>
+但不同的是，维系者接管了此方世界的镇守。
 
 <img src="https://raw.githubusercontent.com/Fndream/BorderSurvivalModpack/refs/heads/master/原图1.21.10/繁樱山谷.jpg" height="360" alt="繁樱山谷地图预览">
 
