@@ -388,7 +388,10 @@
 <details>
 <summary>⌛ <b>岸海三栖 沿海集落</b> - 原版型 - ⭐ (点击展开)</summary>
 
-⌛ **描述**：环绕三种群系的海岸之上，存在着一个十分热闹的海上集落。珊瑚海群系，适合喜欢靠海、海底建筑的玩家。该系列第一张地图《海岛村庄》的纪念地图。
+⌛ **描述**：
+环绕三种群系的海岸之上，存在着一个十分热闹的海上集落。<br>
+珊瑚海群系，适合喜欢靠海、海底建筑的玩家。<br>
+该系列第一张地图《海岛村庄》的纪念地图。
 
 <img src="https://raw.githubusercontent.com/Fndream/BorderSurvivalModpack/refs/heads/master/原图1.21.10/沿海集落.jpg" height="360" alt="沿海集落地图预览">
 
