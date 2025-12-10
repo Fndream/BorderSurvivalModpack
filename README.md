@@ -1,5 +1,3 @@
-# 🏝️ 边界生存地图系列 (Border Survival)
-
 <div align="center">
     <img src="https://raw.githubusercontent.com/Fndream/BorderSurvivalModpack/refs/heads/master/环杉屿.jpg" alt="环杉屿预览图" width="80%">
 </div>
