@@ -37,15 +37,18 @@
 - 可通过消耗经验等级进行 **“边界升级”** ，提升边界能量。
 
 ### 💠 边界模式
-含有**禁锢**、**昼夜**两种模式，可在游戏中进行切换。
+- 含有**禁锢**、**昼夜**两种模式，可在游戏中进行切换。
 
-| 模式 | 特性 |
-| :--- | :--- |
-| **🔵 禁锢模式** | 常规默认模式。 |
-| **🌗 昼夜模式** | **白昼**：与禁锢模式并无区别。<br>**黑夜**：刷怪上限与单次刷怪数量提高；怪物穿戴装甲的概率提高；怪物无视光照等级刷新。<br>**黑夜**：边界能量拥有 50 级以上时，额外扩展一倍空间。 |
+### 🔵 禁锢模式
+- 常规默认模式。 
+
+### 🌗 昼夜模式
+- **白昼**：与禁锢模式并无区别。
+- **黑夜**：刷怪上限与单次刷怪数量提高，怪物穿戴装甲的概率提高，且怪物将无视光照等级刷新。
+- **黑夜**：边界能量拥有50级以上时，额外扩展一倍空间。 
 
 ### 🌙 昼夜模式 - 永恒之夜
-- 在昼夜模式的夜晚即将抵达白昼时，若边界能量至少拥有50级，每度过 0-4 个日月便有可能降临一次永恒之夜。
+- 在昼夜模式的夜晚即将抵达白昼时，若边界能量至少拥有50级，每度过0-4个日月便会降临一次永恒之夜。
 - 永恒之夜降临后，世界出生点周围将会出现异界的永夜骑士。
 - 受永夜骑士影响，时间会被禁锢，世界将陷入永恒的雷暴之中。
 - 只有将所有降临的永夜骑士全部击败，才可解除其对世界的影响。
@@ -108,20 +111,18 @@
 ### ✨ 无损灵器
 副手手持时，会获得对应的效果：
 
-| 灵器 | 效果 |
-| :--- | :--- |
-| 混沌之星 | 生命恢复 |
-| 裁灵剪 | 急迫 |
-| 御灵盾 | 伤害吸收 |
-| 萝灵竿 | 迅捷 |
-| 诡异灵竿 | 迅捷 |
-| 海之祝福 | 潮涌能量 |
-| 瀚海灵戟 | 海豚的恩惠 |
-| 旋灵重锤 | 力量 |
-| 翱灵王翅 | 缓降 |
-| 翱灵翼甲 | 缓降 |
-| 狼灵铠 | 抗性提升；被狼穿戴时，还会每 5 秒获得一次瞬间治疗。 |
-| 燧灵火石 | 手持玩家自身、永夜骑士、神匠、灾厄村民、女巫、流浪商人、流商羊驼将会持续发光。 |
+- **混沌之星**：生命恢复
+- **裁灵剪**：急迫
+- **御灵盾**：伤害吸收
+- **萝灵竿**：迅捷
+- **诡异灵竿**：迅捷
+- **海之祝福**：潮涌能量
+- **瀚海灵戟**：海豚的恩惠
+- **旋灵重锤**：力量
+- **翱灵王翅**：缓降
+- **翱灵翼甲**：缓降
+- **狼灵铠**：抗性提升；被狼穿戴时，还会每 5 秒获得一次瞬间治疗。
+- **燧灵火石**：手持玩家自身、永夜骑士、神匠、灾厄村民、女巫、流浪商人、流商羊驼将会持续发光。
 
 ---
 
@@ -155,13 +156,18 @@
 - **以物换物加入**：烈焰棒、地狱疣、凋灵骷髅头颅。
 
 ### 💎 战利品箱
-- **平原村庄小屋**：向日葵、玫瑰、牡丹、丁香、粉红色花簇、发光地衣
-- **沉船补给箱**：苍白苔藓块、苍白垂须
-- **埋藏的宝藏**：海龟蛋
-- **末地城宝藏**：潜影壳
-- **金合欢村庄小屋**：犰狳鳞甲
-- **堡垒遗迹疣猪兽棚**：绯红菌岩、诡异菌岩
-- **试炼密室宝库-普通、试炼密室不祥宝库-普通**：旋风棒
+- **混沌之星**：生命恢复
+- **裁灵剪**：急迫
+- **御灵盾**：伤害吸收
+- **萝灵竿**：迅捷
+- **诡异灵竿**：迅捷
+- **海之祝福**：潮涌能量
+- **瀚海灵戟**：海豚的恩惠
+- **旋灵重锤**：力量
+- **翱灵王翅**：缓降
+- **翱灵翼甲**：缓降
+- **狼灵铠**：抗性提升；被狼穿戴时，还会每 5 秒获得一次瞬间治疗。
+- **燧灵火石**：手持玩家自身、永夜骑士、神匠、灾厄村民、女巫、流浪商人、流商羊驼将会持续发光。
 
 ---
 
@@ -171,7 +177,7 @@
 - 重生的末影龙被击败后将掉落 **1300点** 经验值。
 
 ### 🍖 掉落物
-被 **永夜骑士、监守者、远古守卫者、守卫者** 击败的生物视为被玩家击败。
+- 被 **永夜骑士、监守者、远古守卫者、守卫者** 击败的生物视为被玩家击败。
 
 ---
 
@@ -179,15 +185,7 @@
 
 > **❗ 提示**：在获得对应材料后将自动解锁配方，可通过工作台左侧小绿书查看。
 
-| 草方块 | 深板岩圆石 | 深板岩 |
-| :---: | :---: | :---: |
-| <img src="https://raw.githubusercontent.com/Fndream/BorderSurvivalModpack/refs/heads/master/合成表/草方块.png" width="260px" height="120px"> | <img src="https://raw.githubusercontent.com/Fndream/BorderSurvivalModpack/refs/heads/master/合成表/深板岩圆石.png" width="260px" height="120px"> | <img src="https://raw.githubusercontent.com/Fndream/BorderSurvivalModpack/refs/heads/master/合成表/深板岩.png" width="260px" height="120px"> |
-| **凝灰岩** | **方解石** | **皮革** |
-| <img src="https://raw.githubusercontent.com/Fndream/BorderSurvivalModpack/refs/heads/master/合成表/凝灰岩.png" width="260px" height="120px"> | <img src="https://raw.githubusercontent.com/Fndream/BorderSurvivalModpack/refs/heads/master/合成表/方解石.png" width="260px" height="120px"> | <img src="https://raw.githubusercontent.com/Fndream/BorderSurvivalModpack/refs/heads/master/合成表/皮革.png" width="260px" height="120px"> |
-| **刷怪笼** | **刷怪蛋** | **三叉戟** |
-| <img src="https://raw.githubusercontent.com/Fndream/BorderSurvivalModpack/refs/heads/master/合成表/刷怪笼新.png" width="260px" height="120px"> | <img src="https://raw.githubusercontent.com/Fndream/BorderSurvivalModpack/refs/heads/master/合成表/刷怪蛋.png" width="260px" height="120px"> | <img src="https://raw.githubusercontent.com/Fndream/BorderSurvivalModpack/refs/heads/master/合成表/三叉戟.png" width="260px" height="120px"> |
-| **鞘翅** | **末地传送门框架** | **混沌之星** |
-| <img src="https://raw.githubusercontent.com/Fndream/BorderSurvivalModpack/refs/heads/master/合成表/鞘翅.png" width="260px" height="120px"> | <img src="https://raw.githubusercontent.com/Fndream/BorderSurvivalModpack/refs/heads/master/合成表/末地传送门框架.png" width="260px" height="120px"> | <img src="https://raw.githubusercontent.com/Fndream/BorderSurvivalModpack/refs/heads/master/合成表/混沌之星.png" width="260px" height="120px"> |
+![07949bb4](https://resource-api.xyeidc.com/client/pics/07949bb4)
 
 ---
 
@@ -219,170 +217,8 @@
 > 1. **必须使用专用地图存档**，如果自行创建世界，将无法正常进行游戏。
 > 2. 地图按**综合难度从高到低**排序。越高的星级往往代表着越高的生存难度或资源获取难度。
 
-<details>
-<summary>⛅ <b>虚无</b> - 虚空型 - 🌟🌟🌟🌟🌟 (点击展开)</summary>
 
-⛅ **描述**：
-
-适合喜欢空岛建筑、长期生存的玩家游玩。
-
-❗ **建议**：
-
-在具有充裕时间、且熟知原版特性及核心特性的情况下尝试。
-
-<img src="https://raw.githubusercontent.com/Fndream/BorderSurvivalModpack/refs/heads/master/原图1.21.10/虚无.jpg" height="360" alt="虚无地图预览">
-
-</details>
-
-<details>
-<summary>🌙 <b>咒世永夜 夜屿苍园</b> - 五周年 - 🌟🌟🌟🌟🌟 (点击展开)</summary>
-
-🌙 **描述**：
-
-上苍失色之域，诅咒与永夜轮回......与群魔共舞......与乱潮共生......
-
-🎉 **注**：
-
-该地图的非露天植被由 [klinbee](https://modrinth.com/user/Klinbee) 的 [BetterCaveWorlds](https://modrinth.com/datapack/better-cave-worlds) 数据包生成！
-
-<img src="https://raw.githubusercontent.com/Fndream/BorderSurvivalModpack/refs/heads/master/原图1.21.10/夜屿苍园.jpg" height="360" alt="夜屿苍园地图预览">
-
-</details>
-
-<details>
-<summary>🍀 <b>幽螈世界 繁茂洞穴</b> - 四周年 - ⭐⭐⭐⭐⭐ (点击展开)</summary>
-
-🍀 **描述**：
-
-传说，曾有一片美西螈的国度。<br>
-它的植被广茂无垠，它的黑暗无边无际……<br>
-它的子民自池洼中舞跃，它的怪物遍布空洞大地……<br>
-它是繁茂壮丽的洞穴，它是贫瘠匮乏的世界……<br>
-它是幽暗无光的维度，亦是星光点缀的乐园……<br>
-——某位神匠遗落的日记
-
-❗ **提示**：
-1. 在该地图中尽可能调高视距将获得更好的视觉体验。
-2. 建议使用 **J 键**与 **←→ 箭头键**调整舒适的夜视程度。
-
-<img src="https://raw.githubusercontent.com/Fndream/BorderSurvivalModpack/refs/heads/master/原图1.21.10/繁茂洞穴.jpg" height="360" alt="繁茂洞穴地图预览">
-
-</details>
-
-<details>
-<summary>🌸 <b>世外桃源 繁樱山谷</b> - 三周年 - ⭐ (点击展开)</summary>
-
-🌸 **描述**：
-
-曾经，有一位神匠遭天之妒，被禁锢在一片繁樱山谷之中。<br>
-现在，当月夜降临，此地仍会产生无尽的乱潮。<br>
-但不同的是，维系者接管了此方世界的镇守。
-
-<img src="https://raw.githubusercontent.com/Fndream/BorderSurvivalModpack/refs/heads/master/原图1.21.10/繁樱山谷.jpg" height="360" alt="繁樱山谷地图预览">
-
-</details>
-
-<details>
-<summary>🌿 <b>竹丛茂葱 棘府洞天</b> - 洞穴型 - ⭐⭐⭐⭐⭐ (点击展开)</summary>
-
-🌿 **描述**：
-
-棘巧试炼主题地图，试炼密室旁的温馨洞天。
-
-🎉 **注**：
-
-该地图地形由 [klinbee](https://modrinth.com/user/Klinbee) 的 [BetterCaveWorlds](https://modrinth.com/datapack/better-cave-worlds) 数据包生成！
-
-<img src="https://raw.githubusercontent.com/Fndream/BorderSurvivalModpack/refs/heads/master/原图1.21.10/棘府洞天.jpg" height="360" alt="棘府洞天地图预览">
-
-</details>
-
-<details>
-<summary>🌲 <b>湖峦圣地 环杉屿</b> - 浮屿型 - ⭐⭐⭐ (点击展开)</summary>
-
-🌲 **描述**：
-
-群杉环绕的浮空孤屿，筑城者的圣地。
-
-🎉 **注**：
-
-该地图地形由 [klinbee](https://modrinth.com/user/Klinbee) 的 [RevampedFloatingIslands](https://modrinth.com/datapack/revamped-floating-islands) 数据包生成！
-
-<img src="https://raw.githubusercontent.com/Fndream/BorderSurvivalModpack/refs/heads/master/原图1.21.10/环杉屿.jpg" height="360" alt="环杉屿地图预览">
-
-</details>
-
-<details>
-<summary>🫑 <b>荒旱之境 繁茂森屿</b> - 浮屿型 - ⭐⭐⭐ (点击展开)</summary>
-
-🫑 **描述**：
-
-陶瓦山与雨林的分界处，位于巨大繁茂浮屿上方的孤屿。
-
-🎉 **注**：
-
-该地图地形由 [klinbee](https://modrinth.com/user/Klinbee) 的 [RevampedFloatingIslands](https://modrinth.com/datapack/revamped-floating-islands) 数据包生成！
-
-<img src="https://raw.githubusercontent.com/Fndream/BorderSurvivalModpack/refs/heads/master/原图1.21.10/繁茂森屿.jpg" height="360" alt="繁茂森屿地图预览">
-
-</details>
-
-<details>
-<summary>🧊 <b>极冰之域 凛冰域脉</b> - 放大化 - ⭐⭐⭐⭐ (点击展开)</summary>
-
-🧊 **描述**：
-
-极寒的地域，高耸入云的山峰，破溃的冰锥，无垠冰封的冻洋。
-
-<img src="https://raw.githubusercontent.com/Fndream/BorderSurvivalModpack/refs/heads/master/原图1.21.10/凛冰域脉.jpg" height="360" alt="凛冰域脉地图预览">
-
-</details>
-
-<details>
-<summary>🌴 <b>珊雨竹陆 雨林海岛</b> - 原版型 - ⭐⭐⭐ (点击展开)</summary>
-
-🌴 **描述**：
-
-含有珊瑚海、雨林、竹林的海岛。
-
-<img src="https://raw.githubusercontent.com/Fndream/BorderSurvivalModpack/refs/heads/master/原图1.21.10/雨林海岛.jpg" height="360" alt="雨林海岛地图预览">
-
-</details>
-
-<details>
-<summary>🐸 <b>泽中净土 环沼平原</b> - 原版型 - ⭐⭐ (点击展开)</summary>
-
-🐸 **描述**：
-
-1.19主题地图。环绕着红树林沼泽的金合欢平原与平原村庄。
-
-<img src="https://raw.githubusercontent.com/Fndream/BorderSurvivalModpack/refs/heads/master/原图1.21.10/环沼平原.jpg" height="360" alt="环沼平原地图预览">
-
-</details>
-
-<details>
-<summary>🌸 <b>山巅繁樱 樱花平原</b> - 原版型 - ⭐⭐ (点击展开)</summary>
-
-🌸 **描述**：
-
-1.20主题地图。围绕着陡峭山峰的樱花森林与平原心湖。
-
-<img src="https://raw.githubusercontent.com/Fndream/BorderSurvivalModpack/refs/heads/master/原图1.21.10/樱花平原.jpg" height="360" alt="樱花平原地图预览">
-
-</details>
-
-<details>
-<summary>⌛ <b>岸海三栖 沿海集落</b> - 原版型 - ⭐ (点击展开)</summary>
-
-⌛ **描述**：
-
-环绕三种群系的海岸之上，存在着一个十分热闹的海上集落。<br>
-珊瑚海群系，适合喜欢靠海、海底建筑的玩家。<br>
-该系列第一张地图《海岛村庄》的纪念地图。
-
-<img src="https://raw.githubusercontent.com/Fndream/BorderSurvivalModpack/refs/heads/master/原图1.21.10/沿海集落.jpg" height="360" alt="沿海集落地图预览">
-
-</details>
+![2643a02b](https://resource-api.xyeidc.com/client/pics/2643a02b)
 
 ---
 
@@ -454,11 +290,6 @@
     > **数据包升级方法**：下载新版地图，先删除原存档中的 `datapacks` 目录，然后将其替换为新版地图中的 `datapacks` 目录。(务必先删除再替换，不可直接覆盖)
 - **需要数据处理的地图存档**：1.21.4 版本的丰林森屿、雪藏遗城、繁茂洞穴、夜屿苍园存档需要进行细致的数据处理才可兼容 1.21.10，如若需要，可通过 issues 联系作者进行协助。
 
-### 历史版本
-- 若未来该系列更新到更高的 Minecraft 版本后，**旧版本将不再维护**。
-- ❗ **该系列不保留且不推荐游玩历史版本，禁止一切历史版本的二次传播。**
-- ❗ **若您下载该系列资源，请遵守[使用协议](#-使用协议)，未经授权禁止在公共场合（包括但不限于社区、网站、网盘、资源群）对该系列资源文件进行二次上传、转载或发布。**
-
 ---
 
 ## 📖 常见问题
@@ -483,47 +314,54 @@
 
 ---
 
-**Q：功能牌损坏如何修复？**<br>
+**Q：功能牌损坏如何修复？**
+
 **A：** 使用以下指令获得，需创造模式放置有效。
 ```/function border_survival:get_sign```
 
 ---
 
-**Q：功能牌右键没反应？**<br>
+**Q：功能牌右键没反应？**
+
 **A：** 这是由于模组没有被加载导致的，请检查整合包是否安装正确，且启动的游戏版本名是否为整合包所安装的版本名。
 
 ---
 
-**Q：指令无法使用？**<br>
+**Q：指令无法使用？**
+
 **A：** 绝大多数指令都需要作弊权限才可使用。
 - **单人模式**：按 `ESC` -> 点击 **对局域网开放** -> 将 **允许作弊: 关** 更改为 **允许作弊: 开** -> 点击 **创建局域网世界**。
 - **服务端**：需要通过服务端控制台使用 `/op <玩家名称>` 指令给予玩家作弊权限。
 
 ---
 
-**Q：进入末地为什么直接死亡？**<br>
+**Q：进入末地为什么直接死亡？**
+
 **A：** 因边界等级不足，边界未扩展到末地黑曜石平台坐标，传送门将玩家传送到末地主岛后，距离边界过远，故而窒息而死。请将边界等级至少提升至 **200 级** 后，再尝试进入末地。
 
 ---
 
-**Q：为何不刷怪？**<br>
+**Q：为何不刷怪？**
 
 1. 请检查是否为和平模式。如果遇到地图默认为和平模式的情况，请提供地图名称反馈修复。
 2. 因边界外部不会刷怪，如果边界等级小于 10 级，刷怪效率会较为缓慢。
 
 ---
 
-**Q：放置方块延迟？区块加载卡顿？活塞动画不流畅？**<br>
+**Q：放置方块延迟？区块加载卡顿？活塞动画不流畅？**
+
 **A：** 这可能是动态光源导致的，请尝试关闭动态光源。
 
 ---
 
-**Q：搭建的服务端覆盖整合包模组后无法正常启动？**<br>
+**Q：搭建的服务端覆盖整合包模组后无法正常启动？**
+
 **A：** 服务端需删除 **`[更高级联机设置]mcwifipnp`** 模组才可正常运行。
 
 ---
 
-**Q：搭建的服务端默认没有开启地毯 (Carpet) 模组的任何功能？**<br>
+**Q：搭建的服务端默认没有开启地毯 (Carpet) 模组的任何功能？**
+
 **A：** 服务端的地毯模组需要单独为存档配置：
 1. 将 `config/carpet/default_carpet.conf` 文件复制到存档 (一般为 `world`) 目录下。
 2. 将该文件重命名为 `carpet.conf`。
@@ -535,10 +373,15 @@
 
 ---
 
+## © 历史版本
+- 若未来该系列更新到更高的 Minecraft 版本后，**旧版本将不再维护**。
+- ❗ **该系列不保留且不推荐游玩历史版本，禁止一切历史版本的二次传播。**
+- ❗ **若您下载该系列资源，请遵守[使用协议](#-使用协议)，未经授权禁止在公共场合（包括但不限于社区、网站、网盘、资源群）对该系列资源文件进行二次上传、转载或发布。**
+
 ## © 使用协议
 
-#### 本仓库内容
-在未经授权的情况下，您不可对本仓库的文档、图片进行摘抄或转载。
+#### 本文档内容
+在未经授权的情况下，您不可对该文档文本、图片进行摘抄或转载。
 
 #### 本系列资源
 - ✅ **允许**：您可以将本系列用于单人游戏、多人联机、服务端联机、实况录制。
