@@ -213,7 +213,7 @@
 > 1. **必须使用专用地图存档**，如果自行创建世界，将无法正常进行游戏。
 > 2. 地图按**类型与综合难度从高到低**排序。越高的星级往往代表着越高的生存难度或资源获取难度。
 
-![2038f2ff](https://resource-api.xyeidc.com/client/pics/2038f2ff)
+![saves](https://s2.loli.net/2025/12/21/ryID8okqZLTXV2Q.png)
 
 ---
 
