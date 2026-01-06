@@ -177,7 +177,7 @@
 
 > ❗ 在获得对应材料后将自动解锁配方，可通过工作台左侧小绿书查看。
 
-![Snipaste_2025-12-26_14-49-47.png](https://s2.loli.net/2025/12/26/9VlUDW2eENF8Xs6.png)
+![.png](https://s2.loli.net/2026/01/06/odwRx2kgIWUMKA5.png)
 
 ---
 
