@@ -259,7 +259,7 @@
 > 1. **必须使用专用地图存档**，如果自行创建世界，将无法正常进行游戏。
 > 2. 地图按**类型与综合难度从高到低**排序。越高的星级往往代表着越高的生存难度或资源获取难度。
 
-![saves.png](https://files.seeusercontent.com/2026/06/18/lA6r/QQ20260617222104.png)
+![saves.png](https://files.seeusercontent.com/2026/06/18/6oxH/QQ20260617222104.png)
 
 ---
 
