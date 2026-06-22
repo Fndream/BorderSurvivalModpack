@@ -189,7 +189,7 @@
 
 > **❗永恒雪夜将持续产生全群系积雪与结冰，若不希望积雪影响存档地形，请在永恒之夜降临前使用以下指令将积雪厚度设置为0：**
 > ```
-> /gamerule snowAccumulationHeight 0
+> /gamerule max_snow_accumulation_height 0
 > ```
 
 ### 🐎 永夜骑士
@@ -251,6 +251,39 @@
 > 2. 地图按**类型与综合难度从高到低**排序。越高的星级往往代表着越高的生存难度或资源获取难度。
 
 ![saves.png](https://files.seeusercontent.com/2026/06/22/7Rxv/QQ20260622224543.png)
+
+---
+
+### 📕 游戏规则
+- ❗ **即使开启死亡不掉落，死亡后也会掉落经验。**
+- ❗ **即使开启死亡不掉落，消失诅咒也会生效。**
+> ❗ **永恒雪夜将持续产生全群系积雪与结冰，若不希望积雪影响存档地形，请在永恒之夜降临前使用以下指令将积雪厚度设置为0：**
+> ```
+> /gamerule snowAccumulationHeight 0
+> ```
+
+> ❌ 原版的 `/gamerule mob_griefing false` 命令通常被用于防爆，但该命令会导致村民无法拾取食物、猪灵无法拾取金锭、怪物无法捡起盔甲工具。
+
+>✅ 若需要苦力怕防爆效果，推荐使用以下指令：<br>
+>```/gamerule creeper_griefing false```
+
+>✅ 若需要阻止末影人搬土，推荐使用以下指令：<br>
+>```/gamerule endman_griefing false```
+
+> ✅ 若需要阻止僵尸拆门，推荐使用以下指令：<br>
+>```/gamerule zombie_griefing false```
+
+> ✅ 若需要恶魂火球防爆，推荐使用以下指令：<br>
+> ```/gamerule ghast_griefing false```
+
+> ✅ 若需要阻止劫掠兽破坏，推荐使用以下指令：<br>
+> ```/gamerule ravager_griefing false```
+
+> ✅ 若需要阻止生物踩坏耕地，推荐使用以下指令：<br>
+> ```/gamerule farmland_griefing false```
+
+> ✅ 若需要阻止玩家踩坏耕地，推荐使用以下指令：<br>
+> ```/gamerule farmland_player_griefing false```
 
 ---
 
