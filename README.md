@@ -259,7 +259,7 @@
 - ❗ **即使开启死亡不掉落，消失诅咒也会生效。**
 > ❗ **永恒雪夜将持续产生全群系积雪与结冰，若不希望积雪影响存档地形，请在永恒之夜降临前使用以下指令将积雪厚度设置为0：**
 > ```
-> /gamerule snowAccumulationHeight 0
+> /gamerule max_snow_accumulation_height 0
 > ```
 
 > ❌ 原版的 `/gamerule mob_griefing false` 命令通常被用于防爆，但该命令会导致村民无法拾取食物、猪灵无法拾取金锭、怪物无法捡起盔甲工具。
