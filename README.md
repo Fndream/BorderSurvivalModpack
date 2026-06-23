@@ -248,8 +248,6 @@
 
 ## 🧭 地图
 
-> 🎉 **特别感谢** [klinbee](https://modrinth.com/user/Klinbee) 授权本系列使用 “[RevampedFloatingIslands](https://modrinth.com/datapack/revamped-floating-islands)” 数据包！
->
 > 1. **必须使用专用地图存档**，如果自行创建世界，将无法正常进行游戏。
 > 2. 地图按**类型与综合难度从高到低**排序。越高的星级往往代表着越高的生存难度或资源获取难度。
 
