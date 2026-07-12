@@ -87,7 +87,7 @@
 
 > ❗ 在获得对应材料后将自动解锁配方，可通过工作台左侧小绿书查看。
 
-![saves.jpg](https://files.seeusercontent.com/2026/06/26/i6eC/QQ20260622224543.jpg)
+![recipe](https://files.seeusercontent.com/2026/07/12/6yMx/Snipaste_2026-07-12_21-45-41.png)
 
 > 刷怪笼可以使用具有精准采集魔咒的工具破坏获得。  
 > 部分刷怪笼生成条件：  
