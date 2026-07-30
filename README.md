@@ -361,7 +361,7 @@
 
 ---
 > 群杉环绕的浮空孤屿，筑城者的圣地。  
-> **该地图地形由kinbee的RevampedFloatingIslands数据包生成！**
+> **该地图地形由kinbee的[RevampedFloatingIslands](https://modrinth.com/datapack/revamped-floating-islands)数据包生成！**
 > 
 > 界门：云杉木
 
@@ -374,7 +374,7 @@
 
 ---
 > 位于巨大繁茂浮屿上的雨林孤屿。  
-> **该地图地形由kinbee的RevampedFloatingIslands数据包生成！**
+> **该地图地形由kinbee的[RevampedFloatingIslands](https://modrinth.com/datapack/revamped-floating-islands)数据包生成！**
 > 
 > 界门：黏土块
 
@@ -663,7 +663,7 @@
 
 ---
 
-> **若遇到其他疑难杂症或困难，或以上问题根据步骤并没有解决，请在Issues发布提问。**
+> **若遇到其他疑难杂症或困难，或以上问题根据步骤并没有解决，请在[Issues](https://github.com/Fndream/BorderSurvivalModpack/issues)发布提问。**
 
 ---
 

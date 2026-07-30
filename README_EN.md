@@ -638,7 +638,7 @@ While fishing, you may obtain some biome-specific items.
 
 ---
 
-> **If you encounter other issues or difficulties, or if the above steps did not resolve the problem, please post your question on the Issues page.**
+> **If you encounter other issues or difficulties, or if the above steps did not resolve the problem, please post your question on the [Issues page](https://github.com/Fndream/BorderSurvivalModpack/issues).**
 
 ---
 
