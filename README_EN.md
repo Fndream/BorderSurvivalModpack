@@ -212,7 +212,7 @@ While fishing, you may obtain some biome-specific items.
 - While pursuing a Bug of the World target, if a player comes within line of sight, the monster will prioritize attacking the player.
 > Endermen will not naturally switch targets to players who haven't looked at them.  
 > Evokers pursue Bugs of the World targets with both horizontal and vertical distances of 384 blocks.  
-> When a Drowned is pursuing a Bug of the World target, if the Euclidean distance to the target is ≤16 blocks, it gains wallhack vision.
+> When a Drowned is pursuing a Bug of the World target, if the Euclidean distance to the target is ≤16 blocks, it gains wallhack vision.  
 > When a Creeper is pursuing a Bug of the World target, if the Euclidean distance to the target is ≤8 blocks and the vertical distance is ≤4 blocks, it gains wallhack vision. If its pathfinding is blocked, it will instantly ignite itself.  
 > Creepers will not actively flee from Bugs of the World targets.
 
