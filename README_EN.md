@@ -1,6 +1,4 @@
-<div align="center">
-<img src="https://files.seeusercontent.com/2026/07/31/Jb4y/banner.jpg" alt="图片描述" width="700">
-</div>
+![banner.jpg](https://files.seeusercontent.com/2026/07/31/F9fr/banner.jpg)
 
 ## 📓 Introduction
 

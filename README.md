@@ -1,6 +1,4 @@
-<div align="center">
-<img src="https://files.seeusercontent.com/2026/07/31/xvJ7/ba7e5c5.jpg" alt="banner" width="700">
-</div>
+![banner.jpg](https://files.seeusercontent.com/2026/07/31/F9fr/banner.jpg)
 
 ## 📓 简介
 
@@ -292,7 +290,7 @@
 🔆 **类型：六周年 — 虚空型**  
 ✨ **难度：⭐⭐⭐⭐⭐**
 
-<img src="https://files.seeusercontent.com/2026/06/18/jBs5/9f7e2b5.jpg" width="400">
+<img src="https://files.seeusercontent.com/2026/06/18/jBs5/9f7e2b5.jpg" width="400" alt="虚无十三界-存世">
 
 ---
 > 境虚空无，块铸框扉，源火燃显，入界世存……
@@ -301,7 +299,7 @@
 🥥 **类型：五周年 — 浮屿型**  
 ⚡ **难度：🌟🌟🌟🌟🌟**  
 
-<img src="https://files.seeusercontent.com/2026/06/26/C9dl/36aad17.jpg" width="400">
+<img src="https://files.seeusercontent.com/2026/06/26/C9dl/36aad17.jpg" width="400" alt="咒世永夜-夜屿苍园">
 
 ---
 > 上苍失色之域，诅咒与永夜轮回……  
@@ -313,7 +311,7 @@
 🛖 **类型：四周年 — 洞穴型**  
 ✨ **难度：⭐⭐⭐⭐⭐**
 
-<img src="https://files.seeusercontent.com/2026/06/26/zs8K/d40646d.jpg" width="400">
+<img src="https://files.seeusercontent.com/2026/06/26/zs8K/d40646d.jpg" width="400" alt="幽螈世界-繁茂洞穴">
 
 ---
 > 传说，曾有一片美西螈的国度……  
@@ -329,7 +327,7 @@
 🍀 **类型：三周年 — 原版型**   
 ✨ **难度：⭐⭐**
 
-<img src="https://files.seeusercontent.com/2026/06/26/xfV3/29cb24f.jpg" width="400">
+<img src="https://files.seeusercontent.com/2026/06/26/xfV3/29cb24f.jpg" width="400" alt="世外桃源-繁樱山谷">
 
 ---
 > 曾经，有一位神匠被禁锢在一片繁樱山谷之中。  
@@ -342,7 +340,7 @@
 🔆 **类型：虚空型**  
 ⚡ **难度：🌟🌟🌟🌟🌟**
 
-<img src="https://files.seeusercontent.com/2026/06/26/3anO/da8f020.jpg" width="400">
+<img src="https://files.seeusercontent.com/2026/06/26/3anO/da8f020.jpg" width="400" alt="虚无">
 
 ---
 > 主世界与下界皆为虚空的世界。  
@@ -352,7 +350,7 @@
 🛖 **类型：洞穴型**  
 ✨ **难度：⭐⭐⭐⭐⭐**
 
-<img src="https://files.seeusercontent.com/2026/06/26/tH4c/f2bd16e.jpg" width="400">
+<img src="https://files.seeusercontent.com/2026/06/26/tH4c/f2bd16e.jpg" width="400" alt="彩绘洞天-填黄洞穴">
 
 ---
 > 26.2主题地图，如上古画卷般的地下世界。
@@ -364,7 +362,7 @@
 🥥 **类型：浮屿型**    
 ✨ **难度：⭐⭐⭐**
 
-<img src="https://files.seeusercontent.com/2026/06/26/Ac4g/18eae77.jpg" width="400">
+<img src="https://files.seeusercontent.com/2026/06/26/Ac4g/18eae77.jpg" width="400" alt="湖峦圣地-环杉屿">
 
 ---
 > 群杉环绕的浮空孤屿，筑城者的圣地。  
@@ -377,7 +375,7 @@
 🥥 **类型：浮屿型**  
 ✨ **难度：⭐⭐⭐**
 
-<img src="https://files.seeusercontent.com/2026/06/26/kJw5/5d446c5.jpg" width="400">
+<img src="https://files.seeusercontent.com/2026/06/26/kJw5/5d446c5.jpg" width="400" alt="丰雨之境-繁茂森屿">
 
 ---
 > 位于巨大繁茂浮屿上的雨林孤屿。  
@@ -390,7 +388,7 @@
 💠 **类型：放大化**  
 ✨ **难度：⭐⭐⭐⭐**
 
-<img src="https://files.seeusercontent.com/2026/06/26/A6im/9e53fe7.jpg" width="400">
+<img src="https://files.seeusercontent.com/2026/06/26/A6im/9e53fe7.jpg" width="400" alt="极冰之域-凛冰域脉">
 
 ---
 > 极寒的地域，高耸入云的山峰。  
@@ -403,7 +401,7 @@
 🍀 **类型：原版型**  
 ✨ **难度：⭐⭐⭐**
 
-<img src="https://files.seeusercontent.com/2026/06/26/eI5s/0d02daf.jpg" width="400">
+<img src="https://files.seeusercontent.com/2026/06/26/eI5s/0d02daf.jpg" width="400" alt="珊雨竹陆-雨林海岛">
 
 ---
 > 含有珊瑚海、雨林、竹林的岛屿。
@@ -415,7 +413,7 @@
 🍀 **类型：原版型**  
 ✨ **难度：⭐⭐**
 
-<img src="https://files.seeusercontent.com/2026/06/26/oH8i/dd7d1bf.jpg" width="400">
+<img src="https://files.seeusercontent.com/2026/06/26/oH8i/dd7d1bf.jpg" width="400" alt="泽中净土-环沼草原">
 
 ---
 > 1.19主题地图，环绕着红树林沼泽的金合欢平原与平原村庄。
@@ -427,7 +425,7 @@
 🍀 **类型：原版型**  
 ✨ **难度：⭐⭐**
 
-<img src="https://files.seeusercontent.com/2026/06/26/hlC8/d4ae6bd.jpg" width="400">
+<img src="https://files.seeusercontent.com/2026/06/26/hlC8/d4ae6bd.jpg" width="400" alt="落谷森池-绿翠林湖">
 
 ---
 > 1.20主题地图，围绕着陡峭山峰的樱花森林与平原心湖。
@@ -439,7 +437,7 @@
 🍀 **类型：原版型**  
 ✨ **难度：⭐⭐**
 
-<img src="https://files.seeusercontent.com/2026/06/26/zy4Q/db372d6.jpg" width="400">
+<img src="https://files.seeusercontent.com/2026/06/26/zy4Q/db372d6.jpg" width="400" alt="山巅繁樱-樱花平原">
 
 ---
 > 1.20主题地图，围绕着陡峭山峰的樱花森林。
@@ -451,7 +449,7 @@
 🍀 **类型：原版型**   
 ✨ **难度：⭐**
 
-<img src="https://files.seeusercontent.com/2026/06/26/gu3P/eb05458.jpg" width="400">
+<img src="https://files.seeusercontent.com/2026/06/26/gu3P/eb05458.jpg" width="400" alt="岸海三栖-沿海集落">
 
 ---
 > 环绕三种群系的海岸之上，存在着一个十分热闹的海上集镇。  
