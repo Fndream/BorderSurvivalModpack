@@ -18,6 +18,8 @@ This is a vanilla border survival map series centered on **vanilla survival** ga
 
 ---
 
+## 📖 Table of Contents
+
 ## 🌊 Core Features
 
 ### 📕 About the World Border
@@ -55,6 +57,11 @@ Function sign monuments provided by the map, containing the following three func
 > ```
 > /function border_survival:get_sign
 > ```
+
+### 🧱 Advancements
+> ❗ The advancements in this series are **not a quest guidance system**. They only serve to showcase relevant content of core features, provide text hints, and offer a sense of ritual.
+
+<img src="https://files.seeusercontent.com/2026/07/31/r7lK/en.png" alt="Advancements" height="400">
 
 ---
 
@@ -246,14 +253,16 @@ While fishing, you may obtain some biome-specific items.
 - Low chance to open a random Treasure loot chest.
 
 ### 🍀 Spirit Emerald
-- **Convert Materials**: Can be converted into a certain amount of basic building materials via a Stonecutter.
+> The Spirit Emerald can also be used as an Emerald.
 - **Gather Items**:
     - **General Spirit Emerald**: When held in the offhand or placed in any Item Frame, it gathers nearby dropped items within a `33x33x33` area to its own location.
     - **Container Spirit Emerald**: If the Item Frame containing the Spirit Emerald is attached to a Chest, Barrel, or Shulker Box, it will only gather item types that already exist in the container. If attached to an empty container, it will not gather any items.
     - When multiple **General Spirit Emeralds** are near a dropped item entity, the item is gathered by the closest Spirit Emerald.
     - When multiple valid **Container Spirit Emeralds** are near a dropped item entity, the item splits into multiple item entities, evenly distributed among those Spirit Emeralds.
     - When both **General Spirit Emeralds** and **Container Spirit Emeralds** are near a dropped item entity, the item is first gathered and stacked by the closest former, then split and distributed by the latter.
-> The Spirit Emerald can also be used as an Emerald.
+- **Convert Materials**: Can be converted into a certain amount of basic building materials via a Stonecutter.
+
+![Stonecutter](https://files.seeusercontent.com/2026/07/31/Bn4e/e0c5562.png)
 
 ## 🌕 Unique Features
 
@@ -461,7 +470,7 @@ While fishing, you may obtain some biome-specific items.
 ---
 </details>
 
-### 📕 Game Rules
+## 📕 Game Rules
 - ❗ **Even with keepInventory enabled, experience is still dropped on death.**
 - ❗ **Even with keepInventory enabled, the Curse of Vanishing still takes effect.**
 > ❗ **The Eternal Snowy Night will continuously cause snow accumulation and ice formation across all biomes. If you do not want snow to affect your save's terrain, as the first thing after entering the game, you must use the following command to set the snow accumulation height to 0 before the Eternal Night descends:**

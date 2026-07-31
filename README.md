@@ -259,7 +259,7 @@
     - 若一个物品实体周围同时存在**通用聚灵石**与**容器聚灵石**，该物品会先被距离最近的前者堆叠聚集，再被后者分裂聚集。
 - **转换建材**：可通过切石机转换为一定数量的基础建材：
 
-![切石机-zh.png](https://files.seeusercontent.com/2026/07/31/4hLl/zh.png)
+![切石机](https://files.seeusercontent.com/2026/07/31/4hLl/zh.png)
 
 ## 🌕 独有特性
 
