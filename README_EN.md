@@ -300,7 +300,7 @@ While fishing, you may obtain some biome-specific items.
 🔆 **Type: 6th Anniversary — Void Type**  
 ✨ **Difficulty: ⭐⭐⭐⭐⭐**
 
-<img src="https://files.seeusercontent.com/2026/06/18/jBs5/9f7e2b5.jpg" width="400">
+<img src="https://files.seeusercontent.com/2026/06/18/jBs5/9f7e2b5.jpg" width="400" alt="Persisting Worlds">
 
 ---
 > A void realm, blocks form the frame, source fire ignites, enter the persisting world...
@@ -309,7 +309,7 @@ While fishing, you may obtain some biome-specific items.
 🥥 **Type: 5th Anniversary — Floating Island Type**  
 ⚡ **Difficulty: 🌟🌟🌟🌟🌟**
 
-<img src="https://files.seeusercontent.com/2026/06/26/C9dl/36aad17.jpg" width="400">
+<img src="https://files.seeusercontent.com/2026/06/26/C9dl/36aad17.jpg" width="400" alt="Night Island Garden">
 
 ---
 > A realm forsaken by the heavens, a cycle of curses and eternal night...  
@@ -321,7 +321,7 @@ While fishing, you may obtain some biome-specific items.
 🛖 **Type: 4th Anniversary — Cave Type**  
 ✨ **Difficulty: ⭐⭐⭐⭐⭐**
 
-<img src="https://files.seeusercontent.com/2026/06/26/zs8K/d40646d.jpg" width="400">
+<img src="https://files.seeusercontent.com/2026/06/26/zs8K/d40646d.jpg" width="400" alt="Lush Caves">
 
 ---
 > Legend speaks of a land of axolotls...  
@@ -337,7 +337,7 @@ While fishing, you may obtain some biome-specific items.
 🍀 **Type: 3rd Anniversary — Vanilla Type**   
 ✨ **Difficulty: ⭐⭐**
 
-<img src="https://files.seeusercontent.com/2026/06/26/xfV3/29cb24f.jpg" width="400">
+<img src="https://files.seeusercontent.com/2026/06/26/xfV3/29cb24f.jpg" width="400" alt="Cherry Blossom Valley">
 
 ---
 > Once, a Divine Artificer was imprisoned in a cherry blossom valley.  
@@ -350,7 +350,7 @@ While fishing, you may obtain some biome-specific items.
 🔆 **Type: Void Type**  
 ⚡ **Difficulty: 🌟🌟🌟🌟🌟**
 
-<img src="https://files.seeusercontent.com/2026/06/26/3anO/da8f020.jpg" width="400">
+<img src="https://files.seeusercontent.com/2026/06/26/3anO/da8f020.jpg" width="400" alt="Void">
 
 ---
 > A world where both the Overworld and the Nether are void.  
@@ -360,7 +360,7 @@ While fishing, you may obtain some biome-specific items.
 🛖 **Type: Cave Type**  
 ✨ **Difficulty: ⭐⭐⭐⭐⭐**
 
-<img src="https://files.seeusercontent.com/2026/06/26/tH4c/f2bd16e.jpg" width="400">
+<img src="https://files.seeusercontent.com/2026/06/26/tH4c/f2bd16e.jpg" width="400" alt="Sulfur Caves">
 
 ---
 > 26.2 themed map, an underground world like an ancient painted scroll.
@@ -372,7 +372,7 @@ While fishing, you may obtain some biome-specific items.
 🥥 **Type: Floating Island Type**    
 ✨ **Difficulty: ⭐⭐⭐**
 
-<img src="https://files.seeusercontent.com/2026/06/26/Ac4g/18eae77.jpg" width="400">
+<img src="https://files.seeusercontent.com/2026/06/26/Ac4g/18eae77.jpg" width="400" alt="Spruce Floating Island">
 
 ---
 > A floating solitary island surrounded by spruce, a sacred ground for builders.  
@@ -385,7 +385,7 @@ While fishing, you may obtain some biome-specific items.
 🥥 **Type: Floating Island Type**  
 ✨ **Difficulty: ⭐⭐⭐**
 
-<img src="https://files.seeusercontent.com/2026/06/26/kJw5/5d446c5.jpg" width="400">
+<img src="https://files.seeusercontent.com/2026/06/26/kJw5/5d446c5.jpg" width="400" alt="Lush Floating Island">
 
 ---
 > A rainforest island atop a massive lush floating island.  
@@ -398,7 +398,7 @@ While fishing, you may obtain some biome-specific items.
 💠 **Type: Amplified**  
 ✨ **Difficulty: ⭐⭐⭐⭐**
 
-<img src="https://files.seeusercontent.com/2026/06/26/A6im/9e53fe7.jpg" width="400">
+<img src="https://files.seeusercontent.com/2026/06/26/A6im/9e53fe7.jpg" width="400" alt="Frozen Icebergs">
 
 ---
 > An extremely cold region with towering mountain peaks.  
@@ -411,7 +411,7 @@ While fishing, you may obtain some biome-specific items.
 🍀 **Type: Vanilla Type**  
 ✨ **Difficulty: ⭐⭐⭐**
 
-<img src="https://files.seeusercontent.com/2026/06/26/eI5s/0d02daf.jpg" width="400">
+<img src="https://files.seeusercontent.com/2026/06/26/eI5s/0d02daf.jpg" width="400" alt="Rainforest Island">
 
 ---
 > An island containing a coral sea, rainforest, and bamboo forest.
@@ -423,7 +423,7 @@ While fishing, you may obtain some biome-specific items.
 🍀 **Type: Vanilla Type**  
 ✨ **Difficulty: ⭐⭐**
 
-<img src="https://files.seeusercontent.com/2026/06/26/oH8i/dd7d1bf.jpg" width="400">
+<img src="https://files.seeusercontent.com/2026/06/26/oH8i/dd7d1bf.jpg" width="400" alt="Marsh Savannaa">
 
 ---
 > 1.19 themed map, an acacia plains and plains village surrounded by a mangrove swamp.
@@ -435,7 +435,7 @@ While fishing, you may obtain some biome-specific items.
 🍀 **Type: Vanilla Type**  
 ✨ **Difficulty: ⭐⭐**
 
-<img src="https://files.seeusercontent.com/2026/06/26/hlC8/d4ae6bd.jpg" width="400">
+<img src="https://files.seeusercontent.com/2026/06/26/hlC8/d4ae6bd.jpg" width="400" alt="Verdant Forest Lake">
 
 ---
 > 1.20 themed map, a cherry blossom forest and a plains heart lake surrounded by steep mountains.
@@ -447,7 +447,7 @@ While fishing, you may obtain some biome-specific items.
 🍀 **Type: Vanilla Type**  
 ✨ **Difficulty: ⭐⭐**
 
-<img src="https://files.seeusercontent.com/2026/06/26/zy4Q/db372d6.jpg" width="400">
+<img src="https://files.seeusercontent.com/2026/06/26/zy4Q/db372d6.jpg" width="400" alt="Cherry Blossom Plain">
 
 ---
 > 1.20 themed map, a cherry blossom forest surrounded by steep mountains.
@@ -459,7 +459,7 @@ While fishing, you may obtain some biome-specific items.
 🍀 **Type: Vanilla Type**   
 ✨ **Difficulty: ⭐**
 
-<img src="https://files.seeusercontent.com/2026/06/26/gu3P/eb05458.jpg" width="400">
+<img src="https://files.seeusercontent.com/2026/06/26/gu3P/eb05458.jpg" width="400" alt="Coastal Settlement">
 
 ---
 > On a coast surrounded by three biomes, there exists a very lively seaside settlement.  
