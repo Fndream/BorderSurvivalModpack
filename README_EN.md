@@ -1,3 +1,7 @@
+<div align="center">
+<img src="https://files.seeusercontent.com/2026/07/31/Jb4y/banner.jpg" alt="图片描述" width="700">
+</div>
+
 ## 📓 Introduction
 
 This is a vanilla border survival map series centered on **vanilla survival** gameplay. Start from a confined space, gather resources with wisdom, challenge day and night with courage, and expand the world border with experience. Suitable for players with some knowledge of vanilla mechanics.

@@ -1,3 +1,7 @@
+<div align="center">
+<img src="https://files.seeusercontent.com/2026/07/31/xvJ7/ba7e5c5.jpg" alt="banner" width="700">
+</div>
+
 ## 📓 简介
 
 这是一个以**原版生存**为主要玩法的原版边界生存地图系列。从狭隘的空间启程，以智慧觅取资源，以勇气宣战昼夜，以经验开拓世界边界。适合熟悉原版特性的玩家。
