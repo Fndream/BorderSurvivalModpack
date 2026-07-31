@@ -284,7 +284,7 @@ While fishing, you may obtain some biome-specific items.
 <details>
 <summary>Click here to expand the map list</summary>
 
-### 🔥 **Thirteen Void Worlds — Persisting Worlds**
+### 🔥 **Void Thirteen Worlds — Persisting Worlds**
 🔆 **Type: 6th Anniversary — Void Type**  
 ✨ **Difficulty: ⭐⭐⭐⭐⭐**
 
