@@ -369,7 +369,7 @@ While fishing, you may obtain some biome-specific items.
 > Portal: Spruce Wood
 
 ---
-### 🌿 **Land of Abundant Rain — Lush Floating Island**
+### 🌿 **Land Abundant Rain — Lush Floating Island**
 🥥 **Type: Floating Island Type**  
 ✨ **Difficulty: ⭐⭐⭐**
 
@@ -382,7 +382,7 @@ While fishing, you may obtain some biome-specific items.
 > Portal: Clay
 
 ---
-### 🧊 **Realm of Extreme Ice — Frozen Icebergs**
+### 🧊 **Realm Extreme Ice — Frozen Icebergs**
 💠 **Type: Amplified**  
 ✨ **Difficulty: ⭐⭐⭐⭐**
 
@@ -407,7 +407,7 @@ While fishing, you may obtain some biome-specific items.
 > Portal: Jungle Wood
 
 ---
-### 🌿 **Pure Land in the Marsh — Marsh Savanna**
+### 🌿 **Pure Land Marsh — Marsh Savanna**
 🍀 **Type: Vanilla Type**  
 ✨ **Difficulty: ⭐⭐**
 
