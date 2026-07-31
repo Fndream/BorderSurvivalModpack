@@ -1,4 +1,4 @@
-![banner.jpg](https://files.seeusercontent.com/2026/07/31/F9fr/banner.jpg)
+![banner.jpg](https://files.seeusercontent.com/2026/07/31/8tYn/banner-zh.jpg)
 
 ## 📓 简介
 
