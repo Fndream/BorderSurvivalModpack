@@ -621,6 +621,15 @@ While fishing, you may obtain some biome-specific items.
 
 ---
 
+**Q: After building a multi-dimensional mob farm using the Void Portal mechanics in the "Persisting Worlds" map, I'm experiencing severe TPS lag/delay?**
+
+**A:** Minecraft's tick computation latency doubles with every additional loaded dimension. Once mspt exceeds 50.0ms/tick, TPS will drop, resulting in server-side lag. This is normal behavior.  
+**B:** Before undertaking such a project, first use fake players to keep multiple dimensions loaded. Run the following command, then hold the TAB key to monitor TPS/MSPT. Based on your CPU performance (MSPT values), reduce or cautiously increase the number of dimensions loaded simultaneously.
+
+```/log tps```
+
+---
+
 **Q: Block placement delay? Chunk loading lag? Piston animations not smooth?**
 
 **A:** This might be caused by dynamic lighting. Try turning off dynamic lighting.
