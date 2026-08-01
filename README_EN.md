@@ -407,7 +407,7 @@ While fishing, you may obtain some biome-specific items.
 > Portal: Blue Ice
 
 ---
-### 🌴 **Coral Rain Bamboo Land — Rainforest Island**
+### 🌴 **Coral Rain Bamboo Land — Jungle Island**
 🍀 **Type: Vanilla Type**  
 ✨ **Difficulty: ⭐⭐⭐**
 
