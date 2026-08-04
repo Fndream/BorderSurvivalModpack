@@ -298,7 +298,7 @@ While fishing, you may obtain some biome-specific items.
 
 ### 🔥 **Void Thirteen Worlds — Persisting Worlds**
 🔆 **Type: 6th Anniversary — Void Type**  
-✨ **Difficulty: ⭐⭐⭐⭐⭐**
+✨ **Difficulty: 🔥🔥🔥🔥🔥**
 
 <img src="https://files.seeusercontent.com/2026/06/18/jBs5/9f7e2b5.jpg" width="400" alt="Persisting Worlds">
 
@@ -307,7 +307,7 @@ While fishing, you may obtain some biome-specific items.
 ---
 ### 🌑 **Cursed Eternal Night — Night Island Garden**
 🥥 **Type: 5th Anniversary — Floating Island Type**  
-⚡ **Difficulty: 🌟🌟🌟🌟🌟**
+⚡ **Difficulty: 🌙🌙🌙🌙🌙🌙**
 
 <img src="https://files.seeusercontent.com/2026/06/26/C9dl/36aad17.jpg" width="400" alt="Night Island Garden">
 
@@ -319,7 +319,7 @@ While fishing, you may obtain some biome-specific items.
 ---
 ### 🌿 **Axolotl World — Lush Caves**
 🛖 **Type: 4th Anniversary — Cave Type**  
-✨ **Difficulty: ⭐⭐⭐⭐⭐**
+✨ **Difficulty: 🌿🌿🌿🌿🌿**
 
 <img src="https://files.seeusercontent.com/2026/06/26/zs8K/d40646d.jpg" width="400" alt="Lush Caves">
 
@@ -335,7 +335,7 @@ While fishing, you may obtain some biome-specific items.
 ---
 ### 🌺 **Hidden Paradise — Cherry Blossom Valley**
 🍀 **Type: 3rd Anniversary — Vanilla Type**   
-✨ **Difficulty: ⭐⭐**
+✨ **Difficulty: 🌸🌸**
 
 <img src="https://files.seeusercontent.com/2026/06/26/xfV3/29cb24f.jpg" width="400" alt="Cherry Blossom Valley">
 
@@ -348,7 +348,7 @@ While fishing, you may obtain some biome-specific items.
 ---
 ### ⛅ **Void**
 🔆 **Type: Void Type**  
-⚡ **Difficulty: 🌟🌟🌟🌟🌟**
+⚡ **Difficulty: 🔆🔆🔆🔆🔆🔆**
 
 <img src="https://files.seeusercontent.com/2026/06/26/3anO/da8f020.jpg" width="400" alt="Void">
 
