@@ -9,7 +9,6 @@ This is a vanilla border survival map series centered on **vanilla survival** ga
 - This series is not a conventional modpack. It consists of a **dedicated map** and a **core datapack**. The modpack includes only auxiliary mods. **After installing the modpack**, you **must import the dedicated map** to play properly!
 - **There is no difference from vanilla survival in this series**. The first player of this series liked the visual effect of the world border, and thus the initial version of this series was born.
 - Due to the border limitation, alternative acquisition methods for biome or structure exclusive resources have been introduced. These mechanics are called **Core Features**, along with additional **Expansion Features**.
-- **Core Features** enhance certain vanilla mechanics, giving them more uses. **Expansion Features** add new gameplay mechanics and world-setting lore.
 - When facing difficulties, consulting vanilla mechanics described in the Minecraft wiki, as well as the **Core Features** and **Expansion Features** described below, may provide effective help.
 - It is recommended to play with your preferred **resource pack** and **shader pack**.
 - Supported languages: **Simplified Chinese, Traditional Chinese, Classical Chinese (Recommended), English.**
