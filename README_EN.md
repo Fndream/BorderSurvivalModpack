@@ -11,7 +11,7 @@ This is a vanilla border survival map series centered on **vanilla survival** ga
 - Due to the border limitation, alternative acquisition methods for biome or structure exclusive resources have been introduced. These mechanics are called **Core Features**, along with additional **Expansion Features**.
 - When facing difficulties, consulting vanilla mechanics described in the Minecraft wiki, as well as the **Core Features** and **Expansion Features** described below, may provide effective help.
 - It is recommended to play with your preferred **resource pack** and **shader pack**.
-- Supported languages: **Simplified Chinese, Traditional Chinese, Classical Chinese (Recommended), English.**
+- Supported languages: **English, Simplified Chinese, Traditional Chinese, Classical Chinese (Recommended).**
 - If you switch languages in-game, you must exit and re-enter the save for some text to update correctly.
 - **Note:** This document is a translation from the [Chinese version](https://github.com/Fndream/BorderSurvivalModpack/blob/master/README.md), provided by DeepseekAI. Please verify carefully.
 
