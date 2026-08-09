@@ -176,7 +176,7 @@ While fishing, you may obtain some biome-specific items.
 > Eternal Night Knights are extremely dangerous. It is recommended to have adequate defense and healing before attempting armed combat.  
 > Eternal Night Knights will not leave their current dimension and will not ride vehicles.
 
-### 💥 Eternal Night Legions
+### 🔱 Eternal Night Legions
 - Every time you survive **3** Eternal Nights, the next Eternal Night will bring the **Undead Legion** or **Illager Legion**.
 - Every time you survive **8** Eternal Nights, the next Eternal Night will bring the **Eternal Night Legion**.
 
