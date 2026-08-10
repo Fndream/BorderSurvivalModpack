@@ -17,8 +17,6 @@ This is a vanilla border survival map series centered on **vanilla survival** ga
 
 ---
 
-## 📖 Table of Contents
-
 ## 🌊 Core Features
 
 ### 📕 About the World Border
