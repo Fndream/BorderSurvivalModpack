@@ -677,3 +677,6 @@ Unauthorized excerpts or reproductions of the text and images in this document a
 - ❌ Prohibited: Without authorization, you may not redistribute (upload, share, publish) the original or modified files of this series in any public setting (including but not limited to communities, websites, cloud drives, resource groups, social media, etc.).
 - ❌ Prohibited: You may not use this series for any commercial purpose, including but not limited to sales, bundling, advertising, etc.
 - ❌ Prohibited: This series is not suitable for server hosting as a service. You may not and cannot use this series for any server, except for personal server-style LAN connections.
+
+## ⌛ First release date
+2020-05-25
