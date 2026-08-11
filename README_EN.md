@@ -186,7 +186,7 @@ While fishing, you may obtain some biome-specific items.
 ### 🏹 Eternal Divine Weapons
 - Upon being defeated by a player, an Eternal Night Knight has a **1%** chance to drop the weapon it is holding.
 - If the player holds a Looting weapon in their main hand, each level of Looting increases the plunder success rate by **8.5%**.
-> Eternal Divine Weapons have the Curse of Vanishing and cannot be destroyed by fire, lava, explosion, lightning or cactus.  
+> Eternal Divine Weapons have the Curse of Vanishing and cannot be destroyed by fire, lava, explosion, lightning, cactus.  
 > Unenchanted Eternal Divine Weapons can be purified and returned to their origin as Night Spirit Divine Weapons.
 
 ### 🍖 Drops
