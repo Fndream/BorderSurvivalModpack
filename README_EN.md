@@ -679,4 +679,4 @@ Unauthorized excerpts or reproductions of the text and images in this document a
 - ❌ Prohibited: This series is not suitable for server hosting as a service. You may not and cannot use this series for any server, except for personal server-style LAN connections.
 
 ## ⌛ First release date
-2020-05-25
+2020-05-23
