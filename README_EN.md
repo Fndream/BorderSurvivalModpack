@@ -66,7 +66,7 @@ Function sign monuments provided by the map, containing the following three func
 While fishing, you may obtain some biome-specific items.
 
 - **Added to Junk loot pool**: Seagrass, Kelp, Sugar Cane, Cactus, Bamboo, Sea Pickle, Cocoa Beans, Prismarine Shard, Prismarine Crystals, Coral, Coral Fan, Chorus Flower.
-- **Added to Treasure loot pool**: Budding Amethyst, Obsidian, Ice, Packed Ice, Blue Ice.
+- **Added to Treasure loot pool**: Budding Amethyst, Obsidian, Ice, Packed Ice, Blue Ice, ? ? ?.
 
 ### 🐱 Cat
 - **Added to Gifts**: Leaves, Diamond.
