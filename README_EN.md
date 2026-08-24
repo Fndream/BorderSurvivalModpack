@@ -170,7 +170,7 @@ While fishing, you may obtain some biome-specific items.
 - When an Eternal Night Knight takes damage, it disrupts the world, spawning more monsters.
 - Upon being defeated by a player, an Eternal Night Knight drops a random Dimensional Treasure Chest.
 - Additionally, as they are Bugs of the World (bug), all monsters seek to eliminate them.
-> Eternal Night Knights only appear at the highest open-air location within a 16-block square radius around the world spawn point. For cave-type maps, the spawn location is at most Y96.  
+> Eternal Night Knights only appear at the highest open-air location within a 16-block square radius around the world spawn point. For cave-type world, the spawn location is at most Y96.  
 > Eternal Night Knights are extremely dangerous. It is recommended to have adequate defense and healing before attempting armed combat.  
 > Eternal Night Knights will not leave their current dimension and will not ride vehicles.
 
@@ -263,7 +263,7 @@ While fishing, you may obtain some biome-specific items.
 
 ## 🌕 Unique Features
 
-> ❗ The following features are unique to their respective maps and only take effect in those maps.
+> ❗ The following features are unique to their respective world and only take effect in those world.
 
 ### 🌸 Guard - Mountain of Cherry Protection (Cherry Blossom Valley)
 - <del>A Divine Artificer exists, and all monsters seek to eliminate him. When the Divine Artificer dies, border energy drains.</del> (Replaced by the Border Sustainer)
@@ -285,10 +285,10 @@ While fishing, you may obtain some biome-specific items.
 
 ---
 
-## 🧭 Maps
+## 🧭 worlds
 
 > 1. **You must use the dedicated map save.** The game cannot be played properly if you create a new world yourself.
-> 2. Maps are sorted by **type and overall difficulty from high to low**. Higher star ratings generally indicate higher survival or resource acquisition difficulty.
+> 2. Worlds are sorted by **type and overall difficulty from high to low**. Higher star ratings generally indicate higher survival or resource acquisition difficulty.
 
 <details>
 <summary>Click here to expand the map list</summary>
@@ -531,10 +531,10 @@ While fishing, you may obtain some biome-specific items.
 ## 📖 Notes
 
 ### Save Upgrades
-- Most maps in this series are vanilla saves, and the modpack will not introduce any mods containing new items or blocks.
+- Most worlds in this series are vanilla saves, and the modpack will not introduce any mods containing new items or blocks.
 - This means you can directly upgrade an older save, e.g., Coastal Settlement from version 1.21.10, to the 26.2 version modpack for playing, as long as Minecraft itself has no issues upgrading the save version.
 - ❗ **In any case, back up your save before upgrading to avoid accidents.**
-- ❗ **Void-type maps have no terrain and will never have chunk upgrade issues.**
+- ❗ **Void-type world have no terrain and will never have chunk upgrade issues.**
 
 ### System Requirements
 - ❗ **This series requires at least Java 25 or higher to run.**
