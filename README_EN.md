@@ -6,7 +6,7 @@ This is a vanilla border survival world series centered on **vanilla survival** 
 
 ## 📗 Before You Play
 
-- This series is not a conventional modpack. It consists of a **dedicated world** and a **core datapack**. The modpack includes only auxiliary mods. **After [Download](https://modrinth.com/modpack/border-survival-persisting-worlds/versions) and installing the modpack**, you **must go to worlds repository [Download](https://github.com/Fndream/BorderSurvivalModpack/tree/master/Worlds_EN) and import the dedicated world** to play properly!
+- This series is not a conventional modpack. It consists of a **dedicated world** and a **core datapack**. The modpack includes only auxiliary mods. **After [Download Modpack](https://modrinth.com/modpack/border-survival-persisting-worlds/versions) and install**, you **must go to worlds repository [Download Dedicated World](https://github.com/Fndream/BorderSurvivalModpack/tree/master/Worlds_EN) and import** to play properly!
 - **There is no difference from vanilla survival in this series**. The first player of this series liked the visual effect of the world border, and thus the initial version of this series was born.
 - Due to the border limitation, alternative acquisition methods for biome or structure exclusive resources have been introduced. These mechanics are called **Core Features**, along with additional **Expansion Features**.
 - When facing difficulties, consulting vanilla mechanics described in the Minecraft wiki, as well as the **Core Features** and **Expansion Features** described below, may provide effective help.
@@ -235,7 +235,7 @@ While fishing, you may obtain some biome-specific items.
 - **Spiritguard Shield**: Absorption V
 - **Spirit Lure Rod**: Speed II
 - **Warped Spirit Lure Rod**: Speed II
-- **Blessing of the Sea**: Conduit Power
+- **Blessing of the Sea**: Conduit Power; fishing always hooks treasure.
 - **Vast Sea Spirit Trident**: Dolphin's Grace
 - **Whirling Spirit Mace**: Strength III
 - **Soaring Spirit Wings**: Slow Falling
