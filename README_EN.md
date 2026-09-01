@@ -263,7 +263,7 @@ While fishing, you may obtain some biome-specific items.
 
 ## 🌕 Unique Features
 
-> ❗ The following features are unique to their respective world and only take effect in those world.
+> ❗ The following features are unique to their respective worlds and only take effect in those worlds.
 
 ### 🌸 Guard - Mountain of Cherry Protection (Cherry Blossom Valley)
 - <del>A Divine Artificer exists, and all monsters seek to eliminate him. When the Divine Artificer dies, border energy drains.</del> (Replaced by the Border Sustainer)
@@ -292,6 +292,23 @@ While fishing, you may obtain some biome-specific items.
 
 <details>
 <summary>Click here to expand the world list</summary>
+
+### 🔥 **Void Thirteen Worlds — Persisting Worlds Array Island**
+🔆 **Type: 6th Anniversary — Main Island Type**    
+✨ **Difficulty: 🔥🔥🔥**
+
+<img src="https://files.seeusercontent.com/2026/09/01/Yn7f/2026-09-01_1640.jpg" width="400" alt="Persisting Worlds Array Island">
+
+---
+> A void realm, blocks form the frame, source fire ignites, enter the persisting world...  
+> The "Void Thirteen Worlds — Persisting Worlds" world uses the fishing pool from the author's save as the world spawn, and includes:  
+> Border Energy 00: Rainbow Beacon  
+> Border Energy 16: Sevenfold Ascending Stairway  
+> Border Energy 28: Spirit Emerald Auto-Sorting Warehouse (84 sorting units + 4 cache layers + 16-block central hub)  
+> Border Energy 42: Ice-Free Ring Treasure Fishing Pool  
+> Border Energy 90: Void Portal Micro-Biome Outer Ring  
+> Border Energy 99: Complete Array Island
+---
 
 ### 🔥 **Void Thirteen Worlds — Persisting Worlds**
 🔆 **Type: 6th Anniversary — Void Type**  
@@ -534,7 +551,7 @@ While fishing, you may obtain some biome-specific items.
 - Most worlds in this series are vanilla saves, and the modpack will not introduce any mods containing new items or blocks.
 - This means you can directly upgrade an older save, e.g., Coastal Settlement from version 1.21.10, to the 26.2 version modpack for playing, as long as Minecraft itself has no issues upgrading the save version.
 - ❗ **In any case, back up your save before upgrading to avoid accidents.**
-- ❗ **Void-type world have no terrain and will never have chunk upgrade issues.**
+- ❗ **Void-type worlds have no terrain and will never have chunk upgrade issues.**
 
 ### System Requirements
 - ❗ **This series requires at least Java 25 or higher to run.**
