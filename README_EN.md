@@ -169,7 +169,7 @@ While fishing, you may obtain some biome-specific items.
 - When no players are nearby, Eternal Night Knights continuously regenerate health.
 - When an Eternal Night Knight takes damage, it disrupts the world, spawning more monsters.
 - Upon being defeated by a player, an Eternal Night Knight drops a random Dimensional Treasure Chest.
-- Additionally, as they are Bugs of the World (bug), all monsters seek to eliminate them.
+- Additionally, as they are World Bug, all monsters seek to eliminate them.
 > Eternal Night Knights only appear at the highest open-air location within a 16-block square radius around the world spawn point. For cave-type world, the spawn location is at most Y96.  
 > Eternal Night Knights are extremely dangerous. It is recommended to have adequate defense and healing before attempting armed combat.  
 > Eternal Night Knights will not leave their current dimension and will not ride vehicles.
@@ -190,7 +190,7 @@ While fishing, you may obtain some biome-specific items.
 > Unenchanted Eternal Divine Weapons can be purified and returned to their origin as Night Spirit Divine Weapons.
 
 ### 🍖 Drops
-- Mobs defeated by **Eternal Night Knights, Wardens, Elder Guardians, Guardians, and Iron Golems** are counted as being defeated by a player.
+- Mobs defeated by **Eternal Night Knight, Warden, Elder Guardian, Guardian, and Iron Golem** are counted as being defeated by a player.
 
 ---
 
@@ -199,28 +199,28 @@ While fishing, you may obtain some biome-specific items.
 - If no Sustainer exists near the world spawn point, border energy will continuously drain.
 - If the Sustainer is too far from the world spawn point, it will attempt to return there.
 - If the Sustainer dies, it will descend again at the world spawn point after some time.
-- Additionally, as a Bug of the World (bug), all monsters seek to eliminate it.
+- Additionally, as a World Bug (bug), all monsters seek to eliminate it.
 > When the Sustainer is near the Divine Artificer, it provides healing to nearby players.  
 > The Sustainer is a baby cat and can be tamed and given gifts normally.  
 > The Sustainer will not leave its current dimension and will not ride vehicles.
 
 ### 🔆 Divine Artificer
 - Has broken the laws of the world and shares a deep origin with the Eternal Night Knights. From him, you can exchange for items that transcend common sense.
-- Additionally, as a Bug of the World (bug), all monsters seek to eliminate him.
+- Additionally, as a World Bug (bug), all monsters seek to eliminate him.
 > The Divine Artificer is an Armorer Villager and can breed and restock normally.  
 > The Divine Artificer is not considered to exist when not in a loaded chunk.
 
-### 🐞 Bugs of the World
-- Bugs of the World targets draw the aggro of all monsters within a horizontal distance of 384 blocks.
-- When a monster is above a Bug of the World target, its vertical pursuit distance is infinite blocks.
-- When a monster is below a Bug of the World target, its vertical pursuit distance is 16 blocks.
-- Monsters other than Eternal Night Knights and Night Knights will not retaliate while pursuing Bugs of the World targets.
-- While pursuing a Bug of the World target, if a player comes within line of sight, the monster will prioritize attacking the player.
+### 🐞 World Bug
+- World Bug targets draw the aggro of all monsters within a horizontal distance of 384 blocks.
+- When a monster is above a World Bug target, its vertical pursuit distance is infinite blocks.
+- When a monster is below a World Bug target, its vertical pursuit distance is 16 blocks.
+- Monsters other than Eternal Night Knights and Night Knights will not retaliate while pursuing World Bug targets.
+- While pursuing a World Bug target, if a player comes within line of sight, the monster will prioritize attacking the player.
 > Endermen will not naturally switch targets to players who haven't looked at them.  
-> Evokers pursue Bugs of the World targets with both horizontal and vertical distances of 384 blocks.  
-> When a Drowned is pursuing a Bug of the World target, if the Euclidean distance to the target is ≤16 blocks, it gains wallhack vision.  
-> When a Creeper is pursuing a Bug of the World target, if the Euclidean distance to the target is ≤8 blocks and the vertical distance is ≤4 blocks, it gains wallhack vision. If its pathfinding is blocked, it will instantly ignite itself.  
-> Creepers will not actively flee from Bugs of the World targets.
+> Evokers pursue World Bug targets with both horizontal and vertical distances of 384 blocks.  
+> When a Drowned is pursuing a World Bug target, if the Euclidean distance to the target is ≤16 blocks, it gains wallhack vision.  
+> When a Creeper is pursuing a World Bug target, if the Euclidean distance to the target is ≤8 blocks and the vertical distance is ≤4 blocks, it gains wallhack vision. If its pathfinding is blocked, it will instantly ignite itself.  
+> Creepers will not actively flee from World Bug targets.
 
 ### 🪵 Flawless Spirit Materials
 - Immortal spirit materials forged by the Divine Artificer from a Chaos Star, fused from the energies of the three dimensions. They possess the Unbreakable trait.
@@ -235,7 +235,7 @@ While fishing, you may obtain some biome-specific items.
 - **Spiritguard Shield**: Absorption V
 - **Spirit Lure Rod**: Speed II
 - **Warped Spirit Lure Rod**: Speed II
-- **Blessing of the Sea**: Conduit Power; fishing always hooks treasure.
+- **Blessing of the Sea**: Conduit Power
 - **Vast Sea Spirit Trident**: Dolphin's Grace
 - **Whirling Spirit Mace**: Strength III
 - **Soaring Spirit Wings**: Slow Falling
@@ -265,7 +265,7 @@ While fishing, you may obtain some biome-specific items.
 
 > ❗ The following features are unique to their respective worlds and only take effect in those worlds.
 
-### 🌸 Guard - Mountain of Cherry Protection (Cherry Blossom Valley)
+### 🌸 Guard - Cherry Blossom Valley
 - <del>A Divine Artificer exists, and all monsters seek to eliminate him. When the Divine Artificer dies, border energy drains.</del> (Replaced by the Border Sustainer)
 
 ### 🌑 Eternal Night - Night Island Garden
