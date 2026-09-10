@@ -159,11 +159,6 @@ While fishing, you may obtain some biome-specific items.
 - After all Eternal Night Knights are defeated, the world climate returns to normal, the border color gradually recovers, and the color will foreshadow the arrival of the next Eternal Night.
 > Observing the moon phase changes in the Day-Night mode time bar can also predict the moment of the next Eternal Night's descent.
 
-> **❗ The Eternal Snowy Night will continuously cause snow accumulation and ice formation across all biomes. If you do not want snow to affect your save's terrain, as the first thing after entering the game, you must use the following command to set the snow accumulation height to 0 before the Eternal Night descends:**
-> ```
-> /gamerule max_snow_accumulation_height 0
-> ```
-
 ### 🐎 Eternal Night Knights
 - The maximum health of Eternal Night Knights increases with border energy.
 - When no players are nearby, Eternal Night Knights continuously regenerate health.
@@ -487,10 +482,6 @@ While fishing, you may obtain some biome-specific items.
 ## 📕 Game Rules
 - ❗ **Even with keepInventory enabled, experience is still dropped on death.**
 - ❗ **Even with keepInventory enabled, the Curse of Vanishing still takes effect.**
-> ❗ **The Eternal Snowy Night will continuously cause snow accumulation and ice formation across all biomes. If you do not want snow to affect your save's terrain, as the first thing after entering the game, you must use the following command to set the snow accumulation height to 0 before the Eternal Night descends:**
-> ```
-> /gamerule max_snow_accumulation_height 0
-> ```
 
 > ❌ The vanilla `/gamerule mob_griefing false` command is commonly used for anti-griefing, but it prevents villagers from picking up food, piglins from picking up gold, and monsters from picking up armor/tools.
 
