@@ -1,4 +1,4 @@
-![banner.jpg](https://files.seeusercontent.com/2026/08/03/6ksL/banner.jpg)
+![banner.jpg](https://files.seeusercontent.com/2026/09/23/blK7/banner.jpg)
 
 ## 📓 Introduction
 
@@ -6,7 +6,7 @@ This is a vanilla border survival world series centered on **vanilla survival** 
 
 ## 📗 Before You Play
 
-- This series is not a conventional modpack. It consists of a **dedicated world** and a **core datapack**. The modpack includes only auxiliary mods. **After [Download Modpack](https://modrinth.com/modpack/border-survival-persisting-worlds/versions) and install**, you **must go to worlds repository [Download Dedicated World](https://github.com/Fndream/BorderSurvivalModpack/tree/master/Worlds_EN) and import** to play properly!
+- This series is not a conventional modpack. It consists of a **dedicated world** and a **core datapack**. The modpack includes only auxiliary mods. **After [Download Modpack](https://modrinth.com/modpack/border-survival-persisting-worlds/versions) and install**, you **must go to worlds repository [Download Dedicated World](https://github.com/Fndream/BorderSurvivalModpack/tree/master/Worlds_26.3) and import** to play properly!
 - **There is no difference from vanilla survival in this series**. The first player of this series liked the visual effect of the world border, and thus the initial version of this series was born.
 - Due to the border limitation, alternative acquisition methods for biome or structure exclusive resources have been introduced. These mechanics are called **Core Features**, along with additional **Expansion Features**.
 - When facing difficulties, consulting vanilla mechanics described in the Minecraft wiki, as well as the **Core Features** and **Expansion Features** described below, may provide effective help.
@@ -66,7 +66,7 @@ Function sign monuments provided by the world, containing the following three fu
 While fishing, you may obtain some biome-specific items.
 
 - **Added to Junk loot pool**: Seagrass, Kelp, Sugar Cane, Cactus, Bamboo, Sea Pickle, Cocoa Beans, Prismarine Shard, Prismarine Crystals, Coral, Coral Fan, Chorus Flower.
-- **Added to Treasure loot pool**: Budding Amethyst, Obsidian, Ice, Packed Ice, Blue Ice, ? ? ?.
+- **Added to Treasure loot pool**: Budding Amethyst, Obsidian, Ice, Packed Ice, Blue Ice, Coral Block, ? ? ?.
 
 ### 🐱 Cat
 - **Added to Gifts**: Leaves, Diamond.
@@ -79,7 +79,7 @@ While fishing, you may obtain some biome-specific items.
 
 ### 💎 Loot Chests
 - **Added to Plains Village House**: Sunflower, Rose Bush, Peony, Lilac, Pink Petals, Wildflowers, Leaf Litter, Glow Lichen.
-- **Added to Savanna Village House**: Armadillo Scute, Bush, Firefly Bush.
+- **Added to Savanna Village House**: Armadillo Scute, Bush, Firefly Bush, Red Bush.
 - **Added to Village Mason House**: Pointed Dripstone, Sulfur Spike.
 - **Added to Shipwreck Supply Chest**: Pale Moss Block, Pale Hanging Moss.
 - **Added to Buried Treasure**: Turtle Egg.
@@ -113,14 +113,12 @@ While fishing, you may obtain some biome-specific items.
 ### 🌿 Carpet Series (Carpet Mod & Addition)
 **✅ The following features are enabled by default:**
 - Large Barrels: When two barrels are connected back-to-back, the container space of both barrels can be used simultaneously.
-- Better Bone Meal: Bone meal can fertilize Cactus, Sugar Cane, and Lily Pads.
 - Renewable Sand: Cobblestone crushed by a falling Anvil transforms into Sand.
 - Soul Sand Conversion: Mobs that die from fire on Sand transform the Sand into Soul Sand.
 - Renewable Sponge: A Guardian struck by lightning transforms into an Elder Guardian.
 - Renewable Wither Skeleton: A Skeleton struck by lightning transforms into a Wither Skeleton.
 - Renewable Coral: Coral can be fertilized with bone meal.
 - Shulker Respawn: Shulkers respawn in End Cities.
-- Spider Jockeys drop Enchanted Golden Apples.
 - Shulker Box Stacking: Empty Shulker Boxes on the ground can be stacked into 1 group.
 - Empty Shulker Boxes Always Stackable: Empty Shulker Boxes are also stackable in the inventory.
 - Fake Player Residency: Fake players are preserved when you log out.
@@ -164,7 +162,7 @@ While fishing, you may obtain some biome-specific items.
 - When no players are nearby, Eternal Night Knights continuously regenerate health.
 - When an Eternal Night Knight takes damage, it disrupts the world, spawning more monsters.
 - Upon being defeated by a player, an Eternal Night Knight drops a random Dimensional Treasure Chest.
-- Additionally, as they are World Bug, all monsters seek to eliminate them.
+- Additionally, as they are Bugs of the World (bug), all monsters seek to eliminate them.
 > Eternal Night Knights only appear at the highest open-air location within a 16-block square radius around the world spawn point. For cave-type world, the spawn location is at most Y96.  
 > Eternal Night Knights are extremely dangerous. It is recommended to have adequate defense and healing before attempting armed combat.  
 > Eternal Night Knights will not leave their current dimension and will not ride vehicles.
@@ -185,7 +183,7 @@ While fishing, you may obtain some biome-specific items.
 > Unenchanted Eternal Divine Weapons can be purified and returned to their origin as Night Spirit Divine Weapons.
 
 ### 🍖 Drops
-- Mobs defeated by **Eternal Night Knight, Warden, Elder Guardian, Guardian, and Iron Golem** are counted as being defeated by a player.
+- Mobs defeated by **Eternal Night Knights, Wardens, Elder Guardians, Guardians, and Iron Golems** are counted as being defeated by a player.
 
 ---
 
@@ -194,28 +192,28 @@ While fishing, you may obtain some biome-specific items.
 - If no Sustainer exists near the world spawn point, border energy will continuously drain.
 - If the Sustainer is too far from the world spawn point, it will attempt to return there.
 - If the Sustainer dies, it will descend again at the world spawn point after some time.
-- Additionally, as a World Bug (bug), all monsters seek to eliminate it.
+- Additionally, as a Bug of the World (bug), all monsters seek to eliminate it.
 > When the Sustainer is near the Divine Artificer, it provides healing to nearby players.  
 > The Sustainer is a baby cat and can be tamed and given gifts normally.  
 > The Sustainer will not leave its current dimension and will not ride vehicles.
 
 ### 🔆 Divine Artificer
 - Has broken the laws of the world and shares a deep origin with the Eternal Night Knights. From him, you can exchange for items that transcend common sense.
-- Additionally, as a World Bug (bug), all monsters seek to eliminate him.
+- Additionally, as a Bug of the World (bug), all monsters seek to eliminate him.
 > The Divine Artificer is an Armorer Villager and can breed and restock normally.  
 > The Divine Artificer is not considered to exist when not in a loaded chunk.
 
-### 🐞 World Bug
-- World Bug targets draw the aggro of all monsters within a horizontal distance of 384 blocks.
-- When a monster is above a World Bug target, its vertical pursuit distance is infinite blocks.
-- When a monster is below a World Bug target, its vertical pursuit distance is 16 blocks.
-- Monsters other than Eternal Night Knights and Night Knights will not retaliate while pursuing World Bug targets.
-- While pursuing a World Bug target, if a player comes within line of sight, the monster will prioritize attacking the player.
+### 🐞 Bugs of the World
+- Bugs of the World targets draw the aggro of all monsters within a horizontal distance of 384 blocks.
+- When a monster is above a Bug of the World target, its vertical pursuit distance is infinite blocks.
+- When a monster is below a Bug of the World target, its vertical pursuit distance is 16 blocks.
+- Monsters other than Eternal Night Knights and Night Knights will not retaliate while pursuing Bugs of the World targets.
+- While pursuing a Bug of the World target, if a player comes within line of sight, the monster will prioritize attacking the player.
 > Endermen will not naturally switch targets to players who haven't looked at them.  
-> Evokers pursue World Bug targets with both horizontal and vertical distances of 384 blocks.  
-> When a Drowned is pursuing a World Bug target, if the Euclidean distance to the target is ≤16 blocks, it gains wallhack vision.  
-> When a Creeper is pursuing a World Bug target, if the Euclidean distance to the target is ≤8 blocks and the vertical distance is ≤4 blocks, it gains wallhack vision. If its pathfinding is blocked, it will instantly ignite itself.  
-> Creepers will not actively flee from World Bug targets.
+> Evokers pursue Bugs of the World targets with both horizontal and vertical distances of 384 blocks.  
+> When a Drowned is pursuing a Bug of the World target, if the Euclidean distance to the target is ≤16 blocks, it gains wallhack vision.  
+> When a Creeper is pursuing a Bug of the World target, if the Euclidean distance to the target is ≤8 blocks and the vertical distance is ≤4 blocks, it gains wallhack vision. If its pathfinding is blocked, it will instantly ignite itself.  
+> Creepers will not actively flee from Bugs of the World targets.
 
 ### 🪵 Flawless Spirit Materials
 - Immortal spirit materials forged by the Divine Artificer from a Chaos Star, fused from the energies of the three dimensions. They possess the Unbreakable trait.
@@ -260,7 +258,7 @@ While fishing, you may obtain some biome-specific items.
 
 > ❗ The following features are unique to their respective worlds and only take effect in those worlds.
 
-### 🌸 Guard - Cherry Blossom Valley
+### 🌸 Guard - Mountain of Cherry Protection (Cherry Blossom Valley)
 - <del>A Divine Artificer exists, and all monsters seek to eliminate him. When the Divine Artificer dies, border energy drains.</del> (Replaced by the Border Sustainer)
 
 ### 🌑 Eternal Night - Night Island Garden
@@ -288,33 +286,37 @@ While fishing, you may obtain some biome-specific items.
 <details>
 <summary>Click here to expand the world list</summary>
 
-### 🔥 **Void Thirteen Worlds — Persisting Worlds Array Island**
-🔆 **Type: 6th Anniversary — Main Island Type**    
+### 🔥 **Void Fifteen Worlds — Persisting Worlds Array Island**
+🔥 **Type: 6th Anniversary — Main Island Type**  
 ✨ **Difficulty: 🔥🔥🔥**
 
-<img src="https://files.seeusercontent.com/2026/09/01/Yn7f/2026-09-01_1640.jpg" width="400" alt="Persisting Worlds Array Island">
+<img src="https://files.seeusercontent.com/2026/09/23/fbT3/0d48ad2.jpg" width="400" alt="Persisting Worlds Array Island">
 
 ---
 > A void realm, blocks form the frame, source fire ignites, enter the persisting world...  
-> The "Void Thirteen Worlds — Persisting Worlds" world uses the fishing pool from the author's save as the world spawn, and includes:  
+> The "Void Fifteen Worlds, Persisting Worlds" world uses the fishing pool from the author's save as the world spawn, and includes:  
 > Border Energy 00: Rainbow Beacon  
 > Border Energy 16: Sevenfold Ascending Stairway  
-> Border Energy 28: Spirit Emerald Auto-Sorting Warehouse (84 sorting units + 4 cache layers + 16-block central hub)  
-> Border Energy 42: Ice-Free Ring Treasure Fishing Pool  
-> Border Energy 90: Void Portal Micro-Biome Outer Ring  
+> Border Energy 28: Spirit Emerald Auto Sorting Warehouse (84 sorting units + 4 cache layers + 16 block central hub)  
+> Border Energy 42: Ice Free Ring Treasure Fishing Pool  
+> Border Energy 90: Void Portal Micro Biome Outer Ring  
 > Border Energy 99: Complete Array Island
+> 
+> Release Date: 2026-09-01 - 26.2
 ---
 
-### 🔥 **Void Thirteen Worlds — Persisting Worlds**
+### 🔥 **Void Fifteen Worlds — Persisting Worlds**
 🔆 **Type: 6th Anniversary — Void Type**  
 ✨ **Difficulty: 🔥🔥🔥🔥🔥**
 
-<img src="https://files.seeusercontent.com/2026/06/18/jBs5/9f7e2b5.jpg" width="400" alt="Persisting Worlds">
+<img src="https://files.seeusercontent.com/2026/09/23/tJj4/a19fbb4.jpg" width="400" alt="Persisting Worlds">
 
 ---
 > A void realm, blocks form the frame, source fire ignites, enter the persisting world...
+> 
+> Release Date: 2026-06-23 - 26.2
 ---
-### 🌑 **Cursed Eternal Night — Night Island Garden**
+### 🌑 **Cursed Eternal Night — Night Garden**
 🥥 **Type: 5th Anniversary — Floating Island Type**  
 ⚡ **Difficulty: 🌙🌙🌙🌙🌙🌙**
 
@@ -325,6 +327,7 @@ While fishing, you may obtain some biome-specific items.
 > Dance with the demons... Live with the chaos...
 >
 > Portal: Pale Moss Block
+> Release Date: 2025-01-15 - 1.21.4
 ---
 ### 🌿 **Axolotl World — Lush Caves**
 🛖 **Type: 4th Anniversary — Cave Type**  
@@ -341,8 +344,9 @@ While fishing, you may obtain some biome-specific items.
 > —From a lost diary of a Divine Artificer
 >
 > Portal: Moss Block
+> Release Date: 2024-08-17 - 1.21.1
 ---
-### 🌺 **Hidden Paradise — Cherry Blossom Valley**
+### 🌺 **Hidden Paradise — Cherry Valley**
 🍀 **Type: 3rd Anniversary — Vanilla Type**   
 ✨ **Difficulty: 🌸🌸**
 
@@ -354,6 +358,7 @@ While fishing, you may obtain some biome-specific items.
 > But what's different is, the Sustainer has taken over the guard of this realm...
 >
 > Portal: Cherry Wood
+> Release Date: 2024-02-09 - 1.20.4
 ---
 ### ⛅ **Void**
 🔆 **Type: Void Type**  
@@ -364,6 +369,8 @@ While fishing, you may obtain some biome-specific items.
 ---
 > A world where both the Overworld and the Nether are void.  
 > **Recommended to attempt only with ample time and thorough knowledge of vanilla and core features.**
+> 
+> Release Date: 2024-11-10 - 1.21.1
 ---
 ### 🦠 **Painted Caverns — Sulfur Caves**
 🛖 **Type: Cave Type**  
@@ -375,6 +382,7 @@ While fishing, you may obtain some biome-specific items.
 > 26.2 themed world, an underground world like an ancient painted scroll.
 >
 > Portal: Chiseled Sulfur
+> Release Date: 2026-06-23 - 26.2
 
 ---
 ### 🌳 **Sacred Lake and Peaks — Spruce Floating Island**
@@ -388,6 +396,7 @@ While fishing, you may obtain some biome-specific items.
 > **This world's terrain was generated by kinbee's [RevampedFloatingIslands](https://modrinth.com/datapack/revamped-floating-islands) datapack!**
 >
 > Portal: Spruce Wood
+> Release Date: 2025-12-18 - 1.21.10
 
 ---
 ### 🌿 **Land Abundant Rain — Lush Floating Island**
@@ -401,6 +410,7 @@ While fishing, you may obtain some biome-specific items.
 > **This world's terrain was generated by kinbee's [RevampedFloatingIslands](https://modrinth.com/datapack/revamped-floating-islands) datapack!**
 >
 > Portal: Clay
+> Release Date: 2025-12-18 - 1.21.10
 
 ---
 ### 🧊 **Realm Extreme Ice — Frozen Icebergs**
@@ -414,33 +424,49 @@ While fishing, you may obtain some biome-specific items.
 > Ceiling-piercing ice spikes, a boundless frozen ocean.
 >
 > Portal: Blue Ice
+> Release Date: 2024-04-24 - 1.20.4
 
 ---
 ### 🌴 **Coral Rain Bamboo Land — Jungle Island**
 🍀 **Type: Vanilla Type**  
 ✨ **Difficulty: ⭐⭐⭐**
 
-<img src="https://files.seeusercontent.com/2026/06/26/eI5s/0d02daf.jpg" width="400" alt="Rainforest Island">
+<img src="https://files.seeusercontent.com/2026/06/26/eI5s/0d02daf.jpg" width="400" alt="Jungle Island">
 
 ---
 > An island containing a coral sea, rainforest, and bamboo forest.
 >
 > Portal: Jungle Wood
+> Release Date: 2025-02-02 - 1.21.4
+
+---
+### 🍁 **Sunset Gorge — Dappled Valley**
+🍀 **Type: Vanilla Type**  
+✨ **Difficulty: ⭐⭐**
+
+<img src="https://files.seeusercontent.com/2026/09/21/hI4w/2026-09-21_1638.jpg" width="400" alt="Dappled Valley">
+
+---
+> 26.3 themed world, a basin world containing a dappled forest and a cherry blossom grove.
+>
+> Portal: Poplar Wood
+> Release Date: 2026-09-15 - 26.3
 
 ---
 ### 🌿 **Pure Land Marsh — Marsh Savanna**
 🍀 **Type: Vanilla Type**  
 ✨ **Difficulty: ⭐⭐**
 
-<img src="https://files.seeusercontent.com/2026/06/26/oH8i/dd7d1bf.jpg" width="400" alt="Marsh Savannaa">
+<img src="https://files.seeusercontent.com/2026/06/26/oH8i/dd7d1bf.jpg" width="400" alt="Marsh Savanna">
 
 ---
 > 1.19 themed world, an acacia plains and plains village surrounded by a mangrove swamp.
 >
 > Portal: Mud
+> Release Date: 2022-06-18 - 1.19
 
 ---
-### 🪵 **Valley Forest Lake — Verdant Forest Lake**
+### 🪵 **Valley Forest Lake — Verdant Lake**
 🍀 **Type: Vanilla Type**  
 ✨ **Difficulty: ⭐⭐**
 
@@ -450,9 +476,10 @@ While fishing, you may obtain some biome-specific items.
 > 1.20 themed world, a cherry blossom forest and a plains heart lake surrounded by steep mountains.
 >
 > Portal: Oak Wood
+> Release Date: 2025-12-21 - 1.21.10
 
 ---
-### 🌸 **Summit Cherry Blossom — Cherry Blossom Plain**
+### 🌸 **Summit Cherry Blossom — Cherry Plain**
 🍀 **Type: Vanilla Type**  
 ✨ **Difficulty: ⭐⭐**
 
@@ -462,6 +489,7 @@ While fishing, you may obtain some biome-specific items.
 > 1.20 themed world, a cherry blossom forest surrounded by steep mountains.
 >
 > Portal: Cherry Log
+> Release Date: 2024-01-29 - 1.20.4
 
 ---
 ### 🌵 **Triphibious Coast — Coastal Settlement**
@@ -476,6 +504,21 @@ While fishing, you may obtain some biome-specific items.
 > A commemorative world for the series' first world, "Island Village".
 >
 > Portal: Smooth Sandstone
+> Release Date: 2024-02-03 - 1.20.4
+
+---
+### 🔱 **Departure Point — Island Village**
+🍀 **Type: Vanilla Type**   
+✨ **Difficulty: ⭐**
+
+<img src="https://files.seeusercontent.com/2026/09/21/5bMo/fa88de3.jpg" width="400" alt="Island Village">
+
+---
+> "Where the dream begins anew."
+>
+> Portal: Poplar Log
+> Release Date: 2026-09-15 - 26.3
+
 ---
 </details>
 
@@ -536,13 +579,35 @@ While fishing, you may obtain some biome-specific items.
 
 ---
 
-## 📖 Notes
-
-### Save Upgrades
+## 📚 Save Upgrades
 - Most worlds in this series are vanilla saves, and the modpack will not introduce any mods containing new items or blocks.
 - This means you can directly upgrade an older save, e.g., Coastal Settlement from version 1.21.10, to the 26.2 version modpack for playing, as long as Minecraft itself has no issues upgrading the save version.
 - ❗ **In any case, back up your save before upgrading to avoid accidents.**
 - ❗ **Void-type worlds have no terrain and will never have chunk upgrade issues.**
+- ❗ **Maps no longer maintained cannot be upgraded:** Thunderous Sea Voyage, Snowbound Ruined City, Abundant Forest Isle, Thorn Palace Cave.
+
+### Save Upgrade Method: Applicable for 26.2 -> 26.3
+**Back up your save before upgrading! To prevent operational errors or unexpected situations!**
+- Persisting Worlds / Persisting Worlds Array Island:
+    1. Download the "World Upgrade - Persisting Worlds & Persisting Worlds Array Island - 26.2->26.3" overwrite world upgrade pack.
+    2. Extract both folders "data" and "dimensions" from the upgrade archive to the root directory of the corresponding save for overwrite upgrade.
+- Other maps: Import directly into the new modpack version to play. Can be upgraded directly, or via the Optimize World feature.
+
+### Save Upgrade Method: Applicable for 1.21.10 -> 26.2
+**Back up your save before upgrading! To prevent operational errors or unexpected situations!**
+- Vanilla / Amplified maps: Import directly into the new modpack version to play. Can be upgraded directly, or via the Optimize World feature.
+- Other map types (Void, Floating Island, Cave):
+    1. **Back up your save**, import the save into the new modpack version (26.2).
+    2. Launch the game, select the save, choose `Upgrade and open the world`, choose `I know what I'm doing` to upgrade the save format.
+    3. Select `No` when asked "Do you want to join the world now?".
+    4. Download the corresponding 26.2 version map. (The following steps require precise file replacement/deletion. Do not touch any other files.)
+    5. Replace the `data/minecraft/world_gen_settings.dat` file in the save directory with the one from the 26.2 version map archive.
+    6. Delete all datapack files or folders inside the save's `datapacks` directory except for the `init` folder, leaving only the `init` folder.
+    7. Upgrade complete. You can now enter the game.
+
+---
+
+## 📖 Notes
 
 ### System Requirements
 - ❗ **This series requires at least Java 25 or higher to run.**
@@ -561,19 +626,30 @@ While fishing, you may obtain some biome-specific items.
 > ❗ This series will not actively attempt to be compatible with non-natively added mods. If you encounter chemical reactions from mods you added yourself, please take on the role of the author of your own custom modpack and be responsible for it yourself.  
 > ❗ Note: According to the usage agreement, modified modpacks are for your personal use only. You may not redistribute the original or modified files of this series in public settings.
 
+## 📖 FAQ
+
+**Q: The modpack cannot be recognized after installation?**
+
+**A:** Any launcher that supports the Modrinth format online pack can recognize it. Please confirm you are importing the modpack file starting with "BorderSurvival", not the world pack file starting with "边界生存".
+
 ---
 
-## 📖 FAQ
+**Q: How to install the map?**
+
+**A:** After the modpack is installed, open the saves folder for that game version via your launcher, and extract the save folder inside the world archive in the "边界生存-XXXX" format into that directory.  
+**B:** After launching the game, select "Singleplayer". If installed correctly, a save with the corresponding world name will appear. Enter the save to start playing.
+
+---
+
 **Q: How to update the modpack to get the latest features?**
 
 **A:** Replace mods, keep the original version
-1. Download the new modpack.
-2. Use the launcher to install the new modpack as a temporary instance.
-3. Delete the original game instance's `mods` directory files that come with the modpack. Do not delete mods you added yourself.
-4. Copy all files from the new game instance's `mods` directory to the original game instance's `mods` directory.
+1. Download and install the new modpack via the launcher as a temporary instance.
+2. Delete the original game instance's `mods` directory files that come with the modpack. Do not delete mods you added yourself.
+3. Copy all files from the newly installed temporary instance's `mods` directory to the original game instance's `mods` directory.
 
 **B:** Migrate resources, clean install new version
-1. Download and install the new modpack.
+1. Download and install the new modpack via the launcher.
 2. Copy the following folders or files from the original game instance to the new game instance directory:
     - `config` (Mod configuration folder)
     - `mods` (**Only your self-added mod files**)
@@ -587,6 +663,7 @@ While fishing, you may obtain some biome-specific items.
 **Q: How to repair a broken function sign?**
 
 **A:** Use the following command to obtain it. Placing it requires Creative Mode.
+
 ```/function border_survival:get_sign```
 
 ---
@@ -687,4 +764,4 @@ Unauthorized excerpts or reproductions of the text and images in this document a
 - ❌ Prohibited: This series is not suitable for server hosting as a service. You may not and cannot use this series for any server, except for personal server-style LAN connections.
 
 ## ⌛ First release date
-2020-05-23 - Island Village
+2020-05-23 - Island Village - Minecraft 1.15.2
