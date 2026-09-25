@@ -1,5 +1,7 @@
 ![banner.jpg](https://files.seeusercontent.com/2026/09/23/blK7/banner.jpg)
 
+[![🧭 项目主页](https://img.shields.io/badge/🧭-%E9%A1%B9%E7%9B%AE%E4%B8%BB%E9%A1%B5-332a21?style=for-the-badge&labelColor=332a21&logoColor=e5aa2e)](https://fndream.github.io/BorderSurvivalModpack/?lang=zh)
+
 ## 📓 简介
 
 这是一个以**原版生存**为主要玩法的原版边界生存地图系列。从狭隘的空间启程，以智慧觅取资源，以勇气宣战昼夜，以经验开拓世界边界。适合熟悉原版特性的玩家。

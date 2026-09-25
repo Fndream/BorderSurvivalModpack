@@ -401,7 +401,20 @@ li::marker{color:#d99a2e}
 </style>
 <script>
 (function(){
-  var l=null;try{l=localStorage.getItem('bs-lang')}catch(e){}
+  /* URL 参数优先于 localStorage：?lang=zh|en 显式指定语言（优先级最高），
+     其次 /en 路径与 #en 锚点；都没有才用 localStorage。
+     /update（或 ?mode=update）由主脚本在 DOM 就绪后切到更新日志模式。
+     这些只影响本次访问、不写回 localStorage，用户回根路径仍按自己偏好显示。 */
+  var p=location.pathname||'',q=location.search||'',h=location.hash||'';
+  var uLang=null,m=/(?:^|[?&])lang=(zh|en)(?:&|$)/i.exec(q);
+  if(m){uLang=m[1].toLowerCase()}
+  else if(/(?:^|\/)en(?:\/|$)/i.test(p)||/^#en(?:$|[/?&#])/i.test(h)){uLang='en'}
+  window.__bsURL={
+    lang:uLang,
+    update:/(?:^|\/)update(?:\/|$)/i.test(p)||/(?:^|[?&])mode=update(?:&|$)/i.test(q)||/^#update(?:$|[/?&#])/i.test(h)
+  };
+  var l=uLang;
+  if(!l){try{l=localStorage.getItem('bs-lang')}catch(e){}}
   if(l!=='zh'&&l!=='en'){l=((navigator.language||'').toLowerCase().indexOf('zh')===0)?'zh':'en'}
   document.documentElement.className='lang-'+l;
   document.documentElement.lang=(l==='zh')?'zh-CN':'en';
@@ -2070,8 +2083,10 @@ li::marker{color:#d99a2e}
       <ul>
         <li>切石机可转换的基础建材新增：杨木原木。</li>
       </ul>
-      <h4>📱 模组</h4>
+      <h4>📱 资源</h4>
       <ul>
+        <li>新增：[奇幻世界动画]fwa、[Shader]EuphoriaPatcher模组</li>
+        <li>新增：BSL、ComplementaryReimagined光影，默认禁用。</li>
         <li>暂时移除[微妙粒子]SubtleEffects、[皮肤补丁]CustomSkinLoader、[地毯拓展]CarpetExtra模组。</li>
       </ul>
       <h4>📱 模组配置</h4>
@@ -2108,8 +2123,10 @@ li::marker{color:#d99a2e}
       <ul>
         <li>Poplar Log added to the basic building materials convertible by the Stonecutter.</li>
       </ul>
-      <h4>📱 Mods</h4>
+      <h4>📱 Resources</h4>
       <ul>
+        <li>Added: fwa (Fantasy World Animation) and EuphoriaPatcher (Shader) mods.</li>
+        <li>Added: BSL and ComplementaryReimagined shader packs, disabled by default.</li>
         <li>SubtleEffects, CustomSkinLoader and CarpetExtra are temporarily removed.</li>
       </ul>
       <h4>📱 Mod Configuration</h4>
@@ -2619,6 +2636,10 @@ document.querySelectorAll('.gate-icon').forEach(function(img){
       else if(document.body.classList.contains('changelog-only')){toggleChangelog(false)}
     }
   });
+  /* URL 指定 /update（或 ?mode=update）时，默认进入更新日志模式。
+     放在 IIFE 末尾：此时 DOM 与侧栏目录均已构建完毕，toggleChangelog 内部会
+     备份目录、切版本导航、刷新滚动高亮缓存并同步两处按钮的 aria-pressed/.active。 */
+  if(window.__bsURL&&window.__bsURL.update){toggleChangelog(true)}
 })();
 </script>
 <script>
