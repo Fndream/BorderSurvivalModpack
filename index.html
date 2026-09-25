@@ -63,14 +63,20 @@ html,.toc,.map-group .map-grid,.tablewrap,pre{scrollbar-width:thin;scrollbar-col
 body{background:var(--bg);color:var(--text);font-family:system-ui,-apple-system,"Segoe UI","PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;line-height:1.75;-webkit-font-smoothing:antialiased}
 img{max-width:100%}
 a{color:var(--link)}
-.wrap{max-width:1080px;margin:0 auto;padding:0 18px}
+.wrap{max-width:1080px;margin:0 auto;padding:0 18px;position:relative;z-index:1}
 .muted{color:var(--muted)}
 .top-spacer{flex:1}
 
 /* ===== 语言切换 ===== */
 html.lang-zh .en{display:none!important}
 html.lang-en .zh{display:none!important}
-html.lang-lzh .en{display:none!important}
+
+/* ===== 双模式：文档模式（默认）/ 更新日志模式（点顶栏「更新日志」进入，再点或 Esc 退出） ===== */
+body:not(.changelog-only) main > section.card#changelog{display:none!important}
+body.changelog-only main > section.card:not(#changelog){display:none!important}
+body.changelog-only #changelogBtn{border-color:var(--accent);color:var(--accent)}
+body.changelog-only .cta a.ghost[data-changelog],
+body.changelog-only .cta a.ghost[data-changelog]:hover{background:linear-gradient(135deg,#f0c04c,#e0a528);color:#33291f;border-color:transparent}
 
 /* ===== 顶栏 ===== */
 .topbar{position:sticky;top:0;z-index:60;background:var(--topbar-bg);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid var(--border)}
@@ -83,9 +89,9 @@ html.lang-lzh .en{display:none!important}
 .side-close{display:none;padding:5px 10px}
 
 /* ===== 左侧树型目录 ===== */
-.sidebar{position:fixed;top:var(--top-h);left:0;bottom:0;width:var(--side-w);background:var(--card);border-right:1px solid var(--border);display:flex;flex-direction:column;z-index:55;transform:translateX(-100%);visibility:hidden;transition:transform .22s ease,visibility .22s ease}
+.sidebar{position:fixed;top:var(--top-h);left:0;bottom:0;width:var(--side-w);background:var(--card);border-right:1px solid var(--border);display:flex;flex-direction:column;z-index:55;transform:translateX(-100%);visibility:hidden;transition:transform .22s ease,visibility .22s ease,background-color .16s ease-out,border-color .16s ease-out}
 .sidebar.open{transform:none;visibility:visible}
-.side-head{padding:13px 14px 9px;font-weight:800;font-size:.95rem;display:flex;justify-content:space-between;align-items:center;gap:8px;border-bottom:1px dashed var(--border)}
+.side-head{padding:13px 14px 9px;font-weight:800;font-size:.95rem;display:flex;justify-content:space-between;align-items:center;gap:8px;border-bottom:1px solid var(--border)}
 .toc{overflow-y:auto;padding:10px 10px 26px;flex:1}
 .toc-item{margin-bottom:2px}
 .toc-head{display:flex;align-items:center;gap:2px}
@@ -101,13 +107,67 @@ html.lang-lzh .en{display:none!important}
 .side-overlay{position:fixed;inset:0;background:rgba(0,0,0,.45);opacity:0;pointer-events:none;transition:opacity .2s;z-index:54}
 .side-overlay.show{opacity:1;pointer-events:auto}
 
-/* ===== 右侧悬浮下载栏 ===== */
-.dl-rail{position:fixed;right:14px;top:50%;transform:translateY(-50%);display:flex;flex-direction:column;gap:10px;z-index:50}
-.dl-btn{display:inline-flex;align-items:center;gap:6px;padding:10px 16px;border-radius:999px;background:var(--btn-bg);border:1.5px solid var(--border);color:var(--text);text-decoration:none;font-weight:700;font-size:.88rem;box-shadow:var(--shadow);transition:.15s;white-space:nowrap}
-.dl-btn:hover{border-color:var(--accent);color:var(--btn-on-hover);transform:translateX(-3px)}
-.dl-btn.primary{background:linear-gradient(135deg,#f97316,#ea580c);border-color:transparent;color:#ffffff;box-shadow:0 6px 18px rgba(234,88,12,.35)}
-:root[data-theme="dark"] .dl-btn.primary{box-shadow:0 6px 18px rgba(249,115,22,.28)}
-.dl-btn.primary:hover{color:var(--accent-on);filter:brightness(1.06);transform:translateX(-3px)}
+/* ===== 顶部导航按钮（下载/Issues，原右侧悬浮下载栏） ===== */
+.top-dl{display:inline-flex;align-items:center;gap:5px;padding:6px 14px;border-radius:999px;background:var(--btn-bg);border:1.5px solid var(--border);color:var(--text);text-decoration:none;font-weight:700;font-size:.85rem;line-height:1.4;white-space:nowrap;transition:.15s}
+.top-dl:hover{border-color:var(--accent);color:var(--btn-on-hover);transform:translateY(-2px)}
+.top-dl.primary{background:linear-gradient(135deg,#f97316,#ea580c);border-color:transparent;color:#ffffff;box-shadow:0 4px 12px rgba(234,88,12,.30)}
+:root[data-theme="dark"] .top-dl.primary{box-shadow:0 4px 12px rgba(249,115,22,.25)}
+.top-dl.primary:hover{color:var(--accent-on);filter:brightness(1.06)}
+
+/* ===== 语言下拉菜单 ===== */
+.lang-wrap{position:relative}
+.lang-pop{position:absolute;right:0;top:calc(100% + 8px);min-width:158px;background:var(--card);border:1.5px solid var(--border);border-radius:14px;box-shadow:0 14px 34px rgba(28,22,14,.18);padding:6px;display:flex;flex-direction:column;gap:2px;opacity:0;visibility:hidden;transform:translateY(-7px) scale(.96);transform-origin:top right;transition:opacity .16s ease,transform .16s ease,visibility .16s;z-index:70}
+.lang-wrap.open .lang-pop{opacity:1;visibility:visible;transform:none}
+.lang-opt{border:none;background:transparent;text-align:left;padding:8px 12px;border-radius:9px;font-size:.88rem;font-weight:700;color:var(--text);cursor:pointer;display:flex;align-items:center;gap:7px;transition:.13s;font-family:inherit;line-height:1.4}
+.lang-opt:hover{background:var(--btn-bg);color:var(--btn-on-hover)}
+.lang-opt.cur{background:linear-gradient(135deg,#f0c04c,#e0a528);color:#33291f}
+.lang-opt.cur:hover{color:#33291f;filter:brightness(1.04)}
+/* ===== 地图下载方式弹窗 ===== */
+/* ===== 秋季背景粒子（MC 风红黄像素粒子，内容之下、随主题常驻） ===== */
+#bgfx{position:fixed;inset:0;z-index:0;pointer-events:none;display:block}
+.mapdl{position:fixed;inset:0;z-index:250;display:flex;align-items:center;justify-content:center;visibility:hidden;transition:visibility 0s .22s}
+/* 弹窗描边：整数 2px（1.5px 在非整数 DPR 下会渲染成断续锯齿）+ 暖奶油色，圆润治愈风 */
+.mapdl{--dl-bd:#e3d1a8;--dl-inset:rgba(255,255,255,.9)}
+:root[data-theme="dark"] .mapdl{--dl-bd:#5e503e;--dl-inset:rgba(255,238,208,.07)}
+.mapdl.open{visibility:visible;transition:visibility 0s}
+.mapdl-mask{position:absolute;inset:0;background:rgba(18,14,8,.55);backdrop-filter:blur(3px);-webkit-backdrop-filter:blur(3px);cursor:pointer;opacity:1}
+.mapdl:not(.open) .mapdl-mask{opacity:0;transition:opacity .18s ease}
+.mapdl-box{position:relative;width:min(490px,calc(100vw - 32px));background:var(--card);border:2px solid var(--dl-bd);border-radius:24px;box-shadow:0 26px 64px rgba(16,10,4,.4),inset 0 1px 0 var(--dl-inset);padding:26px 24px 22px;opacity:0;transition:opacity .22s ease;cursor:default}
+.mapdl.open .mapdl-box{opacity:1}
+.mapdl-box:focus{outline:none}
+.mapdl-x{position:absolute;top:12px;right:12px;width:32px;height:32px;border-radius:50%;border:2px solid var(--dl-bd);background:var(--btn-bg);color:var(--text);cursor:pointer;font-size:14px;line-height:1;display:flex;align-items:center;justify-content:center}
+.mapdl-x:hover{border-color:var(--accent);color:var(--accent)}
+.mapdl-title{margin:0 4px 18px;font-size:1.25rem;color:var(--text-strong);letter-spacing:.02em}
+.mapdl-body{display:flex;gap:20px;align-items:center}
+.mapdl-btns{display:flex;flex-direction:column;gap:10px;flex:1;min-width:0}
+.mapdl-btn{display:flex;align-items:center;gap:11px;padding:13px 16px;border-radius:18px;border:2px solid var(--dl-bd);background:var(--btn-bg);color:var(--text);text-decoration:none;font-weight:700;font-size:.98rem;transition:background-color .16s ease-out,border-color .16s ease-out,color .16s ease-out,transform .18s,box-shadow .18s}
+.mapdl-btn:hover{background:#332a21;border-color:#332a21;color:#f3eddd;transform:translateY(-2px);box-shadow:0 6px 14px rgba(28,20,8,.22)}
+/* 禁用态（Modrinth 审核中）：灰显、不可点、右键也打不开——勿加回 href */
+.mapdl-btn[aria-disabled="true"]{opacity:.45;cursor:not-allowed;pointer-events:none;box-shadow:none;transform:none}
+:root[data-theme="dark"] .mapdl-btn:hover{background:#eebc4e;border-color:#eebc4e;color:#2b2318;box-shadow:0 6px 14px rgba(0,0,0,.28)}
+.mapdl-ic{width:22px;height:22px;flex:none}
+.mapdl-pwd{margin-left:auto;flex:none;font-size:.72rem;font-weight:700;padding:4px 11px;border-radius:999px;background:var(--accent-soft);color:var(--link);border:2px solid var(--accent);white-space:nowrap}
+.mapdl-qr{display:flex;flex-direction:column;align-items:center;gap:9px;flex:none}
+.mapdl-qr .qr-svg{width:148px;height:148px;background:#fff;padding:9px;border-radius:16px;border:2px solid var(--dl-bd);box-sizing:content-box;box-shadow:0 4px 12px rgba(20,14,6,.12)}
+.mapdl-qrtitle{margin:0;font-size:.88rem;font-weight:700;color:var(--text-strong);text-align:center;max-width:152px}
+.mapdl-qrcap{margin:0;font-size:.76rem;color:var(--muted);text-align:center;max-width:152px;line-height:1.5}
+.mapdl-btn[data-src="modrinth"]{display:none}
+.mapdl.mode-mod .mapdl-btn[data-src="github"]{display:none}
+.mapdl.mode-mod .mapdl-btn[data-src="modrinth"]{display:flex}
+@media (max-width:540px){
+  .mapdl-body{flex-direction:column}
+  .mapdl-btns{width:100%}
+}
+/* ===== 深浅主题开关（APP 式滑块） ===== */
+.theme-switch{border:1.5px solid var(--border);background:var(--btn-bg);border-radius:999px;padding:5px 6px;cursor:pointer;display:inline-flex;align-items:center}
+.ts-track{position:relative;width:48px;height:25px;border-radius:999px;background:linear-gradient(90deg,#ffc94d,#ff9a3d);transition:background .28s ease;box-shadow:inset 0 1px 3px rgba(0,0,0,.18)}
+:root[data-theme="dark"] .ts-track{background:linear-gradient(90deg,#4a4f86,#2e3158)}
+.ts-thumb{position:absolute;top:2.5px;left:2.5px;width:20px;height:20px;border-radius:50%;background:#fffdf7;box-shadow:0 2px 5px rgba(30,20,5,.35);display:flex;align-items:center;justify-content:center;font-size:10px;line-height:1;transition:transform .28s cubic-bezier(.34,1.56,.64,1)}
+.ts-thumb::before{content:"☀️"}
+:root[data-theme="dark"] .ts-thumb{transform:translateX(23px)}
+:root[data-theme="dark"] .ts-thumb::before{content:"🌙"}
+/* 全局轻量过渡：主题切换渐变、悬停柔化（元素自身声明 transition 时以自身为准） */
+*{transition:background-color .16s ease-out,border-color .16s ease-out,color .16s ease-out}
 
 /* ===== 横幅 ===== */
 .hero{margin:26px 0 4px}
@@ -171,7 +231,7 @@ table.grid td:first-child{white-space:nowrap;font-weight:600}
 @media (max-width:680px){
   .map-group .map-grid>.map-card{flex-basis:272px}
 }
-.map-card{background:var(--card);border:1px solid var(--border);border-radius:16px;overflow:hidden;display:flex;flex-direction:column;transition:transform .2s ease,box-shadow .2s ease}
+.map-card{background:var(--card);border:1px solid var(--border);border-radius:16px;overflow:hidden;display:flex;flex-direction:column;transition:transform .2s ease,box-shadow .2s ease,background-color .16s ease-out,border-color .16s ease-out,color .16s ease-out}
 .map-card:hover{transform:translateY(-5px);box-shadow:var(--shadow-lg)}
 .map-card .thumb img{width:100%;height:190px;object-fit:cover;display:block;background:var(--img-bg)}
 .map-body{padding:16px 18px 18px;display:flex;flex-direction:column;gap:10px;flex:1}
@@ -222,7 +282,7 @@ pre.has-copy>.copy-btn{position:absolute;top:50%;right:10px;transform:translateY
 .faq .ans p{margin:6px 0}
 
 /* ===== 页脚 ===== */
-footer{padding:12px 0 48px;text-align:center;color:var(--muted);font-size:.9rem}
+footer{padding:12px 0 48px;text-align:center;color:var(--muted);font-size:.9rem;position:relative;z-index:1}
 footer .links{display:flex;gap:16px;justify-content:center;flex-wrap:wrap;margin:8px 0}
 footer a{color:var(--muted);text-decoration:none;font-weight:600}
 footer a:hover{color:var(--btn-on-hover)}
@@ -237,35 +297,30 @@ footer a:hover{color:var(--btn-on-hover)}
   .menu-btn{display:inline-flex}
 }
 @media (max-width:700px){
-  .dl-rail{top:auto;bottom:18px;transform:none}
-  .dl-btn{padding:0;width:46px;height:46px;justify-content:center;border-radius:50%}
-  .dl-btn span{display:none}
-  .dl-btn:hover{transform:none}
+  .top-dl{padding:5px 10px;font-size:.78rem;gap:4px}
 }
 @media (max-width:640px){
   :root{--top-h:56px}
   section.card{padding:20px 16px;border-radius:14px}
   .topbar .wrap{gap:7px}
   .icon-btn{padding:6px 11px;font-size:.82rem}
+  .top-dl{padding:4px 8px;font-size:.72rem;gap:3px}
+  .top-dl .ic{display:none}
+  .theme-switch{padding:4px 5px}
+  .brand .zh,.brand .en{display:none}
   .map-card .thumb img{height:160px}
   .hero{margin-top:16px}
   .side-close{display:inline-flex}
 }
 /* ===== V2 ·《星布谷地》风手绘童话皮肤 ===== */
 body{font-family:system-ui,-apple-system,'Segoe UI','YouYuan','Yuanti SC','Yuanti TC','STYuanti','幼圆','Comic Sans MS',sans-serif;min-height:100vh;background-attachment:fixed;background:
- radial-gradient(560px 420px at 8% 10%,rgba(244,186,133,.22),transparent 62%),
- radial-gradient(520px 400px at 93% 6%,rgba(186,172,224,.17),transparent 62%),
- radial-gradient(760px 520px at 50% 102%,rgba(196,220,164,.15),transparent 62%),
  linear-gradient(180deg,#fbf6ee 0%,#faf2e6 45%,#f9efe1 100%)}
 :root[data-theme="dark"] body{background:
- radial-gradient(560px 420px at 8% 10%,rgba(244,186,133,.13),transparent 62%),
- radial-gradient(520px 400px at 93% 6%,rgba(186,172,224,.12),transparent 62%),
- radial-gradient(760px 520px at 50% 102%,rgba(196,220,164,.09),transparent 62%),
  linear-gradient(180deg,#232233 0%,#272537 45%,#2b2836 100%)}
 h1,h2,h3,h4{font-family:'KaiTi','KaiTi_GB2312','STKaiti','楷体','YouYuan','幼圆','Segoe UI',system-ui,sans-serif}
-.card{border-radius:28px;transition:transform .3s cubic-bezier(.34,1.56,.64,1),box-shadow .3s}
+.card{border-radius:28px;transition:transform .3s cubic-bezier(.34,1.56,.64,1),box-shadow .3s,background-color .16s ease-out,border-color .16s ease-out,color .16s ease-out}
 .card:hover{transform:translateY(-3px)}
-.map-card{border-radius:24px;transition:transform .3s cubic-bezier(.34,1.56,.64,1),box-shadow .3s}
+.map-card{border-radius:24px;transition:transform .3s cubic-bezier(.34,1.56,.64,1),box-shadow .3s,background-color .16s ease-out,border-color .16s ease-out,color .16s ease-out}
 .map-card:hover{transform:translateY(-6px)}
 .faq,.faq summary{border-radius:22px}
 .note{border-radius:18px}
@@ -273,10 +328,10 @@ h1,h2,h3,h4{font-family:'KaiTi','KaiTi_GB2312','STKaiti','楷体','YouYuan','幼
 .group-head{background:linear-gradient(135deg,var(--accent-soft),var(--chip-bg))}
 pre{border-radius:18px}
 .banner{border-radius:30px;border:5px solid var(--card);box-shadow:0 4px 10px rgba(180,138,90,.10),0 18px 42px rgba(180,138,90,.16)}
-.cta a,.dl-btn{border-radius:999px;transition:transform .28s cubic-bezier(.34,1.56,.64,1),box-shadow .28s,border-color .2s,background .2s,color .2s}
-.cta a:hover,.dl-btn:hover{transform:translateY(-3px) scale(1.04)}
-.dl-btn.primary,.cta a.primary{background:linear-gradient(135deg,#f4a86c,#e8895a);border-color:transparent;box-shadow:0 8px 22px rgba(232,137,90,.35)}
-:root[data-theme="dark"] .dl-btn.primary,:root[data-theme="dark"] .cta a.primary{box-shadow:0 8px 22px rgba(240,168,104,.25)}
+.cta a,.top-dl{border-radius:999px;transition:transform .28s cubic-bezier(.34,1.56,.64,1),box-shadow .28s,border-color .16s ease-out,background-color .16s ease-out,color .16s ease-out}
+.cta a:hover,.top-dl:hover{transform:translateY(-3px) scale(1.04)}
+.top-dl.primary,.cta a.primary{background:linear-gradient(135deg,#f4a86c,#e8895a);border-color:transparent;box-shadow:0 8px 22px rgba(232,137,90,.35)}
+:root[data-theme="dark"] .top-dl.primary,:root[data-theme="dark"] .cta a.primary{box-shadow:0 8px 22px rgba(240,168,104,.25)}
 .view-btn.active{background:linear-gradient(135deg,#f4a86c,#e8895a);border-color:transparent;color:#ffffff}
 .view-btn:hover,.icon-btn:hover{transform:translateY(-2px)}
 .sidebar{border-radius:0 26px 26px 0}
@@ -285,12 +340,8 @@ pre{border-radius:18px}
 .map-group .map-grid{border-radius:18px}
 /* ===== V2.1 · 对照游戏 UI 精修：可可棕容器 · 金黄强调 · 粗圆体 ===== */
 body{background:
- radial-gradient(520px 400px at 8% 8%,rgba(233,186,94,.14),transparent 60%),
- radial-gradient(480px 380px at 94% 4%,rgba(196,178,150,.12),transparent 60%),
  linear-gradient(180deg,#efe9da 0%,#ece5d2 50%,#eae2ce 100%)}
 :root[data-theme="dark"] body{background:
- radial-gradient(520px 400px at 8% 8%,rgba(238,188,78,.10),transparent 60%),
- radial-gradient(480px 380px at 94% 4%,rgba(196,170,110,.09),transparent 60%),
  linear-gradient(180deg,#211b15 0%,#241e17 50%,#262019 100%)}
 h1,h2,h3,h4{font-family:system-ui,-apple-system,'Segoe UI','YouYuan','幼圆','Yuanti SC','Yuanti TC','STYuanti','Arial Rounded MT Bold',sans-serif}
 html.lang-en body,html.lang-en h1,html.lang-en h2,html.lang-en h3,html.lang-en h4{font-family:system-ui,-apple-system,"Segoe UI","PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif}
@@ -298,12 +349,16 @@ h2{border-bottom:2px dotted var(--border)}
 li::marker{color:#d99a2e}
 .topbar::after{background:linear-gradient(90deg,#e5aa2e,#f0c860,#dd9c22)}
 .icon-btn{background:#332a21;border-color:#332a21;color:#f3eddd}
+.theme-switch{background:#332a21;border-color:#332a21}
+.theme-switch:hover{border-color:#e5aa2e}
 .icon-btn:hover{background:#e5aa2e;border-color:#e5aa2e;color:#33291f}
 :root[data-theme="dark"] .icon-btn{background:#1b1610;border-color:#1b1610}
+:root[data-theme="dark"] .theme-switch{background:#1b1610;border-color:#1b1610}
+:root[data-theme="dark"] .theme-switch:hover{border-color:#eebc4e}
 :root[data-theme="dark"] .icon-btn:hover{background:#eebc4e;border-color:#eebc4e;color:#2b2318}
 .side-close{background:#f3eddd;border-color:#f3eddd;color:#332a21}
 .sidebar{background:#332a21;border-right:none}
-.side-head{color:#f3eddd;border-bottom:1px dashed #584c3b}
+.side-head{color:#f3eddd;border-bottom:1px solid #3b3227}
 .toc-link{color:#c4b79e}
 .toc-link:hover{background:#443a2c;color:#f3eddd}
 .toc-link.active{background:linear-gradient(135deg,#f0c04c,#e0a528);color:#33291f;font-weight:700}
@@ -320,14 +375,14 @@ li::marker{color:#d99a2e}
 :root[data-theme="dark"] .view-switch{background:#1b1610}
 :root[data-theme="dark"] .faq-bar .view-btn{background:#2d261e;border-color:#6b5c46;color:#e7dcc5}
 :root[data-theme="dark"] .faq-bar .view-btn:hover{background:#eebc4e;border-color:#eebc4e;color:#2b2318}
-.cta .primary,.dl-btn.primary{background:linear-gradient(135deg,#f0c04c,#e0a528);color:#33291f;border-color:transparent;box-shadow:0 4px 0 rgba(70,54,32,.10),0 10px 22px rgba(190,140,50,.28)}
-.cta .primary:hover,.dl-btn.primary:hover{color:#33291f;filter:brightness(1.05)}
+.cta .primary,.top-dl.primary{background:linear-gradient(135deg,#f0c04c,#e0a528);color:#33291f;border-color:transparent;box-shadow:0 4px 0 rgba(70,54,32,.10),0 10px 22px rgba(190,140,50,.28)}
+.cta .primary:hover,.top-dl.primary:hover{color:#33291f;filter:brightness(1.05)}
 .cta .ghost{background:#f8f4e8;border:1.5px solid #332a21;color:#332a21;box-shadow:0 3px 0 rgba(52,42,30,.10)}
 .cta .ghost:hover{background:#332a21;color:#f3eddd;border-color:#332a21}
-.dl-btn:not(.primary){border:1.5px solid #332a21;color:#332a21;box-shadow:0 3px 0 rgba(52,42,30,.08)}
-.dl-btn:not(.primary):hover{background:#332a21;color:#f3eddd;border-color:#332a21}
-:root[data-theme="dark"] .cta .ghost,:root[data-theme="dark"] .dl-btn:not(.primary){background:#2d261e;border-color:#6b5c46;color:#e7dcc5}
-:root[data-theme="dark"] .cta .ghost:hover,:root[data-theme="dark"] .dl-btn:not(.primary):hover{background:#eebc4e;border-color:#eebc4e;color:#2b2318}
+.top-dl:not(.primary){border:1.5px solid #332a21;color:#332a21;box-shadow:0 3px 0 rgba(52,42,30,.08)}
+.top-dl:not(.primary):hover{background:#332a21;color:#f3eddd;border-color:#332a21}
+:root[data-theme="dark"] .cta .ghost,:root[data-theme="dark"] .top-dl:not(.primary){background:#2d261e;border-color:#6b5c46;color:#e7dcc5}
+:root[data-theme="dark"] .cta .ghost:hover,:root[data-theme="dark"] .top-dl:not(.primary):hover{background:#eebc4e;border-color:#eebc4e;color:#2b2318}
 .note{border-left:none;border-radius:18px;padding:15px 18px 15px 26px;position:relative}
 .note::before{content:"";position:absolute;left:8px;top:15px;bottom:15px;width:6px;border-radius:99px;background:#e5aa2e}
 .note.warn::before{background:#d99a2e}
@@ -347,9 +402,10 @@ li::marker{color:#d99a2e}
 <script>
 (function(){
   var l=null;try{l=localStorage.getItem('bs-lang')}catch(e){}
-  if(l!=='zh'&&l!=='en'&&l!=='lzh'){l=((navigator.language||'').toLowerCase().indexOf('zh')===0)?'zh':'en'}
+  if(l!=='zh'&&l!=='en'){l=((navigator.language||'').toLowerCase().indexOf('zh')===0)?'zh':'en'}
   document.documentElement.className='lang-'+l;
-  document.documentElement.lang=(l==='zh')?'zh-CN':(l==='en'?'en':'lzh');
+  document.documentElement.lang=(l==='zh')?'zh-CN':'en';
+  document.title=(l==='zh')?'边界生存 · 原版边界生存地图系列':'Border Survival · Vanilla Border Survival Worlds';
   var t=null;try{t=localStorage.getItem('bs-theme')}catch(e){}
   if(t!=='dark'&&t!=='light'){t=(window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches)?'dark':'light'}
   document.documentElement.setAttribute('data-theme',t);
@@ -357,13 +413,24 @@ li::marker{color:#d99a2e}
 </script>
 </head>
 <body>
+<canvas id="bgfx" aria-hidden="true"></canvas>
 <header class="topbar">
   <div class="wrap">
     <button id="menuBtn" class="icon-btn menu-btn" type="button" aria-label="目录 Contents">☰</button>
     <div class="brand">🧭 <span class="zh">边界生存</span><span class="en">Border Survival</span></div>
     <div class="top-spacer"></div>
-    <button id="themeBtn" class="icon-btn" type="button">🌙</button>
-    <button id="langBtn" class="icon-btn" type="button">🌐 EN</button>
+    <a class="top-dl primary" data-moddl href="https://modrinth.com/modpack/border-survival-persisting-worlds/versions"><span class="ic">📦 </span><span class="zh">下载模组包</span><span class="en">Download Modpack</span></a>
+    <a class="top-dl" data-mapdl href="https://github.com/Fndream/BorderSurvivalModpack/tree/master/Worlds_26.3"><span class="ic">🗺️ </span><span class="zh">下载地图包</span><span class="en">Download Worlds</span></a>
+    <a class="top-dl" href="https://github.com/Fndream/BorderSurvivalModpack/issues"><span class="ic">💬 </span>Issues</a>
+    <a class="top-dl" id="changelogBtn" data-changelog href="#changelog" aria-pressed="false"><span class="ic">📜 </span><span class="zh">更新日志</span><span class="en">Changelog</span></a>
+    <button id="themeBtn" class="theme-switch" type="button" role="switch" aria-checked="false" aria-label="深浅主题 Dark light theme"><span class="ts-track"><span class="ts-thumb"></span></span></button>
+    <div class="lang-wrap" id="langWrap">
+      <button id="langBtn" class="icon-btn" type="button" aria-haspopup="true" aria-expanded="false">🌐 <span id="langCur">中文</span></button>
+      <div class="lang-pop" id="langPop" role="menu">
+        <button class="lang-opt" data-l="zh" type="button" role="menuitem">🇨🇳 简体中文</button>
+        <button class="lang-opt" data-l="en" type="button" role="menuitem">🇺🇸 English</button>
+      </div>
+    </div>
   </div>
 </header>
 
@@ -376,11 +443,6 @@ li::marker{color:#d99a2e}
 </aside>
 <div class="side-overlay" id="sideOverlay"></div>
 
-<div class="dl-rail">
-  <a class="dl-btn primary" href="https://modrinth.com/modpack/border-survival-persisting-worlds/versions">📦 <span class="zh">下载模组包</span><span class="en">Download Modpack</span></a>
-  <a class="dl-btn" href="https://github.com/Fndream/BorderSurvivalModpack/tree/master/Worlds_26.3">🗺️ <span class="zh">下载地图</span><span class="en">Download Worlds</span></a>
-</div>
-
 <main class="wrap">
   <section class="hero">
     <img class="banner" src="https://files.seeusercontent.com/2026/09/23/blK7/banner.jpg" alt="边界生存 Banner">
@@ -390,9 +452,10 @@ li::marker{color:#d99a2e}
         <p class="tagline"><span class="zh">以原版生存为主要玩法的原版边界生存地图系列</span><span class="en">A vanilla border survival world series centered on vanilla survival gameplay</span></p>
       </div>
       <div class="cta">
-        <a class="primary" href="https://modrinth.com/modpack/border-survival-persisting-worlds/versions">📦 <span class="zh">下载模组包</span><span class="en">Download Modpack</span></a>
-        <a class="ghost" href="https://github.com/Fndream/BorderSurvivalModpack/tree/master/Worlds_26.3">🗺️ <span class="zh">下载地图</span><span class="en">Download Worlds</span></a>
+        <a class="primary" data-moddl href="https://modrinth.com/modpack/border-survival-persisting-worlds/versions">📦 <span class="zh">下载模组包</span><span class="en">Download Modpack</span></a>
+        <a class="ghost" data-mapdl href="https://github.com/Fndream/BorderSurvivalModpack/tree/master/Worlds_26.3">🗺️ <span class="zh">下载地图包</span><span class="en">Download Worlds</span></a>
         <a class="ghost" href="https://github.com/Fndream/BorderSurvivalModpack/issues">💬 Issues</a>
+        <a class="ghost" data-changelog href="#changelog" aria-pressed="false">📜 <span class="zh">更新日志</span><span class="en">Changelog</span></a>
       </div>
     </div>
   </section>
@@ -406,23 +469,23 @@ li::marker{color:#d99a2e}
     <h2>📗 <span class="zh">游前须知</span><span class="en">Before You Play</span></h2>
     <div class="zh">
       <ul>
-        <li>该系列并非常规整合包，它的本体由<strong>专属地图</strong>与<strong>核心数据包</strong>组成。整合包中仅包含辅助性模组，<strong><a href="https://modrinth.com/modpack/border-survival-persisting-worlds/versions">下载整合包</a>并安装</strong>后<strong>务必前往地图仓库<a href="https://github.com/Fndream/BorderSurvivalModpack/tree/master/Worlds_26.3">下载专属地图</a>并导入</strong>才可正常进行游戏！</li>
+        <li>该系列并非常规整合包，它的本体由<strong>专属地图</strong>与<strong>核心数据包</strong>组成。整合包中仅包含辅助性模组，<strong>下载整合包并安装后</strong>，<strong>务必下载专属地图并导入</strong>才可正常进行游戏！</li>
         <li><strong>该系列与原版生存并无任何区别</strong>。因该系列的第一位玩家喜欢世界边界的特效，自此诞生了该系列的最初版本。</li>
         <li>而因边界限制，或群系或结构的独有资源产生了额外的获取方式，这些特性被称为<strong>核心特性</strong>，以及额外的<strong>扩展特性</strong>。</li>
         <li>当遇到困难时，通过查阅Minecraft wiki所描述的原版特性，以及下方介绍的<strong>核心特性</strong>与<strong>扩展特性</strong>，或许可以获得有效的帮助。</li>
         <li>建议搭配自己喜欢的<strong>资源包</strong>、<strong>光影包</strong>进行游玩。</li>
-        <li>支持语言：<strong>简体中文、繁体中文、文言华夏（推荐）、English。</strong></li>
+        <li>支持语言：<strong>简体中文、繁体中文、English。</strong></li>
         <li>若在游戏内切换语言，需退出并重新进入存档，才可正确更新部分文本。</li>
       </ul>
     </div>
     <div class="en">
       <ul>
-        <li>This series is not a conventional modpack. It consists of a <strong>dedicated world</strong> and a <strong>core datapack</strong>. The modpack includes only auxiliary mods. <strong>After <a href="https://modrinth.com/modpack/border-survival-persisting-worlds/versions">downloading the modpack</a> and installing it</strong>, you <strong>must go to the <a href="https://github.com/Fndream/BorderSurvivalModpack/tree/master/Worlds_26.3">worlds repository to download the dedicated world</a> and import it</strong> to play properly!</li>
+        <li>This series is not a conventional modpack. It consists of a <strong>dedicated world</strong> and a <strong>core datapack</strong>. The modpack includes only auxiliary mods. <strong>After downloading the modpack and installing it</strong>, you <strong>must download the dedicated world and import it</strong> to play properly!</li>
         <li><strong>There is no difference from vanilla survival in this series</strong>. The first player of this series liked the visual effect of the world border, and thus the initial version of this series was born.</li>
         <li>Due to the border limitation, alternative acquisition methods for biome or structure exclusive resources have been introduced. These mechanics are called <strong>Core Features</strong>, along with additional <strong>Expansion Features</strong>.</li>
         <li>When facing difficulties, consulting vanilla mechanics described in the Minecraft wiki, as well as the <strong>Core Features</strong> and <strong>Expansion Features</strong> described below, may provide effective help.</li>
         <li>It is recommended to play with your preferred <strong>resource pack</strong> and <strong>shader pack</strong>.</li>
-        <li>Supported languages: <strong>English, Simplified Chinese, Traditional Chinese, Classical Chinese (Recommended).</strong></li>
+        <li>Supported languages: <strong>English, Simplified Chinese, Traditional Chinese.</strong></li>
         <li>If you switch languages in-game, you must exit and re-enter the save for some text to update correctly.</li>
         <li><strong>Note:</strong> This document is a translation from the <a href="https://github.com/Fndream/BorderSurvivalModpack/blob/master/README.md">Chinese version</a>, provided by DeepseekAI. Please verify carefully.</li>
       </ul>
@@ -1101,7 +1164,7 @@ li::marker{color:#d99a2e}
     <div class="zh">
       <ul>
         <li>使用不同地图的主题方块搭建传送门框架，并使用火源激活，可前往不同的维度。</li>
-        <li>与下界传送门不同，虚无界门无论处于何种坐标，都将在传送时，以对应维度的世界出生点为中心，在128格半径范围内寻找距离最近的传送门。若未找到，则会在世界出生点附近生成传送门结构。</li>
+        <li>与下界传送门不同，虚无界门无论处于何种坐标，都将在传送时，以对应维度的世界出生点为中心，在256格半径范围内寻找距离最近的传送门。若未找到，则会在世界出生点附近生成传送门结构。</li>
         <li>每个存世维度的边界能量独立，下界、末地除外。</li>
         <li>每个存世维度都存在一位维系者，下界、末地除外。</li>
         <li>永夜骑士仅会降临在边界能量至少拥有<strong>100级</strong>的主世界或存世维度，不包括下界和末地。</li>
@@ -1112,7 +1175,7 @@ li::marker{color:#d99a2e}
     <div class="en">
       <ul>
         <li>Build a portal frame using the themed block of the respective world and activate it with a fire source to travel to different dimensions.</li>
-        <li>Unlike Nether Portals, regardless of the coordinates, a Void Portal will search for the nearest portal within a 128-block radius centered on the world spawn of the target dimension. If none is found, a portal structure will be generated near the world spawn.</li>
+        <li>Unlike Nether Portals, regardless of the coordinates, a Void Portal will search for the nearest portal within a 256-block radius centered on the world spawn of the target dimension. If none is found, a portal structure will be generated near the world spawn.</li>
         <li>Each Persisting World dimension has independent border energy, except for the Nether and the End.</li>
         <li>Each Persisting World dimension has a Sustainer, except for the Nether and the End.</li>
         <li>Eternal Night Knights will only descend in the Overworld or Persisting World dimensions that have at least <strong>level 100</strong> border energy, excluding the Nether and the End.</li>
@@ -1981,6 +2044,87 @@ li::marker{color:#d99a2e}
     <p><strong>2020-05-23 - </strong><span class="zh"><strong>海岛村庄 - 1.15.2</strong></span><span class="en"><strong>Island Village - Minecraft 1.15.2</strong></span></p>
   </section>
 
+
+  <section class="card" id="changelog">
+    <h2>📜 <span class="zh">更新日志</span><span class="en">Changelog</span></h2>
+    <h3>🍁 <span class="zh">14.0-pre1 - 26.3 - 2026-09-25</span><span class="en">14.0-pre1 - 26.3 - 2026-09-25</span></h3>
+    <div class="zh">
+      <h4>🌊 核心特性</h4>
+      <ul>
+        <li>Minecraft 升级至 26.3。</li>
+        <li>临时兼容沙子可再生、灵魂沙转变、凋灵骷髅可再生、空潜影盒总能堆叠[地毯拓展]carpet-extra特性。</li>
+      </ul>
+      <h4>🔥 虚无界门</h4>
+      <ul>
+        <li>以下特性为《虚无十五界 - 存世/存世阵屿》地图独有特性，仅在该地图中有效。</li>
+        <li>新增：海岛村庄、斑驳山谷传送门。</li>
+        <li>虚无界门传送点寻找距离：半径128格 -&gt; 半径256格。</li>
+      </ul>
+      <h4>🎣 钓鱼</h4>
+      <ul>
+        <li>宝藏奖池加入：珊瑚块。</li>
+      </ul>
+      <h4>🍀 聚灵石</h4>
+      <ul>
+        <li>切石机可转换的基础建材新增：杨木原木。</li>
+      </ul>
+      <h4>📱 模组</h4>
+      <ul>
+        <li>暂时移除[微妙粒子]SubtleEffects、[皮肤补丁]CustomSkinLoader、[地毯拓展]CarpetExtra模组。</li>
+      </ul>
+      <h4>📱 模组配置</h4>
+      <ul>
+        <li>现在默认禁用[地毯]carpet红石粉卡顿优化。</li>
+        <li>现在默认禁用[地毯拓展]carpetExtra更好的骨粉。</li>
+      </ul>
+      <h4>🧭 地图</h4>
+      <ul>
+        <li>新地图《启航之地 - 海岛村庄》⭐ 发布。</li>
+        <li>新地图《坠日峡森 - 斑驳山谷》⭐⭐ 发布。</li>
+        <li>《虚无十三界 - 存世》升级为《虚无十五界 - 存世》。</li>
+        <li>《虚无十三界 - 存世阵屿》升级为《虚无十五界 - 存世阵屿》。</li>
+        <li>新发布《世界升级-存世&amp;存世阵屿-26.2→26.3》覆盖升级包。解压后覆盖对应存档根目录以兼容《启航之地 - 海岛村庄》、《坠日峡森 - 斑驳山谷》维度。</li>
+      </ul>
+    </div>
+    <div class="en">
+      <h4>🌊 Core Features</h4>
+      <ul>
+        <li>Minecraft upgraded to 26.3.</li>
+        <li>Temporarily compatible with Carpet Extra features: Renewable Sand, Soul Sand Conversion, Renewable Wither Skeleton, and Empty Shulker Boxes Always Stackable.</li>
+      </ul>
+      <h4>🔥 Void Portal</h4>
+      <ul>
+        <li>The following features are exclusive to the "Void Fifteen Worlds — Persisting Worlds / Persisting Worlds Array Island" maps and only take effect in those maps.</li>
+        <li>Added: Island Village and Dappled Valley portals.</li>
+        <li>Void Portal destination search radius: 128 blocks -&gt; 256 blocks.</li>
+      </ul>
+      <h4>🎣 Fishing</h4>
+      <ul>
+        <li>Coral Block added to the treasure loot pool.</li>
+      </ul>
+      <h4>🍀 Spirit Emerald</h4>
+      <ul>
+        <li>Poplar Log added to the basic building materials convertible by the Stonecutter.</li>
+      </ul>
+      <h4>📱 Mods</h4>
+      <ul>
+        <li>SubtleEffects, CustomSkinLoader and CarpetExtra are temporarily removed.</li>
+      </ul>
+      <h4>📱 Mod Configuration</h4>
+      <ul>
+        <li>Carpet's redstone dust lag optimization is now disabled by default.</li>
+        <li>CarpetExtra's better bone meal is now disabled by default.</li>
+      </ul>
+      <h4>🧭 Maps</h4>
+      <ul>
+        <li>New map "Departure Point — Island Village" ⭐ released.</li>
+        <li>New map "Sunset Gorge — Dappled Valley" ⭐⭐ released.</li>
+        <li>"Void Thirteen Worlds — Persisting Worlds" upgraded to "Void Fifteen Worlds — Persisting Worlds".</li>
+        <li>"Void Thirteen Worlds — Persisting Worlds Array Island" upgraded to "Void Fifteen Worlds — Persisting Worlds Array Island".</li>
+        <li>New "World Upgrade - Persisting Worlds &amp; Persisting Worlds Array Island - 26.2-&gt;26.3" overwrite upgrade pack released. Extract it and overwrite the root of the corresponding save to make the "Departure Point — Island Village" and "Sunset Gorge — Dappled Valley" dimensions compatible.</li>
+      </ul>
+    </div>
+  </section>
 </main>
 
 <footer>
@@ -1989,6 +2133,7 @@ li::marker{color:#d99a2e}
     <div class="links">
       <a href="https://github.com/Fndream/BorderSurvivalModpack">GitHub</a>
       <a href="https://modrinth.com/modpack/border-survival-persisting-worlds/versions">Modrinth</a>
+      <a href="https://www.mcmod.cn/modpack/253.html">MCmod</a>
       <a href="https://github.com/Fndream/BorderSurvivalModpack/issues">Issues</a>
       <a href="#agreement"><span class="zh">使用协议</span><span class="en">Usage Agreement</span></a>
     </div>
@@ -1996,316 +2141,72 @@ li::marker{color:#d99a2e}
   </div>
 </footer>
 
+<div class="mapdl" id="mapDl" aria-hidden="true">
+  <div class="mapdl-mask" data-mapdl-close></div>
+  <div class="mapdl-box" role="dialog" aria-modal="true" aria-labelledby="mapDlT" tabindex="-1">
+    <button class="mapdl-x" type="button" data-mapdl-close aria-label="关闭 Close">✕</button>
+    <h4 class="mapdl-title" id="mapDlT"><span class="zh">选择下载方式</span><span class="en">Choose a download source</span></h4>
+    <div class="mapdl-body">
+      <div class="mapdl-btns">
+        <a class="mapdl-btn" data-src="github" href="https://github.com/Fndream/BorderSurvivalModpack/tree/master/Worlds_26.3" target="_blank" rel="noopener"><svg class="mapdl-ic" viewBox="0 0 16 16" aria-hidden="true"><path fill="currentColor" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8z"/></svg><span>GitHub</span></a>
+        <a class="mapdl-btn" data-src="modrinth" aria-disabled="true"><svg class="mapdl-ic" viewBox="0 0 24 24" aria-hidden="true"><path fill="#1bd96a" d="M12.252.004a11.78 11.768 0 0 0-8.92 3.73 11 10.999 0 0 0-2.17 3.11 11.37 11.359 0 0 0-1.16 5.169c0 1.42.17 2.5.6 3.77.24.759.77 1.899 1.17 2.529a12.3 12.298 0 0 0 8.85 5.639c.44.05 2.54.07 2.76.02.2-.04.22.1-.26-1.7l-.36-1.37-1.01-.06a8.5 8.489 0 0 1-5.18-1.8 5.34 5.34 0 0 1-1.3-1.26c0-.05.34-.28.74-.5a37.572 37.545 0 0 1 2.88-1.629c.03 0 .5.45 1.06.98l1 .97 2.07-.43 2.06-.43 1.47-1.47c.8-.8 1.48-1.5 1.48-1.52 0-.09-.42-1.63-.46-1.7-.04-.06-.2-.03-1.02.18-.53.13-1.2.3-1.45.4l-.48.15-.53.53-.53.53-.93.1-.93.07-.52-.5a2.7 2.7 0 0 1-.96-1.7l-.13-.6.43-.57c.68-.9.68-.9 1.46-1.1.4-.1.65-.2.83-.33.13-.099.65-.579 1.14-1.069l.9-.9-.7-.7-.7-.7-1.95.54c-1.07.3-1.96.53-1.97.53-.03 0-2.23 2.48-2.63 2.97l-.29.35.28 1.03c.16.56.3 1.16.31 1.34l.03.3-.34.23c-.37.23-2.22 1.3-2.84 1.63-.36.2-.37.2-.44.1-.08-.1-.23-.6-.32-1.03-.18-.86-.17-2.75.02-3.73a8.84 8.839 0 0 1 7.9-6.93c.43-.03.77-.08.78-.1.06-.17.5-2.999.47-3.039-.01-.02-.1-.02-.2-.03Zm3.68.67c-.2 0-.3.1-.37.38-.06.23-.46 2.42-.46 2.52 0 .04.1.11.22.16a8.51 8.499 0 0 1 2.99 2 8.38 8.379 0 0 1 2.16 3.449 6.9 6.9 0 0 1 .4 2.8c0 1.07 0 1.27-.1 1.73a9.37 9.369 0 0 1-1.76 3.769c-.32.4-.98 1.06-1.37 1.38-.38.32-1.54 1.1-1.7 1.14-.1.03-.1.06-.07.26.03.18.64 2.56.7 2.78l.06.06a12.07 12.058 0 0 0 7.27-9.4c.13-.77.13-2.58 0-3.4a11.96 11.948 0 0 0-5.73-8.578c-.7-.42-2.05-1.06-2.25-1.06Z"/></svg><span>Modrinth</span><span class="mapdl-pwd"><span class="zh">审核中</span><span class="en">Under Review</span></span></a>
+        <a class="mapdl-btn" href="https://pan.quark.cn/s/e47529fab44e?pwd=ec33" target="_blank" rel="noopener"><img class="mapdl-ic" src="data:image/png;base64,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" alt=""><span class="zh">夸克网盘</span><span class="en">Quark Drive</span></a>
+        <a class="mapdl-btn" href="https://wwaqv.lanzouu.com/b0he8355i" target="_blank" rel="noopener"><svg class="mapdl-ic" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="12" fill="#f97316"/><g fill="#fff"><circle cx="8" cy="13.9" r="3.7"/><circle cx="12" cy="11.3" r="5"/><circle cx="16.2" cy="14.1" r="3.3"/><rect x="6" y="14.1" width="12" height="3.6" rx="1.8"/></g></svg><span class="zh">蓝奏云盘</span><span class="en">Lanzou Cloud</span><span class="mapdl-pwd"><span class="zh">提取码 1400</span><span class="en">Code 1400</span></span></a>
+      </div>
+      <div class="mapdl-qr">
+        <p class="mapdl-qrtitle"><span class="zh">夸克网盘 扫码下载</span><span class="en">Quark Drive · Scan to download</span></p>
+        <img class="qr-svg" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAJQAAACUAQAAAABdRz15AAABKElEQVR42s1WQQ4DQQgi/YD//yU/sIDtqZcmethJ0+zugYiADvrnEI/6BqCKjSLmhS/8nn+/oav966pCntZ4Kk9o3X72ywEeQ1zVHeGFrBp4gqeWwWyFddG/6Ps9B/rmFMXzY6glnmwHRlkpwlrz7dgOqo5yNfd+FgZTXI8Rt3o4bOYc3ljjdX1swwrpdX2sCbDQJPK+fzVNtKuJfX0OR7swlZdS9/pKEdEOZezzpuYJkZHlwn8eBS4xs6UO/KJcWNrkwwFc5pf5a5uleKHvUI2ZM2eWeOw4hh2zrPmqfZ4rlthC7/2XvTtT1Ya5mM8Z+QlH1cn+6Hga2XM3+y3xGG8f7F/D4KZ/473+Qp7cD+C25bqx35c10y8d5MU+wtwzmJBwnd9n33ffLRNgv6JjJoIAAAAASUVORK5CYII=" width="148" height="148" alt="夸克网盘链接二维码 Quark Drive QR code">
+        <p class="mapdl-qrcap"><span class="zh">扫码转存可以为作者带来收益，您的每一次转存都能激励作者继续创作</span><span class="en">Scan to save; each save brings the creator revenue and inspires continued creation</span></p>
+      </div>
+    </div>
+  </div>
+</div>
+
 <script>
 (function(){
-  /* ===== 语言切换（中/英/文言） ===== */
+  /* ===== 语言切换（中/英） ===== */
   var langBtn=document.getElementById('langBtn');
-  function curLang(){var c=document.documentElement.className;return c==='lang-en'?'en':(c==='lang-lzh'?'lzh':'zh')}
+  function curLang(){var c=document.documentElement.className;return c==='lang-en'?'en':'zh'}
   window.curLang=curLang;
-  var LZH={
-    "边界生存":  "界守存生",
-    "目录":  "目錄",
-    "下载模组包":  "下載模組包",
-    "下载地图":  "下載地圖",
-    "以原版生存为主要玩法的原版边界生存地图系列":  "以原版存世為主要玩法之原版界守存生圖系",
-    "简介":  "簡介",
-    "\u003cp\u003e这是一个以\u003cstrong\u003e原版生存\u003c/strong\u003e为主要玩法的原版边界生存地图系列。从狭隘的空间启程，以智慧觅取资源，以勇气宣战昼夜，以经验开拓世界边界。适合熟悉原版特性的玩家。\u003c/p\u003e":  "\u003cp\u003e此乃以\u003cstrong\u003e原版存世\u003c/strong\u003e為主法之原版界守存生圖系。自褊隘之域啟程，以智覓資，以勇戰晝夜，以經驗拓疆。宜於熟諳原版特性之士。\u003c/p\u003e",
-    "游前须知":  "遊前須知",
-    "\n      \u003cul\u003e\n        \u003cli\u003e该系列并非常规整合包，它的本体由\u003cstrong\u003e专属地图\u003c/strong\u003e与\u003cstrong\u003e核心数据包\u003c/strong\u003e组成。整合包中仅包含辅助性模组，\u003cstrong\u003e\u003ca href=\"https://modrinth.com/modpack/border-survival-persisting-worlds/versions\"\u003e下载整合包\u003c/a\u003e并安装\u003c/strong\u003e后\u003cstrong\u003e务必前往地图仓库\u003ca href=\"https://github.com/Fndream/BorderSurvivalModpack/tree/master/Worlds_26.3\"\u003e下载专属地图\u003c/a\u003e并导入\u003c/strong\u003e才可正常进行游戏！\u003c/li\u003e\n        \u003cli\u003e\u003cstrong\u003e该系列与原版生存并无任何区别\u003c/strong\u003e。因该系列的第一位玩家喜欢世界边界的特效，自此诞生了该系列的最初版本。\u003c/li\u003e\n        \u003cli\u003e而因边界限制，或群系或结构的独有资源产生了额外的获取方式，这些特性被称为\u003cstrong\u003e核心特性\u003c/strong\u003e，以及额外的\u003cstrong\u003e扩展特性\u003c/strong\u003e。\u003c/li\u003e\n        \u003cli\u003e当遇到困难时，通过查阅Minecraft wiki所描述的原版特性，以及下方介绍的\u003cstrong\u003e核心特性\u003c/strong\u003e与\u003cstrong\u003e扩展特性\u003c/strong\u003e，或许可以获得有效的帮助。\u003c/li\u003e\n        \u003cli\u003e建议搭配自己喜欢的\u003cstrong\u003e资源包\u003c/strong\u003e、\u003cstrong\u003e光影包\u003c/strong\u003e进行游玩。\u003c/li\u003e\n        \u003cli\u003e支持语言：\u003cstrong\u003e简体中文、繁体中文、文言华夏（推荐）、English。\u003c/strong\u003e\u003c/li\u003e\n        \u003cli\u003e若在游戏内切换语言，需退出并重新进入存档，才可正确更新部分文本。\u003c/li\u003e\n      \u003c/ul\u003e\n    ":  "\u003cul\u003e\u003cli\u003e本系非常規整合包，其本體由\u003cstrong\u003e專屬地圖\u003c/strong\u003e與\u003cstrong\u003e核心資料包\u003c/strong\u003e組成。整合包僅含輔助模組，\u003cstrong\u003e\u003ca href=\u0027https://modrinth.com/modpack/border-survival-persisting-worlds/versions\u0027\u003e下載整合包\u003c/a\u003e並安裝\u003c/strong\u003e後\u003cstrong\u003e務必前往地圖倉庫\u003ca href=\u0027https://github.com/Fndream/BorderSurvivalModpack/tree/master/Worlds_26.3\u0027\u003e下載專屬地圖\u003c/a\u003e並導入\u003c/strong\u003e方可正常遊玩！\u003c/li\u003e\u003cli\u003e\u003cstrong\u003e本系與原版存世並無二致\u003c/strong\u003e。因首位玩家喜世界疆界之特效，遂有本系之初版。\u003c/li\u003e\u003cli\u003e而因疆界之限，群系或結構之獨有資源遂生額外獲取之法，此特性曰\u003cstrong\u003e核心特性\u003c/strong\u003e，另有\u003cstrong\u003e擴展特性\u003c/strong\u003e。\u003c/li\u003e\u003cli\u003e遇艱之時，查 Minecraft wiki 所述原版特性，並覽下方\u003cstrong\u003e核心特性\u003c/strong\u003e與\u003cstrong\u003e擴展特性\u003c/strong\u003e，或可獲有效之助。\u003c/li\u003e\u003cli\u003e建議搭配所喜\u003cstrong\u003e資源包\u003c/strong\u003e、\u003cstrong\u003e光影包\u003c/strong\u003e而遊。\u003c/li\u003e\u003cli\u003e支援語言：\u003cstrong\u003e簡體中文、繁體中文、文言華夏（薦）、English。\u003c/strong\u003e\u003c/li\u003e\u003cli\u003e若於遊戲內切換語言，需退出並重入存檔，方可正確更新部分文本。\u003c/li\u003e\u003c/ul\u003e",
-    "核心特性":  "核心特性",
-    "关于世界边界":  "關於世界疆界",
-    "\n      \u003cp\u003e世界边界是 Minecraft 1.8 加入的特性，它是一堵淡蓝色透明的动态斜线光墙。\u003c/p\u003e\n      \u003cp\u003e\u003cstrong\u003e边界拥有三种状态：\u003c/strong\u003e\u003c/p\u003e\n      \u003cul\u003e\n        \u003cli\u003e\u003cstrong\u003e常规\u003c/strong\u003e：颜色为蓝色。\u003c/li\u003e\n        \u003cli\u003e\u003cstrong\u003e收缩中\u003c/strong\u003e：颜色为红色。\u003c/li\u003e\n        \u003cli\u003e\u003cstrong\u003e扩展中\u003c/strong\u003e：颜色为绿色。\u003c/li\u003e\n      \u003c/ul\u003e\n      \u003cp\u003e\u003cstrong\u003e边界特性：\u003c/strong\u003e\u003c/p\u003e\n      \u003cul\u003e\n        \u003cli\u003e玩家无法越出边界、无法操作边界外的方块。\u003c/li\u003e\n        \u003cli\u003e边界外不会生成生物。\u003c/li\u003e\n        \u003cli\u003e边界外的工作方块、部分红石元件无法正常运行。\u003c/li\u003e\n        \u003cli\u003e边界外面没有空气，如果离开边界一定范围，则会受到窒息伤害。\u003c/li\u003e\n      \u003c/ul\u003e\n    ":  "\u003cp\u003e世界疆界乃 Minecraft 1.8 所入之特性，為一堵淡藍透明之動態斜線光牆。\u003c/p\u003e\u003cp\u003e\u003cstrong\u003e疆界有三態：\u003c/strong\u003e\u003c/p\u003e\u003cul\u003e\u003cli\u003e\u003cstrong\u003e常態\u003c/strong\u003e：色藍。\u003c/li\u003e\u003cli\u003e\u003cstrong\u003e收縮中\u003c/strong\u003e：色赤。\u003c/li\u003e\u003cli\u003e\u003cstrong\u003e擴展中\u003c/strong\u003e：色翠。\u003c/li\u003e\u003c/ul\u003e\u003cp\u003e\u003cstrong\u003e疆界之性：\u003c/strong\u003e\u003c/p\u003e\u003cul\u003e\u003cli\u003e玩家不可越出疆界，亦不可操作疆界外之方塊。\u003c/li\u003e\u003cli\u003e疆界外不生生物。\u003c/li\u003e\u003cli\u003e疆界外之工作方塊、部分紅石元件不能正常運行。\u003c/li\u003e\u003cli\u003e疆界外無空氣，若離疆界一定範圍，則受窒息之傷。\u003c/li\u003e\u003c/ul\u003e",
-    "边界能量":  "界能",
-    "\n      \u003cul\u003e\n        \u003cli\u003e边界能量即为\u003cstrong\u003e世界边界大小\u003c/strong\u003e。\u003c/li\u003e\n        \u003cli\u003e可通过消耗\u003cstrong\u003e经验等级\u003c/strong\u003e进行\u003cstrong\u003e边界升级\u003c/strong\u003e，提升边界能量。\u003c/li\u003e\n      \u003c/ul\u003e\n    ":  "\u003cul\u003e\u003cli\u003e界能即\u003cstrong\u003e世界疆界之大小\u003c/strong\u003e。\u003c/li\u003e\u003cli\u003e可消耗\u003cstrong\u003e經驗\u003c/strong\u003e以行\u003cstrong\u003e疆界升階\u003c/strong\u003e，增益界能。\u003c/li\u003e\u003c/ul\u003e",
-    "边界模式":  "疆界法度",
-    "\n      \u003cul\u003e\n        \u003cli\u003e含有\u003cstrong\u003e禁锢\u003c/strong\u003e、\u003cstrong\u003e昼夜\u003c/strong\u003e两种模式，可在游戏中进行切换。\u003c/li\u003e\n      \u003c/ul\u003e\n      \u003cdiv class=\"note\"\u003e昼夜模式属于扩展特性，详见扩展特性章节。\u003c/div\u003e\n    ":  "\u003cul\u003e\u003cli\u003e含\u003cstrong\u003e錮法\u003c/strong\u003e、\u003cstrong\u003e晝夜法\u003c/strong\u003e二法，可於遊戲中更易。\u003c/li\u003e\u003c/ul\u003e\u003cdiv class=\"note\"\u003e晝夜法屬擴展特性，詳見擴展特性章節。\u003c/div\u003e",
-    "功能牌":  "功能碑",
-    "\n      \u003cp\u003e由地图提供的功能牌碑，含有以下三种功能牌。\u003c/p\u003e\n      \u003cul\u003e\n        \u003cli\u003e\u003cstrong\u003e边界升级\u003c/strong\u003e：消耗经验等级提升边界能量。\u003c/li\u003e\n        \u003cli\u003e\u003cstrong\u003e切换模式\u003c/strong\u003e：在昼夜模式与禁锢模式之间切换，无法在永夜状态下使用。\u003c/li\u003e\n        \u003cli\u003e\u003cstrong\u003e召唤神匠\u003c/strong\u003e：在玩家当前位置生成神匠，每个游戏日只能召唤一次，世界中最多存在一只。\u003c/li\u003e\n      \u003c/ul\u003e\n      \u003cdiv class=\"note\"\u003e功能牌的硬度为-1，爆炸抗性为3,600,000。\u003c/div\u003e\n      \u003cdiv class=\"note warn\"\u003e❗ 若功能牌被损毁，可通过以下指令获取并通过创造模式放置：\u003c/div\u003e\n      \u003cpre\u003e\u003ccode\u003e/function border_survival:get_sign\u003c/code\u003e\u003c/pre\u003e\n    ":  "\u003cp\u003e地圖所供之功能碑，含下述三種功能碑。\u003c/p\u003e\u003cul\u003e\u003cli\u003e\u003cstrong\u003e疆界升階\u003c/strong\u003e：耗經驗以增界能。\u003c/li\u003e\u003cli\u003e\u003cstrong\u003e法度更易\u003c/strong\u003e：於晝夜法與錮法間更易，亙古之夜時不可用。\u003c/li\u003e\u003cli\u003e\u003cstrong\u003e召請天工\u003c/strong\u003e：於玩家所在之處生天工，一遊戲日僅可召一回，世中至多存一。\u003c/li\u003e\u003c/ul\u003e\u003cdiv class=\"note\"\u003e功能碑硬度為-1，爆抗為3,600,000。\u003c/div\u003e\u003cdiv class=\"note warn\"\u003e❗ 若功能碑毀，可以下述指令取得，並以創造模式放置：\u003c/div\u003e\u003cpre\u003e\u003ccode\u003e/function border_survival:get_sign\u003c/code\u003e\u003c/pre\u003e",
-    "进度":  "進度",
-    "\n      \u003cdiv class=\"note warn\"\u003e❗该系列的进度\u003cstrong\u003e并非任务指引系统\u003c/strong\u003e，它仅作为展示核心特性的相关内容、文本提示、以及仪式感的作用。\u003c/div\u003e\n      \u003cdiv class=\"imgbox\"\u003e\u003cimg src=\"https://files.seeusercontent.com/2026/07/31/r7Wr/069797c.png\" alt=\"进度\" height=\"400\"\u003e\u003c/div\u003e\n    ":  "\u003cdiv class=\"note warn\"\u003e❗本系之進度\u003cstrong\u003e非任務指引系統\u003c/strong\u003e，僅用以展示核心特性之相關內容、文本提示，兼具儀式之感。\u003c/div\u003e\u003cdiv class=\"imgbox\"\u003e\u003cimg src=\u0027https://files.seeusercontent.com/2026/07/31/r7Wr/069797c.png\u0027 alt=\u0027進度\u0027 height=\u0027400\u0027\u003e\u003c/div\u003e",
-    "钓鱼":  "釣魚",
-    "\n      \u003cp\u003e在钓鱼时，可能会获得一些群系特有物品。\u003c/p\u003e\n      \u003cul\u003e\n        \u003cli\u003e\u003cstrong\u003e垃圾奖池加入\u003c/strong\u003e：海草、海带、甘蔗、仙人掌、竹子、海泡菜、可可豆、海晶碎片、海晶砂粒、珊瑚、珊瑚扇、紫颂花。\u003c/li\u003e\n        \u003cli\u003e\u003cstrong\u003e宝藏奖池加入\u003c/strong\u003e：紫水晶母岩、黑曜石、冰、浮冰、蓝冰、珊瑚块、？？？。\u003c/li\u003e\n      \u003c/ul\u003e\n    ":  "\u003cp\u003e釣魚之時，或可獲群系特有之物。\u003c/p\u003e\u003cul\u003e\u003cli\u003e\u003cstrong\u003e垃圾獎池加入\u003c/strong\u003e：海草、海帶、甘蔗、仙人掌、竹子、海泡菜、可可豆、海晶碎片、海晶砂粒、珊瑚、珊瑚扇、紫頌花。\u003c/li\u003e\u003cli\u003e\u003cstrong\u003e瑰寶獎池加入\u003c/strong\u003e：紫水晶母岩、黑曜石、冰、浮冰、藍冰、珊瑚塊、？？？。\u003c/li\u003e\u003c/ul\u003e",
-    "猫":  "貓",
-    "\n      \u003cul\u003e\n        \u003cli\u003e\u003cstrong\u003e礼物加入\u003c/strong\u003e：树叶、钻石。\u003c/li\u003e\n      \u003c/ul\u003e\n    ":  "\u003cul\u003e\u003cli\u003e\u003cstrong\u003e禮物加入\u003c/strong\u003e：樹葉、鑽石。\u003c/li\u003e\u003c/ul\u003e",
-    "嗅探兽":  "嗅探獸",
-    "\n      \u003cul\u003e\n        \u003cli\u003e\u003cstrong\u003e刨挖加入\u003c/strong\u003e：蒲公英、虞美人、兰花、绒球葱、蓝花美耳草、郁金香、滨菊、矢车菊、铃兰、张开的眼眸花、孢子花、枯萎的灌木。\u003c/li\u003e\n      \u003c/ul\u003e\n    ":  "\u003cul\u003e\u003cli\u003e\u003cstrong\u003e刨挖加入\u003c/strong\u003e：蒲公英、虞美人、蘭花、絨球蔥、藍花美耳草、鬱金香、濱菊、矢車菊、鈴蘭、張開的眼眸花、孢子花、枯萎的灌木。\u003c/li\u003e\u003c/ul\u003e",
-    "猪灵":  "豬靈",
-    "\n      \u003cul\u003e\n        \u003cli\u003e\u003cstrong\u003e以物换物加入\u003c/strong\u003e：烈焰棒、地狱疣、凋灵骷髅头颅。\u003c/li\u003e\n      \u003c/ul\u003e\n    ":  "\u003cul\u003e\u003cli\u003e\u003cstrong\u003e以物易物加入\u003c/strong\u003e：烈焰棒、地獄疣、凋靈骷髏頭顱。\u003c/li\u003e\u003c/ul\u003e",
-    "战利品箱":  "戰利品箱",
-    "\n      \u003cul\u003e\n        \u003cli\u003e\u003cstrong\u003e平原村庄小屋加入\u003c/strong\u003e：向日葵、玫瑰、牡丹、丁香、粉红色花簇、野花簇、枯叶堆、发光地衣。\u003c/li\u003e\n        \u003cli\u003e\u003cstrong\u003e金合欢村庄小屋加入\u003c/strong\u003e：犰狳鳞甲、灌木丛、萤火虫灌木丛、红灌木。\u003c/li\u003e\n        \u003cli\u003e\u003cstrong\u003e村庄石匠小屋加入\u003c/strong\u003e：滴水石锥、硫黄尖椎。\u003c/li\u003e\n        \u003cli\u003e\u003cstrong\u003e沉船补给箱加入\u003c/strong\u003e：苍白苔藓块、苍白垂须。\u003c/li\u003e\n        \u003cli\u003e\u003cstrong\u003e埋藏的宝藏加入\u003c/strong\u003e：海龟蛋。\u003c/li\u003e\n        \u003cli\u003e\u003cstrong\u003e末地城宝藏加入\u003c/strong\u003e：潜影壳。\u003c/li\u003e\n        \u003cli\u003e\u003cstrong\u003e堡垒遗迹疣猪兽棚加入\u003c/strong\u003e：绯红菌岩、诡异菌岩。\u003c/li\u003e\n        \u003cli\u003e\u003cstrong\u003e试炼密室宝库-普通、试炼密室不祥宝库-普通加入\u003c/strong\u003e：旋风棒。\u003c/li\u003e\n      \u003c/ul\u003e\n    ":  "\u003cul\u003e\u003cli\u003e\u003cstrong\u003e平原村莊小屋加入\u003c/strong\u003e：向日葵、玫瑰、牡丹、丁香、粉紅色花簇、野花簇、枯葉堆、發光地衣。\u003c/li\u003e\u003cli\u003e\u003cstrong\u003e金合歡村莊小屋加入\u003c/strong\u003e：犰狳鱗甲、灌木叢、螢火蟲灌木叢、紅灌木。\u003c/li\u003e\u003cli\u003e\u003cstrong\u003e村莊石匠小屋加入\u003c/strong\u003e：滴水石錐、硫黃尖椎。\u003c/li\u003e\u003cli\u003e\u003cstrong\u003e沉船補給箱加入\u003c/strong\u003e：蒼白苔蘚塊、蒼白垂須。\u003c/li\u003e\u003cli\u003e\u003cstrong\u003e埋藏的寶藏加入\u003c/strong\u003e：海龜蛋。\u003c/li\u003e\u003cli\u003e\u003cstrong\u003e終界城寶藏加入\u003c/strong\u003e：潛影殼。\u003c/li\u003e\u003cli\u003e\u003cstrong\u003e堡壘遺跡疣豬獸棚加入\u003c/strong\u003e：緋紅菌岩、詭異菌岩。\u003c/li\u003e\u003cli\u003e\u003cstrong\u003e試煉密室寶庫-普通、試煉密室不祥寶庫-普通加入\u003c/strong\u003e：旋風棒。\u003c/li\u003e\u003c/ul\u003e",
-    "末影龙":  "終界龍",
-    "\n      \u003cul\u003e\n        \u003cli\u003e末影龙被击败后将在末地祭坛生成：\u003cstrong\u003e龙首\u003c/strong\u003e。\u003c/li\u003e\n        \u003cli\u003e重生的末影龙被击败后也会在末地祭坛生成：\u003cstrong\u003e龙蛋、龙首\u003c/strong\u003e。\u003c/li\u003e\n      \u003c/ul\u003e\n    ":  "\u003cul\u003e\u003cli\u003e終界龍敗後將於終界祭壇生成：\u003cstrong\u003e龍首\u003c/strong\u003e。\u003c/li\u003e\u003cli\u003e重生之終界龍敗後亦於終界祭壇生成：\u003cstrong\u003e龍蛋、龍首\u003c/strong\u003e。\u003c/li\u003e\u003c/ul\u003e",
-    "深板岩":  "深板岩",
-    "\n      \u003cul\u003e\n        \u003cli\u003e当岩浆流在Y\u0026lt;0的位置与水交互时，形成深板岩或深板岩圆石。\u003c/li\u003e\n      \u003c/ul\u003e\n    ":  "\u003cul\u003e\u003cli\u003e當岩漿流在Y\u0026lt;0之處與水交互，則成深板岩或深板岩圓石。\u003c/li\u003e\u003c/ul\u003e",
-    "合成配方":  "合成配方",
-    "\n      \u003cdiv class=\"note warn\"\u003e❗ 在获得对应材料后将自动解锁配方，可通过工作台左侧小绿书查看。\u003c/div\u003e\n      \u003cdiv class=\"imgbox\"\u003e\u003cimg src=\"https://files.seeusercontent.com/2026/07/30/6Rtk/Snipaste_2026-07-30_19-58-47.png\" alt=\"合成配方\"\u003e\u003c/div\u003e\n      \u003cdiv class=\"note\"\u003e刷怪笼可以使用具有精准采集魔咒的工具破坏获得。\u003cbr\u003e\n      部分刷怪笼生成条件：\u003cbr\u003e\n      \u003cstrong\u003e生成范围\u003c/strong\u003e：水平半径4格，垂直半径1格，无视生物群系。\u003cbr\u003e\n      \u003cstrong\u003e史莱姆\u003c/strong\u003e：无需处于史莱姆区块。\u003cbr\u003e\n      \u003cstrong\u003e铁傀儡\u003c/strong\u003e：可生成位置的下方必须存在完整方块。\u003cbr\u003e\n      \u003cstrong\u003e动物\u003c/strong\u003e：可生成位置的下方必须存在草方块。\u003cbr\u003e\n      \u003cstrong\u003e水生怪物\u003c/strong\u003e(如：溺尸/守卫者/远古守卫者)：生成范围内必须存在水(包括水源/流动水)。\u003cbr\u003e\n      \u003cstrong\u003e水生动物\u003c/strong\u003e(如：鱿鱼/鳕鱼/鲑鱼/海豚)：生成范围内必须存在水(包括水源/流动水)，且水的位置必须处于海洋范围(Y50-63以内)。\u003cbr\u003e\n      \u003cstrong\u003e发光鱿鱼\u003c/strong\u003e：生成范围内必须存在水(包括水源/流动水)，且水的位置必须处于洞穴范围(Y30以下)。\u003c/div\u003e\n    ":  "\u003cdiv class=\"note warn\"\u003e❗ 得對應材料後將自動解鎖配方，可經工作臺左側小綠書查閱。\u003c/div\u003e\u003cdiv class=\"imgbox\"\u003e\u003cimg src=\u0027https://files.seeusercontent.com/2026/07/30/6Rtk/Snipaste_2026-07-30_19-58-47.png\u0027 alt=\u0027合成配方\u0027\u003e\u003c/div\u003e\u003cdiv class=\"note\"\u003e孳衍籠可以具有精準採集魔咒之工具破壞而得。\u003cbr\u003e部分孳衍籠生成條件：\u003cbr\u003e\u003cstrong\u003e生成範圍\u003c/strong\u003e：水平半徑4格，垂直半徑1格，無視群系。\u003cbr\u003e\u003cstrong\u003e史萊姆\u003c/strong\u003e：無需處於史萊姆區塊。\u003cbr\u003e\u003cstrong\u003e鐵傀儡\u003c/strong\u003e：可生成位置之下方必存完整方塊。\u003cbr\u003e\u003cstrong\u003e動物\u003c/strong\u003e：可生成位置之下方必存草方塊。\u003cbr\u003e\u003cstrong\u003e水生怪物\u003c/strong\u003e(如：溺屍/守衛者/遠古守衛者)：生成範圍內必存水(包括水源/流動水)。\u003cbr\u003e\u003cstrong\u003e水生動物\u003c/strong\u003e(如：魷魚/鱈魚/鮭魚/海豚)：生成範圍內必存水(包括水源/流動水)，且水必處海洋範圍(Y50-63以內)。\u003cbr\u003e\u003cstrong\u003e發光魷魚\u003c/strong\u003e：生成範圍內必存水(包括水源/流動水)，且水必處洞穴範圍(Y30以下)。\u003c/div\u003e",
-    "地毯系列":  "地毯系列",
-    "\n      \u003cdiv class=\"note ok\"\u003e✅ \u003cstrong\u003e默认启用以下特性：\u003c/strong\u003e\u003c/div\u003e\n      \u003cul\u003e\n        \u003cli\u003e大木桶：当木桶的背面相连时，可同时使用两个木桶的容器空间。\u003c/li\u003e\n        \u003cli\u003e沙子可再生：圆石被掉落的铁砧砸中后转变为沙子。\u003c/li\u003e\n        \u003cli\u003e灵魂沙转变：因沙子上的火焰而死的生物将沙子转变为灵魂沙。\u003c/li\u003e\n        \u003cli\u003e海绵可再生：守卫者被闪电击中转变为远古守卫者。\u003c/li\u003e\n        \u003cli\u003e可再生凋灵骷髅：骷髅被闪电击中转变为凋灵骷髅。\u003c/li\u003e\n        \u003cli\u003e珊瑚可再生：可通过骨粉催熟珊瑚。\u003c/li\u003e\n        \u003cli\u003e潜影贝重生：潜影贝会在末地城刷新。\u003c/li\u003e\n        \u003cli\u003e潜影盒堆叠：空潜影盒在地上时，可堆叠为1组。\u003c/li\u003e\n        \u003cli\u003e空潜影盒总能堆叠：空潜影盒在物品栏中也能堆叠。\u003c/li\u003e\n        \u003cli\u003e假人驻留：退出游戏时会保留假人。\u003c/li\u003e\n        \u003cli\u003e假人钓鱼：假人可以自动钓鱼。\u003c/li\u003e\n        \u003cli\u003e假人背包：右键可打开假人的背包。\u003c/li\u003e\n        \u003cli\u003e假人末影箱：蹲下右键可打开假人的末影箱。\u003c/li\u003e\n      \u003c/ul\u003e\n    ":  "\u003cdiv class=\"note ok\"\u003e✅ \u003cstrong\u003e默認啟用下述特性：\u003c/strong\u003e\u003c/div\u003e\u003cul\u003e\u003cli\u003e大木桶：當木桶背面相連時，可同時用二桶之容器空間。\u003c/li\u003e\u003cli\u003e沙子可再生：圓石被墜落鐵砧砸中後轉為沙子。\u003c/li\u003e\u003cli\u003e靈魂沙轉變：因沙上火焰而死之生物，其沙轉為靈魂沙。\u003c/li\u003e\u003cli\u003e海綿可再生：守衛者被閃電擊中轉為遠古守衛者。\u003c/li\u003e\u003cli\u003e可再生凋靈骷髏：骷髏被閃電擊中轉為凋靈骷髏。\u003c/li\u003e\u003cli\u003e珊瑚可再生：可以骨粉催熟珊瑚。\u003c/li\u003e\u003cli\u003e潛影貝重生：潛影貝會於終界城刷新。\u003c/li\u003e\u003cli\u003e潛影盒堆疊：空潛影盒在地上時，可堆疊為1組。\u003c/li\u003e\u003cli\u003e空潛影盒總能堆疊：空潛影盒在物品欄中亦能堆疊。\u003c/li\u003e\u003cli\u003e假人駐留：退出遊戲時將保留假人。\u003c/li\u003e\u003cli\u003e假人釣魚：假人可以自動釣魚。\u003c/li\u003e\u003cli\u003e假人背包：右鍵可開假人之背包。\u003c/li\u003e\u003cli\u003e假人終界箱：蹲下右鍵可開假人之終界箱。\u003c/li\u003e\u003c/ul\u003e",
-    "砂轮增强":  "砂輪增強",
-    "\n      \u003cul\u003e\n        \u003cli\u003e可通过砂轮将装备的魔咒分离到书中，或将附魔书的第一行魔咒分离到另一本书中。\u003c/li\u003e\n      \u003c/ul\u003e\n    ":  "\u003cul\u003e\u003cli\u003e可以砂輪將裝備之魔咒分離至書中，或將附魔書首行魔咒分離至另一書中。\u003c/li\u003e\u003c/ul\u003e",
-    "扩展特性":  "擴展特性",
-    "\n      \u003cul\u003e\n        \u003cli\u003e含有\u003cstrong\u003e禁锢\u003c/strong\u003e、\u003cstrong\u003e昼夜\u003c/strong\u003e两种模式，可在游戏中进行切换。\u003c/li\u003e\n      \u003c/ul\u003e\n    ":  "\u003cul\u003e\u003cli\u003e含\u003cstrong\u003e錮法\u003c/strong\u003e、\u003cstrong\u003e晝夜法\u003c/strong\u003e二法，可於遊戲中更易。\u003c/li\u003e\u003c/ul\u003e",
-    "禁锢模式":  "錮法",
-    "\n      \u003cul\u003e\n        \u003cli\u003e常规默认模式。\u003c/li\u003e\n      \u003c/ul\u003e\n    ":  "\u003cul\u003e\u003cli\u003e常規默認之法。\u003c/li\u003e\u003c/ul\u003e",
-    "昼夜模式":  "晝夜法",
-    "\n      \u003cul\u003e\n        \u003cli\u003e昼夜模式的白天与禁锢模式并无区别。\u003c/li\u003e\n        \u003cli\u003e在昼夜模式的夜晚，\u003cstrong\u003e刷怪上限\u003c/strong\u003e将会提高至\u003cstrong\u003e140\u003c/strong\u003e、\u003cstrong\u003e单次刷怪数量\u003c/strong\u003e将会提高至\u003cstrong\u003e10\u003c/strong\u003e、\u003cstrong\u003e怪物穿戴盔甲的概率\u003c/strong\u003e将会提高至(50%*副区域难度)，且怪物将\u003cstrong\u003e无视光照等级\u003c/strong\u003e生成。\u003c/li\u003e\n        \u003cli\u003e在昼夜模式的夜晚，若边界能量至少拥有50级，将会额外扩展一倍空间。\u003c/li\u003e\n      \u003c/ul\u003e\n    ":  "\u003cul\u003e\u003cli\u003e晝夜法之白晝與錮法並無二致。\u003c/li\u003e\u003cli\u003e晝夜法之夜，\u003cstrong\u003e孳生上限\u003c/strong\u003e升至\u003cstrong\u003e140\u003c/strong\u003e、\u003cstrong\u003e單次孳生數\u003c/strong\u003e升至\u003cstrong\u003e10\u003c/strong\u003e、\u003cstrong\u003e怪物著甲之率\u003c/strong\u003e升至(50%*副區域難度)，且怪物\u003cstrong\u003e無視光照等級\u003c/strong\u003e而生。\u003c/li\u003e\u003cli\u003e晝夜法之夜，若界能至少有50級，將額外擴展一倍空間。\u003c/li\u003e\u003c/ul\u003e",
-    "昼夜模式 - 永恒之夜":  "晝夜法 - 亙古之夜",
-    "\n      \u003cul\u003e\n        \u003cli\u003e在昼夜模式的夜晚即将抵达白昼时，若边界能量至少拥有\u003cstrong\u003e100级\u003c/strong\u003e，便会降临永恒之夜。\u003c/li\u003e\n        \u003cli\u003e永恒之夜降临后，世界出生点周围将会出现异界的永夜骑士。\u003c/li\u003e\n        \u003cli\u003e受永夜骑士影响，时间会被禁锢在他们降临的那一刻，世界将陷入永恒的雷暴之中。\u003c/li\u003e\n        \u003cli\u003e只有将所有降临的永夜骑士全部击败，才可解除其对世界的影响。\u003c/li\u003e\n        \u003cli\u003e之后，在度过或通过睡觉跳过\u003cstrong\u003e0-4个\u003c/strong\u003e昼夜模式的夜晚后，永恒之夜将会再次降临。\u003c/li\u003e\n      \u003c/ul\u003e\n      \u003cdiv class=\"note\"\u003e处于和平模式时，将立即结束永恒之夜，且不会尝试进入永恒之夜。\u003c/div\u003e\n    ":  "\u003cul\u003e\u003cli\u003e晝夜法之夜將抵白晝之時，若界能至少有\u003cstrong\u003e100級\u003c/strong\u003e，便降亙古之夜。\u003c/li\u003e\u003cli\u003e亙古之夜降後，世界出生點周圍將現異界之亙古騎士。\u003c/li\u003e\u003cli\u003e受亙古騎士所影響，時被錮於其降之一刻，世界陷入亙古之雷暴。\u003c/li\u003e\u003cli\u003e唯將所有降臨之亙古騎士盡數擊敗，方可解其對世界之影響。\u003c/li\u003e\u003cli\u003e之後，度過或以寢跳過\u003cstrong\u003e0-4個\u003c/strong\u003e晝夜法之夜後，亙古之夜將再降。\u003c/li\u003e\u003c/ul\u003e\u003cdiv class=\"note\"\u003e處和平模式時，將立終亙古之夜，且不嘗試入亙古之夜。\u003c/div\u003e",
-    "永恒雨夜 / 永恒雪夜":  "亙古雨夜 / 亙古雪夜",
-    "\n      \u003cul\u003e\n        \u003cli\u003e永恒之夜降临后，受永夜骑士的影响，边界可能会染上 \u003cstrong\u003e苍白、凶红、夕橙、灿金、邃蓝、黯紫\u003c/strong\u003e 六种色彩。\u003c/li\u003e\n        \u003cli\u003e根据影响程度的不同，世界气候将会发生紊乱。\u003c/li\u003e\n        \u003cli\u003e当永恒之夜状态下的边界处于\u003cstrong\u003e灿金、夕橙、邃蓝\u003c/strong\u003e状态时：所有生物群系都将异常降雨，无论寒冷或是温暖。怪物穿戴盔甲的概率将会提高至(60%/70%/80%*副区域难度)。\u003c/li\u003e\n        \u003cli\u003e当永恒之夜状态下的边界处于\u003cstrong\u003e黯紫、凶红、苍白\u003c/strong\u003e状态时：所有生物群系都将异常降雪，无论温暖或是寒冷。怪物穿戴盔甲的概率将会提高至(90%/100%/110%*副区域难度)。\u003c/li\u003e\n        \u003cli\u003e当永夜骑士被全部击败后，世界气候将会恢复正常，边界色彩将会逐渐恢复，并会以色彩预示下次永恒之夜的到来。\u003c/li\u003e\n      \u003c/ul\u003e\n      \u003cdiv class=\"note\"\u003e通过观察昼夜模式时间栏中的月相变化，也可预示下次永恒之夜的降临时刻。\u003c/div\u003e\n    ":  "\u003cul\u003e\u003cli\u003e亙古之夜降後，受亙古騎士所影響，疆界或染 \u003cstrong\u003e蒼白、兇赤、夕橙、燦金、邃藍、黯紫\u003c/strong\u003e 六色。\u003c/li\u003e\u003cli\u003e據影響之不同，世界氣候將生紊亂。\u003c/li\u003e\u003cli\u003e當亙古之夜之疆界處\u003cstrong\u003e燦金、夕橙、邃藍\u003c/strong\u003e時：所有群系皆異常降雨，無論寒暖。怪物著甲之率升至(60%/70%/80%*副區域難度)。\u003c/li\u003e\u003cli\u003e當亙古之夜之疆界處\u003cstrong\u003e黯紫、兇赤、蒼白\u003c/strong\u003e時：所有群系皆異常降雪，無論暖寒。怪物著甲之率升至(90%/100%/110%*副區域難度)。\u003c/li\u003e\u003cli\u003e當亙古騎士盡敗後，世界氣候將復正常，疆界之色將漸復，並以色預示下次亙古之夜之來臨。\u003c/li\u003e\u003c/ul\u003e\u003cdiv class=\"note\"\u003e經觀晝夜法時間欄中月相之變，亦可預示下次亙古之夜之降臨時刻。\u003c/div\u003e",
-    "永夜骑士":  "亙古騎士",
-    "\n      \u003cul\u003e\n        \u003cli\u003e永夜骑士的生命值上限会随着边界能量的提高而提高。\u003c/li\u003e\n        \u003cli\u003e当永夜骑士周围不存在玩家时，其将持续恢复生命值。\u003c/li\u003e\n        \u003cli\u003e当永夜骑士受到伤害时，将会干扰世界生成更多怪物。\u003c/li\u003e\n        \u003cli\u003e永夜骑士被玩家击败后，会掉落一个随机维度宝藏箱。\u003c/li\u003e\n        \u003cli\u003e同时，因其为世界之虫(bug)，所有怪物都欲图消灭它。\u003c/li\u003e\n      \u003c/ul\u003e\n      \u003cdiv class=\"note\"\u003e永夜骑士仅会出现在以世界出生点为中心，半径16格正方形范围内的随机位置的最高露天处，洞穴型地图出现的位置最高不超过Y96。\u003cbr\u003e\n      永夜骑士极为危险，建议在具有足够的防御与治疗手段后再尝试与其进行武力决斗。\u003cbr\u003e\n      永夜骑士不会离开当前维度，不会乘坐载具。\u003c/div\u003e\n    ":  "\u003cul\u003e\u003cli\u003e亙古騎士之上限生命隨界能之增而增。\u003c/li\u003e\u003cli\u003e亙古騎士周圍無玩家時，其將持續回復生命。\u003c/li\u003e\u003cli\u003e亙古騎士受傷之時，將擾世界生更多怪物。\u003c/li\u003e\u003cli\u003e亙古騎士被玩家擊敗後，將落一隨機維度寶藏箱。\u003c/li\u003e\u003cli\u003e同時，因其為世界之蟲(bug)，所有怪物皆欲滅之。\u003c/li\u003e\u003c/ul\u003e\u003cdiv class=\"note\"\u003e亙古騎士僅現於以世界出生點為心、半徑16格正方範圍內隨機位置之最高露天處，洞穴型地圖所現最高不逾Y96。\u003cbr\u003e亙古騎士極危，建議具足夠防禦與治療手段後，再試與之武力決鬥。\u003cbr\u003e亙古騎士不離當前維度，不乘載具。\u003c/div\u003e",
-    "永夜军团":  "亙古軍團",
-    "\n      \u003cul\u003e\n        \u003cli\u003e每当累计度过\u003cstrong\u003e3次\u003c/strong\u003e永恒之夜，下次永恒之夜将会降临\u003cstrong\u003e亡灵军团\u003c/strong\u003e或\u003cstrong\u003e灾厄军团\u003c/strong\u003e。\u003c/li\u003e\n        \u003cli\u003e每当累计度过\u003cstrong\u003e8次\u003c/strong\u003e永恒之夜，下次永恒之夜将会降临\u003cstrong\u003e永夜军团\u003c/strong\u003e。\u003c/li\u003e\n      \u003c/ul\u003e\n    ":  "\u003cul\u003e\u003cli\u003e每當累計度過\u003cstrong\u003e3次\u003c/strong\u003e亙古之夜，下次亙古之夜將降\u003cstrong\u003e亡靈軍團\u003c/strong\u003e或\u003cstrong\u003e災厄軍團\u003c/strong\u003e。\u003c/li\u003e\u003cli\u003e每當累計度過\u003cstrong\u003e8次\u003c/strong\u003e亙古之夜，下次亙古之夜將降\u003cstrong\u003e亙古軍團\u003c/strong\u003e。\u003c/li\u003e\u003c/ul\u003e",
-    "永恒之心":  "亙古之心",
-    "\n      \u003cul\u003e\n        \u003cli\u003e军团首领被玩家击败后，将会掉落一颗\u003cstrong\u003e永恒之心\u003c/strong\u003e。\u003c/li\u003e\n      \u003c/ul\u003e\n      \u003cdiv class=\"note\"\u003e\u003cstrong\u003e右键使用\u003c/strong\u003e可摧毁永恒之心，在当前或下次永恒之夜中，永夜骑士将不再团结一心。\u003cbr\u003e\n      永恒之心可视为海洋之心使用。\u003c/div\u003e\n    ":  "\u003cul\u003e\u003cli\u003e軍團首領被玩家擊敗後，將落一顆\u003cstrong\u003e亙古之心\u003c/strong\u003e。\u003c/li\u003e\u003c/ul\u003e\u003cdiv class=\"note\"\u003e\u003cstrong\u003e右鍵用之\u003c/strong\u003e可摧亙古之心，於當前或下次亙古之夜中，亙古騎士將不再團結一心。\u003cbr\u003e亙古之心可作海之心而用。\u003c/div\u003e",
-    "永恒神兵":  "亙古神兵",
-    "\n      \u003cul\u003e\n        \u003cli\u003e永夜骑士被玩家击败后，有 \u003cstrong\u003e1%\u003c/strong\u003e 的概率会掉落其手持的武器。\u003c/li\u003e\n        \u003cli\u003e若玩家主手持有抢夺武器，每级抢夺将会提高 \u003cstrong\u003e8.5%\u003c/strong\u003e 的掠夺成功率。\u003c/li\u003e\n      \u003c/ul\u003e\n      \u003cdiv class=\"note\"\u003e永恒神兵具有消失诅咒，无法被火焰、熔岩、爆炸、闪电、仙人掌摧毁。\u003cbr\u003e\n      未额外附魔的永恒神兵，可源返初归为夜灵神兵。\u003c/div\u003e\n    ":  "\u003cul\u003e\u003cli\u003e亙古騎士被玩家擊敗後，有 \u003cstrong\u003e1%\u003c/strong\u003e 之率將落其手持之武器。\u003c/li\u003e\u003cli\u003e若玩家主手執掠奪之器，每級掠奪將增 \u003cstrong\u003e8.5%\u003c/strong\u003e 之掠奪成功率。\u003c/li\u003e\u003c/ul\u003e\u003cdiv class=\"note\"\u003e亙古神兵具消失詛咒，不可被火焰、熔巖、爆炸、閃電、仙人掌所摧。\u003cbr\u003e未額外附魔之亙古神兵，可源返初歸為夜靈神兵。\u003c/div\u003e",
-    "掉落物":  "掉落物",
-    "\n      \u003cul\u003e\n        \u003cli\u003e被 \u003cstrong\u003e永夜骑士、监守者、远古守卫者、守卫者、铁傀儡\u003c/strong\u003e 击败的生物视为被玩家击败。\u003c/li\u003e\n      \u003c/ul\u003e\n    ":  "\u003cul\u003e\u003cli\u003e被 \u003cstrong\u003e亙古騎士、監守者、遠古守衛者、守衛者、鐵傀儡\u003c/strong\u003e 擊敗之生物，視為被玩家擊敗。\u003c/li\u003e\u003c/ul\u003e",
-    "边界维系者":  "疆界維繫者",
-    "\n      \u003cul\u003e\n        \u003cli\u003e维系者会降临在世界出生点，负责维系边界能量的稳定。\u003c/li\u003e\n        \u003cli\u003e若世界出生点附近不存在维系者，边界能量将会持续流失。\u003c/li\u003e\n        \u003cli\u003e若维系者与世界出生点的距离过远，其会尝试回到世界出生点。\u003c/li\u003e\n        \u003cli\u003e若维系者死亡，会在一段时间后重新降临于世界出生点。\u003c/li\u003e\n        \u003cli\u003e同时，因其为世界之虫(bug)，所有怪物都欲图消灭祂。\u003c/li\u003e\n      \u003c/ul\u003e\n      \u003cdiv class=\"note\"\u003e当维系者附近存在神匠时，维系者会为附近的玩家提供治疗。\u003cbr\u003e\n      维系者属于幼年猫，可正常驯服、给予礼物。\u003cbr\u003e\n      维系者不会离开当前维度，不会乘坐载具。\u003c/div\u003e\n    ":  "\u003cul\u003e\u003cli\u003e維繫者將降於世界出生點，掌維界能之穩。\u003c/li\u003e\u003cli\u003e若世界出生點附近無維繫者，界能將持續流失。\u003c/li\u003e\u003cli\u003e若維繫者離世界出生點過遠，其將試歸世界出生點。\u003c/li\u003e\u003cli\u003e若維繫者亡，一段時間後將再降於世界出生點。\u003c/li\u003e\u003cli\u003e同時，因其為世界之蟲(bug)，所有怪物皆欲滅之。\u003c/li\u003e\u003c/ul\u003e\u003cdiv class=\"note\"\u003e當維繫者附近有天工時，維繫者將為附近玩家施療。\u003cbr\u003e維繫者屬幼貓，可正常馴服、予禮物。\u003cbr\u003e維繫者不離當前維度，不乘載具。\u003c/div\u003e",
-    "神匠":  "天工",
-    "\n      \u003cul\u003e\n        \u003cli\u003e突破了世界的法则，与永夜骑士颇有渊源，从祂手中可以兑换到一些超脱常理的物品。\u003c/li\u003e\n        \u003cli\u003e同时，因其为世界之虫(bug)，所有怪物都欲图消灭祂。\u003c/li\u003e\n      \u003c/ul\u003e\n      \u003cdiv class=\"note\"\u003e神匠属于盔甲匠村民，可正常繁殖与补货。\u003cbr\u003e\n      当神匠不处于已加载区块中时，不会视为存在。\u003c/div\u003e\n    ":  "\u003cul\u003e\u003cli\u003e突破世界之法則，與亙古騎士頗有淵源，自其手可兌換一些超脫常理之物。\u003c/li\u003e\u003cli\u003e同時，因其為世界之蟲(bug)，所有怪物皆欲滅之。\u003c/li\u003e\u003c/ul\u003e\u003cdiv class=\"note\"\u003e天工屬盔甲匠村民，可正常繁殖與補貨。\u003cbr\u003e天工不處已加載區塊中時，不視為存在。\u003c/div\u003e",
-    "世界之虫":  "世界之蟲",
-    "\n      \u003cul\u003e\n        \u003cli\u003e世界之虫目标会引起水平距离384格范围内所有怪物的仇恨。\u003c/li\u003e\n        \u003cli\u003e当怪物位于世界之虫目标上方时，其追击世界之虫目标的垂直距离为∞格。\u003c/li\u003e\n        \u003cli\u003e当怪物位于世界之虫目标下方时，其追击世界之虫目标的垂直距离为16格。\u003c/li\u003e\n        \u003cli\u003e永夜骑士、夜骑以外的其他怪物，在追击世界之虫目标时不会进行反击。\u003c/li\u003e\n        \u003cli\u003e怪物在追击世界之虫目标时，若视线内存在玩家，将会优先转火攻击玩家。\u003c/li\u003e\n      \u003c/ul\u003e\n      \u003cdiv class=\"note\"\u003e末影人不会自然转火未与其对视的玩家。\u003cbr\u003e\n      唤魔者追击世界之虫目标的水平距离与垂直距离均为384格。\u003cbr\u003e\n      溺尸在追击世界之虫目标时，若其与世界之虫目标的欧几里得距离小于等于16格，将会具有视线穿透。\u003cbr\u003e\n      苦力怕在追击世界之虫目标时，若其与世界之虫目标的欧几里得距离小于等于8格、垂直距离小于等于4格，将会具有视线穿透，若其此时被阻断寻路，将会立刻引燃自身。\u003cbr\u003e\n      苦力怕不会主动远离世界之虫目标。\u003c/div\u003e\n    ":  "\u003cul\u003e\u003cli\u003e世界之蟲目標將引水平距離384格內所有怪物之仇恨。\u003c/li\u003e\u003cli\u003e當怪物處世界之蟲目標上方時，其追擊之垂直距離為∞格。\u003c/li\u003e\u003cli\u003e當怪物處世界之蟲目標下方時，其追擊之垂直距離為16格。\u003c/li\u003e\u003cli\u003e亙古騎士、夜騎之外其他怪物，追擊世界之蟲目標時不還擊。\u003c/li\u003e\u003cli\u003e怪物追擊世界之蟲目標時，若視線內有玩家，將優先轉火攻玩家。\u003c/li\u003e\u003c/ul\u003e\u003cdiv class=\"note\"\u003e終眇不自然轉火未與其對視之玩家。\u003cbr\u003e喚魔者追擊世界之蟲目標之水平與垂直距離均為384格。\u003cbr\u003e溺屍追擊世界之蟲目標時，若其與目標之歐幾里得距離小於等於16格，將具視線穿透。\u003cbr\u003e伏臨追擊世界之蟲目標時，若其與目標之歐幾里得距離小於等於8格、垂直距離小於等於4格，將具視線穿透，若此時被阻斷尋路，將立刻引燃自身。\u003cbr\u003e伏臨不主動遠離世界之蟲目標。\u003c/div\u003e",
-    "无损灵材":  "不朽靈材",
-    "\n      \u003cul\u003e\n        \u003cli\u003e由三界能量融合而成的混沌之星，交由神匠淬炼而成的不朽灵材，具有永不磨损的特性。\u003c/li\u003e\n        \u003cli\u003e无损灵材可注入边界升级功能牌，以提升一定等级的边界能量。\u003c/li\u003e\n      \u003c/ul\u003e\n    ":  "\u003cul\u003e\u003cli\u003e由三界之能融合而成之混沌之星，託天工淬鍊而成之不朽靈材，具永不磨損之性。\u003c/li\u003e\u003cli\u003e不朽靈材可注入疆界升階功能碑，以升一定等級之界能。\u003c/li\u003e\u003c/ul\u003e",
-    "无损灵器":  "不朽靈器",
-    "\n      \u003cul\u003e\n        \u003cli\u003e由无损灵材交由神匠锻造的灵器，具有永不磨损的特性。\u003c/li\u003e\n        \u003cli\u003e部分无损灵器被副手手持时，会提供特殊效果：\u003c/li\u003e\n        \u003cli\u003e\u003cstrong\u003e混沌之星\u003c/strong\u003e：生命恢复Ⅱ\u003c/li\u003e\n        \u003cli\u003e\u003cstrong\u003e裁灵剪\u003c/strong\u003e：急迫Ⅱ\u003c/li\u003e\n        \u003cli\u003e\u003cstrong\u003e羽灵刷\u003c/strong\u003e：抗火\u003c/li\u003e\n        \u003cli\u003e\u003cstrong\u003e御灵盾\u003c/strong\u003e：伤害吸收Ⅴ\u003c/li\u003e\n        \u003cli\u003e\u003cstrong\u003e萝灵竿\u003c/strong\u003e：迅捷Ⅱ\u003c/li\u003e\n        \u003cli\u003e\u003cstrong\u003e诡异灵竿\u003c/strong\u003e：迅捷Ⅱ\u003c/li\u003e\n        \u003cli\u003e\u003cstrong\u003e海之祝福\u003c/strong\u003e：潮涌能量\u003c/li\u003e\n        \u003cli\u003e\u003cstrong\u003e瀚海灵戟\u003c/strong\u003e：海豚的恩惠\u003c/li\u003e\n        \u003cli\u003e\u003cstrong\u003e旋灵重锤\u003c/strong\u003e：力量Ⅲ\u003c/li\u003e\n        \u003cli\u003e\u003cstrong\u003e翱灵王翅\u003c/strong\u003e：缓降\u003c/li\u003e\n        \u003cli\u003e\u003cstrong\u003e翱灵翼甲\u003c/strong\u003e：缓降\u003c/li\u003e\n        \u003cli\u003e\u003cstrong\u003e狼灵铠\u003c/strong\u003e：抗性提升Ⅱ；被狼穿戴时，额外提供瞬间治疗。\u003c/li\u003e\n        \u003cli\u003e\u003cstrong\u003e燧灵火石\u003c/strong\u003e：手持玩家自身、永夜骑士、神匠、灾厄村民、女巫、流浪商人、流商羊驼将会持续发光。\u003c/li\u003e\n      \u003c/ul\u003e\n    ":  "\u003cul\u003e\u003cli\u003e由不朽靈材託天工鍛造之靈器，具永不磨損之性。\u003c/li\u003e\u003cli\u003e部分不朽靈器被副手執之時，將予特殊之效：\u003c/li\u003e\u003cli\u003e\u003cstrong\u003e混沌之星\u003c/strong\u003e：生命回復Ⅱ\u003c/li\u003e\u003cli\u003e\u003cstrong\u003e裁靈剪\u003c/strong\u003e：急迫Ⅱ\u003c/li\u003e\u003cli\u003e\u003cstrong\u003e羽靈刷\u003c/strong\u003e：抗火\u003c/li\u003e\u003cli\u003e\u003cstrong\u003e禦靈盾\u003c/strong\u003e：傷害吸收Ⅴ\u003c/li\u003e\u003cli\u003e\u003cstrong\u003e蘿靈竿\u003c/strong\u003e：迅捷Ⅱ\u003c/li\u003e\u003cli\u003e\u003cstrong\u003e詭靈竿\u003c/strong\u003e：迅捷Ⅱ\u003c/li\u003e\u003cli\u003e\u003cstrong\u003e海之祝\u003c/strong\u003e：潮湧能量\u003c/li\u003e\u003cli\u003e\u003cstrong\u003e瀚海靈戟\u003c/strong\u003e：海豚之恩惠\u003c/li\u003e\u003cli\u003e\u003cstrong\u003e旋靈重錘\u003c/strong\u003e：力量Ⅲ\u003c/li\u003e\u003cli\u003e\u003cstrong\u003e翱靈王翅\u003c/strong\u003e：緩降\u003c/li\u003e\u003cli\u003e\u003cstrong\u003e翱靈翼甲\u003c/strong\u003e：緩降\u003c/li\u003e\u003cli\u003e\u003cstrong\u003e狼靈鎧\u003c/strong\u003e：抗性提升Ⅱ；狼著之時，額外予瞬間治療。\u003c/li\u003e\u003cli\u003e\u003cstrong\u003e燧靈火石\u003c/strong\u003e：手持之玩家自身、亙古騎士、天工、災厄村民、女巫、流浪商人、流商羊駝將持續發光。\u003c/li\u003e\u003c/ul\u003e",
-    "？？？":  "？？？",
-    "\n      \u003cul\u003e\n        \u003cli\u003e由聚灵石交由神匠锻造的聚宝箱，放置并开启后：\u003c/li\u003e\n        \u003cli\u003e有较高概率开启随机结构战利品箱。\u003c/li\u003e\n        \u003cli\u003e有中等概率开启随机村庄战利品箱。\u003c/li\u003e\n        \u003cli\u003e有较低概率开启随机宝藏战利品箱。\u003c/li\u003e\n      \u003c/ul\u003e\n    ":  "\u003cul\u003e\u003cli\u003e以聚靈石託天工鍛造之聚寶箱，放置並啟之：\u003c/li\u003e\u003cli\u003e有較高之率開隨機結構戰利品箱。\u003c/li\u003e\u003cli\u003e有中等之率開隨機村莊戰利品箱。\u003c/li\u003e\u003cli\u003e有較低之率開隨機瑰寶戰利品箱。\u003c/li\u003e\u003c/ul\u003e",
-    "聚灵石":  "聚靈石",
-    "\n      \u003cdiv class=\"note\"\u003e聚灵石可视为绿宝石使用。\u003c/div\u003e\n      \u003cul\u003e\n        \u003cli\u003e\u003cstrong\u003e聚集物品\u003c/strong\u003e：\n          \u003cul\u003e\n            \u003cli\u003e\u003cstrong\u003e通用聚灵石\u003c/strong\u003e：副手手持聚灵石或将其置于任意物品展示框中时，其会将周围 \u003ccode\u003e33x33x33\u003c/code\u003e 范围内的已落地物品聚集到其自身位置。\u003c/li\u003e\n            \u003cli\u003e\u003cstrong\u003e容器聚灵石\u003c/strong\u003e：若聚灵石所在的物品展示框被附着在箱子、木桶、潜影盒上时，仅会聚集容器中存在的物品类型。被附着在空容器上时，不会聚集任何物品。\u003c/li\u003e\n            \u003cli\u003e当一个物品实体周围存在多个\u003cstrong\u003e通用聚灵石\u003c/strong\u003e时，该物品会被最近的聚灵石聚集。\u003c/li\u003e\n            \u003cli\u003e当一个物品实体周围存在多个有效的\u003cstrong\u003e容器聚灵石\u003c/strong\u003e时，该物品会分裂为若干个物品实体被这些聚灵石平均聚集。\u003c/li\u003e\n            \u003cli\u003e若一个物品实体周围同时存在\u003cstrong\u003e通用聚灵石\u003c/strong\u003e与\u003cstrong\u003e容器聚灵石\u003c/strong\u003e，该物品会先被距离最近的前者堆叠聚集，再被后者分裂聚集。\u003c/li\u003e\n          \u003c/ul\u003e\n        \u003c/li\u003e\n        \u003cli\u003e\u003cstrong\u003e转换建材\u003c/strong\u003e：可通过切石机转换为一定数量的基础建材：\u003c/li\u003e\n      \u003c/ul\u003e\n      \u003cdiv class=\"imgbox\"\u003e\u003cimg src=\"https://files.seeusercontent.com/2026/07/31/4hLl/zh.png\" alt=\"切石机\"\u003e\u003c/div\u003e\n    ":  "\u003cdiv class=\"note\"\u003e聚靈石可視為綠寶石用之。\u003c/div\u003e\u003cul\u003e\u003cli\u003e\u003cstrong\u003e聚物\u003c/strong\u003e：\u003cul\u003e\u003cli\u003e\u003cstrong\u003e通用聚靈石\u003c/strong\u003e：副手執聚靈石或置之於任意通明置具匡中，其將周圍 \u003ccode\u003e33x33x33\u003c/code\u003e 範圍內已落地之物聚至其位。\u003c/li\u003e\u003cli\u003e\u003cstrong\u003e容器聚靈石\u003c/strong\u003e：若聚靈石所在通明置具匡附於箱、木桶、潛影盒上，僅聚容器中所存之物類。附於空容器上時，不聚任何物。\u003c/li\u003e\u003cli\u003e當一物實周圍有多個\u003cstrong\u003e通用聚靈石\u003c/strong\u003e時，該物將被最近者所聚。\u003c/li\u003e\u003cli\u003e當一物實周圍有多個有效\u003cstrong\u003e容器聚靈石\u003c/strong\u003e時，該物將裂為若干物實，被此等聚靈石均分而聚。\u003c/li\u003e\u003cli\u003e若一物實周圍同時有\u003cstrong\u003e通用聚靈石\u003c/strong\u003e與\u003cstrong\u003e容器聚靈石\u003c/strong\u003e，該物將先被最近之前者堆疊而聚，再被後者裂分而聚。\u003c/li\u003e\u003c/ul\u003e\u003c/li\u003e\u003cli\u003e\u003cstrong\u003e轉建材\u003c/strong\u003e：可以切石機轉為一定數量之基礎建材：\u003c/li\u003e\u003c/ul\u003e\u003cdiv class=\"imgbox\"\u003e\u003cimg src=\u0027https://files.seeusercontent.com/2026/07/31/4hLl/zh.png\u0027 alt=\u0027切石機\u0027\u003e\u003c/div\u003e",
-    "独有特性":  "獨有特性",
-    "以下特性为对应地图的独有特性，仅在对应地图中生效。":  "下述特性為對應地圖之獨有特性，僅於對應地圖中生效。",
-    "守护 - 护樱山（繁樱山谷）":  "守護 - 護櫻山（繁櫻山谷）",
-    "\n      \u003cul\u003e\n        \u003cli\u003e\u003cdel\u003e存在神匠，所有怪物都欲图消灭祂。当神匠死亡后，边界能量流失。\u003c/del\u003e（已被边界维系者取代）\u003c/li\u003e\n      \u003c/ul\u003e\n    ":  "\u003cul\u003e\u003cli\u003e\u003cdel\u003e有天工，所有怪物皆欲滅之。天工亡後，界能流失。\u003c/del\u003e（已被疆界維繫者所代）\u003c/li\u003e\u003c/ul\u003e",
-    "永夜 - 夜屿苍园":  "亙古 - 夜嶼蒼園",
-    "\n      \u003cul\u003e\n        \u003cli\u003e世界仅夜晚循环，没有白天。\u003c/li\u003e\n        \u003cli\u003e锁定昼夜模式，不可切换。\u003c/li\u003e\n        \u003cli\u003e村民作息昼夜反转，村民与玩家仅可在23000刻后睡觉。\u003c/li\u003e\n        \u003cli\u003e\u003cdel\u003e存在维系者，所有怪物都欲图消灭祂。当维系者死亡后，边界能量流失。\u003c/del\u003e（已常驻）\u003c/li\u003e\n      \u003c/ul\u003e\n    ":  "\u003cul\u003e\u003cli\u003e世僅夜循環，無白晝。\u003c/li\u003e\u003cli\u003e鎖定晝夜法，不可更易。\u003c/li\u003e\u003cli\u003e村民作息晝夜反轉，村民與玩家僅可於23000刻後寢。\u003c/li\u003e\u003cli\u003e\u003cdel\u003e有維繫者，所有怪物皆欲滅之。維繫者亡後，界能流失。\u003c/del\u003e（已常駐）\u003c/li\u003e\u003c/ul\u003e",
-    "虚无界门 - 存世":  "虛無結界門 - 存世",
-    "\n      \u003cul\u003e\n        \u003cli\u003e使用不同地图的主题方块搭建传送门框架，并使用火源激活，可前往不同的维度。\u003c/li\u003e\n        \u003cli\u003e与下界传送门不同，虚无界门无论处于何种坐标，都将在传送时，以对应维度的世界出生点为中心，在128格半径范围内寻找距离最近的传送门。若未找到，则会在世界出生点附近生成传送门结构。\u003c/li\u003e\n        \u003cli\u003e每个存世维度的边界能量独立，下界、末地除外。\u003c/li\u003e\n        \u003cli\u003e每个存世维度都存在一位维系者，下界、末地除外。\u003c/li\u003e\n        \u003cli\u003e永夜骑士仅会降临在边界能量至少拥有\u003cstrong\u003e100级\u003c/strong\u003e的主世界或存世维度，不包括下界和末地。\u003c/li\u003e\n        \u003cli\u003e若多个维度同时拥有\u003cstrong\u003e100级\u003c/strong\u003e以上的边界能量，永夜骑士将会随机降临在其中一个、至少存在一名非旁观模式玩家的维度。\u003c/li\u003e\n        \u003cli\u003e若没有符合条件的维度，将会优先尝试降临于主世界，若此时主世界的边界能量等级不足\u003cstrong\u003e100级\u003c/strong\u003e，则不会降临。\u003c/li\u003e\n      \u003c/ul\u003e\n    ":  "\u003cul\u003e\u003cli\u003e以不同地圖之主題方塊搭建傳送門框架，並以火源啟之，可往不同之維度。\u003c/li\u003e\u003cli\u003e與下界傳送門不同，虛無結界門無論處何座標，皆於傳送時，以對應維度世界出生點為心，於128格半徑內覓最近之傳送門。若未覓得，則於世界出生點附近生成傳送門結構。\u003c/li\u003e\u003cli\u003e每個存世維度之界能獨立，下界、終界除外。\u003c/li\u003e\u003cli\u003e每個存世維度皆有一位維繫者，下界、終界除外。\u003c/li\u003e\u003cli\u003e亙古騎士僅降於界能至少有\u003cstrong\u003e100級\u003c/strong\u003e之主世界或存世維度，不含下界與終界。\u003c/li\u003e\u003cli\u003e若多個維度同時有\u003cstrong\u003e100級\u003c/strong\u003e以上之界能，亙古騎士將隨機降於其中一個至少存一名非旁觀模式玩家之維度。\u003c/li\u003e\u003cli\u003e若無符合條件之維度，將優先嘗試降於主世界，若此時主世界界能等級不足\u003cstrong\u003e100級\u003c/strong\u003e，則不降。\u003c/li\u003e\u003c/ul\u003e",
-    "地图":  "地圖",
-    "必须使用专用地图存档":  "必須使用專用地圖存檔",
-    "，如果自行创建世界，将无法正常进行游戏。":  "，若自行創建世界，將無法正常遊玩。",
-    "地图按\u003cstrong\u003e类型与综合难度从高到低\u003c/strong\u003e排序。越高的星级往往代表着越高的生存难度或资源获取难度。":  "地圖按\u003cstrong\u003e類型與綜合難度由高至低\u003c/strong\u003e排序。星級愈高，往往代表存世之艱或資獲之難愈高。",
-    "默认排序":  "默認排序",
-    "按类型":  "按類型",
-    "按难度":  "按難度",
-    "按发布时间":  "按頒行時間",
-    "周年型":  "週年型",
-    "虚无十五界 — 存世阵屿":  "虛無十五界 — 存世陣嶼",
-    "类型：六周年 — 主屿型":  "類型：六週年 — 主嶼型",
-    "难度：🔥🔥🔥":  "難度：🔥🔥🔥",
-    "境虚空无，块铸框扉，源火燃显，入界世存……\u003cbr\u003e\n          以《存世》作者存档钓鱼池为世界出生点的《虚无十五界 - 存世》世界，包括：\u003cbr\u003e\n          边界能量00：彩虹信标\u003cbr\u003e\n          边界能量16：七重登天长阶\u003cbr\u003e\n          边界能量28：聚灵石自动物品分类仓库（84分类单元+4层缓存+16格距离中枢）\u003cbr\u003e\n          边界能量42：免结冰环形宝藏钓鱼池\u003cbr\u003e\n          边界能量90：虚无界门微群系外环\u003cbr\u003e\n          边界能量99：完整阵屿":  "境虛空無，積塊成扉，源火昭顯，入界世存……\u003cbr\u003e以《存世》作者存檔釣魚池為世界出生點之《虛無十五界 - 存世》世界，包括：\u003cbr\u003e界能00：彩虹信標\u003cbr\u003e界能16：七重登天長階\u003cbr\u003e界能28：聚靈石自動物品分類倉庫（84分類單元+4層緩存+16格距離中樞）\u003cbr\u003e界能42：免結冰環形瑰寶釣魚池\u003cbr\u003e界能90：虛無結界門微群系外環\u003cbr\u003e界能99：完整陣嶼",
-    "虚无十五界 — 存世":  "虛無十五界 — 存世",
-    "类型：六周年 — 虚空型":  "類型：六週年 — 虛空型",
-    "难度：🔥🔥🔥🔥🔥":  "難度：🔥🔥🔥🔥🔥",
-    "境虚空无，块铸框扉，源火燃显，入界世存……":  "境虛空無，積塊成扉，源火昭顯，入界世存……",
-    "咒世永夜 — 夜屿苍园":  "咒世永夜 — 夜嶼蒼園",
-    "类型：五周年 — 浮屿型":  "類型：五週年 — 浮嶼型",
-    "难度：🌙🌙🌙🌙🌙🌙":  "難度：🌙🌙🌙🌙🌙🌙",
-    "上苍失色之域，诅咒与永夜轮回……\u003cbr\u003e与群魔共舞……与乱潮共生……":  "上蒼失色之域，詛咒與亙古輪迴……與群魔共舞……與亂潮共生……",
-    "\u003cimg class=\"gate-icon\" src=\"https://minecraft.wiki/images/Pale_Moss_Block_JE1_BE1.png\" alt=\"\"\u003e \u003cstrong\u003e界门：\u003c/strong\u003e苍白苔藓块":  "\u003cimg class=\u0027gate-icon\u0027 src=\u0027https://minecraft.wiki/images/Pale_Moss_Block_JE1_BE1.png\u0027 alt=\u0027\u0027\u003e \u003cstrong\u003e結界門：\u003c/strong\u003e蒼白苔蘚塊",
-    "幽螈世界 — 繁茂洞穴":  "幽螈洞天 — 繁茂洞穴",
-    "类型：四周年 — 洞穴型":  "類型：四週年 — 洞穴型",
-    "难度：🌿🌿🌿🌿🌿":  "難度：🌿🌿🌿🌿🌿",
-    "传说，曾有一片美西螈的国度……\u003cbr\u003e\n          它的植被广茂无垠，它的黑暗无边无际……\u003cbr\u003e\n          它的子民在池中舞跃，它的怪物遍布空洞大地……\u003cbr\u003e\n          它是繁茂壮丽的洞穴，它是贫瘠匮乏的世界……\u003cbr\u003e\n          它是幽暗无光的维度，亦是星光点缀的乐园……\u003cbr\u003e\n          ——某位神匠遗落的日记":  "傳說，曾有一片美西螈之國度……\u003cbr\u003e其植被廣袤無垠，其黑暗無邊無際……\u003cbr\u003e其子民池中舞躍，其怪物遍佈空洞大地……\u003cbr\u003e它是繁茂壯麗之洞穴，它是貧瘠匱乏之世界……\u003cbr\u003e它是幽暗無光之維度，亦是星光點綴之樂園……\u003cbr\u003e——某位天工遺落之日記",
-    "\u003cimg class=\"gate-icon\" src=\"https://minecraft.wiki/images/Moss_Block_JE1_BE1.png\" alt=\"\"\u003e \u003cstrong\u003e界门：\u003c/strong\u003e苔藓块":  "\u003cimg class=\u0027gate-icon\u0027 src=\u0027https://minecraft.wiki/images/Moss_Block_JE1_BE1.png\u0027 alt=\u0027\u0027\u003e \u003cstrong\u003e結界門：\u003c/strong\u003e苔蘚塊",
-    "世外桃源 — 繁樱山谷":  "世外桃源 — 繁櫻山谷",
-    "类型：三周年 — 原版型":  "類型：三週年 — 原版型",
-    "难度：🌸🌸":  "難度：🌸🌸",
-    "曾经，有一位神匠被禁锢在一片繁樱山谷之中。\u003cbr\u003e\n          现在，当月夜降临，此地仍会产生无尽的乱潮。\u003cbr\u003e\n          但不同的是，维系者接管了此方地界的镇守……":  "曾經，有一位天工被錮於一片繁櫻山谷之中。\u003cbr\u003e今也，月夜降臨之時，此地仍生無盡之亂潮。\u003cbr\u003e然不同者，維繫者已掌此方地界之鎮守……",
-    "\u003cimg class=\"gate-icon\" src=\"https://minecraft.wiki/images/Cherry_Wood_%28UD%29_JE1_BE1.png\" alt=\"\"\u003e \u003cstrong\u003e界门：\u003c/strong\u003e樱花木":  "\u003cimg class=\u0027gate-icon\u0027 src=\u0027https://minecraft.wiki/images/Cherry_Wood_%28UD%29_JE1_BE1.png\u0027 alt=\u0027\u0027\u003e \u003cstrong\u003e結界門：\u003c/strong\u003e櫻花木",
-    "虚空型 · 洞穴型 · 浮屿型":  "虛空型 · 洞穴型 · 浮嶼型",
-    "虚无":  "虛無",
-    "类型：虚空型":  "類型：虛空型",
-    "难度：🔆🔆🔆🔆🔆🔆":  "難度：🔆🔆🔆🔆🔆🔆",
-    "主世界与下界皆为虚空的世界。\u003cbr\u003e\u003cstrong\u003e建议在具有充裕时间、且熟知原版特性及核心特性的情况下尝试。\u003c/strong\u003e":  "主世界與下界皆為虛空之世。\u003cbr\u003e\u003cstrong\u003e建議在具充裕時間、且諳原版特性及核心特性之情形下試之。\u003c/strong\u003e",
-    "彩绘洞天 — 硫黄洞穴":  "煇煌洞府 — 硫黄洞穴",
-    "类型：洞穴型":  "類型：洞穴型",
-    "难度：⭐⭐⭐⭐⭐":  "難度：⭐⭐⭐⭐⭐",
-    "26.2主题地图，如上古画卷般的地下世界。":  "26.2主題地圖，如上古畫卷般之地下世界。",
-    "\u003cimg class=\"gate-icon\" src=\"https://minecraft.wiki/images/Chiseled_Sulfur_JE2_BE2.png\" alt=\"\"\u003e \u003cstrong\u003e界门：\u003c/strong\u003e雕纹硫黄":  "\u003cimg class=\u0027gate-icon\u0027 src=\u0027https://minecraft.wiki/images/Chiseled_Sulfur_JE2_BE2.png\u0027 alt=\u0027\u0027\u003e \u003cstrong\u003e結界門：\u003c/strong\u003e雕紋硫黃",
-    "湖峦圣地 — 环杉屿":  "湖山聖境 — 環杉嶼",
-    "类型：浮屿型":  "類型：浮嶼型",
-    "难度：⭐⭐⭐":  "難度：⭐⭐⭐",
-    "群杉环绕的浮空孤屿，筑城者的圣地。\u003cbr\u003e\n          \u003cstrong\u003e该地图地形由kinbee的\u003ca href=\"https://modrinth.com/datapack/revamped-floating-islands\"\u003eRevampedFloatingIslands\u003c/a\u003e数据包生成！\u003c/strong\u003e":  "群杉環繞之浮空孤嶼，築城者之聖境。\u003cbr\u003e\u003cstrong\u003e該圖地形由 kinbee 之\u003ca href=\u0027https://modrinth.com/datapack/revamped-floating-islands\u0027\u003eRevampedFloatingIslands\u003c/a\u003e資料包生成！\u003c/strong\u003e",
-    "\u003cimg class=\"gate-icon\" src=\"https://minecraft.wiki/images/Spruce_Wood_%28UD%29_JE7_BE2.png\" alt=\"\"\u003e \u003cstrong\u003e界门：\u003c/strong\u003e云杉木":  "\u003cimg class=\u0027gate-icon\u0027 src=\u0027https://minecraft.wiki/images/Spruce_Wood_%28UD%29_JE7_BE2.png\u0027 alt=\u0027\u0027\u003e \u003cstrong\u003e結界門：\u003c/strong\u003e雲杉木",
-    "丰雨之境 — 繁茂森屿":  "豐霖之嶼 — 繁茂森嶼",
-    "位于巨大繁茂浮屿上的雨林孤屿。\u003cbr\u003e\n          \u003cstrong\u003e该地图地形由kinbee的\u003ca href=\"https://modrinth.com/datapack/revamped-floating-islands\"\u003eRevampedFloatingIslands\u003c/a\u003e数据包生成！\u003c/strong\u003e":  "位於巨大繁茂浮嶼上之雨林孤嶼。\u003cbr\u003e\u003cstrong\u003e該圖地形由 kinbee 之\u003ca href=\u0027https://modrinth.com/datapack/revamped-floating-islands\u0027\u003eRevampedFloatingIslands\u003c/a\u003e資料包生成！\u003c/strong\u003e",
-    "\u003cimg class=\"gate-icon\" src=\"https://minecraft.wiki/images/Clay_JE2_BE2.png\" alt=\"\"\u003e \u003cstrong\u003e界门：\u003c/strong\u003e黏土块":  "\u003cimg class=\u0027gate-icon\u0027 src=\u0027https://minecraft.wiki/images/Clay_JE2_BE2.png\u0027 alt=\u0027\u0027\u003e \u003cstrong\u003e結界門：\u003c/strong\u003e黏土塊",
-    "放大化 · 原版型":  "放大化 · 原版型",
-    "极冰之域 — 凛冰域脉":  "極冰之境 — 凜冰域脈",
-    "类型：放大化":  "類型：放大化",
-    "难度：⭐⭐⭐⭐":  "難度：⭐⭐⭐⭐",
-    "极寒的地域，高耸入云的山峰。\u003cbr\u003e破顶的冰锥，无垠冰封的冻洋。":  "極寒之地，聳入雲際之峰。\u003cbr\u003e破頂之冰錐，無垠冰封之凍洋。",
-    "\u003cimg class=\"gate-icon\" src=\"https://minecraft.wiki/images/Blue_Ice_JE1.png\" alt=\"\"\u003e \u003cstrong\u003e界门：\u003c/strong\u003e蓝冰":  "\u003cimg class=\u0027gate-icon\u0027 src=\u0027https://minecraft.wiki/images/Blue_Ice_JE1.png\u0027 alt=\u0027\u0027\u003e \u003cstrong\u003e結界門：\u003c/strong\u003e藍冰",
-    "珊雨竹陆 — 雨林海岛":  "珊雨篁陸 — 雨林海島",
-    "类型：原版型":  "類型：原版型",
-    "含有珊瑚海、雨林、竹林的岛屿。":  "含珊瑚海、雨林、竹林之島嶼。",
-    "\u003cimg class=\"gate-icon\" src=\"https://minecraft.wiki/images/Jungle_Wood_%28UD%29_JE6_BE2.png\" alt=\"\"\u003e \u003cstrong\u003e界门：\u003c/strong\u003e丛林木":  "\u003cimg class=\u0027gate-icon\u0027 src=\u0027https://minecraft.wiki/images/Jungle_Wood_%28UD%29_JE6_BE2.png\u0027 alt=\u0027\u0027\u003e \u003cstrong\u003e結界門：\u003c/strong\u003e叢林木",
-    "坠日峡森 — 斑驳山谷":  "墜日峽森 — 斑駁山谷",
-    "难度：⭐⭐":  "難度：⭐⭐",
-    "26.3主题地图，一方包含斑驳森林与樱花树林的盆地世界。":  "26.3主題地圖，一方含斑駁森林與櫻花樹林之盆地世界。",
-    "\u003cimg class=\"gate-icon\" src=\"https://minecraft.wiki/images/Poplar_Wood_%28UD%29_JE1.png\" alt=\"\"\u003e \u003cstrong\u003e界门：\u003c/strong\u003e杨木":  "\u003cimg class=\u0027gate-icon\u0027 src=\u0027https://minecraft.wiki/images/Poplar_Wood_%28UD%29_JE1.png\u0027 alt=\u0027\u0027\u003e \u003cstrong\u003e結界門：\u003c/strong\u003e楊木",
-    "泽中净土 — 环沼草原":  "澤中淨域 — 環沼草原",
-    "1.19主题地图，环绕着红树林沼泽的金合欢平原与平原村庄。":  "1.19主題地圖，環紅樹林沼澤之金合歡平原與平原村莊。",
-    "\u003cimg class=\"gate-icon\" src=\"https://minecraft.wiki/images/Mud_JE1_BE1.png\" alt=\"\"\u003e \u003cstrong\u003e界门：\u003c/strong\u003e泥巴":  "\u003cimg class=\u0027gate-icon\u0027 src=\u0027https://minecraft.wiki/images/Mud_JE1_BE1.png\u0027 alt=\u0027\u0027\u003e \u003cstrong\u003e結界門：\u003c/strong\u003e泥巴",
-    "落谷森池 — 苍翠林湖":  "幽谷翠池 — 蒼翠林湖",
-    "1.20主题地图，围绕着陡峭山峰的樱花森林与平原心湖。":  "1.20主題地圖，環陡峭山峰之櫻花森林與平原心湖。",
-    "\u003cimg class=\"gate-icon\" src=\"https://minecraft.wiki/images/Oak_Wood_%28UD%29_JE7_BE2.png\" alt=\"\"\u003e \u003cstrong\u003e界门：\u003c/strong\u003e橡木":  "\u003cimg class=\u0027gate-icon\u0027 src=\u0027https://minecraft.wiki/images/Oak_Wood_%28UD%29_JE7_BE2.png\u0027 alt=\u0027\u0027\u003e \u003cstrong\u003e結界門：\u003c/strong\u003e橡木",
-    "山巅繁樱 — 樱花平原":  "山巔櫻雲 — 櫻花平原",
-    "1.20主题地图，围绕着陡峭山峰的樱花森林。":  "1.20主題地圖，環陡峭山峰之櫻花森林。",
-    "\u003cimg class=\"gate-icon\" src=\"https://minecraft.wiki/images/Cherry_Log_%28UD%29_JE1_BE1.png\" alt=\"\"\u003e \u003cstrong\u003e界门：\u003c/strong\u003e樱花原木":  "\u003cimg class=\u0027gate-icon\u0027 src=\u0027https://minecraft.wiki/images/Cherry_Log_%28UD%29_JE1_BE1.png\u0027 alt=\u0027\u0027\u003e \u003cstrong\u003e結界門：\u003c/strong\u003e櫻花原木",
-    "岸海三栖 — 沿海集落":  "海渚三棲 — 沿海集落",
-    "难度：⭐":  "難度：⭐",
-    "环绕三种群系的海岸之上，存在着一个十分热闹的海上集镇。\u003cbr\u003e\n          珊瑚海群系，适合喜欢靠海、海底建筑的玩家。\u003cbr\u003e\n          该系列第一张地图《海岛村庄》的纪念地图。":  "環三種群系之海岸上，存一處十分熱鬧之海上集鎮。\u003cbr\u003e珊瑚海群系，宜喜近海、海底建築之玩家。\u003cbr\u003e本系首圖《海島村莊》之紀念地圖。",
-    "\u003cimg class=\"gate-icon\" src=\"https://minecraft.wiki/images/Smooth_Sandstone_JE7_BE2.png\" alt=\"\"\u003e \u003cstrong\u003e界门：\u003c/strong\u003e平滑砂岩":  "\u003cimg class=\u0027gate-icon\u0027 src=\u0027https://minecraft.wiki/images/Smooth_Sandstone_JE7_BE2.png\u0027 alt=\u0027\u0027\u003e \u003cstrong\u003e結界門：\u003c/strong\u003e平滑砂岩",
-    "启航之地 — 海岛村庄":  "啟碇之鄉 — 海島村莊",
-    "“梦，重新开始的地方”":  "「夢，重新開始之處」",
-    "\u003cimg class=\"gate-icon\" src=\"https://minecraft.wiki/images/Poplar_Log_%28UD%29_JE2.png\" alt=\"\"\u003e \u003cstrong\u003e界门：\u003c/strong\u003e杨木原木":  "\u003cimg class=\u0027gate-icon\u0027 src=\u0027https://minecraft.wiki/images/Poplar_Log_%28UD%29_JE2.png\u0027 alt=\u0027\u0027\u003e \u003cstrong\u003e結界門：\u003c/strong\u003e楊木原木",
-    "游戏规则":  "遊戲規則",
-    "\n      \u003cdiv class=\"note warn\"\u003e❗ \u003cstrong\u003e即使开启死亡不掉落，死亡后也会掉落经验。\u003c/strong\u003e\u003c/div\u003e\n      \u003cdiv class=\"note warn\"\u003e❗ \u003cstrong\u003e即使开启死亡不掉落，消失诅咒也会生效。\u003c/strong\u003e\u003c/div\u003e\n      \u003cdiv class=\"note\"\u003e❌ 原版的 \u003ccode\u003e/gamerule mob_griefing false\u003c/code\u003e 命令通常被用于防爆，但该命令会导致村民无法拾取食物、猪灵无法拾取金锭、怪物无法捡起盔甲工具。\u003c/div\u003e\n      \u003cdiv class=\"note ok\"\u003e✅ 若需要苦力怕防爆效果，推荐使用以下指令：\u003cbr\u003e\u003ccode\u003e/gamerule creeper_griefing false\u003c/code\u003e\u003c/div\u003e\n      \u003cdiv class=\"note ok\"\u003e✅ 若需要阻止末影人搬土，推荐使用以下指令：\u003cbr\u003e\u003ccode\u003e/gamerule endman_griefing false\u003c/code\u003e\u003c/div\u003e\n      \u003cdiv class=\"note ok\"\u003e✅ 若需要阻止僵尸拆门，推荐使用以下指令：\u003cbr\u003e\u003ccode\u003e/gamerule zombie_griefing false\u003c/code\u003e\u003c/div\u003e\n      \u003cdiv class=\"note ok\"\u003e✅ 若需要恶魂火球防爆，推荐使用以下指令：\u003cbr\u003e\u003ccode\u003e/gamerule ghast_griefing false\u003c/code\u003e\u003c/div\u003e\n      \u003cdiv class=\"note ok\"\u003e✅ 若需要阻止劫掠兽破坏，推荐使用以下指令：\u003cbr\u003e\u003ccode\u003e/gamerule ravager_griefing false\u003c/code\u003e\u003c/div\u003e\n      \u003cdiv class=\"note ok\"\u003e✅ 若需要阻止生物踩坏耕地，推荐使用以下指令：\u003cbr\u003e\u003ccode\u003e/gamerule farmland_griefing false\u003c/code\u003e\u003c/div\u003e\n      \u003cdiv class=\"note ok\"\u003e✅ 若需要阻止玩家踩坏耕地，推荐使用以下指令：\u003cbr\u003e\u003ccode\u003e/gamerule farmland_player_griefing false\u003c/code\u003e\u003c/div\u003e\n    ":  "\u003cdiv class=\"note warn\"\u003e❗ \u003cstrong\u003e即使開死亡不掉落，死後亦落經驗。\u003c/strong\u003e\u003c/div\u003e\u003cdiv class=\"note warn\"\u003e❗ \u003cstrong\u003e即使開死亡不掉落，消失詛咒亦生效。\u003c/strong\u003e\u003c/div\u003e\u003cdiv class=\"note\"\u003e❌ 原版 \u003ccode\u003e/gamerule mob_griefing false\u003c/code\u003e 命令常被用於防爆，然該命令致村民不能拾食物、豬靈不能拾金錠、怪物不能撿甲兵。\u003c/div\u003e\u003cdiv class=\"note ok\"\u003e✅ 若需伏臨防爆之效，薦用下述指令：\u003cbr\u003e\u003ccode\u003e/gamerule creeper_griefing false\u003c/code\u003e\u003c/div\u003e\u003cdiv class=\"note ok\"\u003e✅ 若需止終眇搬土，薦用下述指令：\u003cbr\u003e\u003ccode\u003e/gamerule endman_griefing false\u003c/code\u003e\u003c/div\u003e\u003cdiv class=\"note ok\"\u003e✅ 若需止殭屍拆門，薦用下述指令：\u003cbr\u003e\u003ccode\u003e/gamerule zombie_griefing false\u003c/code\u003e\u003c/div\u003e\u003cdiv class=\"note ok\"\u003e✅ 若需魄火球防爆，薦用下述指令：\u003cbr\u003e\u003ccode\u003e/gamerule ghast_griefing false\u003c/code\u003e\u003c/div\u003e\u003cdiv class=\"note ok\"\u003e✅ 若需止劫獸破壞，薦用下述指令：\u003cbr\u003e\u003ccode\u003e/gamerule ravager_griefing false\u003c/code\u003e\u003c/div\u003e\u003cdiv class=\"note ok\"\u003e✅ 若需止生靈踐壞耕地，薦用下述指令：\u003cbr\u003e\u003ccode\u003e/gamerule farmland_griefing false\u003c/code\u003e\u003c/div\u003e\u003cdiv class=\"note ok\"\u003e✅ 若需止玩家踐壞耕地，薦用下述指令：\u003cbr\u003e\u003ccode\u003e/gamerule farmland_player_griefing false\u003c/code\u003e\u003c/div\u003e",
-    "模组快捷键":  "模組快捷鍵",
-    "在整合包中为部分模组的功能进行了快捷键配置：":  "於整合包中為部分模組之功能設有快捷鍵：",
-    "快捷键":  "快捷鍵",
-    "功能":  "功能",
-    "鼠标右键":  "滑鼠右鍵",
-    "点击村民交易项":  "點擊村民交易項",
-    "一键交易":  "一鍵交易",
-    "鼠标中键":  "滑鼠中鍵",
-    "置顶交易":  "置頂交易",
-    "整理背包/箱子 (需将鼠标放在物品上)":  "整理背包/箱子 (需將滑鼠置於物品上)",
-    "预览潜影盒内容":  "預覽潛影盒內容",
-    "调整 Gamma、夜视值":  "調整 Gamma、夜視值",
-    "开启摄像机模式 (Tweakeroo灵魂出窍)":  "開啟攝影機模式 (Tweakeroo 靈魂出竅)",
-    "显示光照等级":  "顯示光照等級",
-    "查看史莱姆区块 (需先用 \u003ccode\u003e/seed\u003c/code\u003e 为 Minihud 绑定世界种子)":  "查看史萊姆區塊 (需先以 \u003ccode\u003e/seed\u003c/code\u003e 為 Minihud 綁定世界種子)",
-    "查看结构区块":  "查看結構區塊",
-    "查看群系边界":  "查看群系疆界",
-    "开关灵活放置方块":  "開關靈活放置方塊",
-    "开关方块快速放置":  "開關方塊快速放置",
-    "右 Shift":  "右 Shift",
-    "开关伪潜行":  "開關偽潛行",
-    "滑动滚轮":  "滑動滾輪",
-    "移动单个物品":  "移動單個物品",
-    "Shift + 左键":  "Shift + 左鍵",
-    "移动一组物品":  "移動一組物品",
-    "Shift + 左键按住 + 拖动鼠标":  "Shift + 左鍵按住 + 拖動滑鼠",
-    "快速移动多组物品":  "快速移動多組物品",
-    "Shift + 左键按住 + 拖动鼠标 + Q":  "Shift + 左鍵按住 + 拖動滑鼠 + Q",
-    "快速丢出多组物品":  "快速丟出多組物品",
-    "Alt + 左键":  "Alt + 左鍵",
-    "移动所有相同物品":  "移動所有相同物品",
-    "Shift + Alt + 左键":  "Shift + Alt + 左鍵",
-    "移动所有物品":  "移動所有物品",
-    "存档升级":  "存檔升級",
-    "\n      \u003cul\u003e\n        \u003cli\u003e该系列的大部分地图均为原版存档，且整合包不会加入任何含有新物品方块的模组。\u003c/li\u003e\n        \u003cli\u003e这也意味着，您可以直接将旧版本的存档，例如将1.21.10版本的沿海集落，直接升级到26.2版本的整合包中游玩，只要Minecraft本身对存档的版本升级没有问题。\u003c/li\u003e\n        \u003cli\u003e❗ \u003cstrong\u003e无论如何，在升级之前请备份好存档，以免发生意外。\u003c/strong\u003e\u003c/li\u003e\n        \u003cli\u003e❗ \u003cstrong\u003e虚空型地图没有地形，永远不会产生区块升级问题。\u003c/strong\u003e\u003c/li\u003e\n        \u003cli\u003e❗ \u003cstrong\u003e已停止维护的地图不可进行升级：\u003c/strong\u003e 雷海迷航、雪藏遗城、丰林森屿、棘府洞天。\u003c/li\u003e\n      \u003c/ul\u003e\n    ":  "\u003cul\u003e\u003cli\u003e本系大部分地圖均為原版存檔，且整合包不加任何含新物品方塊之模組。\u003c/li\u003e\u003cli\u003e此亦意味，您可以直接將舊版存檔，例如將1.21.10版之沿海集落，直接升至26.2版整合包中遊玩，只要 Minecraft 本身對存檔之版本升級無礙。\u003c/li\u003e\u003cli\u003e❗ \u003cstrong\u003e無論如何，升級之前請備妥存檔，以免意外。\u003c/strong\u003e\u003c/li\u003e\u003cli\u003e❗ \u003cstrong\u003e虛空型地圖無地形，永不生區塊升級之虞。\u003c/strong\u003e\u003c/li\u003e\u003cli\u003e❗ \u003cstrong\u003e已停維護之地圖不可升級：\u003c/strong\u003e 雷海迷航、雪藏遺城、豐林森嶼、棘府洞天。\u003c/li\u003e\u003c/ul\u003e",
-    "存档升级方式：适用于 26.2 -\u0026gt; 26.3":  "存檔升級之法：適用 26.2 -\u003e 26.3",
-    "升级前务必备份存档！以防操作失误或意外情况发生！":  "升級前務必備份存檔！以防操作失誤或意外！",
-    "\n      \u003cul\u003e\n        \u003cli\u003e存世/存世阵屿：\n          \u003col\u003e\n            \u003cli\u003e下载“世界升级-存世\u0026amp;存世阵屿-26.2-\u0026gt;26.3”覆盖式世界升级包。\u003c/li\u003e\n            \u003cli\u003e将升级压缩包中的两个文件夹“data”和“dimensions”，全选解压到对应存档内的根目录下进行覆盖升级。\u003c/li\u003e\n          \u003c/ol\u003e\n        \u003c/li\u003e\n        \u003cli\u003e其他地图：直接导入到新整合包版本中游玩，可直接升级，或通过优化世界功能升级。\u003c/li\u003e\n      \u003c/ul\u003e\n    ":  "\u003cul\u003e\u003cli\u003e存世/存世陣嶼：\u003col\u003e\u003cli\u003e下載「世界升級-存世\u0026amp;存世陣嶼-26.2-\u0026gt;26.3」覆蓋式世界升級包。\u003c/li\u003e\u003cli\u003e將升級壓縮包中二資料夾「data」與「dimensions」，全選解壓至對應存檔根目錄下覆蓋升級。\u003c/li\u003e\u003c/ol\u003e\u003c/li\u003e\u003cli\u003e其他地圖：直接導入新整合包版本遊玩，可直接升級，或經優化世界功能升級。\u003c/li\u003e\u003c/ul\u003e",
-    "存档升级方式：适用于 1.21.10 -\u0026gt; 26.2":  "存檔升級之法：適用 1.21.10 -\u003e 26.2",
-    "\n      \u003cul\u003e\n        \u003cli\u003e原版型/放大化地图：直接导入到新整合包版本中游玩，可直接升级，或通过优化世界功能升级。\u003c/li\u003e\n        \u003cli\u003e其他类型地图（包括虚空、浮屿、洞穴型）：\n          \u003col\u003e\n            \u003cli\u003e\u003cstrong\u003e备份存档\u003c/strong\u003e，将存档导入到新整合包版本(26.2)。\u003c/li\u003e\n            \u003cli\u003e启动游戏，选择对应存档，选择\u003ccode\u003e升级并打开该世界\u003c/code\u003e，选择\u003ccode\u003e我知道我在做什么\u003c/code\u003e以升级存档格式。\u003c/li\u003e\n            \u003cli\u003e在\u003ccode\u003e是否现在加入该世界？\u003c/code\u003e选择\u003ccode\u003e否\u003c/code\u003e拒绝现在加入。\u003c/li\u003e\n            \u003cli\u003e下载26.2版本对应地图。（接下来的步骤需要精确替换/删除文件，切记不要动其他任何文件）\u003c/li\u003e\n            \u003cli\u003e将26.2版本地图压缩包中的\u003ccode\u003edata/minecraft/world_gen_settings.dat\u003c/code\u003e文件替换到对应的存档目录下。\u003c/li\u003e\n            \u003cli\u003e删除存档datapacks目录中除\u003ccode\u003einit\u003c/code\u003e以外的所有数据包文件或文件夹，使其仅保留一个\u003ccode\u003einit\u003c/code\u003e文件夹。\u003c/li\u003e\n            \u003cli\u003e更新完成，现在可以进入游戏。\u003c/li\u003e\n          \u003c/ol\u003e\n        \u003c/li\u003e\n      \u003c/ul\u003e\n    ":  "\u003cul\u003e\u003cli\u003e原版型/放大化地圖：直接導入新整合包版本遊玩，可直接升級，或經優化世界功能升級。\u003c/li\u003e\u003cli\u003e其他類型地圖（包括虛空、浮嶼、洞穴型）：\u003col\u003e\u003cli\u003e\u003cstrong\u003e備份存檔\u003c/strong\u003e，將存檔導入新整合包版本(26.2)。\u003c/li\u003e\u003cli\u003e啟動遊戲，擇對應存檔，擇\u003ccode\u003e升級並打開該世界\u003c/code\u003e，擇\u003ccode\u003e我知道我在做什麼\u003c/code\u003e以升級存檔格式。\u003c/li\u003e\u003cli\u003e於\u003ccode\u003e是否現在加入該世界？\u003c/code\u003e擇\u003ccode\u003e否\u003c/code\u003e拒今加入。\u003c/li\u003e\u003cli\u003e下載26.2版對應地圖。（接續步驟需精確替換/刪除文件，切記勿動其他任何文件）\u003c/li\u003e\u003cli\u003e將26.2版地圖壓縮包中\u003ccode\u003edata/minecraft/world_gen_settings.dat\u003c/code\u003e文件替換至對應存檔目錄下。\u003c/li\u003e\u003cli\u003e刪除存檔datapacks目錄中除\u003ccode\u003einit\u003c/code\u003e以外所有資料包文件或資料夾，使其僅存一個\u003ccode\u003einit\u003c/code\u003e資料夾。\u003c/li\u003e\u003cli\u003e更新畢，今可入遊戲。\u003c/li\u003e\u003c/ol\u003e\u003c/li\u003e\u003c/ul\u003e",
-    "注意事项":  "注意事項",
-    "配置需求":  "配置需求",
-    "\n      \u003cul\u003e\n        \u003cli\u003e❗ \u003cstrong\u003e该系列需要至少 Java 25 以上才能运行。\u003c/strong\u003e\u003c/li\u003e\n        \u003cli\u003e该系列大多数为优化辅助模组，且本身就是原版。只要对应版本的原版生存能够流畅游玩即可。\u003c/li\u003e\n      \u003c/ul\u003e\n    ":  "\u003cul\u003e\u003cli\u003e❗ \u003cstrong\u003e本系需至少 Java 25 以上方可運行。\u003c/strong\u003e\u003c/li\u003e\u003cli\u003e本系大多為優化輔助模組，且本身就是原版。只要對應版本之原版存世能流暢遊玩即可。\u003c/li\u003e\u003c/ul\u003e",
-    "关于模组":  "關於模組",
-    "\n      \u003cul\u003e\n        \u003cli\u003e❗ \u003cstrong\u003e被标注了 \u003ccode\u003e[Core]\u003c/code\u003e 标签的模组不可删除。\u003c/strong\u003e\u003c/li\u003e\n        \u003cli\u003e❗如若需要自行添加模组，需知悉这可能导致特性异常、崩溃、存档损坏等兼容性问题，并建议为模组文件名添加 [自加] 等前缀以方便在更新整合包时替换模组。\u003c/li\u003e\n        \u003cli\u003e❗仅推荐添加\u003cstrong\u003e对原版机制没有影响、不包含地形生成、不破坏战斗体系、数值平衡性的、装饰、显示、辅助、节省时间类\u003c/strong\u003e的小型模组。（例如：MusicNotification(音乐通知)、voxy、进度牌匾、投影、自动钓鱼、FallingTree(伐树)、连锁采集）\u003c/li\u003e\n        \u003cli\u003e❗如若添加了包含新物品、新方块、新实体的模组，在这类模组没有升级至新版本时，将对存档的可升级性造成影响。\u003c/li\u003e\n      \u003c/ul\u003e\n      \u003cdiv class=\"note warn\"\u003e❗严禁使用搬运实体类型的模组搬运该系列的特殊NPC实体，已知会导致这些实体的部分数据损坏。\u003cbr\u003e\n      （如：在《存世》地图中，若维系者被搬运(删除实体再重新生成)后，将会损坏其数据，使其能通过传送门，从而导致对应维度的边界能量持续流失）\u003cbr\u003e\n      （同时，若维系者在不属于自己的维度中死亡，其所匹配的维度将永远不会重生新的维系者）\u003c/div\u003e\n      \u003cdiv class=\"note warn\"\u003e❗该系列不会主动去兼容非原生添加的模组，如若遇到自行添加的模组产生的化学反应，请自己化身为自己组合出的模组包的作者为自己负责。\u003cbr\u003e\n      ❗注意事项：根据使用协议，经过修改后的整合包仅限您自己使用，您不可在公共场合二次分发本系列的原文件或经过修改后的文件。\u003c/div\u003e\n    ":  "\u003cul\u003e\u003cli\u003e❗ \u003cstrong\u003e被標 \u003ccode\u003e[Core]\u003c/code\u003e 標籤之模組不可刪。\u003c/strong\u003e\u003c/li\u003e\u003cli\u003e❗若需自行加模組，需知此或致特性異常、崩潰、存檔損壞等相容問題，並建議為模組文件名添加 [自加] 等前綴，以於更新整合包時替換模組。\u003c/li\u003e\u003cli\u003e❗僅薦添加\u003cstrong\u003e對原版機制無影響、不含地形生成、不破戰鬥體系、數值平衡之、裝飾、顯示、輔助、節時類\u003c/strong\u003e小型模組。（例如：MusicNotification(音樂通知)、voxy、進度牌匾、投影、自動釣魚、FallingTree(伐樹)、連鎖採集）\u003c/li\u003e\u003cli\u003e❗若添加含新物品、新方塊、新實體之模組，於此類模組未升至新版時，將對存檔可升級性造成影響。\u003c/li\u003e\u003c/ul\u003e\u003cdiv class=\"note warn\"\u003e❗嚴禁以搬運實體類模組搬運本系特殊NPC實體，已知會致此等實體部分數據損壞。\u003cbr\u003e（如：於《存世》地圖中，若維繫者被搬運(刪實體再重生)後，將損其數據，使其能過傳送門，從而致對應維度界能持續流失）\u003cbr\u003e（同時，若維繫者於不屬其之維度中亡，其所匹配之維度將永不重生新維繫者）\u003c/div\u003e\u003cdiv class=\"note warn\"\u003e❗本系不會主動相容非原生所加之模組，若遇自行加模組所生化學反應，請自化身為自己組合模組包之作者為己負責。\u003cbr\u003e❗注意事項：據使用協議，經修改之整合包僅限您自用，您不可公共場合二次分發本系原文件或經修改之文件。\u003c/div\u003e",
-    "常见问题":  "常見問題",
-    "全部展开":  "全部展開",
-    "安装整合包无法识别？":  "安裝整合包無法識別？",
-    "\u003cp\u003e\u003cstrong\u003eA：\u003c/strong\u003e支持Modrinth格式在线包的启动器都可识别，请确认你导入的是\"BorderSurvival\"开头的整合包文件，而不是\"边界生存\"开头的地图包文件。\u003c/p\u003e":  "\u003cp\u003e\u003cstrong\u003eA：\u003c/strong\u003e支援 Modrinth 格式在線包之啟動器皆可識別，請確認你導入之是「BorderSurvival」開頭之整合包文件，而非「边界生存」開頭之地圖包文件。\u003c/p\u003e",
-    "如何安装地图？":  "如何安裝地圖？",
-    "\n          \u003cp\u003e\u003cstrong\u003eA：\u003c/strong\u003e整合包安装完成后，通过启动器打开对应游戏版本中的存档文件夹(saves目录)，将\"边界生存-XXXX\"格式的地图压缩包内的存档文件夹解压到该目录下。\u003c/p\u003e\n          \u003cp\u003e\u003cstrong\u003eB：\u003c/strong\u003e启动游戏后选择\"单人游戏\"，如果正确安装，会显示对应名称的地图存档，进入存档以开始游玩。\u003c/p\u003e\n        ":  "\u003cp\u003e\u003cstrong\u003eA：\u003c/strong\u003e整合包安裝畢，經啟動器開對應遊戲版本之存檔文件夾(saves目錄)，將「边界生存-XXXX」格式地圖壓縮包內之存檔文件夾解壓至該目錄下。\u003c/p\u003e\u003cp\u003e\u003cstrong\u003eB：\u003c/strong\u003e啟動遊戲後擇「單人遊戲」，若正確安裝，將顯示對應名稱之地圖存檔，入存檔以始遊玩。\u003c/p\u003e",
-    "如何更新整合包以获取最新版特性？":  "如何更新整合包以獲最新特性？",
-    "\n          \u003cp\u003e\u003cstrong\u003eA：\u003c/strong\u003e替换模组，保留原版本\u003c/p\u003e\n          \u003col\u003e\n            \u003cli\u003e下载并使用启动器安装新版整合包作为临时实例。\u003c/li\u003e\n            \u003cli\u003e删除原游戏实例 \u003ccode\u003emods\u003c/code\u003e 目录中整合包自带的模组文件，不要删除自己添加的模组。\u003c/li\u003e\n            \u003cli\u003e将刚才安装的临时实例 \u003ccode\u003emods\u003c/code\u003e 目录下的所有文件，复制到原游戏实例的 \u003ccode\u003emods\u003c/code\u003e 目录中。\u003c/li\u003e\n          \u003c/ol\u003e\n          \u003cp\u003e\u003cstrong\u003eB：\u003c/strong\u003e迁移资源，重装新版本\u003c/p\u003e\n          \u003col\u003e\n            \u003cli\u003e下载并使用启动器安装新版整合包。\u003c/li\u003e\n            \u003cli\u003e将原游戏实例中的以下文件夹或文件，复制到新游戏实例目录中：\n              \u003cul\u003e\n                \u003cli\u003e\u003ccode\u003econfig\u003c/code\u003e (模组配置文件夹)\u003c/li\u003e\n                \u003cli\u003e\u003ccode\u003emods\u003c/code\u003e (\u003cstrong\u003e文件夹中自己加入的模组文件\u003c/strong\u003e)\u003c/li\u003e\n                \u003cli\u003e\u003ccode\u003eresourcepacks\u003c/code\u003e (资源包文件夹)\u003c/li\u003e\n                \u003cli\u003e\u003ccode\u003esaves\u003c/code\u003e (存档文件夹)\u003c/li\u003e\n                \u003cli\u003e\u003ccode\u003escreenshots\u003c/code\u003e (截图文件夹)\u003c/li\u003e\n                \u003cli\u003e\u003ccode\u003eshaderpacks\u003c/code\u003e (光影文件夹)\u003c/li\u003e\n              \u003c/ul\u003e\n            \u003c/li\u003e\n          \u003c/ol\u003e\n        ":  "\u003cp\u003e\u003cstrong\u003eA：\u003c/strong\u003e替換模組，保留原版\u003c/p\u003e\u003col\u003e\u003cli\u003e下載並以啟動器安裝新版整合包作臨時實例。\u003c/li\u003e\u003cli\u003e刪原遊戲實例 \u003ccode\u003emods\u003c/code\u003e 目錄中整合包自帶模組文件，勿刪自加之模組。\u003c/li\u003e\u003cli\u003e將方纔安裝之臨時實例 \u003ccode\u003emods\u003c/code\u003e 目錄下所有文件，複製至原遊戲實例 \u003ccode\u003emods\u003c/code\u003e 目錄中。\u003c/li\u003e\u003c/ol\u003e\u003cp\u003e\u003cstrong\u003eB：\u003c/strong\u003e遷移資源，重裝新版\u003c/p\u003e\u003col\u003e\u003cli\u003e下載並以啟動器安裝新版整合包。\u003c/li\u003e\u003cli\u003e將原遊戲實例中下述資料夾或文件，複製至新遊戲實例目錄中：\u003cul\u003e\u003cli\u003e\u003ccode\u003econfig\u003c/code\u003e (模組配置資料夾)\u003c/li\u003e\u003cli\u003e\u003ccode\u003emods\u003c/code\u003e (\u003cstrong\u003e資料夾中自加之模組文件\u003c/strong\u003e)\u003c/li\u003e\u003cli\u003e\u003ccode\u003eresourcepacks\u003c/code\u003e (資源包資料夾)\u003c/li\u003e\u003cli\u003e\u003ccode\u003esaves\u003c/code\u003e (存檔資料夾)\u003c/li\u003e\u003cli\u003e\u003ccode\u003escreenshots\u003c/code\u003e (截圖資料夾)\u003c/li\u003e\u003cli\u003e\u003ccode\u003eshaderpacks\u003c/code\u003e (光影資料夾)\u003c/li\u003e\u003c/ul\u003e\u003c/li\u003e\u003c/ol\u003e",
-    "功能牌损坏如何修复？":  "功能碑毀如何修復？",
-    "\u003cp\u003e\u003cstrong\u003eA：\u003c/strong\u003e使用以下指令获得，需创造模式放置有效。\u003c/p\u003e":  "\u003cp\u003e\u003cstrong\u003eA：\u003c/strong\u003e經下述指令取得，需創造模式放置方有效。\u003c/p\u003e",
-    "功能牌右键没反应？":  "功能碑右鍵無反應？",
-    "\u003cp\u003e\u003cstrong\u003eA：\u003c/strong\u003e这是由于模组没有被加载导致的，请检查整合包是否安装正确，且启动的游戏版本名是否为整合包所安装的版本名。\u003c/p\u003e":  "\u003cp\u003e\u003cstrong\u003eA：\u003c/strong\u003e此因模組未被加載所致，請查整合包是否安裝正確，且所啟遊戲版本名是否為整合包所裝版本名。\u003c/p\u003e",
-    "命令无法使用？":  "命令無法使用？",
-    "\n          \u003cp\u003e\u003cstrong\u003eA：\u003c/strong\u003e绝大多数命令都需要作弊权限才能使用，需要通过以下步骤获取命令权限：\u003c/p\u003e\n          \u003cul\u003e\n            \u003cli\u003e\u003cstrong\u003e单人模式\u003c/strong\u003e：按 \u003ccode\u003eESC\u003c/code\u003e -\u0026gt; 点击 \u003cstrong\u003e选项\u003c/strong\u003e -\u0026gt; 点击\u003cstrong\u003e世界选项\u003c/strong\u003e -\u0026gt; 将 \u003cstrong\u003e允许命令: 关\u003c/strong\u003e 更改为 \u003cstrong\u003e允许命令: 开\u003c/strong\u003e -\u0026gt; 点击 \u003cstrong\u003e完成\u003c/strong\u003e。\u003c/li\u003e\n            \u003cli\u003e\u003cstrong\u003e服务端\u003c/strong\u003e：通过服务端控制台使用 \u003ccode\u003e/op \u0026lt;玩家名称\u0026gt;\u003c/code\u003e 命令给予指定玩家命令权限。\u003c/li\u003e\n          \u003c/ul\u003e\n        ":  "\u003cp\u003e\u003cstrong\u003eA：\u003c/strong\u003e絕大多數命令需作弊權限方可用，需經下述步驟獲命令權限：\u003c/p\u003e\u003cul\u003e\u003cli\u003e\u003cstrong\u003e單人模式\u003c/strong\u003e：按 \u003ccode\u003eESC\u003c/code\u003e -\u003e 點擊 \u003cstrong\u003e選項\u003c/strong\u003e -\u003e 點擊\u003cstrong\u003e世界選項\u003c/strong\u003e -\u003e 將 \u003cstrong\u003e允許命令: 關\u003c/strong\u003e 改為 \u003cstrong\u003e允許命令: 開\u003c/strong\u003e -\u003e 點擊 \u003cstrong\u003e完成\u003c/strong\u003e。\u003c/li\u003e\u003cli\u003e\u003cstrong\u003e服務端\u003c/strong\u003e：經服務端控制台用 \u003ccode\u003e/op \u0026lt;玩家名稱\u0026gt;\u003c/code\u003e 命令予指定玩家命令權限。\u003c/li\u003e\u003c/ul\u003e",
-    "边界能量异常流逝？":  "界能異常流逝？",
-    "\n          \u003cp\u003e\u003cstrong\u003eA：\u003c/strong\u003e边界维系者所在的区块需要被加载。在Minecraft1.21.9版本后，不再有世界出生点区块的概念。\u003c/p\u003e\n          \u003cp\u003e\u003cstrong\u003eB：\u003c/strong\u003e可使用Carpet mod在主世界加入一位假玩家并将其tp到安全位置，或使用珍珠气泡柱制作区块加载器，保证维系者所在的区块被正常加载。\u003c/p\u003e\n        ":  "\u003cp\u003e\u003cstrong\u003eA：\u003c/strong\u003e疆界維繫者所在區塊需被加載。於 Minecraft 1.21.9版後，不再有世界出生點區塊之概念。\u003c/p\u003e\u003cp\u003e\u003cstrong\u003eB：\u003c/strong\u003e可以 Carpet mod於主世界加一假玩家並將其 tp 至安全位置，或以珍珠氣泡柱製區塊加載器，保證維繫者所在區塊被正常加載。\u003c/p\u003e",
-    "进入末地为什么直接死亡？":  "進入終界為何徑直而亡？",
-    "\n          \u003cp\u003e\u003cstrong\u003eA：\u003c/strong\u003e边界能量不足，边界未扩展到末地黑曜石平台坐标，传送门将玩家传送到末地主岛后，距离边界过远，故而窒息而死。\u003c/p\u003e\n          \u003cp\u003e\u003cstrong\u003eB：\u003c/strong\u003e请将边界范围至少提升至100格半径后，再尝试进入末地。\u003c/p\u003e\n        ":  "\u003cp\u003e\u003cstrong\u003eA：\u003c/strong\u003e界能不足，疆界未拓至終界黑曜石平台座標，傳送門將玩家送至終界主島後，離疆界過遠，故窒息而亡。\u003c/p\u003e\u003cp\u003e\u003cstrong\u003eB：\u003c/strong\u003e請將疆界範圍至少升至100格半徑後，再試入終界。\u003c/p\u003e",
-    "为何不刷怪？":  "為何不孳生？",
-    "\n          \u003cp\u003e\u003cstrong\u003eA：\u003c/strong\u003e请检查是否为和平模式。如果遇到地图默认为和平模式的情况，请提供地图名称反馈修复。\u003c/p\u003e\n          \u003cp\u003e\u003cstrong\u003eB：\u003c/strong\u003e因边界外部不会刷怪，如果边界等级小于10级，刷怪效率会较为缓慢。\u003c/p\u003e\n        ":  "\u003cp\u003e\u003cstrong\u003eA：\u003c/strong\u003e請查是否為和平模式。若遇地圖默認和平模式之情形，請提供地圖名反饋修復。\u003c/p\u003e\u003cp\u003e\u003cstrong\u003eB：\u003c/strong\u003e因疆界外不孳生，若疆界等級小於10級，孳生之效會較緩。\u003c/p\u003e",
-    "我在《存世》地图中利用虚无界门特性制造了一个多维度刷怪塔后，出现严重掉刻延迟？":  "我於《存世》地圖中藉虛無結界門之性製一多維度孳衍塔後，出現嚴重掉刻延遲？",
-    "\n          \u003cp\u003e\u003cstrong\u003eA：\u003c/strong\u003eMinecraft每额外加载一个维度，刻运算延迟便会增加一倍，当mspt超过50.0ms/刻后，tps便会降低，从而导致服务端延迟，这是正常现象。\u003c/p\u003e\n          \u003cp\u003e\u003cstrong\u003eB：\u003c/strong\u003e在做此类事情之前，请先使用假人让多个维度同时加载，并在执行以下指令后按住TAB键查看tps/mspt，再根据CPU性能(mspt数值)删减或酌情增加同时加载维度的数量。\u003c/p\u003e\n        ":  "\u003cp\u003e\u003cstrong\u003eA：\u003c/strong\u003eMinecraft 每額外加載一維度，刻運算延遲便增一倍，當 mspt 超 50.0ms/刻後，tps 便降，從而致服務端延遲，此乃正常現象。\u003c/p\u003e\u003cp\u003e\u003cstrong\u003eB：\u003c/strong\u003e作此類事之前，請先以假人令多維度同時加載，並於執下述指令後按住 TAB 鍵查看 tps/mspt，再據 CPU 性能(mspt值)刪減或酌情增同時加載維度之數。\u003c/p\u003e",
-    "放置方块延迟？区块加载卡顿？活塞动画不流畅？":  "放置方塊延遲？區塊加載卡頓？活塞動畫不流暢？",
-    "\u003cp\u003e\u003cstrong\u003eA：\u003c/strong\u003e这可能是动态光源导致的，请尝试关闭动态光源。\u003c/p\u003e":  "\u003cp\u003e\u003cstrong\u003eA：\u003c/strong\u003e此或為動態光源所致，請試關動態光源。\u003c/p\u003e",
-    "如何搭建服务端？":  "如何搭建服務端？",
-    "\n          \u003col\u003e\n            \u003cli\u003e自行安装对应Minecraft版本的fabric服务端。\u003c/li\u003e\n            \u003cli\u003e安装整合包，将整合包中的\u003ccode\u003emods\u003c/code\u003e、\u003ccode\u003econfig\u003c/code\u003e目录下的所有文件添加到服务端的\u003ccode\u003emods\u003c/code\u003e、\u003ccode\u003econfig\u003c/code\u003e文件夹中。\u003c/li\u003e\n            \u003cli\u003e将地图包解压到服务端根目录下，将地图存档名称更改为\u003ccode\u003eworld\u003c/code\u003e，或更名为\u003ccode\u003eserver.properties\u003c/code\u003e文件中的\u003ccode\u003elevel-name\u003c/code\u003e配置项的值。\u003c/li\u003e\n            \u003cli\u003e阅读下一条常见问题，进行服务端删除模组、复制carpet配置文件到存档内部的操作。\u003c/li\u003e\n            \u003cli\u003e搭建完成，启动服务端。\u003c/li\u003e\n          \u003c/ol\u003e\n        ":  "\u003col\u003e\u003cli\u003e自行安裝對應 Minecraft 版本之 fabric 服務端。\u003c/li\u003e\u003cli\u003e安裝整合包，將整合包中\u003ccode\u003emods\u003c/code\u003e、\u003ccode\u003econfig\u003c/code\u003e目錄下所有文件加至服務端\u003ccode\u003emods\u003c/code\u003e、\u003ccode\u003econfig\u003c/code\u003e資料夾中。\u003c/li\u003e\u003cli\u003e將地圖包解壓至服務端根目錄下，將地圖存檔名改為\u003ccode\u003eworld\u003c/code\u003e，或改為\u003ccode\u003eserver.properties\u003c/code\u003e文件中\u003ccode\u003elevel-name\u003c/code\u003e配置項之值。\u003c/li\u003e\u003cli\u003e閱下條常見問題，行服務端刪模組、複製 carpet 配置文件至存檔內部之操作。\u003c/li\u003e\u003cli\u003e搭建畢，啟動服務端。\u003c/li\u003e\u003c/ol\u003e",
-    "搭建的服务端覆盖整合包模组后无法正常启动？":  "搭建之服務端覆蓋整合包模組後無法正常啟動？",
-    "\u003cp\u003e\u003cstrong\u003eA：\u003c/strong\u003e服务端需删除 \u003cstrong\u003e\u003ccode\u003e[更高级联机设置]mcwifipnp\u003c/code\u003e\u003c/strong\u003e 模组才可正常运行。\u003c/p\u003e":  "\u003cp\u003e\u003cstrong\u003eA：\u003c/strong\u003e服務端需刪 \u003cstrong\u003e\u003ccode\u003e[更高级联机设置]mcwifipnp\u003c/code\u003e\u003c/strong\u003e 模組方可正常運行。\u003c/p\u003e",
-    "搭建的服务端默认没有开启地毯 (Carpet) 模组的任何功能？":  "搭建之服務端默認未開地毯 (Carpet) 模組任何功能？",
-    "\n          \u003cp\u003e\u003cstrong\u003eA：\u003c/strong\u003e服务端的地毯模组需要单独为存档进行配置：\u003c/p\u003e\n          \u003col\u003e\n            \u003cli\u003e将 \u003ccode\u003econfig/carpet/default_carpet.conf\u003c/code\u003e 文件复制到存档 (一般为 \u003ccode\u003eworld\u003c/code\u003e) 目录下。\u003c/li\u003e\n            \u003cli\u003e将复制过去的文件重命名为 \u003ccode\u003ecarpet.conf\u003c/code\u003e。\u003c/li\u003e\n            \u003cli\u003e重启服务端。\u003c/li\u003e\n          \u003c/ol\u003e\n        ":  "\u003cp\u003e\u003cstrong\u003eA：\u003c/strong\u003e服務端地毯模組需單獨為存檔配置：\u003c/p\u003e\u003col\u003e\u003cli\u003e將 \u003ccode\u003econfig/carpet/default_carpet.conf\u003c/code\u003e 文件複製至存檔 (一般為 \u003ccode\u003eworld\u003c/code\u003e) 目錄下。\u003c/li\u003e\u003cli\u003e將複製過去之文件重命名為 \u003ccode\u003ecarpet.conf\u003c/code\u003e。\u003c/li\u003e\u003cli\u003e重啟服務端。\u003c/li\u003e\u003c/ol\u003e",
-    "若遇到其他疑难杂症或困难，或以上问题根据步骤并没有解决，请在\u003ca href=\"https://github.com/Fndream/BorderSurvivalModpack/issues\"\u003eIssues\u003c/a\u003e发布提问。":  "若遇其他疑難雜症或困難，或上述問題據步驟並未解決，請於\u003ca href=\u0027https://github.com/Fndream/BorderSurvivalModpack/issues\u0027\u003eIssues\u003c/a\u003e發佈提問。",
-    "版本与协议":  "版本與協議",
-    "历史版本":  "歷史版本",
-    "\n      \u003cul\u003e\n        \u003cli\u003e若未来本系列更新到更高的 Minecraft 版本后，\u003cstrong\u003e旧版本将不再维护\u003c/strong\u003e。\u003c/li\u003e\n        \u003cli\u003e❗ \u003cstrong\u003e本系列不保留且不推荐游玩历史版本，禁止一切历史版本的二次传播。\u003c/strong\u003e\u003c/li\u003e\n        \u003cli\u003e❗ \u003cstrong\u003e若您下载本系列资源，则表示您同意并遵守\u003ca href=\"#agreement\"\u003e使用协议\u003c/a\u003e。\u003c/strong\u003e\u003c/li\u003e\n      \u003c/ul\u003e\n    ":  "\u003cul\u003e\u003cli\u003e若未來本系更新至更高 Minecraft 版本後，\u003cstrong\u003e舊版將不再維護\u003c/strong\u003e。\u003c/li\u003e\u003cli\u003e❗ \u003cstrong\u003e本系不保留且不薦遊歷史版本，禁止一切歷史版本之二次傳播。\u003c/strong\u003e\u003c/li\u003e\u003cli\u003e❗ \u003cstrong\u003e若你下載本系資源，則示你同意並遵守\u003ca href=\u0027#agreement\u0027\u003e使用協議\u003c/a\u003e。\u003c/strong\u003e\u003c/li\u003e\u003c/ul\u003e",
-    "使用协议":  "使用協議",
-    "本文档内容":  "本文檔內容",
-    "\u003cp\u003e在未经授权的情况下，您不可对该文档文本、图片进行摘抄或转载。\u003c/p\u003e":  "\u003cp\u003e未經授權之情況下，你不可對本文檔文本、圖片摘抄或轉載。\u003c/p\u003e",
-    "本系列资源":  "本系資源",
-    "\n      \u003cul\u003e\n        \u003cli\u003e✅ 允许：您可以将本系列用于单人游戏、多人联机、服务端联机、实况录制。\u003c/li\u003e\n        \u003cli\u003e❌ 禁止：在未经授权的情况下，您不可在任何公共场合（包括但不限于社区、网站、网盘、资源群、社交媒体等）二次分发（上传、分享、发布）本系列的原文件或经过修改后的文件。\u003c/li\u003e\n        \u003cli\u003e❌ 禁止：您不可将本系列用于任何商业目的，包括但不限于出售、捆绑销售、广告推广等。\u003c/li\u003e\n        \u003cli\u003e❌ 禁止：本系列不适用于服务器形式，您不可也无法将本系列用于任何服务器，使用服务端联机除外。\u003c/li\u003e\n      \u003c/ul\u003e\n    ":  "\u003cul\u003e\u003cli\u003e✅ 允許：你可將本系用於單人遊戲、多人聯機、服務端聯機、實況錄製。\u003c/li\u003e\u003cli\u003e❌ 禁止：未經授權之情況下，你不可於任何公共場合（包括但不限於社區、網站、網盤、資源群、社交媒體等）二次分發（上傳、分享、發佈）本系原文件或經修改之文件。\u003c/li\u003e\u003cli\u003e❌ 禁止：你不可將本系用於任何商業目的，包括但不限於出售、捆綁銷售、廣告推廣等。\u003c/li\u003e\u003cli\u003e❌ 禁止：本系不適用服務端形式，你不可亦無法將本系用於任何服務端，用服務端聯機除外。\u003c/li\u003e\u003c/ul\u003e",
-    "首发日期":  "首頒日期",
-    "\u003cstrong\u003e海岛村庄 - 1.15.2\u003c/strong\u003e":  "\u003cstrong\u003e海島村莊 - 1.15.2\u003c/strong\u003e",
-    "首发日期：2020-05-23 - 海岛村庄 - 1.15.2 · © Fndream，未经许可不得转载文本与图片":  "首頒日期：2020-05-23 - 海島村莊 - 1.15.2 · © Fndream，未經許可不得轉載文本與圖片",
-    "全部收起":  "全部收起",
-    "📋 复制":  "📋 複製",
-    "✓ 已复制":  "✓ 已複製",
-    "✗ 失败":  "✗ 失敗"
-};
-  var lzhState=null;
-  function applyLzh(on){
-    if(window.clearCopy){window.clearCopy()}
-    if(on){
-      if(lzhState){return}
-      var els=document.querySelectorAll('.zh');
-      lzhState=[];
-      for(var i=0;i<els.length;i++){
-        var el=els[i],orig=el.innerHTML,v=LZH[orig];
-        lzhState.push([el,orig]);
-        if(v!==undefined){el.innerHTML=v}
-      }
-    }else if(lzhState){
-      for(var j=0;j<lzhState.length;j++){
-        if(lzhState[j][0].parentNode){lzhState[j][0].innerHTML=lzhState[j][1]}
-      }
-      lzhState=null;
-    }
-    if(window.initCopy){window.initCopy()}
-  }
-  window.applyLzh=applyLzh;
+  var langWrap=document.getElementById('langWrap'),
+      langPop=document.getElementById('langPop'),
+      langCur=document.getElementById('langCur');
   function labelLang(){
     var l=curLang();
-    if(l==='zh'){langBtn.textContent='🌐 EN';langBtn.title='Switch to English'}
-    else if(l==='en'){langBtn.textContent='🌐 文言';langBtn.title='切换到文言（华夏）'}
-    else{langBtn.textContent='🌐 中文';langBtn.title='切换到中文'}
+    langCur.textContent=(l==='zh')?'中文':'EN';
+    langBtn.title=(l==='zh')?'切换语言':'Switch language';
+    var opts=langPop.querySelectorAll('.lang-opt');
+    for(var i=0;i<opts.length;i++){opts[i].classList.toggle('cur',opts[i].getAttribute('data-l')===l)}
   }
-  langBtn.addEventListener('click',function(){
-    var cur=curLang();
-    var l=(cur==='zh')?'en':(cur==='en'?'lzh':'zh');
+  function setLang(l){
     document.documentElement.className='lang-'+l;
-    document.documentElement.lang=(l==='zh')?'zh-CN':(l==='en'?'en':'lzh');
-    document.title=(l==='zh')?'边界生存 · 原版边界生存地图系列':(l==='en'?'Border Survival · Vanilla Border Survival Worlds':'界守存生 · 原版界守存生圖系');
+    document.documentElement.lang=(l==='zh')?'zh-CN':'en';
+    document.title=(l==='zh')?'边界生存 · 原版边界生存地图系列':'Border Survival · Vanilla Border Survival Worlds';
     try{localStorage.setItem('bs-lang',l)}catch(e){}
-    applyLzh(l==='lzh');
     labelLang();
+  }
+  function openLangPop(on){langWrap.classList.toggle('open',on);langBtn.setAttribute('aria-expanded',on?'true':'false')}
+  langBtn.addEventListener('click',function(e){e.stopPropagation();openLangPop(!langWrap.classList.contains('open'))});
+  document.addEventListener('click',function(e){if(!langWrap.contains(e.target))openLangPop(false)});
+  document.addEventListener('keydown',function(e){if(e.key==='Escape')openLangPop(false)});
+  langPop.addEventListener('click',function(e){
+    var t=e.target;while(t&&t!==langPop&&!t.classList.contains('lang-opt')){t=t.parentNode}
+    if(!t||t===langPop)return;
+    /* 选完语言即关闭菜单（点外部/Esc 关闭同理） */
+    openLangPop(false);
+    var l=t.getAttribute('data-l');
+    if(!l||l===curLang())return;
+    setLang(l);
   });
   labelLang();
-  /* 初始文言恢复移至脚本末尾执行（须晚于 TOC / 灯箱等动态 .zh 构建，否则无法还原） */
 
   /* ===== 深浅主题切换 ===== */
   var themeBtn=document.getElementById('themeBtn');
   function curTheme(){return document.documentElement.getAttribute('data-theme')==='dark'?'dark':'light'}
   function labelTheme(){
     var dark=(curTheme()==='dark');
-    themeBtn.textContent=dark?'☀️':'🌙';
-    themeBtn.title=dark?'切换浅色主题':'Switch to dark theme';
+    themeBtn.setAttribute('aria-checked',dark?'true':'false');
+    themeBtn.title=dark?'切换浅色主题 Switch to light':'切换深色主题 Switch to dark';
   }
   themeBtn.addEventListener('click',function(){
     var next=(curTheme()==='dark')?'light':'dark';
@@ -2331,7 +2232,7 @@ li::marker{color:#d99a2e}
     var junk=node.querySelectorAll('.chip,.muted');
     for(var i=0;i<junk.length;i++){junk[i].parentNode.removeChild(junk[i])}
   }
-  var sections=[].slice.call(document.querySelectorAll('main > section.card'));
+  var sections=[].slice.call(document.querySelectorAll('main > section.card')).filter(function(sec){return getComputedStyle(sec).display!=='none'});
   sections.forEach(function(sec){
     var h2=null,kids=[];
     for(var i=0;i<sec.children.length;i++){
@@ -2365,14 +2266,27 @@ li::marker{color:#d99a2e}
         box.appendChild(sa);
       });
       item.appendChild(box);
-      tg.addEventListener('click',function(){item.classList.toggle('collapsed')});
     }
     toc.appendChild(item);
   });
 
+  /* 折叠用**事件委托**绑定在 #toc 上：更新日志模式会整体替换 toc.innerHTML，逐个绑定的监听器会随旧节点一起丢失（曾导致切换模式回来后折叠失效） */
+  var collapsedIds={};
   toc.addEventListener('click',function(e){
     var t=e.target;
-    var a=(t&&t.closest)?t.closest('a.toc-link'):null;
+    if(!t||!t.closest){return}
+    var tg=t.closest('.toc-toggle');
+    if(tg){
+      var item=tg.closest('.toc-item');
+      if(item){
+        var a=item.querySelector('.toc-link');
+        var id=a?decodeURIComponent((a.getAttribute('href')||'').slice(1)):'';
+        if(item.classList.toggle('collapsed')){if(id){collapsedIds[id]=true}}
+        else{if(id){delete collapsedIds[id]}}
+      }
+      return;
+    }
+    var a=t.closest('a.toc-link');
     if(a&&window.innerWidth<1180){openSide(false)}
   });
 
@@ -2472,6 +2386,26 @@ li::marker{color:#d99a2e}
     requestAnimationFrame(function(){updateActive();ticking=false});
   },{passive:true});
   window.addEventListener('hashchange',updateActive);
+  /* 侧栏内容被替换（文档目录 ⇄ 更新日志版本导航）后重建滚动高亮映射，并恢复各目录的折叠状态。
+     注意：折叠状态要**按 .toc-item 恢复**，不能按每条链接恢复——子项链接也属于同一 item，
+     用子项 id 查 collapsedIds 会得到空值并把父项的 collapsed 抹掉。 */
+  window.rebuildTocTargets=function(){
+    links=[].slice.call(toc.querySelectorAll('a.toc-link'));
+    targets=[];
+    links.forEach(function(a){
+      var id=decodeURIComponent(a.getAttribute('href').slice(1));
+      var el=document.getElementById(id);
+      if(el){targets.push({a:a,el:el})}
+    });
+    [].slice.call(toc.querySelectorAll('.toc-item')).forEach(function(item){
+      var a=item.querySelector('.toc-head > .toc-link');
+      if(!a||!item.querySelector('.toc-children')){return}
+      var id=decodeURIComponent((a.getAttribute('href')||'').slice(1));
+      item.classList.toggle('collapsed',!!collapsedIds[id]);
+    });
+    toc.scrollTop=0;
+    updateActive();
+  };
   updateActive();
 })();
 document.querySelectorAll('.gate-icon').forEach(function(img){
@@ -2501,8 +2435,7 @@ document.querySelectorAll('.gate-icon').forEach(function(img){
   }
   var LABEL={
     zh:{idle:'<span class="zh">📋 复制</span>',done:'<span class="zh">✓ 已复制</span>',fail:'<span class="zh">✗ 失败</span>'},
-    en:{idle:'<span class="en">📋 Copy</span>',done:'<span class="en">✓ Copied</span>',fail:'<span class="en">✗ Failed</span>'},
-    lzh:{idle:'📋 複製',done:'✓ 已複製',fail:'✗ 失敗'}
+    en:{idle:'<span class="en">📋 Copy</span>',done:'<span class="en">✓ Copied</span>',fail:'<span class="en">✗ Failed</span>'}
   };
   function labelHTML(kind){
     var l=(window.curLang&&window.curLang())||'zh';
@@ -2612,9 +2545,152 @@ document.querySelectorAll('.gate-icon').forEach(function(img){
     else if(e.key==='ArrowLeft'){show(idx-1)}
     else if(e.key==='ArrowRight'){show(idx+1)}
   });
+  /* ===== 地图下载方式弹窗 + 全站外链新标签 ===== */
+  var mapDl=document.getElementById('mapDl');
+  var mapDlOpener=null;
+  function openMapDl(mode){
+    mapDl.classList.toggle('mode-mod',mode==='mod');
+    mapDl.classList.add('open');
+    mapDl.setAttribute('aria-hidden','false');
+    mapDlOpener=document.activeElement;
+    var box=mapDl.querySelector('.mapdl-box');
+    if(box){box.focus()}
+  }
+  function closeMapDl(){
+    mapDl.classList.remove('open');
+    mapDl.setAttribute('aria-hidden','true');
+    if(mapDlOpener&&mapDlOpener.focus){mapDlOpener.focus();mapDlOpener=null}
+  }
+  /* 双模式：文档模式 / 更新日志模式。切换时侧栏目录 ⇄ 更新日志版本导航 */
+  var docTocHTML=null;
+  function changelogNavHTML(){
+    var hs=[].slice.call(document.querySelectorAll('#changelog h3'));
+    if(!hs.length){return '<p class="muted" style="padding:10px"><span class="zh">暂无更新日志</span><span class="en">No changelog yet</span></p>'}
+    var h='';
+    hs.forEach(function(x,i){
+      if(!x.id){x.id='changelog-v'+(i+1)}
+      h+='<div class="toc-item"><div class="toc-head"><a class="toc-link" href="#'+x.id+'">'+x.innerHTML+'</a></div></div>';
+    });
+    return h;
+  }
+  function toggleChangelog(force){
+    var on=(typeof force==='boolean')?force:!document.body.classList.contains('changelog-only');
+    var tocBox=document.getElementById('toc');
+    if(tocBox){
+      if(on){
+        if(docTocHTML===null){docTocHTML=tocBox.innerHTML}
+        tocBox.innerHTML=changelogNavHTML();
+      }else if(docTocHTML!==null){
+        tocBox.innerHTML=docTocHTML;
+      }
+      if(window.rebuildTocTargets){window.rebuildTocTargets()}
+    }
+    document.body.classList.toggle('changelog-only',on);
+    var bs=[].slice.call(document.querySelectorAll('[data-changelog]'));
+    for(var i=0;i<bs.length;i++){
+      bs[i].setAttribute('aria-pressed',on?'true':'false');
+      bs[i].classList.toggle('active',on);
+    }
+    if(on){window.scrollTo(0,0)}
+  }
+  window.toggleChangelog=toggleChangelog;
+  document.addEventListener('click',function(e){
+    var t=e.target;
+    if(!t||!t.closest){return}
+    if(t.closest('[data-mapdl-close]')){closeMapDl();return}
+    var a=t.closest('a');
+    if(!a){return}
+    if(a.hasAttribute('data-changelog')){e.preventDefault();toggleChangelog();return}
+    if(a.hasAttribute('data-mapdl')){e.preventDefault();openMapDl('map');return}
+    if(a.hasAttribute('data-moddl')){e.preventDefault();openMapDl('mod');return}
+    /* 页脚「使用协议」等站内锚点：更新日志模式下目标 section 被隐藏，先退回文档模式再让浏览器执行锚点跳转 */
+    if(a.getAttribute('href')==='#agreement'&&document.body.classList.contains('changelog-only')){toggleChangelog(false)}
+    if(a.target==='_blank'){return}
+    var href=a.getAttribute('href')||'';
+    if(!/^(https?):\/\//i.test(href)){return}
+    e.preventDefault();
+    window.open(a.href,'_blank','noopener');
+  });
+  document.addEventListener('keydown',function(e){
+    if(e.key==='Escape'||e.key==='Esc'){
+      if(mapDl.classList.contains('open')){closeMapDl()}
+      else if(document.body.classList.contains('changelog-only')){toggleChangelog(false)}
+    }
+  });
 })();
-/* ===== 初始文言恢复（须晚于 TOC / 灯箱 / 复制按钮等动态 .zh 就位） ===== */
-if(window.curLang&&window.curLang()==='lzh'){window.applyLzh(true)}
+</script>
+<script>
+/* ===== 秋季背景粒子：MC 风红黄像素粒子（漂浮 + 明暗闪烁，独立层不挡交互） ===== */
+(function(){
+  var cv=document.getElementById('bgfx');
+  if(!cv||!cv.getContext){return}
+  var ctx=cv.getContext('2d');
+  if(!ctx){return}
+  var W=1,H=1,dpr=1;
+  var cols=['#ff4b2b','#ff7a30','#ffab2e','#ffd166','#e03a25'];
+  var shapes=[
+    {r:[[1,0],[0,1],[1,1],[2,1],[1,2]]},
+    {r:[[0,0],[2,0],[1,1],[0,2],[2,2]]},
+    {r:[[1,0],[0,1],[1,1],[2,1]]},
+    {r:[[0,1],[1,1],[2,1],[1,0]]}
+  ];
+  var CELL=3,sprites=[];
+  for(var i=0;i<cols.length;i++){
+    for(var j=0;j<shapes.length;j++){
+      var c=document.createElement('canvas');c.width=c.height=CELL*3;
+      var g=c.getContext('2d');g.fillStyle=cols[i];
+      if(shapes[j].d){g.beginPath();g.arc(CELL*1.5,CELL*1.5,shapes[j].d,0,6.2832);g.fill()}
+      else{var pts=shapes[j].r;for(var k=0;k<pts.length;k++){g.fillRect(pts[k][0]*CELL,pts[k][1]*CELL,CELL,CELL)}}
+      sprites.push(c);
+    }
+  }
+  function resize(){
+    dpr=Math.min(window.devicePixelRatio||1,2);
+    W=Math.max(1,window.innerWidth);H=Math.max(1,window.innerHeight);
+    cv.width=Math.round(W*dpr);cv.height=Math.round(H*dpr);
+    cv.style.width=W+'px';cv.style.height=H+'px';
+    ctx.setTransform(dpr,0,0,dpr,0,0);
+  }
+  function mk(init){
+    return {x:Math.random()*W,y:Math.random()*H,
+      vx:(Math.random()-0.5)*7,vy:-(4+Math.random()*11),
+      ph:Math.random()*6.28,vp:0.7+Math.random()*1.6,
+      life:0,ttl:5+Math.random()*7,
+      sp:sprites[(Math.random()*sprites.length)|0]};
+  }
+  var ps=[],target=0;
+  function fit(){
+    target=Math.round(Math.min(90,Math.max(30,W*H/16000)));
+    while(ps.length<target){ps.push(mk(true))}
+    if(ps.length>target){ps.length=target}
+  }
+  var last=0,raf=0,acc=0;
+  function frame(t){
+    raf=requestAnimationFrame(frame);
+    var dt=last?Math.min((t-last)/1000,0.3):0;last=t;
+    acc+=dt;
+    if(acc<0.032){return}
+    var step=acc;acc=0;
+    ctx.clearRect(0,0,W,H);
+    for(var i=ps.length-1;i>=0;i--){
+      var p=ps[i];p.life+=step;
+      if(p.life>=p.ttl||p.y<-30){ps[i]=mk(false);continue}
+      p.x+=(p.vx+Math.sin(p.ph*0.7)*9)*step;p.y+=p.vy*step;p.ph+=p.vp*step;
+      if(p.x<-24){p.x=W+12}else if(p.x>W+24){p.x=-12}
+      var fin=Math.min(1,p.life/0.8),fout=Math.min(1,(p.ttl-p.life)/1.2);
+      var a=fin*fout*(0.7+0.3*Math.sin(p.ph))*0.95;
+      if(a<=0.03){continue}
+      ctx.globalAlpha=a>1?1:a;
+      ctx.drawImage(p.sp,Math.round(p.x),Math.round(p.y));
+    }
+    ctx.globalAlpha=1;
+  }
+  function start(){if(!raf){last=0;raf=requestAnimationFrame(frame)}}
+  function stop(){if(raf){cancelAnimationFrame(raf);raf=0}}
+  resize();fit();start();
+  window.addEventListener('resize',function(){resize();fit()});
+  document.addEventListener('visibilitychange',function(){if(document.hidden){stop()}else{start()}});
+})();
 </script>
 </body>
 </html>
