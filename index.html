@@ -95,7 +95,10 @@ body.changelog-only .cta a.ghost[data-changelog]:hover{background:linear-gradien
 .toc{overflow-y:auto;padding:10px 10px 26px;flex:1}
 .toc-item{margin-bottom:2px}
 .toc-head{display:flex;align-items:center;gap:2px}
-.toc-toggle{flex:none;width:22px;height:22px;border:none;background:transparent;color:var(--muted);cursor:pointer;font-size:.72rem;line-height:1;border-radius:6px;display:flex;align-items:center;justify-content:center;transition:transform .15s,background .15s;font-family:inherit}
+/* 展开三角：改用 CSS 绘制的实心三角，比 ▾ 文字字形清晰得多（字形在小字号下几乎看不清），
+   用 currentColor 随主题变色；按钮整体旋转，折叠时转到 -90° 指向右侧。 */
+.toc-toggle{flex:none;width:24px;height:24px;border:none;background:transparent;color:var(--muted);cursor:pointer;font-size:0;line-height:0;border-radius:6px;display:flex;align-items:center;justify-content:center;transition:transform .15s,background .15s;font-family:inherit}
+.toc-toggle::before{content:"";width:0;height:0;border-left:5.5px solid transparent;border-right:5.5px solid transparent;border-top:7px solid currentColor;transform:translateY(2px)}
 .toc-toggle:hover{background:var(--hover-bg);color:var(--text)}
 .toc-item.collapsed>.toc-head>.toc-toggle{transform:rotate(-90deg)}
 .toc-item.collapsed>.toc-children{display:none}
@@ -184,7 +187,7 @@ body.changelog-only .cta a.ghost[data-changelog]:hover{background:linear-gradien
 
 /* ===== 卡片与正文 ===== */
 section.card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);box-shadow:var(--shadow);padding:26px 30px;margin:22px 0}
-h2{font-size:1.42rem;line-height:1.4;display:flex;align-items:center;gap:10px;flex-wrap:wrap;padding-bottom:12px;margin-bottom:14px;border-bottom:2px dashed var(--border);color:var(--text-strong)}
+h2{font-size:1.42rem;line-height:1.4;display:flex;align-items:center;gap:10px;flex-wrap:wrap;padding-bottom:12px;margin-bottom:14px;border-bottom:2px solid var(--border);color:var(--text-strong)}
 h3{font-size:1.08rem;margin:24px 0 8px;color:var(--text-strong)}
 h4{font-size:1rem;margin:16px 0 6px;color:var(--text-strong)}
 p{margin:8px 0}
@@ -239,7 +242,7 @@ table.grid td:first-child{white-space:nowrap;font-weight:600}
 .chips{display:flex;flex-direction:column;align-items:flex-start;gap:6px}
 .chip{font-size:.78rem;font-weight:600;padding:3px 10px;border-radius:999px;background:var(--chip-bg);border:1px solid var(--border);color:var(--chip-text);line-height:1.6}
 .chip.diff{background:var(--diff-bg);border-color:var(--diff-border);color:var(--diff-text)}
-.lore{font-size:.87rem;color:var(--lore-text);background:var(--lore-bg);border:1px dashed var(--lore-border);border-radius:10px;padding:9px 12px;line-height:1.65;flex:1}
+.lore{font-size:.87rem;color:var(--lore-text);background:var(--lore-bg);border:1px solid var(--lore-border);border-radius:10px;padding:9px 12px;line-height:1.65;flex:1}
 .lore strong{color:var(--text-strong)}
 .portal{margin-top:auto;font-size:.87rem;font-weight:600;background:var(--portal-bg);border:1px solid var(--portal-border);color:var(--portal-text);border-radius:10px;padding:8px 12px}
 .meta{margin-top:auto;display:flex;flex-direction:column;gap:6px}
@@ -345,7 +348,9 @@ body{background:
  linear-gradient(180deg,#211b15 0%,#241e17 50%,#262019 100%)}
 h1,h2,h3,h4{font-family:system-ui,-apple-system,'Segoe UI','YouYuan','幼圆','Yuanti SC','Yuanti TC','STYuanti','Arial Rounded MT Bold',sans-serif}
 html.lang-en body,html.lang-en h1,html.lang-en h2,html.lang-en h3,html.lang-en h4{font-family:system-ui,-apple-system,"Segoe UI","PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif}
-h2{border-bottom:2px dotted var(--border)}
+/* 章节标题分隔线统一为 2px 实线（原先基础层 dashed、V2.1 层又改成 dotted，
+   两套虚线在深色主题下发虚且与弹窗 2px 实线描边不是同一套语言） */
+h2{border-bottom:2px solid var(--border)}
 li::marker{color:#d99a2e}
 .topbar::after{background:linear-gradient(90deg,#e5aa2e,#f0c860,#dd9c22)}
 .icon-btn{background:#332a21;border-color:#332a21;color:#f3eddd}
@@ -393,7 +398,10 @@ li::marker{color:#d99a2e}
 :root[data-theme="dark"] .group-head{background:linear-gradient(135deg,#4f3f19,#453716);border-color:#7a6224;color:#f0e6cf}
 .faq{border:1px solid var(--border);border-radius:24px;box-shadow:0 2px 0 rgba(70,54,32,.05)}
 .faq summary:hover{background:#f4ecd6}
-.faq[open] summary{background:linear-gradient(135deg,#f7eec9,#f3e4b1);border-bottom:1px dashed var(--border)}
+.faq[open] summary{background:linear-gradient(135deg,#f7eec9,#f3e4b1);border-bottom:2px solid var(--border)}
+/* ⚠️ 上面的展开/悬停底色是写死的浅奶油色，而深色主题下 --text-strong 是近白色 → 白字压浅底看不见。
+   展开态与悬停态都补一条深色主题的文字色（底色保持浅色，故文字取深棕）。 */
+:root[data-theme="dark"] .faq[open] summary,:root[data-theme="dark"] .faq summary:hover{color:#332a20}
 .lore{border-radius:16px}
 .portal{border-radius:16px}
 .lb-close,.lb-prev,.lb-next{border-color:rgba(240,192,76,.5)}
@@ -1278,8 +1286,8 @@ li::marker{color:#d99a2e}
           <div class="lore en">A realm forsaken by the heavens, a cycle of curses and eternal night...<br>Dance with the demons... Live with the chaos...</div>
         
           <div class="meta">
-            <div class="portal zh"><img class="gate-icon" src="https://minecraft.wiki/images/Pale_Moss_Block_JE1_BE1.png" alt=""> <strong>界门：</strong>苍白苔藓块</div>
-            <div class="portal en"><img class="gate-icon" src="https://minecraft.wiki/images/Pale_Moss_Block_JE1_BE1.png" alt=""> <strong>Portal:</strong> Pale Moss Block</div>
+            <div class="portal zh"><img class="gate-icon" src="https://minecraft.wiki/images/Pale_Moss_Block_JE1_BE1.png" alt="苍白苔藓块"> <strong>界门：</strong>苍白苔藓块</div>
+            <div class="portal en"><img class="gate-icon" src="https://minecraft.wiki/images/Pale_Moss_Block_JE1_BE1.png" alt="Pale Moss Block"> <strong>Portal:</strong> Pale Moss Block</div>
             <div class="release portal zh">📅 2025-01-15 - 1.21.4</div>
             <div class="release portal en">📅 2025-01-15 - 1.21.4</div>
           </div>
@@ -1307,8 +1315,8 @@ li::marker{color:#d99a2e}
           —From a lost diary of a Divine Artificer</div>
         
           <div class="meta">
-            <div class="portal zh"><img class="gate-icon" src="https://minecraft.wiki/images/Moss_Block_JE1_BE1.png" alt=""> <strong>界门：</strong>苔藓块</div>
-            <div class="portal en"><img class="gate-icon" src="https://minecraft.wiki/images/Moss_Block_JE1_BE1.png" alt=""> <strong>Portal:</strong> Moss Block</div>
+            <div class="portal zh"><img class="gate-icon" src="https://minecraft.wiki/images/Moss_Block_JE1_BE1.png" alt="苔藓块"> <strong>界门：</strong>苔藓块</div>
+            <div class="portal en"><img class="gate-icon" src="https://minecraft.wiki/images/Moss_Block_JE1_BE1.png" alt="Moss Block"> <strong>Portal:</strong> Moss Block</div>
             <div class="release portal zh">📅 2024-08-17 - 1.21.1</div>
             <div class="release portal en">📅 2024-08-17 - 1.21.1</div>
           </div>
@@ -1330,8 +1338,8 @@ li::marker{color:#d99a2e}
           But what's different is, the Sustainer has taken over the guard of this realm...</div>
         
           <div class="meta">
-            <div class="portal zh"><img class="gate-icon" src="https://minecraft.wiki/images/Cherry_Wood_%28UD%29_JE1_BE1.png" alt=""> <strong>界门：</strong>樱花木</div>
-            <div class="portal en"><img class="gate-icon" src="https://minecraft.wiki/images/Cherry_Wood_%28UD%29_JE1_BE1.png" alt=""> <strong>Portal:</strong> Cherry Wood</div>
+            <div class="portal zh"><img class="gate-icon" src="https://minecraft.wiki/images/Cherry_Wood_%28UD%29_JE1_BE1.png" alt="樱花木"> <strong>界门：</strong>樱花木</div>
+            <div class="portal en"><img class="gate-icon" src="https://minecraft.wiki/images/Cherry_Wood_%28UD%29_JE1_BE1.png" alt="Cherry Wood"> <strong>Portal:</strong> Cherry Wood</div>
             <div class="release portal zh">📅 2024-02-09 - 1.20.4</div>
             <div class="release portal en">📅 2024-02-09 - 1.20.4</div>
           </div>
@@ -1371,8 +1379,8 @@ li::marker{color:#d99a2e}
           <div class="lore en">26.2 themed world, an underground world like an ancient painted scroll.</div>
         
           <div class="meta">
-            <div class="portal zh"><img class="gate-icon" src="https://minecraft.wiki/images/Chiseled_Sulfur_JE2_BE2.png" alt=""> <strong>界门：</strong>雕纹硫黄</div>
-            <div class="portal en"><img class="gate-icon" src="https://minecraft.wiki/images/Chiseled_Sulfur_JE2_BE2.png" alt=""> <strong>Portal:</strong> Chiseled Sulfur</div>
+            <div class="portal zh"><img class="gate-icon" src="https://minecraft.wiki/images/Chiseled_Sulfur_JE2_BE2.png" alt="雕纹硫黄"> <strong>界门：</strong>雕纹硫黄</div>
+            <div class="portal en"><img class="gate-icon" src="https://minecraft.wiki/images/Chiseled_Sulfur_JE2_BE2.png" alt="Chiseled Sulfur"> <strong>Portal:</strong> Chiseled Sulfur</div>
             <div class="release portal zh">📅 2026-06-23 - 26.2</div>
             <div class="release portal en">📅 2026-06-23 - 26.2</div>
           </div>
@@ -1392,8 +1400,8 @@ li::marker{color:#d99a2e}
           <strong>This world's terrain was generated by kinbee's <a href="https://modrinth.com/datapack/revamped-floating-islands">RevampedFloatingIslands</a> datapack!</strong></div>
         
           <div class="meta">
-            <div class="portal zh"><img class="gate-icon" src="https://minecraft.wiki/images/Spruce_Wood_%28UD%29_JE7_BE2.png" alt=""> <strong>界门：</strong>云杉木</div>
-            <div class="portal en"><img class="gate-icon" src="https://minecraft.wiki/images/Spruce_Wood_%28UD%29_JE7_BE2.png" alt=""> <strong>Portal:</strong> Spruce Wood</div>
+            <div class="portal zh"><img class="gate-icon" src="https://minecraft.wiki/images/Spruce_Wood_%28UD%29_JE7_BE2.png" alt="云杉木"> <strong>界门：</strong>云杉木</div>
+            <div class="portal en"><img class="gate-icon" src="https://minecraft.wiki/images/Spruce_Wood_%28UD%29_JE7_BE2.png" alt="Spruce Wood"> <strong>Portal:</strong> Spruce Wood</div>
             <div class="release portal zh">📅 2025-12-18 - 1.21.10</div>
             <div class="release portal en">📅 2025-12-18 - 1.21.10</div>
           </div>
@@ -1413,8 +1421,8 @@ li::marker{color:#d99a2e}
           <strong>This world's terrain was generated by kinbee's <a href="https://modrinth.com/datapack/revamped-floating-islands">RevampedFloatingIslands</a> datapack!</strong></div>
         
           <div class="meta">
-            <div class="portal zh"><img class="gate-icon" src="https://minecraft.wiki/images/Clay_JE2_BE2.png" alt=""> <strong>界门：</strong>黏土块</div>
-            <div class="portal en"><img class="gate-icon" src="https://minecraft.wiki/images/Clay_JE2_BE2.png" alt=""> <strong>Portal:</strong> Clay</div>
+            <div class="portal zh"><img class="gate-icon" src="https://minecraft.wiki/images/Clay_JE2_BE2.png" alt="黏土块"> <strong>界门：</strong>黏土块</div>
+            <div class="portal en"><img class="gate-icon" src="https://minecraft.wiki/images/Clay_JE2_BE2.png" alt="Clay"> <strong>Portal:</strong> Clay</div>
             <div class="release portal zh">📅 2025-12-18 - 1.21.10</div>
             <div class="release portal en">📅 2025-12-18 - 1.21.10</div>
           </div>
@@ -1437,8 +1445,8 @@ li::marker{color:#d99a2e}
           <div class="lore en">An extremely cold region with towering mountain peaks.<br>Ceiling-piercing ice spikes, a boundless frozen ocean.</div>
         
           <div class="meta">
-            <div class="portal zh"><img class="gate-icon" src="https://minecraft.wiki/images/Blue_Ice_JE1.png" alt=""> <strong>界门：</strong>蓝冰</div>
-            <div class="portal en"><img class="gate-icon" src="https://minecraft.wiki/images/Blue_Ice_JE1.png" alt=""> <strong>Portal:</strong> Blue Ice</div>
+            <div class="portal zh"><img class="gate-icon" src="https://minecraft.wiki/images/Blue_Ice_JE1.png" alt="蓝冰"> <strong>界门：</strong>蓝冰</div>
+            <div class="portal en"><img class="gate-icon" src="https://minecraft.wiki/images/Blue_Ice_JE1.png" alt="Blue Ice"> <strong>Portal:</strong> Blue Ice</div>
             <div class="release portal zh">📅 2024-04-24 - 1.20.4</div>
             <div class="release portal en">📅 2024-04-24 - 1.20.4</div>
           </div>
@@ -1456,8 +1464,8 @@ li::marker{color:#d99a2e}
           <div class="lore en">An island containing a coral sea, rainforest, and bamboo forest.</div>
         
           <div class="meta">
-            <div class="portal zh"><img class="gate-icon" src="https://minecraft.wiki/images/Jungle_Wood_%28UD%29_JE6_BE2.png" alt=""> <strong>界门：</strong>丛林木</div>
-            <div class="portal en"><img class="gate-icon" src="https://minecraft.wiki/images/Jungle_Wood_%28UD%29_JE6_BE2.png" alt=""> <strong>Portal:</strong> Jungle Wood</div>
+            <div class="portal zh"><img class="gate-icon" src="https://minecraft.wiki/images/Jungle_Wood_%28UD%29_JE6_BE2.png" alt="丛林木"> <strong>界门：</strong>丛林木</div>
+            <div class="portal en"><img class="gate-icon" src="https://minecraft.wiki/images/Jungle_Wood_%28UD%29_JE6_BE2.png" alt="Jungle Wood"> <strong>Portal:</strong> Jungle Wood</div>
             <div class="release portal zh">📅 2025-02-02 - 1.21.4</div>
             <div class="release portal en">📅 2025-02-02 - 1.21.4</div>
           </div>
@@ -1475,8 +1483,8 @@ li::marker{color:#d99a2e}
           <div class="lore en">26.3 themed world, a basin world containing a dappled forest and a cherry blossom grove.</div>
         
           <div class="meta">
-            <div class="portal zh"><img class="gate-icon" src="https://minecraft.wiki/images/Poplar_Wood_%28UD%29_JE1.png" alt=""> <strong>界门：</strong>杨木</div>
-            <div class="portal en"><img class="gate-icon" src="https://minecraft.wiki/images/Poplar_Wood_%28UD%29_JE1.png" alt=""> <strong>Portal:</strong> Poplar Wood</div>
+            <div class="portal zh"><img class="gate-icon" src="https://minecraft.wiki/images/Poplar_Wood_%28UD%29_JE1.png" alt="杨木"> <strong>界门：</strong>杨木</div>
+            <div class="portal en"><img class="gate-icon" src="https://minecraft.wiki/images/Poplar_Wood_%28UD%29_JE1.png" alt="Poplar Wood"> <strong>Portal:</strong> Poplar Wood</div>
             <div class="release portal zh">📅 2026-09-25 - 26.3</div>
             <div class="release portal en">📅 2026-09-25 - 26.3</div>
           </div>
@@ -1494,8 +1502,8 @@ li::marker{color:#d99a2e}
           <div class="lore en">1.19 themed world, an acacia plains and plains village surrounded by a mangrove swamp.</div>
         
           <div class="meta">
-            <div class="portal zh"><img class="gate-icon" src="https://minecraft.wiki/images/Mud_JE1_BE1.png" alt=""> <strong>界门：</strong>泥巴</div>
-            <div class="portal en"><img class="gate-icon" src="https://minecraft.wiki/images/Mud_JE1_BE1.png" alt=""> <strong>Portal:</strong> Mud</div>
+            <div class="portal zh"><img class="gate-icon" src="https://minecraft.wiki/images/Mud_JE1_BE1.png" alt="泥巴"> <strong>界门：</strong>泥巴</div>
+            <div class="portal en"><img class="gate-icon" src="https://minecraft.wiki/images/Mud_JE1_BE1.png" alt="Mud"> <strong>Portal:</strong> Mud</div>
             <div class="release portal zh">📅 2022-06-18 - 1.19</div>
             <div class="release portal en">📅 2022-06-18 - 1.19</div>
           </div>
@@ -1513,8 +1521,8 @@ li::marker{color:#d99a2e}
           <div class="lore en">1.20 themed world, a cherry blossom forest and a plains heart lake surrounded by steep mountains.</div>
         
           <div class="meta">
-            <div class="portal zh"><img class="gate-icon" src="https://minecraft.wiki/images/Oak_Wood_%28UD%29_JE7_BE2.png" alt=""> <strong>界门：</strong>橡木</div>
-            <div class="portal en"><img class="gate-icon" src="https://minecraft.wiki/images/Oak_Wood_%28UD%29_JE7_BE2.png" alt=""> <strong>Portal:</strong> Oak Wood</div>
+            <div class="portal zh"><img class="gate-icon" src="https://minecraft.wiki/images/Oak_Wood_%28UD%29_JE7_BE2.png" alt="橡木"> <strong>界门：</strong>橡木</div>
+            <div class="portal en"><img class="gate-icon" src="https://minecraft.wiki/images/Oak_Wood_%28UD%29_JE7_BE2.png" alt="Oak Wood"> <strong>Portal:</strong> Oak Wood</div>
             <div class="release portal zh">📅 2025-12-21 - 1.21.10</div>
             <div class="release portal en">📅 2025-12-21 - 1.21.10</div>
           </div>
@@ -1532,8 +1540,8 @@ li::marker{color:#d99a2e}
           <div class="lore en">1.20 themed world, a cherry blossom forest surrounded by steep mountains.</div>
         
           <div class="meta">
-            <div class="portal zh"><img class="gate-icon" src="https://minecraft.wiki/images/Cherry_Log_%28UD%29_JE1_BE1.png" alt=""> <strong>界门：</strong>樱花原木</div>
-            <div class="portal en"><img class="gate-icon" src="https://minecraft.wiki/images/Cherry_Log_%28UD%29_JE1_BE1.png" alt=""> <strong>Portal:</strong> Cherry Log</div>
+            <div class="portal zh"><img class="gate-icon" src="https://minecraft.wiki/images/Cherry_Log_%28UD%29_JE1_BE1.png" alt="樱花原木"> <strong>界门：</strong>樱花原木</div>
+            <div class="portal en"><img class="gate-icon" src="https://minecraft.wiki/images/Cherry_Log_%28UD%29_JE1_BE1.png" alt="Cherry Log"> <strong>Portal:</strong> Cherry Log</div>
             <div class="release portal zh">📅 2024-01-29 - 1.20.4</div>
             <div class="release portal en">📅 2024-01-29 - 1.20.4</div>
           </div>
@@ -1555,8 +1563,8 @@ li::marker{color:#d99a2e}
           A commemorative work for the series' first world, "Island Village".</div>
         
           <div class="meta">
-            <div class="portal zh"><img class="gate-icon" src="https://minecraft.wiki/images/Smooth_Sandstone_JE7_BE2.png" alt=""> <strong>界门：</strong>平滑砂岩</div>
-            <div class="portal en"><img class="gate-icon" src="https://minecraft.wiki/images/Smooth_Sandstone_JE7_BE2.png" alt=""> <strong>Portal:</strong> Smooth Sandstone</div>
+            <div class="portal zh"><img class="gate-icon" src="https://minecraft.wiki/images/Smooth_Sandstone_JE7_BE2.png" alt="平滑砂岩"> <strong>界门：</strong>平滑砂岩</div>
+            <div class="portal en"><img class="gate-icon" src="https://minecraft.wiki/images/Smooth_Sandstone_JE7_BE2.png" alt="Smooth Sandstone"> <strong>Portal:</strong> Smooth Sandstone</div>
             <div class="release portal zh">📅 2024-02-03 - 1.20.4</div>
             <div class="release portal en">📅 2024-02-03 - 1.20.4</div>
           </div>
@@ -1574,8 +1582,8 @@ li::marker{color:#d99a2e}
           <div class="lore en">"Where the dream begins anew."</div>
         
           <div class="meta">
-            <div class="portal zh"><img class="gate-icon" src="https://minecraft.wiki/images/Poplar_Log_%28UD%29_JE2.png" alt=""> <strong>界门：</strong>杨木原木</div>
-            <div class="portal en"><img class="gate-icon" src="https://minecraft.wiki/images/Poplar_Log_%28UD%29_JE2.png" alt=""> <strong>Portal:</strong> Poplar Log</div>
+            <div class="portal zh"><img class="gate-icon" src="https://minecraft.wiki/images/Poplar_Log_%28UD%29_JE2.png" alt="杨木原木"> <strong>界门：</strong>杨木原木</div>
+            <div class="portal en"><img class="gate-icon" src="https://minecraft.wiki/images/Poplar_Log_%28UD%29_JE2.png" alt="Poplar Log"> <strong>Portal:</strong> Poplar Log</div>
             <div class="release portal zh">📅 2026-09-25 - 26.3</div>
             <div class="release portal en">📅 2026-09-25 - 26.3</div>
           </div>
@@ -2169,7 +2177,7 @@ li::marker{color:#d99a2e}
       <div class="mapdl-btns">
         <a class="mapdl-btn" data-src="github" href="https://github.com/Fndream/BorderSurvivalModpack/tree/master/Worlds_26.3" target="_blank" rel="noopener"><svg class="mapdl-ic" viewBox="0 0 16 16" aria-hidden="true"><path fill="currentColor" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8z"/></svg><span>GitHub</span></a>
         <a class="mapdl-btn" data-src="modrinth" aria-disabled="true"><svg class="mapdl-ic" viewBox="0 0 24 24" aria-hidden="true"><path fill="#1bd96a" d="M12.252.004a11.78 11.768 0 0 0-8.92 3.73 11 10.999 0 0 0-2.17 3.11 11.37 11.359 0 0 0-1.16 5.169c0 1.42.17 2.5.6 3.77.24.759.77 1.899 1.17 2.529a12.3 12.298 0 0 0 8.85 5.639c.44.05 2.54.07 2.76.02.2-.04.22.1-.26-1.7l-.36-1.37-1.01-.06a8.5 8.489 0 0 1-5.18-1.8 5.34 5.34 0 0 1-1.3-1.26c0-.05.34-.28.74-.5a37.572 37.545 0 0 1 2.88-1.629c.03 0 .5.45 1.06.98l1 .97 2.07-.43 2.06-.43 1.47-1.47c.8-.8 1.48-1.5 1.48-1.52 0-.09-.42-1.63-.46-1.7-.04-.06-.2-.03-1.02.18-.53.13-1.2.3-1.45.4l-.48.15-.53.53-.53.53-.93.1-.93.07-.52-.5a2.7 2.7 0 0 1-.96-1.7l-.13-.6.43-.57c.68-.9.68-.9 1.46-1.1.4-.1.65-.2.83-.33.13-.099.65-.579 1.14-1.069l.9-.9-.7-.7-.7-.7-1.95.54c-1.07.3-1.96.53-1.97.53-.03 0-2.23 2.48-2.63 2.97l-.29.35.28 1.03c.16.56.3 1.16.31 1.34l.03.3-.34.23c-.37.23-2.22 1.3-2.84 1.63-.36.2-.37.2-.44.1-.08-.1-.23-.6-.32-1.03-.18-.86-.17-2.75.02-3.73a8.84 8.839 0 0 1 7.9-6.93c.43-.03.77-.08.78-.1.06-.17.5-2.999.47-3.039-.01-.02-.1-.02-.2-.03Zm3.68.67c-.2 0-.3.1-.37.38-.06.23-.46 2.42-.46 2.52 0 .04.1.11.22.16a8.51 8.499 0 0 1 2.99 2 8.38 8.379 0 0 1 2.16 3.449 6.9 6.9 0 0 1 .4 2.8c0 1.07 0 1.27-.1 1.73a9.37 9.369 0 0 1-1.76 3.769c-.32.4-.98 1.06-1.37 1.38-.38.32-1.54 1.1-1.7 1.14-.1.03-.1.06-.07.26.03.18.64 2.56.7 2.78l.06.06a12.07 12.058 0 0 0 7.27-9.4c.13-.77.13-2.58 0-3.4a11.96 11.948 0 0 0-5.73-8.578c-.7-.42-2.05-1.06-2.25-1.06Z"/></svg><span>Modrinth</span><span class="mapdl-pwd"><span class="zh">审核中</span><span class="en">Under Review</span></span></a>
-        <a class="mapdl-btn" href="https://pan.quark.cn/s/e1aa60b8fd18?pwd=QzaT" target="_blank" rel="noopener"><img class="mapdl-ic" src="data:image/png;base64,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" alt=""><span class="zh">夸克网盘</span><span class="en">Quark Drive</span></a>
+        <a class="mapdl-btn" href="https://pan.quark.cn/s/e1aa60b8fd18?pwd=QzaT" target="_blank" rel="noopener"><img class="mapdl-ic" src="data:image/png;base64,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" alt="夸克网盘图标"><span class="zh">夸克网盘</span><span class="en">Quark Drive</span></a>
         <a class="mapdl-btn" href="https://wwaqv.lanzouu.com/b0he8355i" target="_blank" rel="noopener"><svg class="mapdl-ic" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="12" fill="#f97316"/><g fill="#fff"><circle cx="8" cy="13.9" r="3.7"/><circle cx="12" cy="11.3" r="5"/><circle cx="16.2" cy="14.1" r="3.3"/><rect x="6" y="14.1" width="12" height="3.6" rx="1.8"/></g></svg><span class="zh">蓝奏云盘</span><span class="en">Lanzou Cloud</span><span class="mapdl-pwd"><span class="zh">提取码 1400</span><span class="en">Code 1400</span></span></a>
       </div>
       <div class="mapdl-qr">
@@ -2247,6 +2255,9 @@ li::marker{color:#d99a2e}
   sideClose.addEventListener('click',function(){openSide(false)});
 
   /* ===== 构建树型目录 ===== */
+  /* 折叠状态表必须在构建循环**之前**声明：子节默认全收起要在建 item 时就写入，
+     否则首次 rebuildTocTargets() 会按空表把它们重新展开。 */
+  var collapsedIds={};
   function clean(node){
     var junk=node.querySelectorAll('.chip,.muted');
     for(var i=0;i<junk.length;i++){junk[i].parentNode.removeChild(junk[i])}
@@ -2259,10 +2270,17 @@ li::marker{color:#d99a2e}
       if(el.tagName==='H2'&&!h2){h2=el}
       if(el.tagName==='H3'){kids.push(el)}
     }
+    if(!h2){
+      /* 兜底：个别区块的 h2 被包在容器里（如 #faq 为了和「全部展开」按钮并排而套了 .faq-bar），
+         只扫直接子元素会把它整段漏掉、目录里就没有「常见问题」这一项。 */
+      h2=sec.querySelector('h2');
+    }
     if(!h2||!sec.id){return}
     kids.forEach(function(h,i){if(!h.id){h.id=sec.id+'-'+(i+1)}});
     var item=document.createElement('div');
-    item.className='toc-item'+(kids.length?' has-sub':'');
+    /* 子节默认收起（目录原本高达 1793px、约为视口两倍），并登记进 collapsedIds 保住状态 */
+    item.className='toc-item'+(kids.length?' has-sub collapsed':'');
+    if(kids.length){collapsedIds[sec.id]=true}
     var head=document.createElement('div');
     head.className='toc-head';
     var tg=null;
@@ -2290,7 +2308,6 @@ li::marker{color:#d99a2e}
   });
 
   /* 折叠用**事件委托**绑定在 #toc 上：更新日志模式会整体替换 toc.innerHTML，逐个绑定的监听器会随旧节点一起丢失（曾导致切换模式回来后折叠失效） */
-  var collapsedIds={};
   toc.addEventListener('click',function(e){
     var t=e.target;
     if(!t||!t.closest){return}
