@@ -594,8 +594,6 @@ While fishing, you may obtain some biome-specific items.
     6. Delete all datapack files or folders inside the save's `datapacks` directory except for the `init` folder, leaving only the `init` folder.
     7. Upgrade complete. You can now enter the game.
 
----
-
 ## 📖 Notes
 
 ### System Requirements
