@@ -9,7 +9,7 @@ This is a vanilla border survival world series centered on **vanilla survival** 
 ## 📗 Before You Play
 
 - This series is not a conventional modpack. It consists of a **dedicated world** and a **core datapack**. The modpack includes only auxiliary mods. **After downloading the modpack and installing it**, you **must import the dedicated world save** to play properly!
-- Because the **update modpack** function of some Minecraft launchers overwrites the initial chunks of the save, the dedicated world saves are not included in the modpack file. They are published in the `Worlds` folder of the project repository; you can go there to [download the dedicated world saves](https://github.com/Fndream/BorderSurvivalModpack/tree/master/Worlds_26.3).
+- Because the **update modpack** function of some Minecraft launchers overwrites the initial chunks of the save, the dedicated world saves are not included in the modpack file; you can go to the [project homepage](https://fndream.github.io/BorderSurvivalModpack/?lang=en) to download the dedicated world saves.
 - **There is no difference from vanilla survival in this series**. The first player of this series liked the visual effect of the world border, and thus the initial version of this series was born.
 - Due to the border limitation, alternative acquisition methods for biome or structure exclusive resources have been introduced. These mechanics are called **Core Features**, along with additional **Expansion Features**.
 - When facing difficulties, consulting vanilla mechanics described in the Minecraft wiki, as well as the **Core Features** and **Expansion Features** described below, may provide effective help.
@@ -496,7 +496,7 @@ While fishing, you may obtain some biome-specific items.
 ---
 > On a coast surrounded by three biomes, there exists a very lively seaside settlement.  
 > Coral Sea biome, suitable for players who like coastal and underwater building.  
-> A commemorative world for the series' first world, "Island Village".
+> A commemorative work for the series' first world, "Island Village".
 >
 > Portal: Smooth Sandstone  
 > Release Date: 2024-02-03 - 1.20.4
