@@ -6,7 +6,8 @@ This is a vanilla border survival world series centered on **vanilla survival** 
 
 ## 📗 Before You Play
 
-- This series is not a conventional modpack. It consists of a **dedicated world** and a **core datapack**. The modpack includes only auxiliary mods. **After downloading the modpack and installing it**, you **must download the dedicated world and import it** to play properly!
+- This series is not a conventional modpack. It consists of a **dedicated world** and a **core datapack**. The modpack includes only auxiliary mods. **After downloading the modpack and installing it**, you **must import the dedicated world save** to play properly!
+- Because the **update modpack** function of some Minecraft launchers overwrites the initial chunks of the save, the dedicated world saves are not included in the modpack file. They are published in the `Worlds` folder of the project repository; you can go there to [download the dedicated world saves](https://github.com/Fndream/BorderSurvivalModpack/tree/master/Worlds_26.3).
 - **There is no difference from vanilla survival in this series**. The first player of this series liked the visual effect of the world border, and thus the initial version of this series was born.
 - Due to the border limitation, alternative acquisition methods for biome or structure exclusive resources have been introduced. These mechanics are called **Core Features**, along with additional **Expansion Features**.
 - When facing difficulties, consulting vanilla mechanics described in the Minecraft wiki, as well as the **Core Features** and **Expansion Features** described below, may provide effective help.
@@ -14,8 +15,6 @@ This is a vanilla border survival world series centered on **vanilla survival** 
 - Supported languages: **English, Simplified Chinese, Traditional Chinese, Classical Chinese (Recommended).**
 - If you switch languages in-game, you must exit and re-enter the save for some text to update correctly.
 - **Note:** This document is a translation from the [Chinese version](https://github.com/Fndream/BorderSurvivalModpack/blob/master/README.md), provided by DeepseekAI. Please verify carefully.
-
----
 
 ## 🌊 Core Features
 
@@ -59,8 +58,6 @@ Function sign monuments provided by the world, containing the following three fu
 > ❗ The advancements in this series are **not a quest guidance system**. They only serve to showcase relevant content of core features, provide text hints, and offer a sense of ritual.
 
 <img src="https://files.seeusercontent.com/2026/07/31/r7lK/en.png" alt="Advancements" height="400">
-
----
 
 ### 🎣 Fishing
 While fishing, you may obtain some biome-specific items.
@@ -185,8 +182,6 @@ While fishing, you may obtain some biome-specific items.
 ### 🍖 Drops
 - Mobs defeated by **Eternal Night Knights, Wardens, Elder Guardians, Guardians, and Iron Golems** are counted as being defeated by a player.
 
----
-
 ### 🐈 Border Sustainer
 - The Sustainer descends at the world spawn point and is responsible for maintaining the stability of the border energy.
 - If no Sustainer exists near the world spawn point, border energy will continuously drain.
@@ -276,9 +271,7 @@ While fishing, you may obtain some biome-specific items.
 - If multiple dimensions simultaneously have border energy above **level 100**, the Eternal Night Knights will randomly descend in one of those dimensions that has at least one non-spectator player.
 - If no dimension meets the criteria, they will first attempt to descend in the Overworld. If the Overworld's border energy is below **level 100**, they will not descend.
 
----
-
-## 🧭 worlds
+## 🧭 Worlds
 
 > 1. **You must use the dedicated world save.** The game cannot be played properly if you create a new world yourself.
 > 2. Worlds are sorted by **type and overall difficulty from high to low**. Higher star ratings generally indicate higher survival or resource acquisition difficulty.
@@ -450,7 +443,7 @@ While fishing, you may obtain some biome-specific items.
 > 26.3 themed world, a basin world containing a dappled forest and a cherry blossom grove.
 >
 > Portal: Poplar Wood  
-> Release Date: 2026-09-15 - 26.3
+> Release Date: 2026-09-25 - 26.3
 
 ---
 ### 🌿 **Pure Land Marsh — Marsh Savanna**
@@ -517,7 +510,7 @@ While fishing, you may obtain some biome-specific items.
 > "Where the dream begins anew."
 >
 > Portal: Poplar Log  
-> Release Date: 2026-09-15 - 26.3
+> Release Date: 2026-09-25 - 26.3
 
 ---
 </details>
@@ -549,8 +542,6 @@ While fishing, you may obtain some biome-specific items.
 > ✅ If you need to stop players from trampling farmland, we recommend using the following command:  
 > ```/gamerule farmland_player_griefing false```
 
----
-
 ## 🎓 Mod Hotkeys
 
 **Keybind configurations for some mod features within the modpack:**
@@ -577,31 +568,29 @@ While fishing, you may obtain some biome-specific items.
 | **Alt + Left-Click** | Move all identical items |
 | **Shift + Alt + Left-Click** | Move all items |
 
----
-
 ## 📚 Save Upgrades
 - Most worlds in this series are vanilla saves, and the modpack will not introduce any mods containing new items or blocks.
 - This means you can directly upgrade an older save, e.g., Coastal Settlement from version 1.21.10, to the 26.2 version modpack for playing, as long as Minecraft itself has no issues upgrading the save version.
 - ❗ **In any case, back up your save before upgrading to avoid accidents.**
 - ❗ **Void-type worlds have no terrain and will never have chunk upgrade issues.**
-- ❗ **Maps no longer maintained cannot be upgraded:** Thunderous Sea Voyage, Snowbound Ruined City, Abundant Forest Isle, Thorn Palace Cave.
+- ❗ **Worlds no longer maintained cannot be upgraded:** Thunderous Sea Voyage, Snowbound Ruined City, Abundant Forest Isle, Thorn Palace Cave.
 
 ### Save Upgrade Method: Applicable for 26.2 -> 26.3
 **Back up your save before upgrading! To prevent operational errors or unexpected situations!**
 - Persisting Worlds / Persisting Worlds Array Island:
     1. Download the "World Upgrade - Persisting Worlds & Persisting Worlds Array Island - 26.2->26.3" overwrite world upgrade pack.
     2. Extract both folders "data" and "dimensions" from the upgrade archive to the root directory of the corresponding save for overwrite upgrade.
-- Other maps: Import directly into the new modpack version to play. Can be upgraded directly, or via the Optimize World feature.
+- Other worlds: Import directly into the new modpack version to play. Can be upgraded directly, or via the Optimize World feature.
 
 ### Save Upgrade Method: Applicable for 1.21.10 -> 26.2
 **Back up your save before upgrading! To prevent operational errors or unexpected situations!**
-- Vanilla / Amplified maps: Import directly into the new modpack version to play. Can be upgraded directly, or via the Optimize World feature.
-- Other map types (Void, Floating Island, Cave):
+- Vanilla / Amplified worlds: Import directly into the new modpack version to play. Can be upgraded directly, or via the Optimize World feature.
+- Other world types (Void, Floating Island, Cave):
     1. **Back up your save**, import the save into the new modpack version (26.2).
     2. Launch the game, select the save, choose `Upgrade and open the world`, choose `I know what I'm doing` to upgrade the save format.
     3. Select `No` when asked "Do you want to join the world now?".
-    4. Download the corresponding 26.2 version map. (The following steps require precise file replacement/deletion. Do not touch any other files.)
-    5. Replace the `data/minecraft/world_gen_settings.dat` file in the save directory with the one from the 26.2 version map archive.
+    4. Download the corresponding 26.2 version world. (The following steps require precise file replacement/deletion. Do not touch any other files.)
+    5. Replace the `data/minecraft/world_gen_settings.dat` file in the save directory with the one from the 26.2 version world archive.
     6. Delete all datapack files or folders inside the save's `datapacks` directory except for the `init` folder, leaving only the `init` folder.
     7. Upgrade complete. You can now enter the game.
 
@@ -634,7 +623,7 @@ While fishing, you may obtain some biome-specific items.
 
 ---
 
-**Q: How to install the map?**
+**Q: How to install the world?**
 
 **A:** After the modpack is installed, open the saves folder for that game version via your launcher, and extract the save folder inside the world archive in the "边界生存-XXXX" format into that directory.  
 **B:** After launching the game, select "Singleplayer". If installed correctly, a save with the corresponding world name will appear. Enter the save to start playing.
@@ -744,8 +733,6 @@ While fishing, you may obtain some biome-specific items.
 ---
 
 > **If you encounter other issues or difficulties, or if the above steps did not resolve the problem, please post your question on the [Issues page](https://github.com/Fndream/BorderSurvivalModpack/issues).**
-
----
 
 ## © Version History
 - If this series updates to a higher Minecraft version in the future, **older versions will no longer be maintained**.
