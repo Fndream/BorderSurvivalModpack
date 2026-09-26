@@ -2458,7 +2458,9 @@ li::marker{color:#d99a2e}
   });
   var mv=null;try{mv=localStorage.getItem('bs-mapview')}catch(e){}
   if(mv==='group'){mv='type'}else if(mv==='flat'){mv='default'}
-  if(mv!=='type'&&mv!=='diff'&&mv!=='default'&&mv!=='release'){mv='type'}
+  /* 无记录（首次进入）或记录损坏时一律回落到「默认排序」，不是「按类型」——
+     用户 2026-09-26 明确要求首访按 data-order 呈现。 */
+  if(mv!=='type'&&mv!=='diff'&&mv!=='default'&&mv!=='release'){mv='default'}
   setView(mv);
 
   /* ===== FAQ 全部展开 / 收起 ===== */
