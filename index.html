@@ -51,7 +51,10 @@
   --scroll-track:#1e1913;--scroll-thumb:#4a4032;--scroll-thumb-hover:#5c5140;
 }
 *{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth;scroll-padding-top:76px}
+/* 侧栏跳转用瞬时定位：原先 scroll-behavior:smooth 会让长距离（实测 16000px）跳转持续动画、
+   沿途内容刷屏、并连带触发侧栏的滚动联动反复展开/收起——用户反馈「闪眼睛」。
+   保留 scroll-padding-top:76px，跳转后标题不会被吸顶顶栏盖住。 */
+html{scroll-padding-top:76px}
 /* ===== 细滚动条（深浅主题自适应） ===== */
 html,.toc,.map-group .map-grid,.tablewrap,pre{scrollbar-width:thin;scrollbar-color:var(--scroll-thumb) var(--scroll-track)}
 ::-webkit-scrollbar{width:8px;height:8px}
@@ -299,8 +302,14 @@ footer a:hover{color:var(--btn-on-hover)}
      否则顶栏 logo 会落在侧栏那一栏里、跑到正文左边界之外 */
   main.wrap,footer .wrap,.topbar .wrap{max-width:calc(1080px + var(--side-w));padding-left:calc(var(--side-w) + 18px)}
 }
-@media (max-width:1179px){
-  .menu-btn{display:inline-flex}
+@media (max-width:1180px){
+  /* 上界故意取 1180 而非 1179，与上面的 min-width:1180px 形成 1px 重叠：
+     分数 DPR（如用户 125% 缩放，1179px → 1473.75 → 取整 1474 → 回算 1179.2）会让
+     `max-width:1179px` 在正好 1179px 处落空，出现「侧栏是抽屉但按钮被隐藏」的死区。
+     1180px 交界处由 min-width 块里的 `display:none!important` 裁决，两侧行为都正确。 */
+  /* 必须与基础规则 `.icon-btn.menu-btn` 同特异度(0,2,0)，否则被它 display:none 压制：
+     媒体查询不提升特异度，写成 `.menu-btn` 会因 (0,1,0) < (0,2,0) 而按钮永不可见。 */
+  .icon-btn.menu-btn{display:inline-flex}
 }
 @media (max-width:700px){
   .top-dl{padding:5px 10px;font-size:.78rem;gap:4px}
@@ -310,13 +319,26 @@ footer a:hover{color:var(--btn-on-hover)}
   section.card{padding:20px 16px;border-radius:14px}
   .topbar .wrap{gap:7px}
   .icon-btn{padding:6px 11px;font-size:.82rem}
+  .icon-btn.menu-btn{padding:6px 11px;font-size:.82rem}   /* 同特异度，否则基础规则的 padding 压不过 .icon-btn */
   .top-dl{padding:4px 8px;font-size:.72rem;gap:3px}
   .top-dl .ic{display:none}
   .theme-switch{padding:4px 5px}
   .brand .zh,.brand .en{display:none}
+  .menu-btn .zh,.menu-btn .en{display:none}   /* 窄屏只留 📑 图标，与 .top-dl .ic / brand 文字同样处理 */
   .map-card .thumb img{height:160px}
   .hero{margin-top:16px}
   .side-close{display:inline-flex}
+}
+@media (max-width:400px){
+  /* 加了「📑 目录」按钮后 375px 顶栏实测溢出 8px（固定项 383px > 375px），在此再收一档 */
+  .topbar .wrap{gap:5px}
+  .icon-btn,.icon-btn.menu-btn{padding:5px 9px;font-size:.78rem}
+  .top-dl{padding:3px 6px;gap:2px}
+  .theme-switch{padding:3px 3px}
+}
+@media (max-width:360px){
+  /* 320px 实测顶栏仍需 365px：再藏「Issues」（四个链接里最不关键，更新日志/下载/主题/语言/目录都保留） */
+  .topbar .top-dl[href$="/issues"]{display:none}
 }
 /* ===== V2 ·《星布谷地》风手绘童话皮肤 ===== */
 body{font-family:system-ui,-apple-system,'Segoe UI','YouYuan','Yuanti SC','Yuanti TC','STYuanti','幼圆','Comic Sans MS',sans-serif;min-height:100vh;background-attachment:fixed;background:
@@ -440,7 +462,7 @@ li::marker{color:#d99a2e}
 <canvas id="bgfx" aria-hidden="true"></canvas>
 <header class="topbar">
   <div class="wrap">
-    <button id="menuBtn" class="icon-btn menu-btn" type="button" aria-label="目录 Contents">☰</button>
+    <button id="menuBtn" class="icon-btn menu-btn" type="button" aria-label="目录 Contents"><span class="ic">📑</span><span class="zh">目录</span><span class="en">Contents</span></button>
     <div class="brand">🧭 <span class="zh">边界生存</span><span class="en">Border Survival</span></div>
     <div class="top-spacer"></div>
     <a class="top-dl primary" data-mapdl href="https://github.com/Fndream/BorderSurvivalModpack/tree/master/Worlds_26.3"><span class="ic">🍁 </span><span class="zh">下载</span><span class="en">Download</span></a>
@@ -492,7 +514,7 @@ li::marker{color:#d99a2e}
     <div class="zh">
       <ul>
         <li>该系列并非常规整合包，它的本体由<strong>专用世界存档</strong>与<strong>核心数据包</strong>组成。整合包中仅包含辅助性模组，<strong>下载整合包并安装后</strong>，<strong>务必导入专用世界存档</strong>才可正常进行游戏！</li>
-        <li>因部分Minecraft启动器的<strong>更新整合包</strong>功能会覆盖存档初始区块，专用世界存档未包含在整合包文件内，可以前往<a href="https://fndream.github.io/BorderSurvivalModpack/?lang=zh">项目主页</a>下载专用世界存档。</li>
+        <li>因部分Minecraft启动器的<strong>更新整合包</strong>功能会覆盖存档初始区块，<strong>专用世界存档</strong>未包含在整合包文件内，它们发布在项目首页的Github仓库中，可前往<a href="https://fndream.github.io/BorderSurvivalModpack/?lang=zh"><strong>项目首页</strong></a>下载。</li>
         <li><strong>该系列与原版生存并无任何区别</strong>。因该系列的第一位玩家喜欢世界边界的特效，自此诞生了该系列的最初版本。</li>
         <li>而因边界限制，或群系或结构的独有资源产生了额外的获取方式，这些特性被称为<strong>核心特性</strong>，以及额外的<strong>扩展特性</strong>。</li>
         <li>当遇到困难时，通过查阅Minecraft wiki所描述的原版特性，以及下方介绍的<strong>核心特性</strong>与<strong>扩展特性</strong>，或许可以获得有效的帮助。</li>
@@ -504,7 +526,7 @@ li::marker{color:#d99a2e}
     <div class="en">
       <ul>
         <li>This series is not a conventional modpack. It consists of a <strong>dedicated world</strong> and a <strong>core datapack</strong>. The modpack includes only auxiliary mods. <strong>After downloading the modpack and installing it</strong>, you <strong>must import the dedicated world save</strong> to play properly!</li>
-        <li>Because the <strong>update modpack</strong> function of some Minecraft launchers overwrites the initial chunks of the save, the dedicated world saves are not included in the modpack file; you can go to the <a href="https://fndream.github.io/BorderSurvivalModpack/?lang=en">project homepage</a> to download the dedicated world saves.</li>
+        <li>Because the <strong>update modpack</strong> function of some Minecraft launchers overwrites the initial chunks of the save, the <strong>dedicated world saves</strong> are not included in the modpack file; they are published in the GitHub repository on the project homepage, so go to the <a href="https://fndream.github.io/BorderSurvivalModpack/?lang=en"><strong>project homepage</strong></a> to download them.</li>
         <li><strong>There is no difference from vanilla survival in this series</strong>. The first player of this series liked the visual effect of the world border, and thus the initial version of this series was born.</li>
         <li>Due to the border limitation, alternative acquisition methods for biome or structure exclusive resources have been introduced. These mechanics are called <strong>Core Features</strong>, along with additional <strong>Expansion Features</strong>.</li>
         <li>When facing difficulties, consulting vanilla mechanics described in the Minecraft wiki, as well as the <strong>Core Features</strong> and <strong>Expansion Features</strong> described below, may provide effective help.</li>
@@ -1679,7 +1701,7 @@ li::marker{color:#d99a2e}
       </ul>
     </div>
 
-    <h3><span class="zh">存档升级方式：适用于 26.2 -> 26.3</span><span class="en">Save Upgrade Method: Applicable for 26.2 -> 26.3</span></h3>
+    <h3>🍁 <span class="zh">存档升级方式：适用于 26.2 -> 26.3</span><span class="en">Save Upgrade Method: Applicable for 26.2 -> 26.3</span></h3>
     <div class="note warn"><strong class="zh">升级前务必备份存档！以防操作失误或意外情况发生！</strong><strong class="en">Back up your save before upgrading! To prevent operational errors or unexpected situations!</strong></div>
     <div class="zh">
       <ul>
@@ -1704,7 +1726,7 @@ li::marker{color:#d99a2e}
       </ul>
     </div>
 
-    <h3><span class="zh">存档升级方式：适用于 1.21.10 -> 26.2</span><span class="en">Save Upgrade Method: Applicable for 1.21.10 -> 26.2</span></h3>
+    <h3>🟨 <span class="zh">存档升级方式：适用于 1.21.10 -> 26.2</span><span class="en">Save Upgrade Method: Applicable for 1.21.10 -> 26.2</span></h3>
     <div class="note warn"><strong class="zh">升级前务必备份存档！以防操作失误或意外情况发生！</strong><strong class="en">Back up your save before upgrading! To prevent operational errors or unexpected situations!</strong></div>
     <div class="zh">
       <ul>
@@ -2274,6 +2296,38 @@ li::marker{color:#d99a2e}
   /* 折叠状态表必须在构建循环**之前**声明：子节默认全收起要在建 item 时就写入，
      否则首次 rebuildTocTargets() 会按空表把它们重新展开。 */
   var collapsedIds={};
+  /* 收起态的唯一真源是 collapsedIds：改 class 的同时必须改它，否则 rebuildTocTargets()
+     （切换更新日志模式时调用）会按旧表把该项恢复成收起。点击与滚动联动共用。 */
+  function setCollapsed(item,on){
+    if(!item){return}
+    var ha=item.querySelector('.toc-head > .toc-link');
+    var hid=ha?decodeURIComponent((ha.getAttribute('href')||'').slice(1)):'';
+    if(on){if(hid){collapsedIds[hid]=true}}
+    else{if(hid){delete collapsedIds[hid]}}
+    item.classList.toggle('collapsed',!!on);
+  }
+  function itemByHeadId(id){
+    var items=toc.querySelectorAll('.toc-item');
+    for(var i=0;i<items.length;i++){
+      var a=items[i].querySelector('.toc-head > .toc-link');
+      if(a&&decodeURIComponent((a.getAttribute('href')||'').slice(1))===id){return items[i]}
+    }
+    return null;
+  }
+  /* 滚动联动：active 链接所在的 .toc-item 若「有子标题」，返回它的 id（= 该小节 id）。
+     头链接与其子标题都返回同一个 id —— 这样在同一小节内滚动时 want 不变、不会来回抖。 */
+  function parentHeadId(link){
+    if(!link||!link.closest){return null}
+    var item=link.closest('.toc-item');
+    if(!item||!item.querySelector('.toc-children')){return null}
+    var head=item.querySelector('.toc-head > .toc-link');
+    return head?decodeURIComponent((head.getAttribute('href')||'').slice(1)):null;
+  }
+  /* 滚动联动当前自动展开的那一个（用户 2026-09-26 要求）。
+     **只记一个**：切到别的小节时把它收回去——否则从顶滚到底会把 6 个父项全撑开，
+     侧栏又回到 1793px、约两倍视口，那正是当初默认收起的原因。
+     只回收自己记住的这一个，所以**用户手动点开的其它项不会被误关**。 */
+  var autoOpenId=null;
   function clean(node){
     var junk=node.querySelectorAll('.chip,.muted');
     for(var i=0;i<junk.length;i++){junk[i].parentNode.removeChild(junk[i])}
@@ -2339,7 +2393,25 @@ li::marker{color:#d99a2e}
       return;
     }
     var a=t.closest('a.toc-link');
-    if(a&&window.innerWidth<1180){openSide(false)}
+    if(a){
+      var self=a.closest('.toc-item');
+      if(self&&self.querySelector('.toc-head > .toc-link')===a&&self.querySelector('.toc-children')){
+        /* 父标题（有子标题时）= 切换：展开后再点一次就收回去，与左侧三角按钮行为一致。
+           链接本身的跳转不阻止，仍可用来跳section。 */
+        setCollapsed(self,!self.classList.contains('collapsed'));
+      }else{
+        /* 子标题：只把途经的每个「有子标题」的父项展开，不做切换——
+           否则点子标题会把父项关掉、子项瞬间消失。叶子标题无 .toc-children，遍历时天然跳过。 */
+        var node=a;
+        while(node&&node!==toc){
+          if(node.classList&&node.classList.contains('toc-item')&&node.querySelector('.toc-children')){
+            setCollapsed(node,false);
+          }
+          node=node.parentNode;
+        }
+      }
+      if(window.innerWidth<1180){openSide(false)}
+    }
   });
 
   /* ===== 地图视图切换（默认排序 / 按类型 / 按难度 / 按发布时间） ===== */
@@ -2426,6 +2498,14 @@ li::marker{color:#d99a2e}
       if(top<=pos){best=t.a}
     });
     targets.forEach(function(t){t.a.classList.toggle('active',t.a===best)});
+    /* 滚动联动展开：仅在 want 变化时才动折叠。同一小节内滚动 want 不变，
+       所以不会和用户手动点三角/点标题打架——手动改的状态会一直保留到切换小节。 */
+    var want=parentHeadId(best);
+    if(want!==autoOpenId){
+      if(autoOpenId){setCollapsed(itemByHeadId(autoOpenId),true)}
+      if(want){setCollapsed(itemByHeadId(want),false)}
+      autoOpenId=want;
+    }
     if(best){
       var br=best.getBoundingClientRect(),tr=toc.getBoundingClientRect();
       if(br.top<tr.top+6){toc.scrollTop+=(br.top-tr.top-6)}

@@ -9,7 +9,7 @@ This is a vanilla border survival world series centered on **vanilla survival** 
 ## 📗 Before You Play
 
 - This series is not a conventional modpack. It consists of a **dedicated world** and a **core datapack**. The modpack includes only auxiliary mods. **After downloading the modpack and installing it**, you **must import the dedicated world save** to play properly!
-- Because the **update modpack** function of some Minecraft launchers overwrites the initial chunks of the save, the dedicated world saves are not included in the modpack file; you can go to the [project homepage](https://fndream.github.io/BorderSurvivalModpack/?lang=en) to download the dedicated world saves.
+- Because the **update modpack** function of some Minecraft launchers overwrites the initial chunks of the save, the **dedicated world saves** are not included in the modpack file; they are published in the GitHub repository on the project homepage, so go to the [**project homepage**](https://fndream.github.io/BorderSurvivalModpack/?lang=en) to download them.
 - **There is no difference from vanilla survival in this series**. The first player of this series liked the visual effect of the world border, and thus the initial version of this series was born.
 - Due to the border limitation, alternative acquisition methods for biome or structure exclusive resources have been introduced. These mechanics are called **Core Features**, along with additional **Expansion Features**.
 - When facing difficulties, consulting vanilla mechanics described in the Minecraft wiki, as well as the **Core Features** and **Expansion Features** described below, may provide effective help.
@@ -577,14 +577,14 @@ While fishing, you may obtain some biome-specific items.
 - ❗ **Void-type worlds have no terrain and will never have chunk upgrade issues.**
 - ❗ **Worlds no longer maintained cannot be upgraded:** Thunderous Sea Voyage, Snowbound Ruined City, Abundant Forest Isle, Thorn Palace Cave.
 
-### Save Upgrade Method: Applicable for 26.2 -> 26.3
+### 🍁 Save Upgrade Method: Applicable for 26.2 -> 26.3
 **Back up your save before upgrading! To prevent operational errors or unexpected situations!**
 - Persisting Worlds / Persisting Worlds Array Island:
     1. Download the "World Upgrade - Persisting Worlds & Persisting Worlds Array Island - 26.2->26.3" overwrite world upgrade pack.
     2. Extract both folders "data" and "dimensions" from the upgrade archive to the root directory of the corresponding save for overwrite upgrade.
 - Other worlds: Import directly into the new modpack version to play. Can be upgraded directly, or via the Optimize World feature.
 
-### Save Upgrade Method: Applicable for 1.21.10 -> 26.2
+### 🟨 Save Upgrade Method: Applicable for 1.21.10 -> 26.2
 **Back up your save before upgrading! To prevent operational errors or unexpected situations!**
 - Vanilla / Amplified worlds: Import directly into the new modpack version to play. Can be upgraded directly, or via the Optimize World feature.
 - Other world types (Void, Floating Island, Cave):
