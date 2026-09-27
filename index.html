@@ -138,7 +138,11 @@ body.changelog-only .cta a.ghost[data-changelog]:hover{background:linear-gradien
 .mapdl.open{visibility:visible;transition:visibility 0s}
 .mapdl-mask{position:absolute;inset:0;background:rgba(18,14,8,.55);backdrop-filter:blur(3px);-webkit-backdrop-filter:blur(3px);cursor:pointer;opacity:1}
 .mapdl:not(.open) .mapdl-mask{opacity:0;transition:opacity .18s ease}
-.mapdl-box{position:relative;width:min(520px,calc(100vw - 32px));background:var(--card);border:2px solid var(--dl-bd);border-radius:24px;box-shadow:0 26px 64px rgba(16,10,4,.4),inset 0 1px 0 var(--dl-inset);padding:26px 24px 22px;opacity:0;transition:opacity .22s ease;cursor:default;max-height:calc(100vh - 32px);overflow-y:auto}
+/* 宽 400px 是实测定的：520px 是早期「左胶囊 + 右二维码」两栏(.mapdl-pan)的遗留，
+   两栏删除后按钮中间会空出 247–347px。400px 下降到 127–227px。
+   ⚠️ 别再收窄：英文标题「Choose a download source」宽 272px，400px 时距右上角 ✕
+   只剩 53px，360px 会只剩 13px（近撞）。子弹窗单独用 384px。 */
+.mapdl-box{position:relative;width:min(400px,calc(100vw - 32px));background:var(--card);border:2px solid var(--dl-bd);border-radius:24px;box-shadow:0 26px 64px rgba(16,10,4,.4),inset 0 1px 0 var(--dl-inset);padding:26px 24px 22px;opacity:0;transition:opacity .22s ease;cursor:default;max-height:calc(100vh - 32px);overflow-y:auto}
 .mapdl.open .mapdl-box{opacity:1}
 .mapdl-box:focus{outline:none}
 .mapdl-x{position:absolute;top:12px;right:12px;width:32px;height:32px;border-radius:50%;border:2px solid var(--dl-bd);background:var(--btn-bg);color:var(--text);cursor:pointer;font-size:14px;line-height:1;display:flex;align-items:center;justify-content:center}
@@ -536,7 +540,7 @@ li::marker{color:#d99a2e}
     <div class="en">
       <ul>
         <li>This series is not a conventional modpack. It consists of a <strong>Dedicated World</strong> and a <a href="https://modrinth.com/mod/border-survival-core"><strong>Core mod</strong></a>; the modpack itself includes only auxiliary mods.</li>
-        <li>Because the <strong>update modpack</strong> function of some Minecraft launchers overwrites the initial chunks of the save, the <strong>dedicated world saves</strong> are <strong>not part of the modpack file</strong>; they are published in the <a href="https://fndream.github.io/BorderSurvivalModpack/?lang=en"><strong>project homepage</strong></a>'s <a href="https://github.com/Fndream/BorderSurvivalModpack/tree/master/Worlds_26.3"><strong>GitHub repository</strong></a>, so be sure to <a href="https://github.com/Fndream/BorderSurvivalModpack/tree/master/Worlds_26.3"><strong>download the dedicated world save</strong></a> and install it correctly by following the tutorial in the <a href="#faq"><strong>FAQ</strong></a> section before you can play properly.</li>
+        <li>Because the <strong>update modpack</strong> function of some Minecraft launchers overwrites the initial chunks of the save, the <strong>dedicated world saves</strong> are <strong>not part of the modpack file</strong>; they are published in the <a href="https://fndream.github.io/BorderSurvivalModpack/?lang=en"><strong>Project Homepage</strong></a>'s <a href="https://github.com/Fndream/BorderSurvivalModpack/tree/master/Worlds_26.3"><strong>GitHub Repository</strong></a>, so be sure to <a href="https://github.com/Fndream/BorderSurvivalModpack/tree/master/Worlds_26.3"><strong>Download Dedicated World Save</strong></a> and install it correctly by following the tutorial in the <a href="#faq"><strong>FAQ</strong></a> section before you can play properly.</li>
         <li><strong>There is no difference from vanilla survival in this series</strong>. The first player of this series liked the visual effect of the world border, and thus the initial version of this series was born.</li>
         <li>Due to the border limitation, alternative acquisition methods for biome or structure exclusive resources have been introduced. These mechanics are called <strong>Core Features</strong>, along with additional <strong>Expansion Features</strong>.</li>
         <li>When facing difficulties, consulting vanilla mechanics described in the Minecraft wiki, as well as the <strong>Core Features</strong> and <strong>Expansion Features</strong> described below, may provide effective help.</li>
