@@ -9,7 +9,7 @@
 ## 📗 游前须知
 
 - 该系列并非常规整合包，它的本体由**专用世界存档**与[**核心模组**](https://modrinth.com/mod/border-survival-core)组成，整合包内仅包含辅助性模组。
-- 因部分Minecraft启动器的**更新整合包**功能会覆盖存档初始区块，**专用世界存档**未包含在整合包文件内，它们发布在[**项目首页**](https://fndream.github.io/BorderSurvivalModpack/?lang=zh)的[**Github仓库**](https://github.com/Fndream/BorderSurvivalModpack/tree/master/Worlds_26.3)中，务必[**下载专用世界存档**](https://github.com/Fndream/BorderSurvivalModpack/tree/master/Worlds_26.3)并根据[**常见问题**](#-常见问题)部分的安装教程正确安装，才可正常进行游戏。
+- 因部分Minecraft启动器的**更新整合包**功能会覆盖存档初始区块，**专用世界存档**未包含在整合包文件内，它们发布在[**项目首页**](https://fndream.github.io/BorderSurvivalModpack/?lang=zh)的[**Github仓库**](https://github.com/Fndream/BorderSurvivalModpack/tree/master/Worlds_26.3)中，务必[**下载专用世界存档**](https://github.com/Fndream/BorderSurvivalModpack/tree/master/Worlds_26.3)并按照[**常见问题**](#-常见问题)章节的安装教程正确安装，才可正常进行游戏。
 - **该系列与原版生存并无任何区别**。因该系列的第一位玩家喜欢世界边界的特效，自此诞生了该系列的最初版本。
 - 而因边界限制，或群系或结构的独有资源产生了额外的获取方式，这些特性被称为**核心特性**，以及额外的**扩展特性**。
 - 当遇到困难时，通过查阅Minecraft wiki所描述的原版特性，以及下方介绍的**核心特性**与**扩展特性**，或许可以获得有效的帮助。
