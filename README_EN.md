@@ -523,6 +523,8 @@ While fishing, you may obtain some biome-specific items.
 
 > ❌ The vanilla `/gamerule mob_griefing false` command is commonly used for anti-griefing, but it prevents villagers from picking up food, piglins from picking up gold, and monsters from picking up armor/tools.
 
+> The rules below can also be quickly enabled or disabled: ESC->World Options->Edit Game Rules->search "Allow"->Mobs.
+
 >✅ If you need anti-griefing against Creepers, we recommend using the following command:  
 >```/gamerule creeper_griefing false```
 
