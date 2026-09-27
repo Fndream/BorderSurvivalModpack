@@ -6,7 +6,7 @@
 
 This is a vanilla border survival world series centered on **vanilla survival** gameplay. Start from a confined space, gather resources with wisdom, challenge day and night with courage, and expand the world border with experience. Suitable for players with some knowledge of vanilla mechanics.
 
-## 📗 Before You Play
+## 📗 Before Play
 
 - This series is not a conventional modpack. It consists of a **Dedicated World** and a [**Core mod**](https://modrinth.com/mod/border-survival-core); the modpack itself includes only auxiliary mods.
 - Because the **update modpack** function of some Minecraft launchers overwrites the initial chunks of the save, the **dedicated world saves** are **not part of the modpack file**; they are published in the [**Project Homepage**](https://fndream.github.io/BorderSurvivalModpack/?lang=en)'s [**GitHub Repository**](https://github.com/Fndream/BorderSurvivalModpack/tree/master/Worlds_26.3), so be sure to [**Download Dedicated World Save**](https://github.com/Fndream/BorderSurvivalModpack/tree/master/Worlds_26.3) and install it correctly by following the tutorial in the [**FAQ**](#-faq) section before you can play properly.
