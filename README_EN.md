@@ -517,7 +517,7 @@ While fishing, you may obtain some biome-specific items.
 ---
 </details>
 
-## 📕 Game Rules
+## 📕 Gamerules
 - ❗ **Even with keepInventory enabled, experience is still dropped on death.**
 - ❗ **Even with keepInventory enabled, the Curse of Vanishing still takes effect.**
 
@@ -546,7 +546,7 @@ While fishing, you may obtain some biome-specific items.
 > ✅ If you need to stop players from trampling farmland, we recommend using the following command:  
 > ```/gamerule farmland_player_griefing false```
 
-## 🎓 Mod Hotkeys
+## 🎓 Hotkeys
 
 **Keybind configurations for some mod features within the modpack:**
 
