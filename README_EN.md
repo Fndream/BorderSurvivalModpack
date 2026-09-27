@@ -8,8 +8,8 @@ This is a vanilla border survival world series centered on **vanilla survival** 
 
 ## 📗 Before You Play
 
-- This series is not a conventional modpack. It consists of a **dedicated world** and a **core datapack**. The modpack includes only auxiliary mods. **After downloading the modpack and installing it**, you **must import the dedicated world save** to play properly!
-- Because the **update modpack** function of some Minecraft launchers overwrites the initial chunks of the save, the **dedicated world saves** are not included in the modpack file; they are published in the GitHub repository on the project homepage, so go to the [**project homepage**](https://fndream.github.io/BorderSurvivalModpack/?lang=en) to download them.
+- This series is not a conventional modpack. It consists of a **dedicated world** and a [**core mod**](https://modrinth.com/mod/border-survival-core); the modpack itself includes only auxiliary mods.
+- Because the **update modpack** function of some Minecraft launchers overwrites the initial chunks of the save, the **dedicated world saves** are not included in the modpack file; they are published in the [**project homepage**](https://fndream.github.io/BorderSurvivalModpack/?lang=en)'s [**GitHub repository**](https://github.com/Fndream/BorderSurvivalModpack/tree/master/Worlds_26.3), so be sure to [**download the dedicated world save**](https://github.com/Fndream/BorderSurvivalModpack/tree/master/Worlds_26.3) and install it correctly by following the tutorial in the [**FAQ**](#-faq) section before you can play properly.
 - **There is no difference from vanilla survival in this series**. The first player of this series liked the visual effect of the world border, and thus the initial version of this series was born.
 - Due to the border limitation, alternative acquisition methods for biome or structure exclusive resources have been introduced. These mechanics are called **Core Features**, along with additional **Expansion Features**.
 - When facing difficulties, consulting vanilla mechanics described in the Minecraft wiki, as well as the **Core Features** and **Expansion Features** described below, may provide effective help.
@@ -617,31 +617,29 @@ While fishing, you may obtain some biome-specific items.
 
 ## 📖 FAQ
 
-**Q: The modpack cannot be recognized after installation?**
+**Q: How to install this series?**
 
-**A:** Any launcher that supports the Modrinth format online pack can recognize it. Please confirm you are importing the modpack file starting with "BorderSurvival", not the world pack file starting with "边界生存".
-
----
-
-**Q: How to install the world?**
-
-**A:** After the modpack is installed, open the saves folder for that game version via your launcher, and extract the save folder inside the world archive in the "边界生存-XXXX" format into that directory.  
-**B:** After launching the game, select "Singleplayer". If installed correctly, a save with the corresponding world name will appear. Enter the save to start playing.
+**A: The walkthrough below uses the modpack version `BorderSurvival 14.0-pre1` and the world pack version `海岛村庄 (Island Village) 26.3-v1` as examples.**
+1. Download the modpack named in the `BorderSurvival 14.0-pre1.mrpack` format.
+2. Download the world pack named in the `边界生存-海岛村庄 (Island Village) 26.3-v1.zip` format.
+3. Install the modpack: use a Minecraft launcher that supports installing Modrinth modpacks, drag the `BorderSurvival 14.0-pre1.mrpack` file onto the launcher interface so it is detected automatically, enter the instance name `BorderSurvival` (this name is customizable), confirm the modpack instance installation and wait for it to finish. If a network problem causes the installation to fail, retry this step until it succeeds.
+4. Open the saves folder: use the launcher's function to open the saves folder, or open the `.minecraft/versions/BorderSurvival/saves` directory manually. If there is no `saves` directory, create one with `New folder` and then rename it to `saves`.
+5. Move the world pack into the saves folder: move, cut, or copy the `边界生存-海岛村庄 (Island Village) 26.3-v1.zip` file into the `saves` directory opened in step 4.
+6. Open the world pack: open the `边界生存-海岛村庄 (Island Village) 26.3-v1.zip` file with an archive tool to preview its contents.
+7. Extract the save folder: after opening the world pack, find the save folder named `边界生存-海岛村庄 (Island Village)` inside (the one without the version number), and drag or extract that folder into the `saves` directory opened in step 4.
+8. Launch the game, then select `Singleplayer` after entering the game. If the world pack was installed correctly, you should now see an existing world save to enter rather than creating a new world.
 
 ---
 
 **Q: How to update the modpack to get the latest features?**
 
-**A:** Replace mods, keep the original version
-1. Download and install the new modpack via the launcher as a temporary instance.
-2. Delete the original game instance's `mods` directory files that come with the modpack. Do not delete mods you added yourself.
-3. Copy all files from the newly installed temporary instance's `mods` directory to the original game instance's `mods` directory.
+**A:** Update the mods only (this method applies only when the Minecraft version has not been upgraded)
+1. Use the launcher's mod update function to update the `Border Survival Core` mod to the latest version for the Minecraft version of the current instance.
+2. Use the launcher's mod update function to update the mods explicitly listed in the [changelog](https://fndream.github.io/BorderSurvivalModpack/?lang=mode=update&lang=en) to the specified versions. (From version 26.3 onward, the changelog will explicitly state mod version changes.)
 
 **B:** Migrate resources, clean install new version
 1. Download and install the new modpack via the launcher.
-2. Copy the following folders or files from the original game instance to the new game instance directory:
-    - `config` (Mod configuration folder)
-    - `mods` (**Only your self-added mod files**)
+2. Copy the following directories from the original game instance to the new game instance directory:
     - `resourcepacks` (Resource pack folder)
     - `saves` (Save folder)
     - `screenshots` (Screenshot folder)
@@ -666,7 +664,7 @@ While fishing, you may obtain some biome-specific items.
 **Q: Commands cannot be used?**
 
 **A:** Most commands require cheats permission. Obtain command permission through the following steps:
-- **Singleplayer**: Press `ESC` -> Click **Options** -> Click **World Options** -> Change **Allow Cheats: OFF** to **Allow Cheats: ON** -> Click **Done**.
+- **Singleplayer**: Press `ESC` -> Click **Options** -> Click **World Options** -> Change **Allow Cheats: OFF** to **Allow Cheats: ON** -> Click **Apply Changes**.
 - **Server**: Use the `/op <playername>` command via the server console to grant command permission to the specified player.
 
 ---
@@ -711,9 +709,10 @@ While fishing, you may obtain some biome-specific items.
 
 1. Install a Fabric server for the corresponding Minecraft version yourself.
 2. Install the modpack, and add all files from the `mods` and `config` directories of the modpack to the server's `mods` and `config` folders.
-3. Extract the world pack to the server's root directory, and rename the world save folder to `world`, or to the value of the `level-name` setting in the `server.properties` file.
-4. Read the next FAQ for server-specific mod deletion and copying Carpet configuration files into the save.
-5. Setup complete, start the server.
+3. Extract the world pack to the server's root directory, and rename the world save to `world`, or to the value of the `level-name` setting in the `server.properties` file.
+4. Delete the **`[Advanced Connection Settings] mcwifipnp`** mod
+5. Copy the `config/carpet/default_carpet.conf` file to the save directory (usually `world`) and rename it to `carpet.conf` to enable the `[Carpet] carpet` mod family
+6. Setup complete, start the server.
 
 ---
 
