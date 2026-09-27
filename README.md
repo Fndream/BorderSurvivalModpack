@@ -625,7 +625,7 @@
 **A：下面以整合包`BorderSurvival 14.0-pre1`版本；世界包`海岛村庄 (Island Village) 26.3-v1`版本为例，演示安装过程。**
 1. 下载`BorderSurvival 14.0-pre1.mrpack`命名格式的整合包。
 2. 下载`边界生存-海岛村庄 (Island Village) 26.3-v1.zip`命名格式的世界包。
-3. 安装整合包：使用支持安装`Modrinth`模组包的Minecraft启动器，将`BorderSurvival 14.0-pre1.mrpack`文件拖拽至启动器界面中自动识别，输入实例名称`BorderSurvival`（该名称可自定义），确定安装模组包实例，等待安装成功，如遇到网络问题导致安装失败则重试本步骤，直至安装成功。
+3. 安装整合包：使用支持安装`Modrinth`模组包的Minecraft启动器，将`BorderSurvival 14.0-pre1.mrpack`文件拖拽至启动器界面中自动识别，输入实例名称`BorderSurvival`（该名称可自定义）确定安装模组包实例，等待安装成功。如遇到网络问题导致安装失败则重试本步骤，直至安装成功。
 4. 打开存档文件夹：使用启动器功能打开存档文件夹，或手动打开`.minecraft/versions/BorderSurvival/saves`存档目录，如无`saves`目录则用`新建文件夹`的方式创建一个，然后重命名为`saves`。
 5. 移动世界包至存档文件夹：将`边界生存-海岛村庄 (Island Village) 26.3-v1.zip`文件移动、剪切、或复制到第4步打开的`saves`目录下。
 6. 打开世界包：使用压缩软件打开`边界生存-海岛村庄 (Island Village) 26.3-v1.zip`文件以预览内部内容。

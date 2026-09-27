@@ -8,15 +8,15 @@ This is a vanilla border survival world series centered on **vanilla survival** 
 
 ## 📗 Before You Play
 
-- This series is not a conventional modpack. It consists of a **dedicated world** and a [**core mod**](https://modrinth.com/mod/border-survival-core); the modpack itself includes only auxiliary mods.
-- Because the **update modpack** function of some Minecraft launchers overwrites the initial chunks of the save, the **dedicated world saves** are not included in the modpack file; they are published in the [**project homepage**](https://fndream.github.io/BorderSurvivalModpack/?lang=en)'s [**GitHub repository**](https://github.com/Fndream/BorderSurvivalModpack/tree/master/Worlds_26.3), so be sure to [**download the dedicated world save**](https://github.com/Fndream/BorderSurvivalModpack/tree/master/Worlds_26.3) and install it correctly by following the tutorial in the [**FAQ**](#-faq) section before you can play properly.
+- This series is not a conventional modpack. It consists of a **Dedicated World** and a [**Core mod**](https://modrinth.com/mod/border-survival-core); the modpack itself includes only auxiliary mods.
+- Because the **update modpack** function of some Minecraft launchers overwrites the initial chunks of the save, the **dedicated world saves** are **not part of the modpack file**; they are published in the [**project homepage**](https://fndream.github.io/BorderSurvivalModpack/?lang=en)'s [**GitHub repository**](https://github.com/Fndream/BorderSurvivalModpack/tree/master/Worlds_26.3), so be sure to [**download the dedicated world save**](https://github.com/Fndream/BorderSurvivalModpack/tree/master/Worlds_26.3) and install it correctly by following the tutorial in the [**FAQ**](#-faq) section before you can play properly.
 - **There is no difference from vanilla survival in this series**. The first player of this series liked the visual effect of the world border, and thus the initial version of this series was born.
 - Due to the border limitation, alternative acquisition methods for biome or structure exclusive resources have been introduced. These mechanics are called **Core Features**, along with additional **Expansion Features**.
 - When facing difficulties, consulting vanilla mechanics described in the Minecraft wiki, as well as the **Core Features** and **Expansion Features** described below, may provide effective help.
 - It is recommended to play with your preferred **resource pack** and **shader pack**.
 - Supported languages: **English, Simplified Chinese, Traditional Chinese, Classical Chinese (Recommended).**
 - If you switch languages in-game, you must exit and re-enter the save for some text to update correctly.
-- **Note:** This document is a translation from the [Chinese version](https://fndream.github.io/BorderSurvivalModpack/?lang=zh), provided by DeepseekAI. Please verify carefully.
+- **Note:** This document is a translation from the [**Chinese version**](https://fndream.github.io/BorderSurvivalModpack/?lang=zh), provided by DeepseekAI. Please verify carefully.
 
 ## 🌊 Core Features
 
@@ -635,7 +635,7 @@ While fishing, you may obtain some biome-specific items.
 
 **A:** Update the mods only (this method applies only when the Minecraft version has not been upgraded)
 1. Use the launcher's mod update function to update the `Border Survival Core` mod to the latest version for the Minecraft version of the current instance.
-2. Use the launcher's mod update function to update the mods explicitly listed in the [changelog](https://fndream.github.io/BorderSurvivalModpack/?lang=mode=update&lang=en) to the specified versions. (From version 26.3 onward, the changelog will explicitly state mod version changes.)
+2. Use the launcher's mod update function to update the mods explicitly listed in the [**Changelog**](https://fndream.github.io/BorderSurvivalModpack/?mode=update&lang=en) to the specified versions. (From version 26.3 onward, the changelog will explicitly state mod version changes.)
 
 **B:** Migrate resources, clean install new version
 1. Download and install the new modpack via the launcher.
