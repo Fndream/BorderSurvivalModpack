@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="robots" noindex>
+<title>Border Survival</title>
+<meta http-equiv="refresh" content="0; url=../index.html?lang=en">
+<link rel="canonical" href="../index.html?lang=en">
+<script>
+/* GitHub Pages 是静态托管：/en、/update 这类路径必须真实存在文件才不会 404，
+   故用本存根页把「路径」翻译成「查询参数」再交给 index.html 处理。
+   截掉末尾的 /en（含有无尾斜杠两种情况），得到站点根目录。 */
+(function(){
+  var base=location.pathname.replace(/\/+$/,'').replace(/\/(en|update)$/i,'/');
+  location.replace(base+'index.html?lang=en');
+})();
+</script>
+</head>
+<body>
+<p>Redirecting to the English version… <a href="../index.html?lang=en">click here if nothing happens</a>.</p>
+</body>
+</html>
