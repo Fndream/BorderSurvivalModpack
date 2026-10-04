@@ -1,10 +1,25 @@
 <!DOCTYPE html>
-<html lang="zh-CN" class="lang-zh">
+<html lang="zh-CN" class="lang-zh" data-langui="off">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>边界生存 Border Survival｜原版边界生存地图系列</title>
-<meta name="description" content="边界生存：以原版生存为主玩法的世界边界地图系列。Border Survival: a vanilla border survival world series.">
+<title>边界生存 Border Survival｜原版风格边界生存地图系列</title>
+<meta name="description" content="边界生存：以原版生存为主玩法的边界生存地图系列。从狭隘的空间启程，以智慧觅取资源，以勇气宣战昼夜，以经验开拓世界边界。Border Survival: a vanilla border survival world series.">
+<!-- 单一语言站点（英文源 2026-10-04 关闭）：canonical 指向自己，/en 与 /update 存根页各自标 noindex 并回指此处 -->
+<link rel="canonical" href="https://fndream.github.io/BorderSurvivalModpack/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="边界生存 Border Survival">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:title" content="边界生存 Border Survival｜原版风格边界生存地图系列">
+<meta property="og:description" content="边界生存：以原版生存为主玩法的边界生存地图系列。从狭隘的空间启程，以智慧觅取资源，以勇气宣战昼夜，以经验开拓世界边界。">
+<meta property="og:url" content="https://fndream.github.io/BorderSurvivalModpack/">
+<meta property="og:image" content="https://fndream.github.io/BorderSurvivalModpack/images/banner.jpg">
+<meta property="og:image:alt" content="边界生存 Border Survival 地图系列 banner">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="边界生存 Border Survival｜原版风格边界生存地图系列">
+<meta name="twitter:description" content="边界生存：以原版生存为主玩法的边界生存地图系列。从狭隘的空间启程，以智慧觅取资源，以勇气宣战昼夜，以经验开拓世界边界。">
+<meta name="twitter:image" content="https://fndream.github.io/BorderSurvivalModpack/images/banner.jpg">
+<meta name="twitter:image:alt" content="边界生存 Border Survival 地图系列 banner">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%F0%9F%A7%AD%3C/text%3E%3C/svg%3E">
 <style>
 :root{
@@ -15,6 +30,7 @@
   --note-bg:#f6efdb;--note-border:#e5aa2e;--note-text:#75654c;
   --warn-bg:#faf0d4;--warn-border:#d9a83c;--warn-text:#8a6a1e;
   --ok-bg:#eef3e2;--ok-border:#9cb87e;--ok-text:#577040;
+  --danger-bg:#fbe7e3;--danger-border:#c9564a;--danger-text:#9b3b30;
   --code-bg:#f3ecd9;--code-border:#e2d9c2;--code-text:#4b4034;
   --pre-bg:#342c23;--pre-text:#efe6d3;
   --th-bg:#f2ecdb;--row-alt:#f6f2e5;
@@ -37,6 +53,7 @@
   --note-bg:#372f22;--note-border:#d9a83c;--note-text:#c4b494;
   --warn-bg:#3a3018;--warn-border:#b08a2e;--warn-text:#ecd28d;
   --ok-bg:#26301e;--ok-border:#5f8552;--ok-text:#a9c99a;
+  --danger-bg:#3b2320;--danger-border:#b85c50;--danger-text:#eaa89c;
   --code-bg:#332b21;--code-border:#463c2f;--code-text:#e5dbc7;
   --pre-bg:#1c1712;--pre-text:#d8cdb8;
   --th-bg:#372f22;--row-alt:#292219;
@@ -73,11 +90,19 @@ a{color:var(--link)}
 /* ===== 语言切换 ===== */
 html.lang-zh .en{display:none!important}
 html.lang-en .zh{display:none!important}
+/* 英文源关闭（用户 2026-10-04 决定，英文文档重制后再开）：隐藏语言切换器。
+   隐藏的是 UI 而非内容——.en 文案、CSS 显隐规则、?lang=en 路由全部原样保留，
+   将来恢复英文：删掉 <html> 上的 data-langui="off" 一处即可，无需改任何文案。 */
+html[data-langui="off"] .lang-wrap{display:none!important}
 
 /* ===== 双模式：文档模式（默认）/ 更新日志模式（点顶栏「更新日志」进入，再点或 Esc 退出） ===== */
-body:not(.changelog-only) main > section.card#changelog{display:none!important}
-body.changelog-only main > section.card:not(#changelog){display:none!important}
+body:not(.changelog-only) main > section.card.cl-entry{display:none!important}
+body.changelog-only main > section.card:not(.cl-entry){display:none!important}
 body.changelog-only #changelogBtn{border-color:var(--accent);color:var(--accent)}
+/* 进入更新日志模式后，两个入口按钮改说「退出日志 / Exit Log」——提示再点一次即返回文档模式 */
+.cl-on{display:none}
+body.changelog-only .cl-on{display:inline}
+body.changelog-only .cl-off{display:none}
 body.changelog-only .cta a.ghost[data-changelog],
 body.changelog-only .cta a.ghost[data-changelog]:hover{background:linear-gradient(135deg,#f0c04c,#e0a528);color:#33291f;border-color:transparent}
 
@@ -217,8 +242,12 @@ del{color:var(--muted)}
 .note{background:var(--note-bg);border-left:4px solid var(--note-border);border-radius:0 10px 10px 0;padding:15px 18px;margin:14px 0;color:var(--note-text);font-size:.95rem}
 .note.warn{background:var(--warn-bg);border-left-color:var(--warn-border);color:var(--warn-text)}
 .note.ok{background:var(--ok-bg);border-left-color:var(--ok-border);color:var(--ok-text)}
+.note.danger{background:var(--danger-bg);border-left-color:var(--danger-border);color:var(--danger-text)}
 
 code{font-family:ui-monospace,SFMono-Regular,Consolas,monospace;background:var(--code-bg);border:1px solid var(--code-border);color:var(--code-text);border-radius:6px;padding:1px 7px;font-size:.86em}
+
+/* 更新日志：每个版本一个独立章节块，标题即版本号（样式回归 section.card 默认） */
+.cl-entry h4:first-child{margin-top:0}
 pre{background:var(--pre-bg);color:var(--pre-text);border-radius:12px;padding:12px 16px;overflow-x:auto;margin:10px 0}
 pre code{background:none;border:none;color:inherit;padding:0;font-size:.88rem}
 
@@ -431,6 +460,7 @@ li::marker{color:#d99a2e}
 .note::before{content:"";position:absolute;left:8px;top:15px;bottom:15px;width:6px;border-radius:99px;background:#e5aa2e}
 .note.warn::before{background:#d99a2e}
 .note.ok::before{background:#8fae74}
+.note.danger::before{background:#c9564a}
 .group-head{background:linear-gradient(135deg,#f6e7b8,#f1dc97);border:1px solid #e3c673;border-radius:999px;padding:9px 16px;position:relative;overflow:hidden}
 .group-head::before{content:"";position:absolute;inset:0;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='56' height='56' viewBox='0 0 56 56'%3E%3Cpath d='M28 18l3.2 6.6 7.2 1-5.2 5.1 1.2 7.2L28 34.6l-6.4 3.3 1.2-7.2-5.2-5.1 7.2-1z' fill='%23d0a54e' fill-opacity='.45'/%3E%3C/svg%3E");background-size:56px 56px;background-position:0 center;opacity:.55;pointer-events:none}
 .group-head>*{position:relative;z-index:1}
@@ -452,6 +482,8 @@ li::marker{color:#d99a2e}
      其次 /en 路径与 #en 锚点；都没有才用 localStorage。
      /update（或 ?mode=update）由主脚本在 DOM 就绪后切到更新日志模式。
      这些只影响本次访问、不写回 localStorage，用户回根路径仍按自己偏好显示。 */
+  /* ⚠️ 上面的判定逻辑全部保留，但在下方被弃用：英文源关闭（用户 2026-10-04 决定），
+     英文文档尚未重制完成，本次只发布中文版。?lang=en / /en / #en 均不再切英文。 */
   var p=location.pathname||'',q=location.search||'',h=location.hash||'';
   var uLang=null,m=/(?:^|[?&])lang=(zh|en)(?:&|$)/i.exec(q);
   if(m){uLang=m[1].toLowerCase()}
@@ -460,12 +492,15 @@ li::marker{color:#d99a2e}
     lang:uLang,
     update:/(?:^|\/)update(?:\/|$)/i.test(p)||/(?:^|[?&])mode=update(?:&|$)/i.test(q)||/^#update(?:$|[/?&#])/i.test(h)
   };
-  var l=uLang;
-  if(!l){try{l=localStorage.getItem('bs-lang')}catch(e){}}
-  if(l!=='zh'&&l!=='en'){l=((navigator.language||'').toLowerCase().indexOf('zh')===0)?'zh':'en'}
-  document.documentElement.className='lang-'+l;
-  document.documentElement.lang=(l==='zh')?'zh-CN':'en';
-  document.title=(l==='zh')?'边界生存 · 原版边界生存地图系列':'Border Survival · Vanilla Border Survival Worlds';
+  /* ⚠️ 英文源关闭：原本「读 localStorage 的 bs-lang、再按 navigator.language 决定默认语言」
+     的逻辑已停用（代码保留在下方注释里，恢复英文时启用）。停用的理由：英文文档还没重制，
+     英文系统的访客首访会被自动送到过期的英文页，比默认中文更糟。 */
+  /* if(!l){try{l=localStorage.getItem('bs-lang')}catch(e){*/
+  /* if(l!=='zh'&&l!=='en'){l=((navigator.language||'').toLowerCase().indexOf('zh')===0)?'zh':'en'} */
+  var l='zh'; /* ← 固定中文；上面的 uLang（?lang=en / /en / #en）结果也一并丢弃 */
+  document.documentElement.className='lang-zh';
+  document.documentElement.lang='zh-CN';
+  document.title='边界生存 · 原版风格边界生存地图系列';
   var t=null;try{t=localStorage.getItem('bs-theme')}catch(e){}
   if(t!=='dark'&&t!=='light'){t=(window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches)?'dark':'light'}
   document.documentElement.setAttribute('data-theme',t);
@@ -481,7 +516,7 @@ li::marker{color:#d99a2e}
     <div class="top-spacer"></div>
     <a class="top-dl primary" data-mapdl href="https://github.com/Fndream/BorderSurvivalModpack/tree/master/Worlds_26.3"><span class="ic">🍁 </span><span class="zh">下载</span><span class="en">Download</span></a>
     <a class="top-dl" href="https://github.com/Fndream/BorderSurvivalModpack/issues"><span class="ic">💬 </span>Issues</a>
-    <a class="top-dl" id="changelogBtn" data-changelog href="#changelog" aria-pressed="false"><span class="ic">📜 </span><span class="zh">更新日志</span><span class="en">Changelog</span></a>
+    <a class="top-dl" id="changelogBtn" data-changelog href="#changelog-v1" aria-pressed="false"><span class="ic">📜 </span><span class="cl-off"><span class="zh">更新日志</span><span class="en">Changelog</span></span><span class="cl-on"><span class="zh">退出日志</span><span class="en">Exit Log</span></span></a>
     <button id="themeBtn" class="theme-switch" type="button" role="switch" aria-checked="false" aria-label="深浅主题 Dark light theme"><span class="ts-track"><span class="ts-thumb"></span></span></button>
     <div class="lang-wrap" id="langWrap">
       <button id="langBtn" class="icon-btn" type="button" aria-haspopup="true" aria-expanded="false">🌐 <span id="langCur">中文</span></button>
@@ -504,22 +539,22 @@ li::marker{color:#d99a2e}
 
 <main class="wrap">
   <section class="hero">
-    <img class="banner" src="https://files.seeusercontent.com/2026/09/23/blK7/banner.jpg" alt="边界生存 Banner">
+    <img class="banner" src="images/banner.jpg" alt="边界生存 Banner">
     <div class="hero-head">
       <div>
         <h1>🧭 <span class="zh">边界生存</span><span class="en">Border Survival</span> <span class="chip">🍁 Minecraft 26.3</span></h1>
-        <p class="tagline"><span class="zh">以原版生存为主要玩法的原版边界生存地图系列</span><span class="en">A vanilla border survival world series centered on vanilla survival gameplay</span></p>
+        <p class="tagline"><span class="zh">以原版生存为主要玩法的边界生存地图系列</span><span class="en">A vanilla border survival world series centered on vanilla survival gameplay</span></p>
       </div>
       <div class="cta">
         <a class="primary" data-mapdl href="https://github.com/Fndream/BorderSurvivalModpack/tree/master/Worlds_26.3">🍁 <span class="zh">下载</span><span class="en">Download</span></a>
         <a class="ghost" href="https://github.com/Fndream/BorderSurvivalModpack/issues">💬 Issues</a>
-        <a class="ghost" data-changelog href="#changelog" aria-pressed="false">📜 <span class="zh">更新日志</span><span class="en">Changelog</span></a>
+        <a class="ghost" data-changelog href="#changelog-v1" aria-pressed="false">📜 <span class="cl-off"><span class="zh">更新日志</span><span class="en">Changelog</span></span><span class="cl-on"><span class="zh">退出日志</span><span class="en">Exit Log</span></span></a>
       </div>
     </div>
   </section>
     <section class="card" id="intro">
     <h2>📓 <span class="zh">简介</span><span class="en">Introduction</span></h2>
-    <div class="zh"><p>这是一个以<strong>原版生存</strong>为主要玩法的原版边界生存地图系列。从狭隘的空间启程，以智慧觅取资源，以勇气宣战昼夜，以经验开拓世界边界。适合熟悉原版特性的玩家。</p></div>
+    <div class="zh"><p>这是一个以<strong>原版生存</strong>为主要玩法的边界生存地图系列。从狭隘的空间启程，以智慧觅取资源，以勇气宣战昼夜，以经验开拓世界边界。适合熟悉原版特性的玩家。</p></div>
     <div class="en"><p>This is a vanilla border survival world series centered on <strong>vanilla survival</strong> gameplay. Start from a confined space, gather resources with wisdom, challenge day and night with courage, and expand the world border with experience. Suitable for players with some knowledge of vanilla mechanics.</p></div>
   </section>
 
@@ -527,26 +562,22 @@ li::marker{color:#d99a2e}
     <h2>📗 <span class="zh">游前须知</span><span class="en">Before Play</span></h2>
     <div class="zh">
       <ul>
-        <li>该系列并非常规整合包，它的本体由<strong>专用世界存档</strong>与<a href="https://modrinth.com/mod/border-survival-core"><strong>核心模组</strong></a>组成，整合包内仅包含辅助性模组。</li>
-        <li>因部分Minecraft启动器的<strong>更新整合包</strong>功能会覆盖存档初始区块，<strong>专用世界存档</strong>未包含在整合包文件内，它们发布在<a href="https://fndream.github.io/BorderSurvivalModpack/?lang=zh"><strong>项目首页</strong></a>的<a href="https://github.com/Fndream/BorderSurvivalModpack/tree/master/Worlds_26.3"><strong>Github仓库</strong></a>中，务必<a href="https://github.com/Fndream/BorderSurvivalModpack/tree/master/Worlds_26.3"><strong>下载专用世界存档</strong></a>并按照<a href="#faq"><strong>常见问题</strong></a>章节的安装教程正确安装，才可正常进行游戏。</li>
-        <li><strong>该系列与原版生存并无任何区别</strong>。因该系列的第一位玩家喜欢世界边界的特效，自此诞生了该系列的最初版本。</li>
-        <li>而因边界限制，或群系或结构的独有资源产生了额外的获取方式，这些特性被称为<strong>核心特性</strong>，以及额外的<strong>扩展特性</strong>。</li>
-        <li>当遇到困难时，通过查阅Minecraft wiki所描述的原版特性，以及下方介绍的<strong>核心特性</strong>与<strong>扩展特性</strong>，或许可以获得有效的帮助。</li>
-        <li>建议搭配自己喜欢的<strong>资源包</strong>、<strong>光影包</strong>进行游玩。</li>
-        <li>支持语言：<strong>简体中文、繁体中文、文言华夏（推荐）、English。</strong></li>
-        <li>若在游戏内切换语言，需退出并重新进入存档，才可正确更新部分文本。</li>
+        <li>该系列并非常规整合包，它的本体由<strong>专属地图</strong>与<strong>核心模组</strong>相互依赖运行，安装整合包后务必导入本系列的专属地图才可正常进行游戏，详细安装教程见<strong>常见问题</strong>章节。</li>
+        <li><strong>该系列保持原版风格，没有固定的目标。</strong> 它的诞生，源于该系列的第一位玩家喜欢世界边界的特效，并钟爱游玩长期原版生存，两者结合之下创作而成。</li>
+        <li>在开始之前，建议先简单了解该系列的<strong>核心特性、资源特性、扩展特性、世界独有特性、世界库、游戏规则、辅助模组快捷键</strong>，以便快速上手。</li>
+        <li>建议搭配自己喜欢的<strong>资源包、光影包</strong>进行游玩，以获得更好的游戏体验。</li>
+        <li>支持语言：<strong>简体中文、繁体中文、文言华夏[推荐]、English</strong>。</li>
+        <li>若在游戏内切换语言，需退出并重新进入存档，部分文本才可正确更新。</li>
       </ul>
     </div>
     <div class="en">
       <ul>
-        <li>This series is not a conventional modpack. It consists of a <strong>Dedicated World</strong> and a <a href="https://modrinth.com/mod/border-survival-core"><strong>Core mod</strong></a>; the modpack itself includes only auxiliary mods.</li>
-        <li>Because the <strong>update modpack</strong> function of some Minecraft launchers overwrites the initial chunks of the save, the <strong>dedicated world saves</strong> are <strong>not part of the modpack file</strong>; they are published in the <a href="https://fndream.github.io/BorderSurvivalModpack/?lang=en"><strong>Project Homepage</strong></a>'s <a href="https://github.com/Fndream/BorderSurvivalModpack/tree/master/Worlds_26.3"><strong>GitHub Repository</strong></a>, so be sure to <a href="https://github.com/Fndream/BorderSurvivalModpack/tree/master/Worlds_26.3"><strong>Download Dedicated World Save</strong></a> and install it correctly by following the tutorial in the <a href="#faq"><strong>FAQ</strong></a> section before you can play properly.</li>
-        <li><strong>There is no difference from vanilla survival in this series</strong>. The first player of this series liked the visual effect of the world border, and thus the initial version of this series was born.</li>
-        <li>Due to the border limitation, alternative acquisition methods for biome or structure exclusive resources have been introduced. These mechanics are called <strong>Core Features</strong>, along with additional <strong>Expansion Features</strong>.</li>
-        <li>When facing difficulties, consulting vanilla mechanics described in the Minecraft wiki, as well as the <strong>Core Features</strong> and <strong>Expansion Features</strong> described below, may provide effective help.</li>
-        <li>It is recommended to play with your preferred <strong>resource pack</strong> and <strong>shader pack</strong>.</li>
-        <li>Supported languages: <strong>English, Simplified Chinese, Traditional Chinese, Classical Chinese (Recommended).</strong></li>
-        <li>If you switch languages in-game, you must exit and re-enter the save for some text to update correctly.</li>
+        <li>This series is not a conventional modpack. Its foundation is the <strong>dedicated map</strong> and the <strong>core mod</strong> running in mutual dependence; after installing the modpack, you must import this series' dedicated map to play normally. See the <strong>FAQ</strong> section for the detailed installation tutorial.</li>
+        <li><strong>This series keeps the vanilla style and has no fixed goals.</strong> It was born because the series' first player loved the visual effects of the world border and was fond of long-term vanilla survival; combining the two gave rise to it.</li>
+        <li>Before starting, it is recommended to briefly get familiar with this series' <strong>Core Features, Resource Features, Expansion Features, world-exclusive features, Worlds library, Game Rules, and mod hotkeys</strong> to get started quickly.</li>
+        <li>It is recommended to play with your favorite <strong>resource packs and shader packs</strong> for a better experience.</li>
+        <li>Supported languages: <strong>Simplified Chinese, Traditional Chinese, Classical Chinese [Recommended], English</strong>.</li>
+        <li>If you switch languages in-game, you must exit and re-enter the save before some text updates correctly</li>
         <li><strong>Note:</strong> This document is a translation from the <a href="https://github.com/Fndream/BorderSurvivalModpack/blob/master/README.md"><strong>Chinese version</strong></a>, provided by DeepseekAI. Please verify carefully.</li>
       </ul>
     </div>
@@ -555,156 +586,121 @@ li::marker{color:#d99a2e}
   <section class="card" id="core">
     <h2>🌊 <span class="zh">核心特性</span><span class="en">Core Features</span></h2>
 
-    <h3>📕 <span class="zh">关于世界边界</span><span class="en">About the World Border</span></h3>
+    <h3>📕 <span class="zh">世界边界</span><span class="en">World Border</span></h3>
     <div class="zh">
-      <p>世界边界是 Minecraft 1.8 加入的特性，它是一堵淡蓝色透明的动态斜线光墙。</p>
-      <p><strong>边界拥有三种状态：</strong></p>
-      <ul>
-        <li><strong>常规</strong>：颜色为蓝色。</li>
-        <li><strong>收缩中</strong>：颜色为红色。</li>
-        <li><strong>扩展中</strong>：颜色为绿色。</li>
-      </ul>
-      <p><strong>边界特性：</strong></p>
-      <ul>
-        <li>玩家无法越出边界、无法操作边界外的方块。</li>
-        <li>边界外不会生成生物。</li>
-        <li>边界外的工作方块、部分红石元件无法正常运行。</li>
-        <li>边界外面没有空气，如果离开边界一定范围，则会受到窒息伤害。</li>
-      </ul>
+      <p>世界边界是Minecraft1.8版本加入的原版特性，可前往<a href="https://zh.minecraft.wiki/w/%E4%B8%96%E7%95%8C%E8%BE%B9%E7%95%8C">MinecraftWiki-世界边界</a>查阅详细信息。</p>
     </div>
     <div class="en">
-      <p>The world border is a feature added in Minecraft 1.8. It is a translucent, dynamic, diagonal light-blue wall.</p>
-      <p><strong>The border has three states:</strong></p>
-      <ul>
-        <li><strong>Normal</strong>: Color is blue.</li>
-        <li><strong>Shrinking</strong>: Color is red.</li>
-        <li><strong>Expanding</strong>: Color is green.</li>
-      </ul>
-      <p><strong>Border properties:</strong></p>
-      <ul>
-        <li>Players cannot cross the border or interact with blocks outside it.</li>
-        <li>Mobs will not spawn outside the border.</li>
-        <li>Workstation blocks and certain redstone components outside the border cannot function properly.</li>
-        <li>There is no air outside the border. If you leave the border beyond a certain distance, you will take suffocation damage.</li>
-      </ul>
+      <p>The world border is a vanilla feature added in Minecraft 1.8. See <a href="https://minecraft.wiki/w/World_border">MinecraftWiki - World Border</a> for detailed information.</p>
     </div>
 
     <h3>🥬 <span class="zh">边界能量</span><span class="en">Border Energy</span></h3>
     <div class="zh">
-      <ul>
-        <li>边界能量即为<strong>世界边界大小</strong>。</li>
-        <li>可通过消耗<strong>经验等级</strong>进行<strong>边界升级</strong>，提升边界能量。</li>
-      </ul>
+      <p>世界边界的大小，每级能量=0.5格边界范围，可通过<strong>边界升级</strong>功能牌消耗经验等级并提升边界能量，从而扩大世界边界。</p>
     </div>
     <div class="en">
-      <ul>
-        <li>Border Energy is essentially the <strong>size of the world border</strong>.</li>
-        <li>You can perform a <strong>Border Upgrade</strong> by consuming <strong>experience levels</strong> to increase border energy.</li>
-      </ul>
-    </div>
-
-    <h3>💠 <span class="zh">边界模式</span><span class="en">Border Mode</span></h3>
-    <div class="zh">
-      <ul>
-        <li>含有<strong>禁锢</strong>、<strong>昼夜</strong>两种模式，可在游戏中进行切换。</li>
-      </ul>
-      <div class="note">昼夜模式属于扩展特性，详见扩展特性章节。</div>
-    </div>
-    <div class="en">
-      <ul>
-        <li>Contains two modes: <strong>Locked</strong> and <strong>Day-Night</strong>, switchable in-game.</li>
-      </ul>
-      <div class="note">The Day-Night mode is an Expansion Feature; see the Expansion Features section.</div>
+      <p>The size of the world border: each energy level equals 0.5 blocks of border range. Use the <strong>Border Upgrade</strong> function sign to consume experience levels and raise the border energy, thereby expanding the world border.</p>
     </div>
 
     <h3>📋️ <span class="zh">功能牌</span><span class="en">Function Signs</span></h3>
     <div class="zh">
-      <p>由世界提供的功能牌碑，含有以下三种功能牌。</p>
+      <p>进入该系列的专属世界后，在世界出生点会看到三种功能告示牌，对其右键可使用对应功能。</p>
       <ul>
-        <li><strong>边界升级</strong>：消耗经验等级提升边界能量。</li>
-        <li><strong>切换模式</strong>：在昼夜模式与禁锢模式之间切换，无法在永夜状态下使用。</li>
-        <li><strong>召唤神匠</strong>：在玩家当前位置生成神匠，每个游戏日只能召唤一次，世界中最多存在一只。</li>
+        <li><strong>边界升级</strong>：消耗经验等级并提升边界能量。</li>
+        <li><strong>切换模式</strong>：在昼夜模式与禁锢模式之间切换。关于边界模式的更多信息，详见<strong>扩展特性</strong>章节。</li>
+        <li><strong>召唤神匠</strong>：在玩家当前位置生成神匠，每个游戏日只能召唤一次，已加载区块内最多存在一只。关于神匠的更多信息，详见<strong>扩展特性</strong>章节。</li>
       </ul>
       <div class="note">功能牌的硬度为-1，爆炸抗性为3,600,000。</div>
-      <div class="note warn">❗ 若功能牌被损毁，可通过以下指令获取并通过创造模式放置：</div>
-      <pre><code>/function border_survival:get_sign</code></pre>
     </div>
     <div class="en">
-      <p>Function sign monuments provided by the world, containing the following three function signs.</p>
+      <p>After entering this series' dedicated world, you will see three function signs at the world spawn; right-click them to use the corresponding function.</p>
       <ul>
         <li><strong>Upgrade</strong>: Consumes experience levels to increase border energy.</li>
-        <li><strong>Mode</strong>: Switches between Day-Night mode and Locked mode. Cannot be used during the Eternal Night state.</li>
-        <li><strong>Artificer</strong>: Summons the Divine Artificer at the player's current location. Can only be summoned once per game day, and only one can exist in the world at a time.</li>
+        <li><strong>Mode</strong>: Switches between Day-Night mode and Locked mode. For more about <strong>Border Mode</strong>, see the <strong>Expansion Features</strong> section.</li>
+        <li><strong>Summon the Divine Artificer</strong>: Spawns the Divine Artificer at the player's current location. Can only be summoned once per game day, with at most one present in loaded chunks. For more about the <strong>Divine Artificer</strong>, see the <strong>Expansion Features</strong> section.</li>
       </ul>
       <div class="note">Function signs have a hardness of -1 and a blast resistance of 3,600,000.</div>
-      <div class="note warn">❗ If a function sign is destroyed, you can obtain it via the following command and place it in Creative Mode:</div>
-      <pre><code>/function border_survival:get_sign</code></pre>
     </div>
 
     <h3>🧱 <span class="zh">进度</span><span class="en">Advancements</span></h3>
     <div class="zh">
-      <div class="note warn">❗该系列的进度<strong>并非任务指引系统</strong>，它仅作为展示核心特性的相关内容、文本提示、以及仪式感的作用。</div>
+      <div class="note">该系列没有固定的目标，进度<strong>并非任务指引系统</strong>，它仅作为展示特性内容、文本提示、以及创造仪式感的作用。</div>
       <div class="imgbox"><img src="https://files.seeusercontent.com/2026/07/31/r7Wr/069797c.png" alt="进度" height="400"></div>
+      <div class="note"><strong>扩展特性</strong>与<strong>世界独有特性</strong>较为复杂，建议先了解简单的<strong>资源特性</strong>后再前往阅读。</div>
     </div>
     <div class="en">
-      <div class="note warn">❗ The advancements in this series are <strong>not a quest guidance system</strong>. They only serve to showcase relevant content of core features, provide text hints, and offer a sense of ritual.</div>
+      <div class="note">This series has no fixed goals. Advancements are <strong>not a quest guidance system</strong>; they only serve to showcase feature content, provide text hints, and create a sense of ritual.</div>
       <div class="imgbox"><img src="https://files.seeusercontent.com/2026/07/31/r7lK/en.png" alt="Advancements" height="400"></div>
+      <div class="note"><strong>Expansion Features</strong> and <strong>world-exclusive features</strong> are relatively complex; it is recommended to read the simpler <strong>Resource Features</strong> first.</div>
     </div>
+  </section>
+
+  <section class="card" id="resource">
+    <h2>📦 <span class="zh">资源特性</span><span class="en">Resource Features</span></h2>
+    <div class="zh"><p>由于边界限制了探索，核心模组为部分群系与结构的独有资源增加了额外的获取方式：</p></div>
+    <div class="en"><p>Since the border limits exploration, the core mod adds extra ways to obtain resources exclusive to certain biomes and structures:</p></div>
 
     <h3>🎣 <span class="zh">钓鱼</span><span class="en">Fishing</span></h3>
     <div class="zh">
       <p>在钓鱼时，可能会获得一些群系特有物品。</p>
       <ul>
         <li><strong>垃圾奖池加入</strong>：海草、海带、甘蔗、仙人掌、竹子、海泡菜、可可豆、海晶碎片、海晶砂粒、珊瑚、珊瑚扇、紫颂花。</li>
-        <li><strong>宝藏奖池加入</strong>：紫水晶母岩、黑曜石、冰、浮冰、蓝冰、珊瑚块、？？？。</li>
+        <li><strong>宝藏奖池加入</strong>：紫水晶母岩、黑曜石、冰、浮冰、蓝冰、珊瑚块、“？？？”。</li>
       </ul>
     </div>
     <div class="en">
       <p>While fishing, you may obtain some biome-specific items.</p>
       <ul>
         <li><strong>Added to Junk loot pool</strong>: Seagrass, Kelp, Sugar Cane, Cactus, Bamboo, Sea Pickle, Cocoa Beans, Prismarine Shard, Prismarine Crystals, Coral, Coral Fan, Chorus Flower.</li>
-        <li><strong>Added to Treasure loot pool</strong>: Budding Amethyst, Obsidian, Ice, Packed Ice, Blue Ice, Coral Block, ? ? ?.</li>
+        <li><strong>Added to Treasure loot pool</strong>: Budding Amethyst, Obsidian, Ice, Packed Ice, Blue Ice, Coral Block, "? ? ?".</li>
       </ul>
     </div>
 
     <h3>🐱 <span class="zh">猫</span><span class="en">Cat</span></h3>
     <div class="zh">
+      <p>与猫同眠后，可能会赠送一些特别的礼物：</p>
       <ul>
-        <li><strong>礼物加入</strong>：树叶、钻石。</li>
+        <li><strong>礼物奖池加入</strong>：树叶、钻石。</li>
       </ul>
     </div>
     <div class="en">
+      <p>After sleeping beside a cat, it may offer some special gifts:</p>
       <ul>
-        <li><strong>Added to Gifts</strong>: Leaves, Diamond.</li>
+        <li><strong>Added to the Gift loot pool</strong>: Leaves, Diamond.</li>
       </ul>
     </div>
 
     <h3>🌹 <span class="zh">嗅探兽</span><span class="en">Sniffer</span></h3>
     <div class="zh">
+      <p>嗅探兽刨挖结束后，可能会抛出一些小型花朵：</p>
       <ul>
-        <li><strong>刨挖加入</strong>：蒲公英、虞美人、兰花、绒球葱、蓝花美耳草、郁金香、滨菊、矢车菊、铃兰、张开的眼眸花、孢子花、枯萎的灌木。</li>
+        <li><strong>刨挖奖池加入</strong>：蒲公英、虞美人、兰花、绒球葱、蓝花美耳草、郁金香、滨菊、矢车菊、铃兰、张开的眼眸花、孢子花、枯萎的灌木。</li>
       </ul>
     </div>
     <div class="en">
+      <p>After a Sniffer finishes digging, it may toss out some small flowers:</p>
       <ul>
-        <li><strong>Added to Digging</strong>: Dandelion, Poppy, Blue Orchid, Allium, Azure Bluet, Tulip, Oxeye Daisy, Cornflower, Lily of the Valley, Open Eyeblossom, Spore Blossom, Dead Bush.</li>
+        <li><strong>Added to the Digging loot pool</strong>: Dandelion, Poppy, Blue Orchid, Allium, Azure Bluet, Tulip, Oxeye Daisy, Cornflower, Lily of the Valley, Open Eyeblossom, Spore Blossom, Dead Bush.</li>
       </ul>
     </div>
 
     <h3>🐽 <span class="zh">猪灵</span><span class="en">Piglin</span></h3>
     <div class="zh">
+      <p>用金锭与猪灵易物时，可能会丢出下界要塞的特殊交换物：</p>
       <ul>
-        <li><strong>以物换物加入</strong>：烈焰棒、地狱疣、凋灵骷髅头颅。</li>
+        <li><strong>以物换物奖池加入</strong>：烈焰棒、地狱疣、凋灵骷髅头颅。</li>
       </ul>
     </div>
     <div class="en">
+      <p>When bartering with Piglins using Gold Ingots, they may toss out special exchange items from the Nether Fortress:</p>
       <ul>
-        <li><strong>Added to Bartering</strong>: Blaze Rod, Nether Wart, Wither Skeleton Skull.</li>
+        <li><strong>Added to the Bartering loot pool</strong>: Blaze Rod, Nether Wart, Wither Skeleton Skull.</li>
       </ul>
     </div>
 
     <h3>💎 <span class="zh">战利品箱</span><span class="en">Loot Chests</span></h3>
     <div class="zh">
+      <p>开启对应战利品箱时，可能会获得一些特殊资源：</p>
       <ul>
         <li><strong>平原村庄小屋加入</strong>：向日葵、玫瑰、牡丹、丁香、粉红色花簇、野花簇、枯叶堆、发光地衣。</li>
         <li><strong>金合欢村庄小屋加入</strong>：犰狳鳞甲、灌木丛、萤火虫灌木丛、红灌木。</li>
@@ -717,6 +713,7 @@ li::marker{color:#d99a2e}
       </ul>
     </div>
     <div class="en">
+      <p>When opening the corresponding loot chests, you may obtain some special resources:</p>
       <ul>
         <li><strong>Added to Plains Village House</strong>: Sunflower, Rose Bush, Peony, Lilac, Pink Petals, Wildflowers, Leaf Litter, Glow Lichen.</li>
         <li><strong>Added to Savanna Village House</strong>: Armadillo Scute, Bush, Firefly Bush, Red Bush.</li>
@@ -757,30 +754,36 @@ li::marker{color:#d99a2e}
 
     <h3>💡 <span class="zh">合成配方</span><span class="en">Crafting Recipes</span></h3>
     <div class="zh">
-      <div class="note warn">❗ 在获得对应材料后将自动解锁配方，可通过工作台左侧小绿书查看。</div>
+      <div class="note">获得对应材料时将自动解锁配方，可通过工作台左侧小绿书查看：</div>
       <div class="imgbox"><img src="https://files.seeusercontent.com/2026/07/30/6Rtk/Snipaste_2026-07-30_19-58-47.png" alt="合成配方"></div>
-      <div class="note">刷怪笼可以使用具有精准采集魔咒的工具破坏获得。<br>
-      部分刷怪笼生成条件：<br>
-      <strong>生成范围</strong>：水平半径4格，垂直半径1格，无视生物群系。<br>
+    </div>
+    <div class="en">
+      <div class="note">Recipes are automatically unlocked when you obtain the corresponding materials. They can be viewed via the green book on the left side of the crafting table:</div>
+      <div class="imgbox"><img src="https://files.seeusercontent.com/2026/07/30/aMg0/Snipaste_2026-07-30_19-53-54.png" alt="Crafting recipes"></div>
+    </div>
+
+    <h3>⬛ <span class="zh">刷怪笼</span><span class="en">Spawners</span></h3>
+    <div class="zh">
+      <p>刷怪笼可以使用具有精准采集魔咒的工具破坏获得。</p>
+      <p><strong>部分刷怪笼生成条件：</strong></p>
+      <p><strong>生成范围</strong>：水平半径4格，垂直半径1格，无视生物群系。<br>
       <strong>史莱姆</strong>：无需处于史莱姆区块。<br>
       <strong>铁傀儡</strong>：可生成位置的下方必须存在完整方块。<br>
       <strong>动物</strong>：可生成位置的下方必须存在草方块。<br>
       <strong>水生怪物</strong>(如：溺尸/守卫者/远古守卫者)：生成范围内必须存在水(包括水源/流动水)。<br>
       <strong>水生动物</strong>(如：鱿鱼/鳕鱼/鲑鱼/海豚)：生成范围内必须存在水(包括水源/流动水)，且水的位置必须处于海洋范围(Y50-63以内)。<br>
-      <strong>发光鱿鱼</strong>：生成范围内必须存在水(包括水源/流动水)，且水的位置必须处于洞穴范围(Y30以下)。</div>
+      <strong>发光鱿鱼</strong>：生成范围内必须存在水(包括水源/流动水)，且水的位置必须处于洞穴范围(Y30以下)。</p>
     </div>
     <div class="en">
-      <div class="note warn">❗ Recipes are automatically unlocked upon obtaining the corresponding materials. They can be viewed via the green book on the left side of the crafting table.</div>
-      <div class="imgbox"><img src="https://files.seeusercontent.com/2026/07/30/aMg0/Snipaste_2026-07-30_19-53-54.png" alt="Crafting recipes"></div>
-      <div class="note">Spawners can be obtained by mining them with a Silk Touch enchanted tool.<br>
-      Spawn conditions for certain spawners:<br>
-      <strong>Spawn Range</strong>: Horizontal radius 4 blocks, vertical radius 1 block, ignores biome.<br>
+      <p>Spawners can be obtained by mining them with a Silk Touch enchanted tool.</p>
+      <p><strong>Spawn conditions for certain spawners:</strong></p>
+      <p><strong>Spawn Range</strong>: Horizontal radius 4 blocks, vertical radius 1 block, ignores biome.<br>
       <strong>Slime</strong>: Does not need to be in a slime chunk.<br>
       <strong>Iron Golem</strong>: A full block must exist below the spawnable location.<br>
       <strong>Animals</strong>: A grass block must exist below the spawnable location.<br>
       <strong>Aquatic Hostile Mobs</strong> (e.g., Drowned/Guardian/Elder Guardian): Water (including source/flowing water) must exist within the spawn range.<br>
       <strong>Aquatic Animals</strong> (e.g., Squid/Cod/Salmon/Dolphin): Water (including source/flowing water) must exist within the spawn range, and the water location must be within the ocean range (Y50-63).<br>
-      <strong>Glow Squid</strong>: Water (including source/flowing water) must exist within the spawn range, and the water location must be within the cave range (below Y30).</div>
+      <strong>Glow Squid</strong>: Water (including source/flowing water) must exist within the spawn range, and the water location must be within the cave range (below Y30).</p>
     </div>
 
     <h3>🌿 <span class="zh">地毯系列</span><span class="en">Carpet Series</span> <span class="muted" style="font-size:.85rem;font-weight:400">(Carpet Mod &amp; Addition)</span></h3>
@@ -794,6 +797,7 @@ li::marker{color:#d99a2e}
         <li>可再生凋灵骷髅：骷髅被闪电击中转变为凋灵骷髅。</li>
         <li>珊瑚可再生：可通过骨粉催熟珊瑚。</li>
         <li>潜影贝重生：潜影贝会在末地城刷新。</li>
+        <li>蜘蛛骑士掉落附魔金苹果。</li>
         <li>潜影盒堆叠：空潜影盒在地上时，可堆叠为1组。</li>
         <li>空潜影盒总能堆叠：空潜影盒在物品栏中也能堆叠。</li>
         <li>假人驻留：退出游戏时会保留假人。</li>
@@ -812,6 +816,7 @@ li::marker{color:#d99a2e}
         <li>Renewable Wither Skeleton: A Skeleton struck by lightning transforms into a Wither Skeleton.</li>
         <li>Renewable Coral: Coral can be fertilized with bone meal.</li>
         <li>Shulker Respawn: Shulkers respawn in End Cities.</li>
+        <li>Spider Jockeys drop Enchanted Golden Apples.</li>
         <li>Shulker Box Stacking: Empty Shulker Boxes on the ground can be stacked into 1 group.</li>
         <li>Empty Shulker Boxes Always Stackable: Empty Shulker Boxes are also stackable in the inventory.</li>
         <li>Fake Player Residency: Fake players are preserved when you log out.</li>
@@ -864,14 +869,14 @@ li::marker{color:#d99a2e}
     <div class="zh">
       <ul>
         <li>昼夜模式的白天与禁锢模式并无区别。</li>
-        <li>在昼夜模式的夜晚，<strong>刷怪上限</strong>将会提高至<strong>140</strong>、<strong>单次刷怪数量</strong>将会提高至<strong>10</strong>、<strong>怪物穿戴盔甲的概率</strong>将会提高至(50%*副区域难度)，且怪物将<strong>无视光照等级</strong>生成。</li>
+        <li>在昼夜模式的夜晚，<strong>刷怪上限</strong>将会提高至<strong>140</strong>、<strong>单次刷怪数量</strong>将会提高至<strong>10</strong>、<strong>怪物穿戴盔甲的概率</strong>将会提高至<strong>30%</strong>，且怪物将<strong>无视光照等级</strong>生成。</li>
         <li>在昼夜模式的夜晚，若边界能量至少拥有50级，将会额外扩展一倍空间。</li>
       </ul>
     </div>
     <div class="en">
       <ul>
         <li>Daytime in Day-Night mode is no different from Locked mode.</li>
-        <li>During the night of Day-Night mode, the <strong>mob cap</strong> is increased to <strong>140</strong>, the <strong>number of mobs per spawn cycle</strong> is increased to <strong>10</strong>, the <strong>chance of mobs wearing armor</strong> is increased to (50% * regional difficulty), and mobs will spawn <strong>regardless of light level</strong>.</li>
+        <li>During the night of Day-Night mode, the <strong>mob cap</strong> is increased to <strong>140</strong>, the <strong>number of mobs per spawn cycle</strong> is increased to <strong>10</strong>, the <strong>chance of mobs wearing armor</strong> is increased to <strong>30%</strong>, and mobs will spawn <strong>regardless of light level</strong>.</li>
         <li>During the night of Day-Night mode, if the border energy is at least level 50, the space is doubled in size.</li>
       </ul>
     </div>
@@ -879,7 +884,7 @@ li::marker{color:#d99a2e}
     <h3>🌙 <span class="zh">昼夜模式 - 永恒之夜</span><span class="en">Day-Night Mode - Eternal Night</span></h3>
     <div class="zh">
       <ul>
-        <li>在昼夜模式的夜晚即将抵达白昼时，若边界能量至少拥有<strong>100级</strong>，便会降临永恒之夜。</li>
+        <li>在距离昼夜模式夜晚结束的一分钟前，若边界能量至少拥有100级，便会降临永恒之夜。</li>
         <li>永恒之夜降临后，世界出生点周围将会出现异界的永夜骑士。</li>
         <li>受永夜骑士影响，时间会被禁锢在他们降临的那一刻，世界将陷入永恒的雷暴之中。</li>
         <li>只有将所有降临的永夜骑士全部击败，才可解除其对世界的影响。</li>
@@ -889,7 +894,7 @@ li::marker{color:#d99a2e}
     </div>
     <div class="en">
       <ul>
-        <li>When night in Day-Night mode is about to transition to day, if the border energy is at least <strong>level 100</strong>, the Eternal Night will descend.</li>
+        <li>One minute before the end of the night in Day-Night mode, if the border energy is at least level 100, the Eternal Night will descend.</li>
         <li>After the Eternal Night descends, Eternal Night Knights from another realm will appear around the world spawn point.</li>
         <li>Influenced by the Eternal Night Knights, time is locked at the moment of their arrival, and the world plunges into an eternal thunderstorm.</li>
         <li>Only by defeating all the descending Eternal Night Knights can their influence on the world be lifted.</li>
@@ -903,8 +908,8 @@ li::marker{color:#d99a2e}
       <ul>
         <li>永恒之夜降临后，受永夜骑士的影响，边界可能会染上 <strong>苍白、凶红、夕橙、灿金、邃蓝、黯紫</strong> 六种色彩。</li>
         <li>根据影响程度的不同，世界气候将会发生紊乱。</li>
-        <li>当永恒之夜状态下的边界处于<strong>灿金、夕橙、邃蓝</strong>状态时：所有生物群系都将异常降雨，无论寒冷或是温暖。怪物穿戴盔甲的概率将会提高至(60%/70%/80%*副区域难度)。</li>
-        <li>当永恒之夜状态下的边界处于<strong>黯紫、凶红、苍白</strong>状态时：所有生物群系都将异常降雪，无论温暖或是寒冷。怪物穿戴盔甲的概率将会提高至(90%/100%/110%*副区域难度)。</li>
+        <li>当永恒之夜状态下的边界处于<strong>灿金、夕橙、邃蓝</strong>状态时：所有生物群系都将异常降雨，无论寒冷或是温暖。怪物穿戴盔甲的概率将会提高至<strong>40%/50%/60%</strong>。</li>
+        <li>当永恒之夜状态下的边界处于<strong>黯紫、凶红、苍白</strong>状态时：所有生物群系都将异常降雪，无论温暖或是寒冷。怪物穿戴盔甲的概率将会提高至<strong>70%/80%/90%</strong>。</li>
         <li>当永夜骑士被全部击败后，世界气候将会恢复正常，边界色彩将会逐渐恢复，并会以色彩预示下次永恒之夜的到来。</li>
       </ul>
       <div class="note">通过观察昼夜模式时间栏中的月相变化，也可预示下次永恒之夜的降临时刻。</div>
@@ -913,8 +918,8 @@ li::marker{color:#d99a2e}
       <ul>
         <li>After the Eternal Night descends, influenced by the Eternal Night Knights, the border may take on one of six colors: <strong>Pale, Crimson, Dusk Orange, Radiant Gold, Deep Blue, Dark Purple</strong>.</li>
         <li>Depending on the degree of influence, the world climate will become disordered.</li>
-        <li>When the border in the Eternal Night state is <strong>Radiant Gold, Dusk Orange, or Deep Blue</strong>: All biomes will experience abnormal rainfall, regardless of being cold or warm. The chance of mobs wearing armor is increased to (60%/70%/80% * regional difficulty).</li>
-        <li>When the border in the Eternal Night state is <strong>Dark Purple, Crimson, or Pale</strong>: All biomes will experience abnormal snowfall, regardless of being warm or cold. The chance of mobs wearing armor is increased to (90%/100%/110% * regional difficulty).</li>
+        <li>When the border in the Eternal Night state is <strong>Radiant Gold, Dusk Orange, or Deep Blue</strong>: All biomes will experience abnormal rainfall, regardless of being cold or warm. The chance of mobs wearing armor is increased to <strong>40%/50%/60%</strong>.</li>
+        <li>When the border in the Eternal Night state is <strong>Dark Purple, Crimson, or Pale</strong>: All biomes will experience abnormal snowfall, regardless of being warm or cold. The chance of mobs wearing armor is increased to <strong>70%/80%/90%</strong>.</li>
         <li>After all Eternal Night Knights are defeated, the world climate returns to normal, the border color gradually recovers, and the color will foreshadow the arrival of the next Eternal Night.</li>
       </ul>
       <div class="note">Observing the moon phase changes in the Day-Night mode time bar can also predict the moment of the next Eternal Night's descent.</div>
@@ -1006,6 +1011,40 @@ li::marker{color:#d99a2e}
       </ul>
     </div>
 
+    <h3>🐞 <span class="zh">世界之虫</span><span class="en">Bugs of the World</span></h3>
+    <div class="zh">
+      <ul>
+        <li>永夜骑士、边界维系者、神匠为世界之虫目标。</li>
+        <li>世界之虫目标会引起水平距离384格范围内所有怪物的仇恨。</li>
+        <li>当怪物位于世界之虫目标下方时，其追击世界之虫目标的垂直距离为16格。</li>
+        <li>当怪物位于世界之虫目标上方时，若为原版、放大化世界，且世界之虫目标所在的位置大于等于Y48，其追击世界之虫目标的垂直距离为∞格，否则为16格。</li>
+        <li>当怪物位于世界之虫目标上方时，若为浮屿、洞穴、虚空世界，其追击世界之虫目标的垂直距离为∞格。</li>
+        <li>永夜骑士、夜骑以外的其他怪物，在追击世界之虫目标时不会进行反击。</li>
+        <li>怪物在追击世界之虫目标时，若视线内存在玩家，将会优先转火攻击玩家。</li>
+      </ul>
+      <div class="note">末影人不会自然转火未与其对视的玩家。<br>
+      唤魔者追击世界之虫目标的水平距离与垂直距离均为384格。<br>
+      溺尸在追击世界之虫目标时，若其与世界之虫目标的欧几里得距离小于等于16格，将会具有视线穿透。<br>
+      苦力怕在追击世界之虫目标时，若其与世界之虫目标的欧几里得距离小于等于8格、垂直距离小于等于4格，将会具有视线穿透，若其此时被阻断寻路，将会立刻引燃自身。<br>
+      苦力怕不会主动远离世界之虫目标。</div>
+    </div>
+    <div class="en">
+      <ul>
+        <li>Eternal Night Knights, the Border Sustainer, and the Divine Artificer are Bugs of the World targets.</li>
+        <li>Bugs of the World targets draw the aggro of all monsters within a horizontal distance of 384 blocks.</li>
+        <li>When a monster is below a Bug of the World target, its vertical pursuit distance is 16 blocks.</li>
+        <li>When a monster is above a Bug of the World target, in a vanilla or amplified world, if the target's position is at or above Y48, its vertical pursuit distance is infinite blocks; otherwise 16 blocks.</li>
+        <li>When a monster is above a Bug of the World target, in a floating island, cave, or void world, its vertical pursuit distance is infinite blocks.</li>
+        <li>Monsters other than Eternal Night Knights and Night Knights will not retaliate while pursuing Bugs of the World targets.</li>
+        <li>While pursuing a Bug of the World target, if a player comes within line of sight, the monster will prioritize attacking the player.</li>
+      </ul>
+      <div class="note">Endermen will not naturally switch targets to players who haven't looked at them.<br>
+      Evokers pursue Bugs of the World targets with both horizontal and vertical distances of 384 blocks.<br>
+      When a Drowned is pursuing a Bug of the World target, if the Euclidean distance to the target is ≤16 blocks, it gains wallhack vision.<br>
+      When a Creeper is pursuing a Bug of the World target, if the Euclidean distance to the target is ≤8 blocks and the vertical distance is ≤4 blocks, it gains wallhack vision. If its pathfinding is blocked, it will instantly ignite itself.<br>
+      Creepers will not actively flee from Bugs of the World targets.</div>
+    </div>
+
     <h3>🐈 <span class="zh">边界维系者</span><span class="en">Border Sustainer</span></h3>
     <div class="zh">
       <ul>
@@ -1035,7 +1074,7 @@ li::marker{color:#d99a2e}
     <h3>🔆 <span class="zh">神匠</span><span class="en">Divine Artificer</span></h3>
     <div class="zh">
       <ul>
-        <li>突破了世界的法则，与永夜骑士颇有渊源，从祂手中可以兑换到一些超脱常理的物品。</li>
+        <li>掌握了混沌之星锻造术的盔甲匠村民，与永夜骑士颇有渊源，从祂手中可以兑换到一些特殊道具，详见下文。</li>
         <li>同时，因其为世界之虫(bug)，所有怪物都欲图消灭祂。</li>
       </ul>
       <div class="note">神匠属于盔甲匠村民，可正常繁殖与补货。<br>
@@ -1043,62 +1082,32 @@ li::marker{color:#d99a2e}
     </div>
     <div class="en">
       <ul>
-        <li>Has broken the laws of the world and shares a deep origin with the Eternal Night Knights. From him, you can exchange for items that transcend common sense.</li>
+        <li>An Armorer villager who has mastered the art of forging the Chaos Star, sharing a deep origin with the Eternal Night Knights. From him, you can exchange for some special items — see below.</li>
         <li>Additionally, as a Bug of the World (bug), all monsters seek to eliminate him.</li>
       </ul>
       <div class="note">The Divine Artificer is an Armorer Villager and can breed and restock normally.<br>
       The Divine Artificer is not considered to exist when not in a loaded chunk.</div>
     </div>
 
-    <h3>🐞 <span class="zh">世界之虫</span><span class="en">Bugs of the World</span></h3>
-    <div class="zh">
-      <ul>
-        <li>世界之虫目标会引起水平距离384格范围内所有怪物的仇恨。</li>
-        <li>当怪物位于世界之虫目标上方时，其追击世界之虫目标的垂直距离为∞格。</li>
-        <li>当怪物位于世界之虫目标下方时，其追击世界之虫目标的垂直距离为16格。</li>
-        <li>永夜骑士、夜骑以外的其他怪物，在追击世界之虫目标时不会进行反击。</li>
-        <li>怪物在追击世界之虫目标时，若视线内存在玩家，将会优先转火攻击玩家。</li>
-      </ul>
-      <div class="note">末影人不会自然转火未与其对视的玩家。<br>
-      唤魔者追击世界之虫目标的水平距离与垂直距离均为384格。<br>
-      溺尸在追击世界之虫目标时，若其与世界之虫目标的欧几里得距离小于等于16格，将会具有视线穿透。<br>
-      苦力怕在追击世界之虫目标时，若其与世界之虫目标的欧几里得距离小于等于8格、垂直距离小于等于4格，将会具有视线穿透，若其此时被阻断寻路，将会立刻引燃自身。<br>
-      苦力怕不会主动远离世界之虫目标。</div>
-    </div>
-    <div class="en">
-      <ul>
-        <li>Bugs of the World targets draw the aggro of all monsters within a horizontal distance of 384 blocks.</li>
-        <li>When a monster is above a Bug of the World target, its vertical pursuit distance is infinite blocks.</li>
-        <li>When a monster is below a Bug of the World target, its vertical pursuit distance is 16 blocks.</li>
-        <li>Monsters other than Eternal Night Knights and Night Knights will not retaliate while pursuing Bugs of the World targets.</li>
-        <li>While pursuing a Bug of the World target, if a player comes within line of sight, the monster will prioritize attacking the player.</li>
-      </ul>
-      <div class="note">Endermen will not naturally switch targets to players who haven't looked at them.<br>
-      Evokers pursue Bugs of the World targets with both horizontal and vertical distances of 384 blocks.<br>
-      When a Drowned is pursuing a Bug of the World target, if the Euclidean distance to the target is ≤16 blocks, it gains wallhack vision.<br>
-      When a Creeper is pursuing a Bug of the World target, if the Euclidean distance to the target is ≤8 blocks and the vertical distance is ≤4 blocks, it gains wallhack vision. If its pathfinding is blocked, it will instantly ignite itself.<br>
-      Creepers will not actively flee from Bugs of the World targets.</div>
-    </div>
-
     <h3>🪵 <span class="zh">无损灵材</span><span class="en">Flawless Spirit Materials</span></h3>
     <div class="zh">
       <ul>
-        <li>由三界能量融合而成的混沌之星，交由神匠淬炼而成的不朽灵材，具有永不磨损的特性。</li>
-        <li>无损灵材可注入边界升级功能牌，以提升一定等级的边界能量。</li>
+        <li>由海洋之心、下界之星、末地水晶融合而成的混沌之星，交由神匠淬炼而成的不朽灵材，由其锻造的无损灵器具有无限耐久的特性，详见下文。</li>
       </ul>
+      <div class="note">无损灵材可注入边界升级功能牌，以提升一定等级的边界能量。</div>
     </div>
     <div class="en">
       <ul>
-        <li>Immortal spirit materials forged by the Divine Artificer from a Chaos Star, fused from the energies of the three dimensions. They possess the Unbreakable trait.</li>
-        <li>Flawless Spirit Materials can be infused into the Border Upgrade function sign to increase the border energy by a certain number of levels.</li>
+        <li>Immortal spirit materials obtained by tempering with the Divine Artificer a Chaos Star — itself fused from the Heart of the Sea, Nether Star, and End Crystal. Gear forged from them is unbreakable; see below.</li>
       </ul>
+      <div class="note">Flawless Spirit Materials can be infused into the Border Upgrade function sign to increase the border energy by a certain number of levels.</div>
     </div>
 
     <h3>✨ <span class="zh">无损灵器</span><span class="en">Flawless Spirit Tools</span></h3>
     <div class="zh">
+      <p>由无损灵材交由神匠锻造的无损灵器，具有无限耐久的特性。</p>
+      <p><strong>部分无损灵器被副手手持时，会提供特殊效果：</strong></p>
       <ul>
-        <li>由无损灵材交由神匠锻造的灵器，具有永不磨损的特性。</li>
-        <li>部分无损灵器被副手手持时，会提供特殊效果：</li>
         <li><strong>混沌之星</strong>：生命恢复Ⅱ</li>
         <li><strong>裁灵剪</strong>：急迫Ⅱ</li>
         <li><strong>羽灵刷</strong>：抗火</li>
@@ -1109,15 +1118,14 @@ li::marker{color:#d99a2e}
         <li><strong>瀚海灵戟</strong>：海豚的恩惠</li>
         <li><strong>旋灵重锤</strong>：力量Ⅲ</li>
         <li><strong>翱灵王翅</strong>：缓降</li>
-        <li><strong>翱灵翼甲</strong>：缓降</li>
         <li><strong>狼灵铠</strong>：抗性提升Ⅱ；被狼穿戴时，额外提供瞬间治疗。</li>
         <li><strong>燧灵火石</strong>：手持玩家自身、永夜骑士、神匠、灾厄村民、女巫、流浪商人、流商羊驼将会持续发光。</li>
       </ul>
     </div>
     <div class="en">
+      <p>Flawless Spirit Tools forged by the Divine Artificer from Flawless Spirit Materials are unbreakable.</p>
+      <p><strong>Some Flawless Spirit Tools provide special effects when held in the offhand:</strong></p>
       <ul>
-        <li>Spirit tools forged by the Divine Artificer from Flawless Spirit Materials. They possess the Unbreakable trait.</li>
-        <li>Some Flawless Spirit Tools provide special effects when held in the offhand:</li>
         <li><strong>Chaos Star</strong>: Regeneration II</li>
         <li><strong>Spirit Shears</strong>: Haste II</li>
         <li><strong>Spirit Brush</strong>: Fire Resistance</li>
@@ -1128,7 +1136,6 @@ li::marker{color:#d99a2e}
         <li><strong>Vast Sea Spirit Trident</strong>: Dolphin's Grace</li>
         <li><strong>Whirling Spirit Mace</strong>: Strength III</li>
         <li><strong>Soaring Spirit Wings</strong>: Slow Falling</li>
-        <li><strong>Soaring Spirit Wingplate</strong>: Slow Falling</li>
         <li><strong>Spirit Wolf Armor</strong>: Resistance II; when worn by a wolf, additionally provides Instant Health.</li>
         <li><strong>Spirit Flint and Steel</strong>: The holder, Eternal Night Knights, Divine Artificer, Illagers, Witches, Wandering Traders, and Trader Llamas constantly glow.</li>
       </ul>
@@ -1158,11 +1165,11 @@ li::marker{color:#d99a2e}
       <ul>
         <li><strong>聚集物品</strong>：
           <ul>
-            <li><strong>通用聚灵石</strong>：副手手持聚灵石或将其置于任意物品展示框中时，其会将周围 <code>33x33x33</code> 范围内的已落地物品聚集到其自身位置。</li>
-            <li><strong>容器聚灵石</strong>：若聚灵石所在的物品展示框被附着在箱子、木桶、潜影盒上时，仅会聚集容器中存在的物品类型。被附着在空容器上时，不会聚集任何物品。</li>
-            <li>当一个物品实体周围存在多个<strong>通用聚灵石</strong>时，该物品会被最近的聚灵石聚集。</li>
-            <li>当一个物品实体周围存在多个有效的<strong>容器聚灵石</strong>时，该物品会分裂为若干个物品实体被这些聚灵石平均聚集。</li>
-            <li>若一个物品实体周围同时存在<strong>通用聚灵石</strong>与<strong>容器聚灵石</strong>，该物品会先被距离最近的前者堆叠聚集，再被后者分裂聚集。</li>
+            <li><strong>通用聚灵石</strong>：副手手持聚灵石或将其置于任意物品展示框中时，其会将周围半径16格（33x33x33）正方体范围内的物品实体聚集到其自身位置。</li>
+            <li><strong>容器聚灵石</strong>：若聚灵石所在的物品展示框被附着在箱子、木桶、潜影盒上时，仅会聚集容器中存在的物品类型。被附着在空容器上时，不会聚集任何物品实体。</li>
+            <li>当一个物品实体周围存在多个<strong>通用聚灵石</strong>时，其会被最近的聚灵石聚集。</li>
+            <li>当一个物品实体周围存在多个有效的<strong>容器聚灵石</strong>时，其会分裂为若干个物品实体被这些聚灵石平均聚集。</li>
+            <li>若一个物品实体周围同时存在<strong>通用聚灵石</strong>与<strong>容器聚灵石</strong>，其会先被距离最近的前者聚集，再被多个后者平均聚集。</li>
           </ul>
         </li>
         <li><strong>转换建材</strong>：可通过切石机转换为一定数量的基础建材：</li>
@@ -1174,11 +1181,11 @@ li::marker{color:#d99a2e}
       <ul>
         <li><strong>Gather Items</strong>:
           <ul>
-            <li><strong>General Spirit Emerald</strong>: When held in the offhand or placed in any Item Frame, it gathers nearby dropped items within a <code>33x33x33</code> area to its own location.</li>
-            <li><strong>Container Spirit Emerald</strong>: If the Item Frame containing the Spirit Emerald is attached to a Chest, Barrel, or Shulker Box, it will only gather item types that already exist in the container. If attached to an empty container, it will not gather any items.</li>
-            <li>When multiple <strong>General Spirit Emeralds</strong> are near a dropped item entity, the item is gathered by the closest Spirit Emerald.</li>
-            <li>When multiple valid <strong>Container Spirit Emeralds</strong> are near a dropped item entity, the item splits into multiple item entities, evenly distributed among those Spirit Emeralds.</li>
-            <li>When both <strong>General Spirit Emeralds</strong> and <strong>Container Spirit Emeralds</strong> are near a dropped item entity, the item is first gathered and stacked by the closest former, then split and distributed by the latter.</li>
+            <li><strong>General Spirit Emerald</strong>: When held in the offhand or placed in any Item Frame, it gathers item entities within a 16-block radius (33x33x33) cube around it to its own location.</li>
+            <li><strong>Container Spirit Emerald</strong>: If the Item Frame containing the Spirit Emerald is attached to a Chest, Barrel, or Shulker Box, it will only gather item types that already exist in the container. If attached to an empty container, it will not gather any item entities.</li>
+            <li>When multiple <strong>General Spirit Emeralds</strong> are near an item entity, it is gathered by the closest Spirit Emerald.</li>
+            <li>When multiple valid <strong>Container Spirit Emeralds</strong> are near an item entity, it splits into several item entities, evenly gathered among those Spirit Emeralds.</li>
+            <li>When both <strong>General Spirit Emeralds</strong> and <strong>Container Spirit Emeralds</strong> are near an item entity, it is first gathered by the closest former, then split and evenly gathered among the latter.</li>
           </ul>
         </li>
         <li><strong>Convert Materials</strong>: Can be converted into a certain amount of basic building materials via a Stonecutter.</li>
@@ -1187,7 +1194,7 @@ li::marker{color:#d99a2e}
     </div>
   </section>
   <section class="card" id="unique">
-    <h2>🌕 <span class="zh">独有特性</span><span class="en">Unique Features</span></h2>
+    <h2>🌕 <span class="zh">世界独有特性</span><span class="en">Unique Features</span></h2>
     <div class="note warn">❗<span class="zh">以下特性为对应世界的独有特性，仅在对应世界中生效。</span><span class="en">The following features are unique to their respective worlds and only take effect in those worlds.</span></div>
 
     <h3>🌸 <span class="zh">守护 - 护樱山（繁樱山谷）</span><span class="en">Guard - Mountain of Cherry Protection (Cherry Blossom Valley)</span></h3>
@@ -1228,7 +1235,7 @@ li::marker{color:#d99a2e}
         <li>每个存世维度的边界能量独立，下界、末地除外。</li>
         <li>每个存世维度都存在一位维系者，下界、末地除外。</li>
         <li>永夜骑士仅会降临在边界能量至少拥有<strong>100级</strong>的主世界或存世维度，不包括下界和末地。</li>
-        <li>若多个维度同时拥有<strong>100级</strong>以上的边界能量，永夜骑士将会随机降临在其中一个、至少存在一名非旁观模式玩家的维度。</li>
+        <li>若多个维度同时拥有<strong>100级</strong>以上的边界能量，永夜骑士将会随机降临在其中一个至少存在一名非旁观模式玩家的维度。</li>
         <li>若没有符合条件的维度，将会优先尝试降临于主世界，若此时主世界的边界能量等级不足<strong>100级</strong>，则不会降临。</li>
       </ul>
     </div>
@@ -1246,10 +1253,10 @@ li::marker{color:#d99a2e}
   </section>
 
   <section class="card" id="maps">
-    <h2>🧭 <span class="zh">世界</span><span class="en">Worlds</span> <span class="chip">🗺️ 17</span></h2>
+    <h2>🧭 <span class="zh">世界库</span><span class="en">Worlds Library</span> <span class="chip">🗺️ 17</span></h2>
     <div class="note">
-      1. <strong class="zh">必须使用专用世界存档</strong><strong class="en">You must use the dedicated world save</strong><span class="zh">，如果自行创建世界，将无法正常进行游戏。</span><span class="en">. The game cannot be played properly if you create a new world yourself.</span><br>
-      2. <span class="zh">世界按<strong>类型与综合难度从高到低</strong>排序。越高的星级往往代表着越高的生存难度或资源获取难度。</span><span class="en">Worlds are sorted by <strong>type and overall difficulty from high to low</strong>. Higher star ratings generally indicate higher survival or resource acquisition difficulty.</span>
+      <strong class="zh">必须使用专用世界存档</strong><strong class="en">You must use the dedicated world save</strong><span class="zh">，如果自行创建世界，将无法正常进行游戏。</span><span class="en">. The game cannot be played properly if you create a new world yourself.</span><br>
+      <span class="zh">世界按<strong>类型与综合难度从高到低</strong>排序。越高的星级往往代表着越高的生存难度或资源获取难度。</span><span class="en">Worlds are sorted by <strong>type and overall difficulty from high to low</strong>. Higher star ratings generally indicate higher survival or resource acquisition difficulty.</span>
     </div>
 
     <div class="view-switch">
@@ -1698,32 +1705,15 @@ li::marker{color:#d99a2e}
   </section>
   <section class="card" id="upgrades">
     <h2>📚 <span class="zh">存档升级</span><span class="en">Save Upgrades</span></h2>
-    <div class="zh">
-      <ul>
-        <li>该系列的大部分世界均为原版存档，且整合包不会加入任何含有新物品方块的模组。</li>
-        <li>这也意味着，您可以直接将旧版本的存档，例如将1.21.10版本的沿海集落，直接升级到26.2版本的整合包中游玩，只要Minecraft本身对存档的版本升级没有问题。</li>
-        <li>❗ <strong>无论如何，在升级之前请备份好存档，以免发生意外。</strong></li>
-        <li>❗ <strong>虚空型世界没有地形，永远不会产生区块升级问题。</strong></li>
-        <li>❗ <strong>已停止维护的世界不可进行升级：</strong> 雷海迷航、雪藏遗城、丰林森屿、棘府洞天。</li>
-      </ul>
-    </div>
-    <div class="en">
-      <ul>
-        <li>Most worlds in this series are vanilla saves, and the modpack will not introduce any mods containing new items or blocks.</li>
-        <li>This means you can directly upgrade an older save, e.g., Coastal Settlement from version 1.21.10, to the 26.2 version modpack for playing, as long as Minecraft itself has no issues upgrading the save version.</li>
-        <li>❗ <strong>In any case, back up your save before upgrading to avoid accidents.</strong></li>
-        <li>❗ <strong>Void-type worlds have no terrain and will never have chunk upgrade issues.</strong></li>
-        <li>❗ <strong>Worlds no longer maintained cannot be upgraded:</strong> Thunderous Sea Voyage, Snowbound Ruined City, Abundant Forest Isle, Thorn Palace Cave.</li>
-      </ul>
-    </div>
+    <div class="note danger"><strong class="zh">❌ 已停止维护的世界不可进行升级：雷海迷航、雪藏遗城、丰林森屿、棘府洞天。</strong><strong class="en">❌ Worlds no longer maintained cannot be upgraded: Thunderous Sea Voyage, Snowbound Ruined City, Abundant Forest Isle, Thorn Palace Cave.</strong></div>
 
     <h3>🍁 <span class="zh">存档升级方式：适用于 26.2 -> 26.3</span><span class="en">Save Upgrade Method: Applicable for 26.2 -> 26.3</span></h3>
-    <div class="note warn"><strong class="zh">升级前务必备份存档！以防操作失误或意外情况发生！</strong><strong class="en">Back up your save before upgrading! To prevent operational errors or unexpected situations!</strong></div>
+    <div class="note warn"><strong class="zh">❗ 升级前务必备份存档！以防操作失误或意外情况发生！</strong><strong class="en">❗ Back up your save before upgrading! To prevent operational errors or unexpected situations!</strong></div>
     <div class="zh">
       <ul>
         <li>存世/存世阵屿：
           <ol>
-            <li>下载“世界升级-存世&amp;存世阵屿-26.2-&gt;26.3”覆盖式世界升级包。</li>
+            <li>下载“世界升级-存世&amp;存世阵屿-26.2→26.3”覆盖式世界升级包。</li>
             <li>将升级压缩包中的两个文件夹“data”和“dimensions”，全选解压到对应存档内的根目录下进行覆盖升级。</li>
           </ol>
         </li>
@@ -1734,7 +1724,7 @@ li::marker{color:#d99a2e}
       <ul>
         <li>Persisting Worlds / Persisting Worlds Array Island:
           <ol>
-            <li>Download the "World Upgrade - Persisting Worlds &amp; Persisting Worlds Array Island - 26.2-&gt;26.3" overwrite world upgrade pack.</li>
+            <li>Download the "World Upgrade - Persisting Worlds &amp; Persisting Worlds Array Island - 26.2→26.3" overwrite world upgrade pack.</li>
             <li>Extract both folders "data" and "dimensions" from the upgrade archive to the root directory of the corresponding save for overwrite upgrade.</li>
           </ol>
         </li>
@@ -1743,7 +1733,7 @@ li::marker{color:#d99a2e}
     </div>
 
     <h3>🟨 <span class="zh">存档升级方式：适用于 1.21.10 -> 26.2</span><span class="en">Save Upgrade Method: Applicable for 1.21.10 -> 26.2</span></h3>
-    <div class="note warn"><strong class="zh">升级前务必备份存档！以防操作失误或意外情况发生！</strong><strong class="en">Back up your save before upgrading! To prevent operational errors or unexpected situations!</strong></div>
+    <div class="note warn"><strong class="zh">❗ 升级前务必备份存档！以防操作失误或意外情况发生！</strong><strong class="en">❗ Back up your save before upgrading! To prevent operational errors or unexpected situations!</strong></div>
     <div class="zh">
       <ul>
         <li>原版型/放大化世界：直接导入到新整合包版本中游玩，可直接升级，或通过优化世界功能升级。</li>
@@ -1783,43 +1773,31 @@ li::marker{color:#d99a2e}
 
     <h3><span class="zh">配置需求</span><span class="en">System Requirements</span></h3>
     <div class="zh">
-      <ul>
-        <li>❗ <strong>该系列需要至少 Java 25 以上才能运行。</strong></li>
-        <li>该系列大多数为优化辅助模组，且本身就是原版。只要对应版本的原版生存能够流畅游玩即可。</li>
-      </ul>
+      <div class="note warn">❗ <strong>该系列需要至少 Java 25 以上才能运行。</strong></div>
+      <p>该系列大多数为优化辅助模组，且本身就是原版。只要对应版本的原版生存能够流畅游玩即可。</p>
     </div>
     <div class="en">
-      <ul>
-        <li>❗ <strong>This series requires at least Java 25 or higher to run.</strong></li>
-        <li>The series mostly consists of optimization and auxiliary mods and is essentially vanilla. It should run smoothly as long as vanilla survival for that version can run smoothly.</li>
-      </ul>
+      <div class="note warn">❗ <strong>This series requires at least Java 25 or higher to run.</strong></div>
+      <p>The series mostly consists of optimization and auxiliary mods and is essentially vanilla. It should run smoothly as long as vanilla survival for that version can run smoothly.</p>
     </div>
 
     <h3><span class="zh">关于模组</span><span class="en">About Mods</span></h3>
     <div class="zh">
-      <ul>
-        <li>❗ <strong>被标注了 <code>[Core]</code> 标签的模组不可删除。</strong></li>
-        <li>❗如若需要自行添加模组，需知悉这可能导致特性异常、崩溃、存档损坏等兼容性问题，并建议为模组文件名添加 [自加] 等前缀以方便在更新整合包时替换模组。</li>
-        <li>❗仅推荐添加<strong>对原版机制没有影响、不包含地形生成、不破坏战斗体系、数值平衡性的、装饰、显示、辅助、节省时间类</strong>的小型模组。（例如：MusicNotification(音乐通知)、voxy、进度牌匾、投影、自动钓鱼、FallingTree(伐树)、连锁采集）</li>
-        <li>❗如若添加了包含新物品、新方块、新实体的模组，在这类模组没有升级至新版本时，将对存档的可升级性造成影响。</li>
-      </ul>
-      <div class="note warn">❗严禁使用搬运实体类型的模组搬运该系列的特殊NPC实体，已知会导致这些实体的部分数据损坏。<br>
-      （如：在《存世》世界中，若维系者被搬运(删除实体再重新生成)后，将会损坏其数据，使其能通过传送门，从而导致对应维度的边界能量持续流失）<br>
-      （同时，若维系者在不属于自己的维度中死亡，其所匹配的维度将永远不会重生新的维系者）</div>
-      <div class="note warn">❗该系列不会主动去兼容非原生添加的模组，如若遇到自行添加的模组产生的化学反应，请自己化身为自己组合出的模组包的作者为自己负责。<br>
+      <div class="note warn">❗ <strong>被标注了 <code>[Core]</code> 标签的模组不可删除。</strong></div>
+      <div class="note warn">❗如若需要自行添加模组，需知悉这可能导致特性异常、崩溃、存档损坏等兼容性问题，并建议为模组文件名添加 [自加] 等前缀以方便在更新整合包时替换模组。<br>
+      ❗仅推荐添加装饰、显示、辅助、节省时间类的小型模组。（例如：投影，MusicNotification(音乐通知)、voxy、进度牌匾、自动钓鱼、FallingTree(伐树)、连锁采集）<br>
+      ❗不推荐添加修改原版游戏机制、增加新物品方块或实体、修改地形生成、破坏战斗体系数值平衡性的模组。</div>
+      <div class="note danger"><strong>❌ 严禁使用搬运实体类型的模组（如CarryOn）搬运该系列的特殊实体（边界维系者、永夜骑士、神匠），已知这些实体被搬运后会导致其部分数据重置或损坏，造成特性异常。</strong></div>
+      <div class="note warn">❗该系列不会主动去兼容非原生添加的模组，如若遇到自行添加的模组产生的化学反应，请自行负责。<br>
       ❗注意事项：根据使用协议，经过修改后的整合包仅限您自己使用，您不可在公共场合二次分发本系列的原文件或经过修改后的文件。</div>
     </div>
     <div class="en">
-      <ul>
-        <li>❗ <strong>Mods marked with the <code>[Core]</code> tag must not be removed.</strong></li>
-        <li>❗ If you wish to add your own mods, be aware that this may lead to feature anomalies, crashes, save corruption, and other compatibility issues. It is recommended to add a prefix like [Custom] to mod filenames for easier replacement when updating the modpack.</li>
-        <li>❗ We only recommend adding small mods that <strong>do not affect vanilla mechanics, do not contain terrain generation, do not disrupt the combat system or numerical balance, and are decorative, display, assistance, or time-saving types.</strong> (e.g., MusicNotification, voxy, Advancement Plaques, Litematica, Auto Fishing, FallingTree, Vein Miner)</li>
-        <li>❗ If you add mods containing new items, blocks, or entities, it may affect the upgradeability of your save if those mods are not updated to new versions.</li>
-      </ul>
-      <div class="note warn">❗ It is strictly forbidden to use entity transportation mods to move the special NPC entities of this series. It is known to cause partial data corruption for these entities.<br>
-      (e.g., In the "Persisting Worlds" world, if the Sustainer is transported (deleting and respawning the entity), its data will be corrupted, allowing it to pass through portals and causing the border energy of its respective dimension to continuously drain)<br>
-      (Also, if a Sustainer dies in a dimension not its own, its bound dimension will never respawn a new Sustainer)</div>
-      <div class="note warn">❗ This series will not actively attempt to be compatible with non-natively added mods. If you encounter chemical reactions from mods you added yourself, please take on the role of the author of your own custom modpack and be responsible for it yourself.<br>
+      <div class="note warn">❗ <strong>Mods marked with the <code>[Core]</code> tag must not be removed.</strong></div>
+      <div class="note warn">❗ If you wish to add your own mods, be aware that this may lead to feature anomalies, crashes, save corruption, and other compatibility issues. It is recommended to add a prefix like [Custom] to mod filenames for easier replacement when updating the modpack.<br>
+      ❗ We only recommend adding small mods of the decorative, display, assistance, or time-saving types. (e.g., Litematica, MusicNotification, voxy, Advancement Plaques, Auto Fishing, FallingTree, Vein Miner)<br>
+      ❗ It is not recommended to add mods that modify vanilla game mechanics, add new items, blocks, or entities, alter terrain generation, or disrupt the combat system and numerical balance.</div>
+      <div class="note danger"><strong>❌ It is strictly forbidden to use entity-carrying mods (e.g. CarryOn) to carry this series' special entities (the Border Sustainer, Eternal Night Knights, and the Divine Artificer). It is known that carrying these entities causes partial data reset or corruption, leading to feature anomalies.</strong></div>
+      <div class="note warn">❗ This series will not actively attempt to be compatible with non-natively added mods. If you encounter issues arising from mods you added yourself, please take responsibility yourself.<br>
       ❗ Note: According to the usage agreement, modified modpacks are for your personal use only. You may not redistribute the original or modified files of this series in public settings.</div>
     </div>
   </section>
@@ -1833,28 +1811,42 @@ li::marker{color:#d99a2e}
       <summary><span class="qtag">Q</span><span class="qtext"><span class="zh">如何安装该系列？</span><span class="en">How to install this series?</span></span></summary>
       <div class="ans">
         <div class="zh">
-          <p><strong>A：</strong>下面以整合包<code>BorderSurvival 14.0-pre1</code>版本；世界包<code>海岛村庄 (Island Village) 26.3-v1</code>版本为例，演示安装过程。</p>
+          <p><strong>A：</strong>下面以整合包<code>BorderSurvival 14.0</code>版本；世界包<code>海岛村庄 (Island Village) 26.3-v1</code>版本为例，演示安装过程。</p>
+          <p><strong>下载：</strong></p>
           <ol>
-            <li>下载<code>BorderSurvival 14.0-pre1.mrpack</code>命名格式的整合包。</li>
+            <li>下载<code>BorderSurvival 14.0.mrpack</code>命名格式的整合包。</li>
             <li>下载<code>边界生存-海岛村庄 (Island Village) 26.3-v1.zip</code>命名格式的世界包。</li>
-            <li>安装整合包：使用支持安装<code>Modrinth</code>模组包的Minecraft启动器，将<code>BorderSurvival 14.0-pre1.mrpack</code>文件拖拽至启动器界面中自动识别，输入实例名称<code>BorderSurvival</code>（该名称可自定义）确定安装模组包实例，等待安装成功。如遇到网络问题导致安装失败则重试本步骤，直至安装成功。</li>
-            <li>打开存档文件夹：使用启动器功能打开存档文件夹，或手动打开<code>.minecraft/versions/BorderSurvival/saves</code>存档目录，如无<code>saves</code>目录则用<code>新建文件夹</code>的方式创建一个，然后重命名为<code>saves</code>。</li>
-            <li>移动世界包至存档文件夹：将<code>边界生存-海岛村庄 (Island Village) 26.3-v1.zip</code>文件移动、剪切、或复制到第4步打开的<code>saves</code>目录下。</li>
-            <li>打开世界包：使用压缩软件打开<code>边界生存-海岛村庄 (Island Village) 26.3-v1.zip</code>文件以预览内部内容。</li>
-            <li>解压存档文件夹：打开世界包后，找到内部的<code>边界生存-海岛村庄 (Island Village)</code>不包含版本号的存档文件夹，将该文件夹拖拽或解压至第4步打开的<code>saves</code>目录下。</li>
+          </ol>
+          <p><strong>安装整合包：</strong></p>
+          <ol>
+            <li>使用支持安装<code>Modrinth</code>整合包的Minecraft启动器，将<code>BorderSurvival 14.0.mrpack</code>文件拖拽至启动器界面中自动识别，输入实例名称<code>BorderSurvival</code>（该名称可自定义）确定安装整合包实例，等待安装成功。如遇到网络问题导致安装失败则重试本步骤，直至安装成功。</li>
+          </ol>
+          <p><strong>安装世界包：</strong></p>
+          <ol>
+            <li>使用启动器功能打开存档文件夹，或手动打开<code>.minecraft/versions/BorderSurvival/saves</code>存档目录，如无<code>saves</code>目录则用<code>新建文件夹</code>的方式创建一个，然后重命名为<code>saves</code>。</li>
+            <li>将<code>边界生存-海岛村庄 (Island Village) 26.3-v1.zip</code>文件移动、剪切、或复制到第4步打开的<code>saves</code>目录下。</li>
+            <li>使用压缩软件打开<code>边界生存-海岛村庄 (Island Village) 26.3-v1.zip</code>文件以预览内部内容。</li>
+            <li>打开世界包后，找到内部的<code>边界生存-海岛村庄 (Island Village)</code>不包含版本号的存档文件夹，将该文件夹拖拽或解压至第4步打开的<code>saves</code>目录下。</li>
             <li>启动游戏，进入游戏后选择<code>单人游戏</code>，若世界包安装正确，此时应看到可进入的世界存档，而非创建新的世界。</li>
           </ol>
         </div>
         <div class="en">
           <p><strong>A:</strong> The walkthrough below uses the modpack version <code>BorderSurvival 14.0-pre1</code> and the world pack version <code>海岛村庄 (Island Village) 26.3-v1</code> as examples.</p>
+          <p><strong>Download:</strong></p>
           <ol>
             <li>Download the modpack named in the <code>BorderSurvival 14.0-pre1.mrpack</code> format.</li>
             <li>Download the world pack named in the <code>边界生存-海岛村庄 (Island Village) 26.3-v1.zip</code> format.</li>
-            <li>Install the modpack: use a Minecraft launcher that supports installing Modrinth modpacks, drag the <code>BorderSurvival 14.0-pre1.mrpack</code> file onto the launcher interface so it is detected automatically, enter the instance name <code>BorderSurvival</code> (this name is customizable), confirm the modpack instance installation and wait for it to finish. If a network problem causes the installation to fail, retry this step until it succeeds.</li>
-            <li>Open the saves folder: use the launcher's function to open the saves folder, or open the <code>.minecraft/versions/BorderSurvival/saves</code> directory manually. If there is no <code>saves</code> directory, create one with <code>New folder</code> and then rename it to <code>saves</code>.</li>
-            <li>Move the world pack into the saves folder: move, cut, or copy the <code>边界生存-海岛村庄 (Island Village) 26.3-v1.zip</code> file into the <code>saves</code> directory opened in step 4.</li>
-            <li>Open the world pack: open the <code>边界生存-海岛村庄 (Island Village) 26.3-v1.zip</code> file with an archive tool to preview its contents.</li>
-            <li>Extract the save folder: after opening the world pack, find the save folder named <code>边界生存-海岛村庄 (Island Village)</code> inside (the one without the version number), and drag or extract that folder into the <code>saves</code> directory opened in step 4.</li>
+          </ol>
+          <p><strong>Install the modpack:</strong></p>
+          <ol>
+            <li>Use a Minecraft launcher that supports installing <code>Modrinth</code> modpacks, drag the <code>BorderSurvival 14.0-pre1.mrpack</code> file onto the launcher interface so it is detected automatically, enter the instance name <code>BorderSurvival</code> (this name is customizable), confirm the modpack instance installation and wait for it to finish. If a network problem causes the installation to fail, retry this step until it succeeds.</li>
+          </ol>
+          <p><strong>Install the world pack:</strong></p>
+          <ol>
+            <li>Use the launcher's function to open the saves folder, or open the <code>.minecraft/versions/BorderSurvival/saves</code> directory manually. If there is no <code>saves</code> directory, create one with <code>New folder</code> and then rename it to <code>saves</code>.</li>
+            <li>Move, cut, or copy the <code>边界生存-海岛村庄 (Island Village) 26.3-v1.zip</code> file into the <code>saves</code> directory opened in step 4.</li>
+            <li>Open the <code>边界生存-海岛村庄 (Island Village) 26.3-v1.zip</code> file with an archive tool to preview its contents.</li>
+            <li>After opening the world pack, find the save folder named <code>边界生存-海岛村庄 (Island Village)</code> inside (the one without the version number), and drag or extract that folder into the <code>saves</code> directory opened in step 4.</li>
             <li>Launch the game, then select <code>Singleplayer</code> after entering the game. If the world pack was installed correctly, you should now see an existing world save to enter rather than creating a new world.</li>
           </ol>
         </div>
@@ -1872,7 +1864,7 @@ li::marker{color:#d99a2e}
           </ol>
           <p><strong>B：</strong>迁移资源，重装新版本</p>
           <ol>
-            <li>下载并使用启动器安装新版模组包。</li>
+            <li>下载并使用启动器安装新版整合包。</li>
             <li>将原游戏实例中的以下目录，复制到新游戏实例目录中：
               <ul>
                 <li><code>resourcepacks</code> (资源包文件夹)</li>
@@ -2066,10 +2058,8 @@ li::marker{color:#d99a2e}
     <div class="note"><strong class="zh">若遇到其他疑难杂症或困难，或以上问题根据步骤并没有解决，请在<a href="https://github.com/Fndream/BorderSurvivalModpack/issues">Issues</a>发布提问。</strong><strong class="en">If you encounter other issues or difficulties, or if the above steps did not resolve the problem, please post your question on the <a href="https://github.com/Fndream/BorderSurvivalModpack/issues">Issues page</a>.</strong></div>
   </section>
 
-  <section class="card" id="agreement">
-    <h2>© <span class="zh">版本与协议</span><span class="en">Version &amp; Agreement</span></h2>
-
-    <h3><span class="zh">历史版本</span><span class="en">Version History</span></h3>
+  <section class="card" id="history">
+    <h2>© <span class="zh">历史版本</span><span class="en">Version History</span></h2>
     <div class="zh">
       <ul>
         <li>若未来本系列更新到更高的 Minecraft 版本后，<strong>旧版本将不再维护</strong>。</li>
@@ -2084,38 +2074,97 @@ li::marker{color:#d99a2e}
         <li>❗ <strong>By downloading resources from this series, you agree to and abide by the <a href="#agreement">Usage Agreement</a>.</strong></li>
       </ul>
     </div>
+  </section>
 
-    <h3><span class="zh">使用协议</span><span class="en">Usage Agreement</span></h3>
-    <h4><span class="zh">本文档内容</span><span class="en">Content of This Document</span></h4>
+  <section class="card" id="agreement">
+    <h2>© <span class="zh">使用协议</span><span class="en">Usage Agreement</span></h2>
+    <h3><span class="zh">本文档内容</span><span class="en">Content of This Document</span></h3>
     <div class="zh"><p>在未经授权的情况下，您不可对该文档文本、图片进行摘抄或转载。</p></div>
     <div class="en"><p>Unauthorized excerpts or reproductions of the text and images in this document are prohibited.</p></div>
 
-    <h4><span class="zh">本系列资源</span><span class="en">Resources of This Series</span></h4>
+    <h3><span class="zh">本系列资源</span><span class="en">Resources of This Series</span></h3>
     <div class="zh">
       <ul>
         <li>✅ 允许：您可以将本系列用于单人游戏、多人联机、服务端联机、实况录制。</li>
         <li>❌ 禁止：在未经授权的情况下，您不可在任何公共场合（包括但不限于社区、网站、网盘、资源群、社交媒体等）二次分发（上传、分享、发布）本系列的原文件或经过修改后的文件。</li>
-        <li>❌ 禁止：您不可将本系列用于任何商业目的，包括但不限于出售、捆绑销售、广告推广等。</li>
-        <li>❌ 禁止：本系列不适用于服务器形式，您不可也无法将本系列用于任何服务器，使用服务端联机除外。</li>
+        <li>❌ 禁止：您不可将本系列用于任何商业目的，包括但不限于出售、捆绑销售、服务器运营等。</li>
       </ul>
     </div>
     <div class="en">
       <ul>
         <li>✅ Allowed: You may use this series for singleplayer, multiplayer LAN, server play, and content recording/streaming.</li>
         <li>❌ Prohibited: Without authorization, you may not redistribute (upload, share, publish) the original or modified files of this series in any public setting (including but not limited to communities, websites, cloud drives, resource groups, social media, etc.).</li>
-        <li>❌ Prohibited: You may not use this series for any commercial purpose, including but not limited to sales, bundling, advertising, etc.</li>
-        <li>❌ Prohibited: This series is not suitable for server hosting as a service. You may not and cannot use this series for any server, except for personal server-style LAN connections.</li>
+        <li>❌ Prohibited: You may not use this series for any commercial purpose, including but not limited to sales, bundling, server operation, etc.</li>
       </ul>
     </div>
+  </section>
 
-    <h3>⌛ <span class="zh">首发日期</span><span class="en">First release date</span></h3>
+  <section class="card" id="first-release">
+    <h2>⌛ <span class="zh">首发日期</span><span class="en">First release date</span></h2>
     <p><strong>2020-05-23 - </strong><span class="zh"><strong>海岛村庄 - 1.15.2</strong></span><span class="en"><strong>Island Village - Minecraft 1.15.2</strong></span></p>
   </section>
 
-
-  <section class="card" id="changelog">
-    <h2>📜 <span class="zh">更新日志</span><span class="en">Changelog</span></h2>
-    <h3>🍁 <span class="zh">14.0-pre1 - 26.3 - 2026-09-25</span><span class="en">14.0-pre1 - 26.3 - 2026-09-25</span></h3>
+  <section class="card cl-entry" id="changelog-v1">
+    <h2>🍁 <span class="zh">14.0-rc3 - 26.3 - 2026-10-04</span><span class="en">14.0-rc3 - 26.3 - 2026-10-04</span></h2>
+    <div class="zh">
+      <h4>📱 模组更新</h4>
+      <ul>
+        <li>重新加入：[Dec][微妙粒子]SubtleEffects 1.14.3</li>
+        <li>重新加入：[API]fzzyconfig 0.7.7+fix3</li>
+        <li>[HUD][玉]jade 更新至 26.3.5</li>
+        <li>[Opt][更多剔除]moreculling 更新至 1.9.0</li>
+        <li>[Texture][实体模型特性]entity_model_features 更新至 3.3.10</li>
+        <li>[Texture][实体纹理特性]entity_texture_features 更新至 7.2.5</li>
+      </ul>
+    </div>
+  </section>
+  <section class="card cl-entry" id="changelog-v2">
+    <h2>🍁 <span class="zh">14.0-rc2 - 26.3 - 2026-10-04</span><span class="en">14.0-rc2 - 26.3 - 2026-10-04</span></h2>
+    <div class="zh">
+      <h4>📄 文本</h4>
+      <ul>
+        <li>简化English语言中，“虚无十五界”系列进度的译文。</li>
+      </ul>
+    </div>
+  </section>
+  <section class="card cl-entry" id="changelog-v3">
+    <h2>🍁 <span class="zh">14.0-rc1 - 26.3 - 2026-10-03</span><span class="en">14.0-rc1 - 26.3 - 2026-10-03</span></h2>
+    <div class="zh">
+      <h4>🌗 昼夜模式</h4>
+      <ul>
+        <li>现在，在昼夜模式的夜晚，怪物穿戴盔甲的概率将会提高至固定<strong>30%</strong>，不再受副区域难度影响。</li>
+      </ul>
+      <h4>🧊 永恒雨夜 / 永恒雪夜</h4>
+      <ul>
+        <li>现在，当永恒之夜状态下的边界处于<strong>灿金、夕橙、邃蓝、黯紫、凶红、苍白</strong>状态时，怪物穿戴盔甲的概率将会提高至固定<strong>40%/50%/60%/70%/80%/90%</strong>，不再受副区域难度影响。</li>
+      </ul>
+      <h4>🌸 进度</h4>
+      <ul>
+        <li>现在除“虚无十五界”系列、“归位”进度以外的所有“边界生存”进度不再隐藏。</li>
+      </ul>
+      <h4>📄 文本</h4>
+      <ul>
+        <li>永恒神兵名称：永恒·聚灵 -&gt; 永恒·咒灵</li>
+        <li>重制繁体中文、文言（华夏）、English译文。</li>
+      </ul>
+      <h4>📱 模组更新</h4>
+      <ul>
+        <li>重新加入：[Sound][更多声效前置]rsls 1.4.0</li>
+        <li>[API]mru 更新至 1.0.41</li>
+        <li>[Core][锂]Lithium 更新至 0.26.2</li>
+        <li>[HUD][更好的统计信息界面]betterstats、TCDCommonsAPI 更新至 beta.2</li>
+        <li>[HUD][聊天头像]chat-heads 更新至 1.3.1</li>
+        <li>[HUD][平滑滚动]smoothscroll 更新至 3.0.0</li>
+        <li>[MASA][迷你HUD]minihud 更新至 0.41.2</li>
+        <li>[MASA][万能工具箱]tweakeroo 更新至 0.30.1（修复方块快速放置失效）</li>
+        <li>[MASA][物品滚轮]itemscroller 更新至 0.33.1</li>
+        <li>[MASA]malilib 更新至 0.30.2</li>
+        <li>[Opt]Iris 更新至 1.11.7</li>
+      </ul>
+    </div>
+  </section>
+  <section class="card cl-entry" id="changelog-v4">
+    <h2>🍁 <span class="zh">14.0-pre1 - 26.3 - 2026-09-25</span><span class="en">14.0-pre1 - 26.3 - 2026-09-25</span></h2>
     <div class="zh">
       <h4>🌊 核心特性</h4>
       <ul>
@@ -2231,7 +2280,7 @@ li::marker{color:#d99a2e}
       <div class="mapdl-group">
         <p class="mapdl-glabel"><span class="zh">下载模组包</span><span class="en">Download Modpack</span></p>
         <div class="mapdl-btns">
-          <a class="mapdl-btn" data-src="modrinth" href="https://modrinth.com/modpack/border-survival-persisting-worlds/versions" target="_blank" rel="noopener"><svg class="mapdl-ic" viewBox="0 0 24 24" aria-hidden="true"><path fill="#1bd96a" d="M12.252.004a11.78 11.768 0 0 0-8.92 3.73 11 10.999 0 0 0-2.17 3.11 11.37 11.359 0 0 0-1.16 5.169c0 1.42.17 2.5.6 3.77.24.759.77 1.899 1.17 2.529a12.3 12.298 0 0 0 8.85 5.639c.44.05 2.54.07 2.76.02.2-.04.22.1-.26-1.7l-.36-1.37-1.01-.06a8.5 8.489 0 0 1-5.18-1.8 5.34 5.34 0 0 1-1.3-1.26c0-.05.34-.28.74-.5a37.572 37.545 0 0 1 2.88-1.629c.03 0 .5.45 1.06.98l1 .97 2.07-.43 2.06-.43 1.47-1.47c.8-.8 1.48-1.5 1.48-1.52 0-.09-.42-1.63-.46-1.7-.04-.06-.2-.03-1.02.18-.53.13-1.2.3-1.45.4l-.48.15-.53.53-.53.53-.93.1-.93.07-.52-.5a2.7 2.7 0 0 1-.96-1.7l-.13-.6.43-.57c.68-.9.68-.9 1.46-1.1.4-.1.65-.2.83-.33.13-.099.65-.579 1.14-1.069l.9-.9-.7-.7-.7-.7-1.95.54c-1.07.3-1.96.53-1.97.53-.03 0-2.23 2.48-2.63 2.97l-.29.35.28 1.03c.16.56.3 1.16.31 1.34l.03.3-.34.23c-.37.23-2.22 1.3-2.84 1.63-.36.2-.37.2-.44.1-.08-.1-.23-.6-.32-1.03-.18-.86-.17-2.75.02-3.73a8.84 8.839 0 0 1 7.9-6.93c.43-.03.77-.08.78-.1.06-.17.5-2.999.47-3.039-.01-.02-.1-.02-.2-.03Zm3.68.67c-.2 0-.3.1-.37.38-.06.23-.46 2.42-.46 2.52 0 .04.1.11.22.16a8.51 8.499 0 0 1 2.99 2 8.38 8.379 0 0 1 2.16 3.449 6.9 6.9 0 0 1 .4 2.8c0 1.07 0 1.27-.1 1.73a9.37 9.369 0 0 1-1.76 3.769c-.32.4-.98 1.06-1.37 1.38-.38.32-1.54 1.1-1.7 1.14-.1.03-.1.06-.07.26.03.18.64 2.56.7 2.78l.06.06a12.07 12.058 0 0 0 7.27-9.4c.13-.77.13-2.58 0-3.4a11.96 11.948 0 0 0-5.73-8.578c-.7-.42-2.05-1.06-2.25-1.06Z"/></svg><span>Modrinth</span><span class="mapdl-pwd"><span class="zh">审核中</span><span class="en">Under Review</span></span></a>
+          <a class="mapdl-btn" data-src="modrinth" data-href="https://modrinth.com/modpack/border-survival-persisting-worlds/versions" aria-disabled="true"><svg class="mapdl-ic" viewBox="0 0 24 24" aria-hidden="true"><path fill="#1bd96a" d="M12.252.004a11.78 11.768 0 0 0-8.92 3.73 11 10.999 0 0 0-2.17 3.11 11.37 11.359 0 0 0-1.16 5.169c0 1.42.17 2.5.6 3.77.24.759.77 1.899 1.17 2.529a12.3 12.298 0 0 0 8.85 5.639c.44.05 2.54.07 2.76.02.2-.04.22.1-.26-1.7l-.36-1.37-1.01-.06a8.5 8.489 0 0 1-5.18-1.8 5.34 5.34 0 0 1-1.3-1.26c0-.05.34-.28.74-.5a37.572 37.545 0 0 1 2.88-1.629c.03 0 .5.45 1.06.98l1 .97 2.07-.43 2.06-.43 1.47-1.47c.8-.8 1.48-1.5 1.48-1.52 0-.09-.42-1.63-.46-1.7-.04-.06-.2-.03-1.02.18-.53.13-1.2.3-1.45.4l-.48.15-.53.53-.53.53-.93.1-.93.07-.52-.5a2.7 2.7 0 0 1-.96-1.7l-.13-.6.43-.57c.68-.9.68-.9 1.46-1.1.4-.1.65-.2.83-.33.13-.099.65-.579 1.14-1.069l.9-.9-.7-.7-.7-.7-1.95.54c-1.07.3-1.96.53-1.97.53-.03 0-2.23 2.48-2.63 2.97l-.29.35.28 1.03c.16.56.3 1.16.31 1.34l.03.3-.34.23c-.37.23-2.22 1.3-2.84 1.63-.36.2-.37.2-.44.1-.08-.1-.23-.6-.32-1.03-.18-.86-.17-2.75.02-3.73a8.84 8.839 0 0 1 7.9-6.93c.43-.03.77-.08.78-.1.06-.17.5-2.999.47-3.039-.01-.02-.1-.02-.2-.03Zm3.68.67c-.2 0-.3.1-.37.38-.06.23-.46 2.42-.46 2.52 0 .04.1.11.22.16a8.51 8.499 0 0 1 2.99 2 8.38 8.379 0 0 1 2.16 3.449 6.9 6.9 0 0 1 .4 2.8c0 1.07 0 1.27-.1 1.73a9.37 9.369 0 0 1-1.76 3.769c-.32.4-.98 1.06-1.37 1.38-.38.32-1.54 1.1-1.7 1.14-.1.03-.1.06-.07.26.03.18.64 2.56.7 2.78l.06.06a12.07 12.058 0 0 0 7.27-9.4c.13-.77.13-2.58 0-3.4a11.96 11.948 0 0 0-5.73-8.578c-.7-.42-2.05-1.06-2.25-1.06Z"/></svg><span>Modrinth</span><span class="mapdl-pwd"><span class="zh">审核中</span><span class="en">Under Review</span></span></a>
         </div>
       </div>
       <div class="mapdl-group">
@@ -2286,9 +2335,12 @@ li::marker{color:#d99a2e}
     for(var i=0;i<opts.length;i++){opts[i].classList.toggle('cur',opts[i].getAttribute('data-l')===l)}
   }
   function setLang(l){
+    /* 英文源关闭（2026-10-04）：只接受 zh。切换器已被 CSS 隐藏，这里再兜一道，
+       防止日后恢复英文时改了 IIFE 却忘了同步这里（或用脚本强行切英文）。 */
+    if(l!=='zh')return;
     document.documentElement.className='lang-'+l;
     document.documentElement.lang=(l==='zh')?'zh-CN':'en';
-    document.title=(l==='zh')?'边界生存 · 原版边界生存地图系列':'Border Survival · Vanilla Border Survival Worlds';
+    document.title=(l==='zh')?'边界生存 · 原版风格边界生存地图系列':'Border Survival · Vanilla Border Survival Worlds';
     try{localStorage.setItem('bs-lang',l)}catch(e){}
     labelLang();
   }
@@ -2747,28 +2799,49 @@ document.querySelectorAll('.gate-icon').forEach(function(img){
     if(!mapDlSub){return}
     mapDlSub.classList.remove('open');
     mapDlSub.setAttribute('aria-hidden','true');
-    if(mapDlSubOpener&&mapDlSubOpener.focus){mapDlSubOpener.focus();mapDlSubOpener=null}
+    /* 归还焦点必须 preventScroll：触发按钮在 sticky 顶栏里，普通 focus() 会让浏览器
+     按元素的静态位置重新对齐滚动（实测从 scrollY=3000 跳回 2513），表现为「关闭弹窗后页面上移」 */
+    if(mapDlSubOpener&&mapDlSubOpener.focus){mapDlSubOpener.focus({preventScroll:true});mapDlSubOpener=null}
   }
   function closeMapDl(){
     if(mapDlSub&&mapDlSub.classList.contains('open')){closeMapDlSub()}
     mapDl.classList.remove('open');
     mapDl.setAttribute('aria-hidden','true');
-    if(mapDlOpener&&mapDlOpener.focus){mapDlOpener.focus();mapDlOpener=null}
+    if(mapDlOpener&&mapDlOpener.focus){mapDlOpener.focus({preventScroll:true});mapDlOpener=null}
   }
   /* 双模式：文档模式 / 更新日志模式。切换时侧栏目录 ⇄ 更新日志版本导航 */
   var docTocHTML=null;
   function changelogNavHTML(){
-    var hs=[].slice.call(document.querySelectorAll('#changelog h3'));
-    if(!hs.length){return '<p class="muted" style="padding:10px"><span class="zh">暂无更新日志</span><span class="en">No changelog yet</span></p>'}
+    var ss=[].slice.call(document.querySelectorAll('main > section.card.cl-entry'));
+    if(!ss.length){return '<p class="muted" style="padding:10px"><span class="zh">暂无更新日志</span><span class="en">No changelog yet</span></p>'}
     var h='';
-    hs.forEach(function(x,i){
-      if(!x.id){x.id='changelog-v'+(i+1)}
-      h+='<div class="toc-item"><div class="toc-head"><a class="toc-link" href="#'+x.id+'">'+x.innerHTML+'</a></div></div>';
+    ss.forEach(function(s,i){
+      if(!s.id){s.id='changelog-v'+(i+1)}
+      var t=s.querySelector('h2');
+      h+='<div class="toc-item"><div class="toc-head"><a class="toc-link" href="#'+s.id+'">'+(t?t.innerHTML:'')+'</a></div></div>';
     });
     return h;
   }
-  function toggleChangelog(force){
+  function toggleChangelog(force,keepScroll){
     var on=(typeof force==='boolean')?force:!document.body.classList.contains('changelog-only');
+    /* 顺序不能反：先切 body class、先把页面滚回顶部，再重建目录并算高亮。
+       若在 class 切换前 rebuild，新目录指向的元素还处于 display:none，
+       getBoundingClientRect() 全返回 0，updateActive() 会把高亮判成「最后一项」，
+       并按该错误项去调侧栏 scrollTop；而随后的 class 切换 + scrollTo 只有在滚动位置
+       真的变化时才会再触发一次 scroll 事件来纠正——从页面顶部切换时位置不变，
+       错误高亮就残留下来（表现为选中项停在目录最下面）。 */
+    document.body.classList.toggle('changelog-only',on);
+    /* 切换模式时双向都回顶部（原先只在进入时归零）：两个模式的页面总高度完全不同，
+       不归零的话，退出时浏览器只会把旧滚动位置 clamp 进新文档，页面就停在半截
+       「跟随」原来的进度（用户 2026-10-05 反馈）。
+       keepScroll 只给「页脚站内锚点」那条路径用——那里紧接着要由浏览器执行锚点跳转，
+       归零（含下面的 rAF 补偿）会把刚跳好的目标又抹回顶部。 */
+    if(!keepScroll){
+      window.scrollTo(0,0);
+      /* 退出时刚隐藏的那批 section 还会触发浏览器的滚动夹取 / scroll anchoring，
+         可能把位置又拉回去，故下一帧补一刀，确保最终停在 0。 */
+      requestAnimationFrame(function(){window.scrollTo(0,0)});
+    }
     var tocBox=document.getElementById('toc');
     if(tocBox){
       if(on){
@@ -2779,13 +2852,11 @@ document.querySelectorAll('.gate-icon').forEach(function(img){
       }
       if(window.rebuildTocTargets){window.rebuildTocTargets()}
     }
-    document.body.classList.toggle('changelog-only',on);
     var bs=[].slice.call(document.querySelectorAll('[data-changelog]'));
     for(var i=0;i<bs.length;i++){
       bs[i].setAttribute('aria-pressed',on?'true':'false');
       bs[i].classList.toggle('active',on);
     }
-    if(on){window.scrollTo(0,0)}
   }
   window.toggleChangelog=toggleChangelog;
   document.addEventListener('click',function(e){
@@ -2800,7 +2871,7 @@ document.querySelectorAll('.gate-icon').forEach(function(img){
     if(a.hasAttribute('data-mapdl')){e.preventDefault();openMapDl();return}
     /* 页脚「使用协议」等站内锚点：更新日志模式下目标 section 被隐藏，先退回文档模式再让浏览器执行锚点跳转 */
     var ah=a.getAttribute('href')||'';
-    if((ah==='#agreement'||ah==='#faq')&&document.body.classList.contains('changelog-only')){toggleChangelog(false)}
+    if((ah==='#agreement'||ah==='#faq')&&document.body.classList.contains('changelog-only')){toggleChangelog(false,true)}
     if(a.target==='_blank'){return}
     var href=a.getAttribute('href')||'';
     if(!/^(https?):\/\//i.test(href)){return}

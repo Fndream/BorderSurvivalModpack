@@ -1,20 +1,22 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-CN">
 <head>
 <meta charset="utf-8">
-<meta name="robots" noindex>
-<title>Border Survival · Changelog</title>
-<meta http-equiv="refresh" content="0; url=../../index.html?lang=en&amp;mode=update">
-<link rel="canonical" href="../../index.html?lang=en&amp;mode=update">
+<meta name="robots" noindex">
+<title>边界生存 · 更新日志</title>
+<meta http-equiv="refresh" content="0; url=../../index.html?mode=update">
+<link rel="canonical" href="../../index.html?mode=update">
 <script>
-/* 组合入口 /en/update：英文版 + 更新日志模式。 */
+/* 组合入口 /en/update：原本是「英文版 + 更新日志模式」。
+   ⚠️ 英文源已关闭（2026-10-04 决定）：改为跳中文更新日志，文件仍需保留以免 /en/update 404。
+   恢复英文时：把 index.html?lang=en&mode=update 加回去。 */
 (function(){
   var base=location.pathname.replace(/\/+$/,'').replace(/\/(en\/update|update\/en)$/i,'/');
-  location.replace(base+'index.html?lang=en&mode=update');
+  location.replace(base+'index.html?mode=update');
 })();
 </script>
 </head>
 <body>
-<p>Redirecting to the English changelog… <a href="../../index.html?lang=en&amp;mode=update">click here if nothing happens</a>.</p>
+<p>正在跳转到更新日志… <a href="../../index.html?mode=update">若无反应请点此</a>。</p>
 </body>
 </html>
