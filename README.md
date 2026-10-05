@@ -278,7 +278,7 @@
 <summary>点击此处展开世界库</summary>
 
 ### 🔥 **虚无十五界 — 存世阵屿**
-🔥 **类型：六周年 — 主屿型**  
+🔥 **类型：六周年 — 虚空型**  
 ✨ **难度：🔥🔥🔥**
 
 <img src="https://files.seeusercontent.com/2026/09/23/fbT3/0d48ad2.jpg" width="400" alt="虚无十五界-存世阵屿">
