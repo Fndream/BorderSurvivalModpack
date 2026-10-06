@@ -1,24 +1,23 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="en">
 <head>
 <meta charset="utf-8">
 <meta name="robots" noindex>
-<title>边界生存</title>
-<meta http-equiv="refresh" content="0; url=../index.html">
-<link rel="canonical" href="../index.html">
+<title>Border Survival</title>
+<meta http-equiv="refresh" content="0; url=../index.html?lang=en">
+<link rel="canonical" href="../index.html?lang=en">
 <script>
 /* GitHub Pages 是静态托管：/en、/update 这类路径必须真实存在文件才不会 404，
    故用本存根页把「路径」翻译成「查询参数」再交给 index.html 处理。
-   ⚠️ 英文源已关闭（用户 2026-10-04 决定，英文文档重制后再开）：这里原本跳
-   ?lang=en，现改为跳中文首页——文件必须保留（否则 /en 会 404），但不再指向英文。
-   恢复英文时：把下面的 index.html?lang=en 加回去，并同步 index.html 的语言判定。 */
+   截掉末尾的 /en（含有无尾斜杠两种情况），得到站点根目录。
+   英文源已于 2026-10-06 重开，这里恢复跳 ?lang=en。 */
 (function(){
   var base=location.pathname.replace(/\/+$/,'').replace(/\/(en|update)$/i,'/');
-  location.replace(base+'index.html');
+  location.replace(base+'index.html?lang=en');
 })();
 </script>
 </head>
 <body>
-<p>正在跳转到中文首页… <a href="../index.html">若无反应请点此</a>。</p>
+<p>Redirecting to the English version… <a href="../index.html?lang=en">click here if nothing happens</a>.</p>
 </body>
 </html>

@@ -90,9 +90,13 @@ a{color:var(--link)}
 /* ===== 语言切换 ===== */
 html.lang-zh .en{display:none!important}
 html.lang-en .zh{display:none!important}
-/* 英文源关闭（用户 2026-10-04 决定，英文文档重制后再开）：隐藏语言切换器。
-   隐藏的是 UI 而非内容——.en 文案、CSS 显隐规则、?lang=en 路由全部原样保留，
-   将来恢复英文：删掉 <html> 上的 data-langui="off" 一处即可，无需改任何文案。 */
+/* 英文源再次关闭（用户 2026-10-07 决定：英文文档尚未做好，index.html 的 .en 半边仍是旧稿，
+   英文系统访客首访会被自动送到过期的英文页，比默认中文更糟）。
+   隐藏的是 UI 而非内容——.en 文案、CSS 显隐规则、?lang=en 路由全部原样保留。
+   ⚠ 恢复英文要动 4 处，缺一不可（只改第 3 处会出现「l 已是 en 但 DOM 仍是 lang-zh」的假象）：
+     ① <html> 上的 data-langui="off"；② 下面这条 CSS 规则；
+     ③ 首屏 IIFE 里的 var l='zh' 与三行硬编码 DOM 赋值；
+     ④ setLang() 开头的 if(l!=='zh')return; */
 html[data-langui="off"] .lang-wrap{display:none!important}
 
 /* ===== 双模式：文档模式（默认）/ 更新日志模式（点顶栏「更新日志」进入，再点或 Esc 退出） ===== */
@@ -495,10 +499,11 @@ li::marker{color:#d99a2e}
     lang:uLang,
     update:/(?:^|\/)update(?:\/|$)/i.test(p)||/(?:^|[?&])mode=update(?:&|$)/i.test(q)||/^#update(?:$|[/?&#])/i.test(h)
   };
-  /* ⚠️ 英文源关闭：原本「读 localStorage 的 bs-lang、再按 navigator.language 决定默认语言」
+/* ⚠️ 英文源关闭：原本「读 localStorage 的 bs-lang、再按 navigator.language 决定默认语言」
      的逻辑已停用（代码保留在下方注释里，恢复英文时启用）。停用的理由：英文文档还没重制，
      英文系统的访客首访会被自动送到过期的英文页，比默认中文更糟。 */
-  /* if(!l){try{l=localStorage.getItem('bs-lang')}catch(e){*/
+  /* var l=uLang; */
+  /* if(!l){try{l=localStorage.getItem('bs-lang')}catch(e){}} */
   /* if(l!=='zh'&&l!=='en'){l=((navigator.language||'').toLowerCase().indexOf('zh')===0)?'zh':'en'} */
   var l='zh'; /* ← 固定中文；上面的 uLang（?lang=en / /en / #en）结果也一并丢弃 */
   document.documentElement.className='lang-zh';
@@ -542,11 +547,11 @@ li::marker{color:#d99a2e}
 
 <main class="wrap">
   <section class="hero">
-    <img class="banner" src="images/banner.jpg" alt="边界生存 Banner">
+    <img class="banner" src="images/banner.jpg" alt="Border Survival banner">
     <div class="hero-head">
       <div>
         <h1>🧭 <span class="zh">边界生存</span><span class="en">Border Survival</span> <span class="chip">🍁 Minecraft 26.3</span></h1>
-        <p class="tagline"><span class="zh">以原版生存为主要玩法的边界生存地图系列</span><span class="en">A vanilla border survival world series centered on vanilla survival gameplay</span></p>
+        <p class="tagline"><span class="zh">以原版生存为主要玩法的边界生存地图系列</span><span class="en">A world series built around vanilla survival, played inside the World Border</span></p>
       </div>
       <div class="cta">
         <a class="primary" data-mapdl href="https://github.com/Fndream/BorderSurvivalModpack/tree/master/Worlds_26.3">🍁 <span class="zh">下载</span><span class="en">Download</span></a>
@@ -558,16 +563,16 @@ li::marker{color:#d99a2e}
     <section class="card" id="intro">
     <h2>📓 <span class="zh">简介</span><span class="en">Introduction</span></h2>
     <div class="zh"><p>这是一个以<strong>原版生存</strong>为主要玩法的边界生存地图系列。从狭隘的空间启程，以智慧觅取资源，以勇气宣战昼夜，以经验开拓世界边界。适合熟悉原版特性的玩家。</p></div>
-    <div class="en"><p>This is a vanilla border survival world series centered on <strong>vanilla survival</strong> gameplay. Start from a confined space, gather resources with wisdom, challenge day and night with courage, and expand the world border with experience. Suitable for players with some knowledge of vanilla mechanics.</p></div>
+    <div class="en"><p>This is a map series built around <strong>vanilla survival</strong>, played inside the World Border. You start boxed into a tiny world, gather what you need with your wits, take on the turning of day and night with courage, and push the border outward with experience. It is made for players who already know how vanilla plays.</p></div>
   </section>
 
   <section class="card" id="before">
-    <h2>📗 <span class="zh">游前须知</span><span class="en">Before Play</span></h2>
+    <h2>📗 <span class="zh">游前须知</span><span class="en">Before You Play</span></h2>
     <div class="zh">
       <ul>
         <li>该系列并非常规整合包，它的本体由<strong>专属地图</strong>与<strong>核心模组</strong>相互依赖运行，安装整合包后务必导入本系列的专属地图才可正常进行游戏，详细安装教程见<strong>常见问题</strong>。</li>
         <li><strong>该系列保持原版风格，没有固定的目标。</strong> 它的诞生，源于该系列的第一位玩家<strong>喜欢世界边界的特效，并钟爱游玩长期原版生存</strong>，两者结合之下创作而成。</li>
-        <li>在开始之前，可以先简单了解该系列的<strong>核心特性、资源特性、扩展特性、世界独有特性、世界库、游戏规则、辅助模组快捷键</strong>，以便对整体形成初步印象。</li>
+        <li>在开始之前，可以先略读该系列的<strong>核心特性、资源特性、扩展特性、世界独有特性、世界库、游戏规则、辅助模组快捷键</strong>，以便对整体形成初步印象。</li>
         <li><strong>亦可直接开始，享受陌生与摸索的乐趣。</strong></li>
         <li>建议搭配自己喜欢的<strong>资源包、光影包</strong>进行游玩，以获得更好的游戏体验。</li>
         <li>支持语言：<strong>简体中文、繁体中文、文言华夏[推荐]、English</strong>。</li>
@@ -576,26 +581,26 @@ li::marker{color:#d99a2e}
     </div>
     <div class="en">
       <ul>
-        <li>This series is not a conventional modpack. Its foundation is the <strong>dedicated map</strong> and the <strong>core mod</strong> running in mutual dependence; after installing the modpack, you must import this series' dedicated map to play normally. See the <strong>FAQ</strong> section for the detailed installation tutorial.</li>
-        <li><strong>This series keeps the vanilla style and has no fixed goals.</strong> It was born because the series' first player loved the visual effects of the world border and was fond of long-term vanilla survival; combining the two gave rise to it.</li>
-        <li>Before starting, it is recommended to briefly get familiar with this series' <strong>Core Features, Resource Features, Expansion Features, world-exclusive features, Worlds library, Game Rules, and mod hotkeys</strong> to get started quickly.</li>
-        <li>It is recommended to play with your favorite <strong>resource packs and shader packs</strong> for a better experience.</li>
-        <li>Supported languages: <strong>Simplified Chinese, Traditional Chinese, Classical Chinese [Recommended], English</strong>.</li>
-        <li>If you switch languages in-game, you must exit and re-enter the save before some text updates correctly</li>
-        <li><strong>Note:</strong> This document is a translation from the <a href="https://github.com/Fndream/BorderSurvivalModpack/blob/master/README.md"><strong>Chinese version</strong></a>, provided by DeepseekAI. Please verify carefully.</li>
+        <li>This is not a regular modpack. The <strong>core mod</strong> and the <strong>dedicated world save</strong> depend on each other, so you have to import this series' save after installing the modpack. The <strong>FAQ</strong> has the full walkthrough.</li>
+        <li><strong>The series stays true to vanilla and sets no fixed goals.</strong> It exists because the series' very first player <strong>loved how the World Border looks and preferred long-form vanilla survival</strong>, and this series is what came out of putting the two together.</li>
+        <li>If you want the lay of the land first, skim the <strong>core features, resource features, expansion features, world-exclusive features, world library, game rules, and helper mod keybinds</strong>.</li>
+        <li><strong>Or skip the reading and jump straight in. Half the fun is not knowing what is out there.</strong></li>
+        <li>We recommend playing with a <strong>resource pack</strong> and a <strong>shader pack</strong> you actually like.</li>
+        <li>Supported languages: <strong>Simplified Chinese, Traditional Chinese, Classical Chinese [recommended], English</strong>.</li>
+        <li>If you switch languages inside the game, some text only updates after you leave the save and come back.</li>
       </ul>
     </div>
   </section>
 
   <section class="card" id="core">
-    <h2>🌊 <span class="zh">核心特性</span><span class="en">Core Features</span></h2>
+    <h2>🔆 <span class="zh">核心特性</span><span class="en">Core Features</span></h2>
 
     <h3>📕 <span class="zh">世界边界</span><span class="en">World Border</span></h3>
     <div class="zh">
       <p>世界边界是Minecraft1.8版本加入的原版特性，可前往<a href="https://zh.minecraft.wiki/w/%E4%B8%96%E7%95%8C%E8%BE%B9%E7%95%8C">MinecraftWiki-世界边界</a>查阅详细信息。</p>
     </div>
     <div class="en">
-      <p>The world border is a vanilla feature added in Minecraft 1.8. See <a href="https://minecraft.wiki/w/World_border">MinecraftWiki - World Border</a> for detailed information.</p>
+      <p>The World Border is a vanilla feature that arrived in Minecraft 1.8. The <a href="https://en.minecraft.wiki/w/World_border">Minecraft Wiki – World Border</a> page covers the details.</p>
     </div>
 
     <h3>🥬 <span class="zh">边界能量</span><span class="en">Border Energy</span></h3>
@@ -603,7 +608,7 @@ li::marker{color:#d99a2e}
       <p>世界边界的大小，每级能量=0.5格边界范围，可通过<strong>边界升级</strong>功能牌消耗经验等级并提升边界能量，从而扩大世界边界。</p>
     </div>
     <div class="en">
-      <p>The size of the world border: each energy level equals 0.5 blocks of border range. Use the <strong>Border Upgrade</strong> function sign to consume experience levels and raise the border energy, thereby expanding the world border.</p>
+      <p>Every level of Border Energy adds 0.5 blocks to the border radius. Spend <strong>experience levels</strong> at the <strong>Border Upgrade</strong> sign to raise your Border Energy and push the border outward.</p>
     </div>
 
     <h3>📋️ <span class="zh">功能牌</span><span class="en">Function Signs</span></h3>
@@ -617,11 +622,11 @@ li::marker{color:#d99a2e}
       <div class="note">功能牌的硬度为-1，爆炸抗性为3,600,000。</div>
     </div>
     <div class="en">
-      <p>After entering this series' dedicated world, you will see three function signs at the world spawn; right-click them to use the corresponding function.</p>
+      <p>Every world in this series puts three function signs at the world spawn. Walk up, right-click one, and it fires.</p>
       <ul>
-        <li><strong>Upgrade</strong>: Consumes experience levels to increase border energy.</li>
-        <li><strong>Mode</strong>: Switches between Day-Night mode and Locked mode. For more about <strong>Border Mode</strong>, see the <strong>Expansion Features</strong> section.</li>
-        <li><strong>Summon the Divine Artificer</strong>: Spawns the Divine Artificer at the player's current location. Can only be summoned once per game day, with at most one present in loaded chunks. For more about the <strong>Divine Artificer</strong>, see the <strong>Expansion Features</strong> section.</li>
+        <li><strong>Border Upgrade</strong> — Spends experience levels to raise Border Energy.</li>
+        <li><strong>Switch Mode</strong> — Flips between Day/Night Mode and Locked Mode. See <strong>Expansion Features</strong> for what border modes actually do.</li>
+        <li><strong>Summon Chaos Smith</strong> — Calls a Chaos Smith to your position, once per game day, with at most one alive in loaded chunks. See <strong>Expansion Features</strong> for more on the Chaos Smith.</li>
       </ul>
       <div class="note">Function signs have a hardness of -1 and a blast resistance of 3,600,000.</div>
     </div>
@@ -632,15 +637,13 @@ li::marker{color:#d99a2e}
       <div class="imgbox"><img src="https://files.seeusercontent.com/2026/07/31/r7Wr/069797c.png" alt="进度" height="400"></div>
     </div>
     <div class="en">
-      <div class="note">This series has no fixed goals. Advancements are <strong>not a quest guidance system</strong>; they only serve to showcase feature content, provide text hints, and create a sense of ritual.</div>
+      <div class="note warn">❗ This series sets no fixed goals. Advancements are <strong>not a quest guide</strong> — they exist to showcase features, drop text hints, and make the run feel like it means something.<br>❗ <strong>This series never hands you the answers.</strong></div>
       <div class="imgbox"><img src="https://files.seeusercontent.com/2026/07/31/r7lK/en.png" alt="Advancements" height="400"></div>
-      <div class="note"><strong>Expansion Features</strong> and <strong>world-exclusive features</strong> are relatively complex; it is recommended to read the simpler <strong>Resource Features</strong> first.</div>
     </div>
   </section>
 
   <section class="card" id="resource">
-    <h2>📦 <span class="zh">资源特性</span><span class="en">Resource Features</span></h2>
-    <div class="en"><p>Since the border limits exploration, the core mod adds extra ways to obtain resources exclusive to certain biomes and structures:</p></div>
+    <h2>🌿 <span class="zh">资源特性</span><span class="en">Resource Features</span></h2>
 
     <h3>🎣 <span class="zh">钓鱼</span><span class="en">Fishing</span></h3>
     <div class="zh">
@@ -651,14 +654,14 @@ li::marker{color:#d99a2e}
       </ul>
     </div>
     <div class="en">
-      <p>While fishing, you may obtain some biome-specific items.</p>
+      <p>Fishing sometimes turns up items you have no other business finding.</p>
       <ul>
-        <li><strong>Added to Junk loot pool</strong>: Seagrass, Kelp, Sugar Cane, Cactus, Bamboo, Sea Pickle, Cocoa Beans, Prismarine Shard, Prismarine Crystals, Coral, Coral Fan, Chorus Flower.</li>
-        <li><strong>Added to Treasure loot pool</strong>: Budding Amethyst, Obsidian, Ice, Packed Ice, Blue Ice, Coral Block, "? ? ?".</li>
+        <li>Junk loot now includes: Seagrass, Kelp, Sugar Cane, Cactus, Bamboo, Sea Pickle, Cocoa Beans, Prismarine Shard, Prismarine Crystals, Coral, Coral Fan, Chorus Flower.</li>
+        <li>Treasure loot now includes: Budding Amethyst, Obsidian, Ice, Packed Ice, Blue Ice, Coral Block, "? ? ?".</li>
       </ul>
     </div>
 
-    <h3>🐱 <span class="zh">猫</span><span class="en">Cat</span></h3>
+    <h3>🐱 <span class="zh">猫</span><span class="en">Cats</span></h3>
     <div class="zh">
       <p>与猫同眠后，可能会赠送一些特别的礼物：</p>
       <ul>
@@ -666,13 +669,13 @@ li::marker{color:#d99a2e}
       </ul>
     </div>
     <div class="en">
-      <p>After sleeping beside a cat, it may offer some special gifts:</p>
+      <p>Share a bed with a cat and it may thank you with a gift:</p>
       <ul>
-        <li><strong>Added to the Gift loot pool</strong>: Leaves, Diamond.</li>
+        <li>Gift loot now includes: Leaves, Diamond.</li>
       </ul>
     </div>
 
-    <h3>🌹 <span class="zh">嗅探兽</span><span class="en">Sniffer</span></h3>
+    <h3>🌹 <span class="zh">嗅探兽</span><span class="en">Sniffers</span></h3>
     <div class="zh">
       <p>嗅探兽刨挖结束后，可能会抛出一些小型花朵：</p>
       <ul>
@@ -680,13 +683,13 @@ li::marker{color:#d99a2e}
       </ul>
     </div>
     <div class="en">
-      <p>After a Sniffer finishes digging, it may toss out some small flowers:</p>
+      <p>When a Sniffer finishes digging, it may toss out a few small flowers:</p>
       <ul>
-        <li><strong>Added to the Digging loot pool</strong>: Dandelion, Poppy, Blue Orchid, Allium, Azure Bluet, Tulip, Oxeye Daisy, Cornflower, Lily of the Valley, Open Eyeblossom, Spore Blossom, Dead Bush.</li>
+        <li>Dig loot now includes: Dandelion, Poppy, Blue Orchid, Allium, Azure Bluet, Tulip, Daisy, Cornflower, Lily of the Valley, Open Eyeblossom, Spore Blossom, Dead Bush.</li>
       </ul>
     </div>
 
-    <h3>🐽 <span class="zh">猪灵</span><span class="en">Piglin</span></h3>
+    <h3>🐽 <span class="zh">猪灵</span><span class="en">Piglins</span></h3>
     <div class="zh">
       <p>用金锭与猪灵易物时，可能会丢出一些下界要塞的特殊交换物：</p>
       <ul>
@@ -694,9 +697,9 @@ li::marker{color:#d99a2e}
       </ul>
     </div>
     <div class="en">
-      <p>When bartering with Piglins using Gold Ingots, they may toss out special exchange items from the Nether Fortress:</p>
+      <p>Hand a Piglin a gold ingot and it may toss out a few pieces of Nether Fortress loot:</p>
       <ul>
-        <li><strong>Added to the Bartering loot pool</strong>: Blaze Rod, Nether Wart, Wither Skeleton Skull.</li>
+        <li>Barter loot now includes: Blaze Rod, Nether Wart, Wither Skeleton Skull.</li>
       </ul>
     </div>
 
@@ -715,16 +718,16 @@ li::marker{color:#d99a2e}
       </ul>
     </div>
     <div class="en">
-      <p>When opening the corresponding loot chests, you may obtain some special resources:</p>
+      <p>Open the matching loot chest and you may walk away with something special:</p>
       <ul>
-        <li><strong>Added to Plains Village House</strong>: Sunflower, Rose Bush, Peony, Lilac, Pink Petals, Wildflowers, Leaf Litter, Glow Lichen.</li>
-        <li><strong>Added to Savanna Village House</strong>: Armadillo Scute, Bush, Firefly Bush, Red Bush.</li>
-        <li><strong>Added to Village Mason House</strong>: Pointed Dripstone, Sulfur Spike.</li>
-        <li><strong>Added to Shipwreck Supply Chest</strong>: Pale Moss Block, Pale Hanging Moss.</li>
-        <li><strong>Added to Buried Treasure</strong>: Turtle Egg.</li>
-        <li><strong>Added to End City Treasure</strong>: Shulker Shell.</li>
-        <li><strong>Added to Bastion Remnant Hoglin Stable</strong>: Crimson Nylium, Warped Nylium.</li>
-        <li><strong>Added to Trial Chamber Vault - Normal, Trial Chamber Ominous Vault - Normal</strong>: Breeze Rod.</li>
+        <li>Plains Village Houses now include: Sunflower, Rose, Peony, Lilac, Pink Petals, Wildflowers, Leaf Litter, Glow Lichen.</li>
+        <li>Acacia Village Houses now include: Armadillo Scute, Bush, Firefly Bush, Red Shrub.</li>
+        <li>Village Mason Houses now include: Pointed Dripstone, Sulfur Spike.</li>
+        <li>Shipwreck Supply Chests now include: Pale Moss Block, Pale Hanging Moss.</li>
+        <li>Buried Treasure now includes: Turtle Egg.</li>
+        <li>End City chests now include: Shulker Shell.</li>
+        <li>Bastion Remnant Hoglin Stables now include: Crimson Nylium, Warped Nylium.</li>
+        <li>Normal Trial Chamber Vaults and Ominous Trial Chamber Vaults now include: Breeze Rod.</li>
       </ul>
     </div>
 
@@ -737,8 +740,8 @@ li::marker{color:#d99a2e}
     </div>
     <div class="en">
       <ul>
-        <li>Upon defeating the Ender Dragon, a <strong>Dragon Head</strong> will generate on the End Portal.</li>
-        <li>Defeating a respawned Ender Dragon will also generate a <strong>Dragon Egg and Dragon Head</strong> on the End Portal.</li>
+        <li>Defeat the Ender Dragon once and a Dragon Head spawns on the End Podium.</li>
+        <li>Defeat a respawned Ender Dragon and a Dragon Egg and a Dragon Head spawn on the End Podium.</li>
       </ul>
     </div>
 
@@ -750,21 +753,21 @@ li::marker{color:#d99a2e}
     </div>
     <div class="en">
       <ul>
-        <li>When lava flows and interacts with water below Y=0, Deepslate or Cobbled Deepslate is formed.</li>
+        <li>Deepslate and Cobbled Deepslate form wherever lava meets water below Y=0.</li>
       </ul>
     </div>
 
-    <h3>💡 <span class="zh">合成配方</span><span class="en">Crafting Recipes</span></h3>
+    <h3>💡 <span class="zh">合成配方</span><span class="en">Recipes</span></h3>
     <div class="zh">
       <div class="note">获得对应材料时将自动解锁配方，可通过工作台左侧小绿书查看：</div>
       <div class="imgbox"><img src="https://files.seeusercontent.com/2026/07/30/6Rtk/Snipaste_2026-07-30_19-58-47.png" alt="合成配方"></div>
     </div>
     <div class="en">
-      <div class="note">Recipes are automatically unlocked when you obtain the corresponding materials. They can be viewed via the green book on the left side of the crafting table:</div>
-      <div class="imgbox"><img src="https://files.seeusercontent.com/2026/07/30/aMg0/Snipaste_2026-07-30_19-53-54.png" alt="Crafting recipes"></div>
+      <div class="note">Recipes unlock automatically once you obtain the materials. Read them in the little green book to the left of the Crafting Table:</div>
+      <div class="imgbox"><img src="https://files.seeusercontent.com/2026/07/30/aMg0/Snipaste_2026-07-30_19-53-54.png" alt="Recipes"></div>
     </div>
 
-    <h3>⬛ <span class="zh">刷怪笼</span><span class="en">Spawners</span></h3>
+    <h3>⬛ <span class="zh">刷怪笼</span><span class="en">Monster Spawners</span></h3>
     <div class="zh">
       <p>用具有精准采集魔咒的工具破坏刷怪笼后，会掉落一个空刷怪笼。</p>
       <div class="note"><strong>部分刷怪笼生成条件：</strong><br>
@@ -777,18 +780,11 @@ li::marker{color:#d99a2e}
       发光鱿鱼：生成范围内必须存在水(包括水源/流动水)，且水的位置必须处于洞穴范围(Y30以下)。</div>
     </div>
     <div class="en">
-      <p>Spawners can be obtained by mining them with a Silk Touch enchanted tool.</p>
-      <p><strong>Spawn conditions for certain spawners:</strong></p>
-      <p><strong>Spawn Range</strong>: Horizontal radius 4 blocks, vertical radius 1 block, ignores biome.<br>
-      <strong>Slime</strong>: Does not need to be in a slime chunk.<br>
-      <strong>Iron Golem</strong>: A full block must exist below the spawnable location.<br>
-      <strong>Animals</strong>: A grass block must exist below the spawnable location.<br>
-      <strong>Aquatic Hostile Mobs</strong> (e.g., Drowned/Guardian/Elder Guardian): Water (including source/flowing water) must exist within the spawn range.<br>
-      <strong>Aquatic Animals</strong> (e.g., Squid/Cod/Salmon/Dolphin): Water (including source/flowing water) must exist within the spawn range, and the water location must be within the ocean range (Y50-63).<br>
-      <strong>Glow Squid</strong>: Water (including source/flowing water) must exist within the spawn range, and the water location must be within the cave range (below Y30).</p>
+      <p>Break a Monster Spawner with a tool enchanted with Silk Touch and it drops an empty spawner.</p>
+      <div class="note"><strong>Monster Spawner spawn conditions:</strong><br>Spawn range: 4 blocks horizontally, 1 block vertically, ignoring biomes.<br>Slime: does not require a Slime Chunk.<br>Iron Golem: solid blocks must exist below the spawn position.<br>Animals: a Grass Block must exist below the spawn position.<br>Aquatic monsters (such as Drowned / Guardian / Elder Guardian): water (source or flowing) must exist within the spawn range.<br>Aquatic animals (such as Squid / Cod / Salmon / Dolphin): water (source or flowing) must exist within the spawn range, and the water must sit in the ocean range (Y 50–63).<br>Glow Squid: water (source or flowing) must exist within the spawn range, and the water must sit in the cave range (below Y 30).</div>
     </div>
 
-    <h3>🌿 <span class="zh">地毯系列</span><span class="en">Carpet Series</span> <span class="muted" style="font-size:.85rem;font-weight:400">(Carpet Mod &amp; Addition)</span></h3>
+    <h3>🌿 <span class="zh">地毯系列</span><span class="en">Carpet Mod & Addition</span> <span class="muted" style="font-size:.85rem;font-weight:400">(Carpet Mod &amp; Addition)</span></h3>
     <div class="zh">
       <div class="note ok">✅ <strong>默认启用以下特性：</strong></div>
       <ul>
@@ -809,26 +805,26 @@ li::marker{color:#d99a2e}
       </ul>
     </div>
     <div class="en">
-      <div class="note ok">✅ <strong>The following features are enabled by default:</strong></div>
+      <div class="note ok"><strong>✅ Enabled by default:</strong></div>
       <ul>
-        <li>Large Barrels: When two barrels are connected back-to-back, the container space of both barrels can be used simultaneously.</li>
-        <li>Renewable Sand: Cobblestone crushed by a falling Anvil transforms into Sand.</li>
-        <li>Soul Sand Conversion: Mobs that die from fire on Sand transform the Sand into Soul Sand.</li>
-        <li>Renewable Sponge: A Guardian struck by lightning transforms into an Elder Guardian.</li>
-        <li>Renewable Wither Skeleton: A Skeleton struck by lightning transforms into a Wither Skeleton.</li>
-        <li>Renewable Coral: Coral can be fertilized with bone meal.</li>
-        <li>Shulker Respawn: Shulkers respawn in End Cities.</li>
+        <li>Double barrels: when two barrels are joined back to back, you can use both container spaces at once.</li>
+        <li>Renewable sand: cobblestone struck by a falling anvil turns into sand.</li>
+        <li>Soul sand conversion: sand under a mob that dies to fire turns into soul sand.</li>
+        <li>Renewable sponges: a Guardian struck by lightning turns into an Elder Guardian.</li>
+        <li>Renewable wither skeletons: a Skeleton struck by lightning turns into a Wither Skeleton.</li>
+        <li>Renewable coral: bone meal grows coral.</li>
+        <li>Renewable shulker shells: Shulkers spawn in End Cities.</li>
         <li>Spider Jockeys drop Enchanted Golden Apples.</li>
-        <li>Shulker Box Stacking: Empty Shulker Boxes on the ground can be stacked into 1 group.</li>
-        <li>Empty Shulker Boxes Always Stackable: Empty Shulker Boxes are also stackable in the inventory.</li>
-        <li>Fake Player Residency: Fake players are preserved when you log out.</li>
-        <li>Fake Player Fishing: Fake players can auto-fish.</li>
-        <li>Fake Player Backpack: Right-click to open a fake player's backpack.</li>
-        <li>Fake Player Ender Chest: Shift-right-click to open a fake player's ender chest.</li>
+        <li>Stackable Shulker Boxes: empty Shulker Boxes on the ground stack into one.</li>
+        <li>Empty Shulker Boxes always stack: they also stack inside your inventory.</li>
+        <li>Persistent fake players: fake players stay behind when you quit.</li>
+        <li>Fake-player fishing: fake players fish on their own.</li>
+        <li>Fake-player inventory: right-click a fake player to open its inventory.</li>
+        <li>Fake-player Ender Chest: sneak and right-click a fake player to open its Ender Chest.</li>
       </ul>
     </div>
 
-    <h3>📙 <span class="zh">砂轮增强</span><span class="en">Grindstone Enhancement</span> <span class="muted" style="font-size:.85rem;font-weight:400">(grind-enchantments mod)</span></h3>
+    <h3>📙 <span class="zh">砂轮增强</span><span class="en">Grindstone Enchantments (grind-enchantments mod)</span> <span class="muted" style="font-size:.85rem;font-weight:400">(grind-enchantments mod)</span></h3>
     <div class="zh">
       <ul>
         <li>可通过砂轮将装备的魔咒分离到书中，或将附魔书的第一行魔咒分离到另一本书中。</li>
@@ -836,14 +832,14 @@ li::marker{color:#d99a2e}
     </div>
     <div class="en">
       <ul>
-        <li>You can use a Grindstone to separate all enchantments from an item onto a book, or separate the first enchantment from an enchanted book onto another book.</li>
+        <li>A grindstone can pull an enchantment off gear and into a book, or move the first enchantment of an enchanted book onto another book.</li>
       </ul>
     </div>
   </section>
   <section class="card" id="expansion">
     <h2>🌙 <span class="zh">扩展特性</span><span class="en">Expansion Features</span></h2>
 
-    <h3>💠 <span class="zh">边界模式</span><span class="en">Border Mode</span></h3>
+    <h3>💠 <span class="zh">边界模式</span><span class="en">Border Modes</span></h3>
     <div class="zh">
       <ul>
         <li>含有<strong>禁锢</strong>、<strong>昼夜</strong>两种模式，可在游戏中进行切换。</li>
@@ -851,7 +847,7 @@ li::marker{color:#d99a2e}
     </div>
     <div class="en">
       <ul>
-        <li>Contains two modes: <strong>Locked</strong> and <strong>Day-Night</strong>, switchable in-game.</li>
+        <li>Two modes, <strong>Locked</strong> and <strong>Day/Night</strong>, and you can switch between them in game.</li>
       </ul>
     </div>
 
@@ -863,11 +859,11 @@ li::marker{color:#d99a2e}
     </div>
     <div class="en">
       <ul>
-        <li>The regular default mode.</li>
+        <li>The default mode.</li>
       </ul>
     </div>
 
-    <h3>🌗 <span class="zh">昼夜模式</span><span class="en">Day-Night Mode</span></h3>
+    <h3>🌗 <span class="zh">昼夜模式</span><span class="en">Day/Night Mode</span></h3>
     <div class="zh">
       <ul>
         <li>昼夜模式的白天与禁锢模式并无区别。</li>
@@ -877,13 +873,13 @@ li::marker{color:#d99a2e}
     </div>
     <div class="en">
       <ul>
-        <li>Daytime in Day-Night mode is no different from Locked mode.</li>
-        <li>During the night of Day-Night mode, the <strong>mob cap</strong> is increased to <strong>140</strong>, the <strong>number of mobs per spawn cycle</strong> is increased to <strong>10</strong>, the <strong>chance of mobs wearing armor</strong> is increased to <strong>30%</strong>, and mobs will spawn <strong>regardless of light level</strong>.</li>
-        <li>During the night of Day-Night mode, if the border energy is at least level 50, the space is doubled in size.</li>
+        <li>Daytime behaves exactly as it does in Locked Mode.</li>
+        <li>At night, the <strong>mob cap</strong> rises to <strong>140</strong>, <strong>mobs per spawn</strong> rises to <strong>10</strong>, the <strong>chance that mobs spawn wearing armor</strong> rises to <strong>30%</strong>, and mobs spawn <strong>regardless of light level</strong>.</li>
+        <li>At night, Border Energy of <strong>level 50 or more</strong> doubles the space you have.</li>
       </ul>
     </div>
 
-    <h3>🌙 <span class="zh">昼夜模式 - 永恒之夜</span><span class="en">Day-Night Mode - Eternal Night</span></h3>
+    <h3>🌙 <span class="zh">昼夜模式 - 永恒之夜</span><span class="en">Day/Night Mode - Eternal Night</span></h3>
     <div class="zh">
       <ul>
         <li>在昼夜模式夜晚结束的一分钟前，若边界能量至少拥有<strong>100级</strong>，便会降临永恒之夜。</li>
@@ -896,16 +892,16 @@ li::marker{color:#d99a2e}
     </div>
     <div class="en">
       <ul>
-        <li>One minute before the end of the night in Day-Night mode, if the border energy is at least level 100, the Eternal Night will descend.</li>
-        <li>After the Eternal Night descends, Eternal Night Knights from another realm will appear around the world spawn point.</li>
-        <li>Influenced by the Eternal Night Knights, time is locked at the moment of their arrival, and the world plunges into an eternal thunderstorm.</li>
-        <li>Only by defeating all the descending Eternal Night Knights can their influence on the world be lifted.</li>
-        <li>Afterwards, after experiencing or sleeping through <strong>0-4</strong> nights of Day-Night mode, the Eternal Night will descend again.</li>
+        <li>One minute before a Day/Night night ends, an Eternal Night falls if your Border Energy has reached <strong>level 100</strong>.</li>
+        <li>Once it falls, Evernight Knights from another realm appear around the world spawn.</li>
+        <li>Under their influence, time locks to the moment they arrived and the world sinks into an endless thunderstorm.</li>
+        <li>Only defeating every Evernight Knight that descended breaks their hold on the world.</li>
+        <li>It returns once you have lived through or slept through <strong>0–4</strong> more Day/Night nights.</li>
       </ul>
-      <div class="note">Switching to Peaceful mode will immediately end the Eternal Night and prevent attempts to enter it.</div>
+      <div class="note">In Peaceful Mode an Eternal Night ends immediately, and none will ever begin.</div>
     </div>
 
-    <h3>🧊 <span class="zh">永恒雨夜 / 永恒雪夜</span><span class="en">Eternal Rainy Night / Eternal Snowy Night</span></h3>
+    <h3>🧊 <span class="zh">永恒雨夜 / 永恒雪夜</span><span class="en">Eternal Rain Night / Eternal Snow Night</span></h3>
     <div class="zh">
       <ul>
         <li>永恒之夜降临后，受永夜骑士的影响，边界可能会染上 <strong>苍白、凶红、夕橙、灿金、邃蓝、黯紫</strong> 六种色彩。</li>
@@ -918,16 +914,16 @@ li::marker{color:#d99a2e}
     </div>
     <div class="en">
       <ul>
-        <li>After the Eternal Night descends, influenced by the Eternal Night Knights, the border may take on one of six colors: <strong>Pale, Crimson, Dusk Orange, Radiant Gold, Deep Blue, Dark Purple</strong>.</li>
-        <li>Depending on the degree of influence, the world climate will become disordered.</li>
-        <li>When the border in the Eternal Night state is <strong>Radiant Gold, Dusk Orange, or Deep Blue</strong>: All biomes will experience abnormal rainfall, regardless of being cold or warm. The chance of mobs wearing armor is increased to <strong>40%/50%/60%</strong>.</li>
-        <li>When the border in the Eternal Night state is <strong>Dark Purple, Crimson, or Pale</strong>: All biomes will experience abnormal snowfall, regardless of being warm or cold. The chance of mobs wearing armor is increased to <strong>70%/80%/90%</strong>.</li>
-        <li>After all Eternal Night Knights are defeated, the world climate returns to normal, the border color gradually recovers, and the color will foreshadow the arrival of the next Eternal Night.</li>
+        <li>Once the Eternal Night falls, the Evernight Knights can stain the border with any of six colors: <strong>Pale White, Danger Red, Sun Orange, Bright Gold, Deep Blue, Dark Purple</strong>.</li>
+        <li>The stronger their influence, the more the climate unravels and the more likely mobs are to spawn wearing armor.</li>
+        <li>While the border shows <strong>Bright Gold, Sun Orange, or Deep Blue</strong>: every biome rains no matter whether it is cold or warm, and the armor chance rises to <strong>40% / 50% / 60%</strong>.</li>
+        <li>While the border shows <strong>Dark Purple, Danger Red, or Pale White</strong>: every biome snows no matter whether it is warm or cold, and the armor chance rises to <strong>70% / 80% / 90%</strong>.</li>
+        <li>Once every Evernight Knight is defeated, the climate recovers, the border colors fade back, and the color that returns warns you which kind of Eternal Night is coming next.</li>
       </ul>
-      <div class="note">Observing the moon phase changes in the Day-Night mode time bar can also predict the moment of the next Eternal Night's descent.</div>
+      <div class="note">You can also read the arrival of the next Eternal Night off the moon phase on the Day/Night clock.</div>
     </div>
 
-    <h3>🐎 <span class="zh">永夜骑士</span><span class="en">Eternal Night Knights</span></h3>
+    <h3>🐎 <span class="zh">永夜骑士</span><span class="en">Evernight Knight</span></h3>
     <div class="zh">
       <ul>
         <li>永夜骑士的生命值上限会随着边界能量的提高而提高。</li>
@@ -942,18 +938,16 @@ li::marker{color:#d99a2e}
     </div>
     <div class="en">
       <ul>
-        <li>The maximum health of Eternal Night Knights increases with border energy.</li>
-        <li>When no players are nearby, Eternal Night Knights continuously regenerate health.</li>
-        <li>When an Eternal Night Knight takes damage, it disrupts the world, spawning more monsters.</li>
-        <li>Upon being defeated by a player, an Eternal Night Knight drops a random Dimensional Treasure Chest.</li>
-        <li>Additionally, as they are Bugs of the World (bug), all monsters seek to eliminate them.</li>
+        <li>An Evernight Knight's max health climbs along with your Border Energy.</li>
+        <li>It regenerates health for as long as no player is nearby.</li>
+        <li>Every time it takes damage, the world itself stirs and spawns more mobs.</li>
+        <li>Defeating one makes it drop a random dimension's loot chest.</li>
+        <li>Because it counts as a World Bug, every mob wants it dead.</li>
       </ul>
-      <div class="note">Eternal Night Knights only appear at the highest open-air location within a 16-block square radius around the world spawn point. For cave-type world, the spawn location is at most Y96.<br>
-      Eternal Night Knights are extremely dangerous. It is recommended to have adequate defense and healing before attempting armed combat.<br>
-      Eternal Night Knights will not leave their current dimension and will not ride vehicles.</div>
+      <div class="note">Evernight Knights only appear at random spots inside a 16-block square centered on the world spawn, always on the highest exposed ground; in cave-type worlds they never appear above Y 96.<br>Evernight Knights are extremely dangerous. Bring solid defenses and real healing before you try to duel one.<br>Evernight Knights never leave their dimension and never ride vehicles.</div>
     </div>
 
-    <h3>🔱 <span class="zh">永夜军团</span><span class="en">Eternal Night Legions</span></h3>
+    <h3>🔱 <span class="zh">永夜军团</span><span class="en">Evernight Legion</span></h3>
     <div class="zh">
       <ul>
         <li>每当累计度过<strong>3次</strong>永恒之夜，下次永恒之夜将会降临<strong>亡灵军团</strong>或<strong>灾厄军团</strong>。</li>
@@ -962,8 +956,8 @@ li::marker{color:#d99a2e}
     </div>
     <div class="en">
       <ul>
-        <li>Every time you survive <strong>3</strong> Eternal Nights, the next Eternal Night will bring the <strong>Undead Legion</strong> or <strong>Illager Legion</strong>.</li>
-        <li>Every time you survive <strong>8</strong> Eternal Nights, the next Eternal Night will bring the <strong>Eternal Night Legion</strong>.</li>
+        <li>After every <strong>3</strong> Eternal Nights survived, the next one brings an <strong>Undead Legion</strong> or an <strong>Illager Legion</strong>.</li>
+        <li>After every <strong>8</strong> Eternal Nights survived, the next one brings the <strong>Evernight Legion</strong>.</li>
       </ul>
     </div>
 
@@ -977,13 +971,12 @@ li::marker{color:#d99a2e}
     </div>
     <div class="en">
       <ul>
-        <li>Upon being defeated by a player, the legion leader drops an <strong>Eternal Heart</strong>.</li>
+        <li>Defeat a legion boss and it drops an <strong>Eternal Heart</strong>.</li>
       </ul>
-      <div class="note"><strong>Right-click to use</strong> it to destroy the Eternal Heart. During the current or next Eternal Night, the Eternal Night Knights will no longer be united.<br>
-      The Eternal Heart can also be used as a Heart of the Sea.</div>
+      <div class="note"><strong>Right-click</strong> the heart to destroy it, and the Evernight Knights will no longer fight as one in the current or next Eternal Night.<br>An Eternal Heart counts as a Heart of the Sea when used.</div>
     </div>
 
-    <h3>🏹 <span class="zh">永恒神兵</span><span class="en">Eternal Divine Weapons</span></h3>
+    <h3>🏹 <span class="zh">永恒神兵</span><span class="en">Cursed Eternal Weapons</span></h3>
     <div class="zh">
       <ul>
         <li>永夜骑士被玩家击败后，有 <strong>1%</strong> 的概率会掉落其手持的武器。</li>
@@ -994,14 +987,13 @@ li::marker{color:#d99a2e}
     </div>
     <div class="en">
       <ul>
-        <li>Upon being defeated by a player, an Eternal Night Knight has a <strong>1%</strong> chance to drop the weapon it is holding.</li>
-        <li>If the player holds a Looting weapon in their main hand, each level of Looting increases the plunder success rate by <strong>8.5%</strong>.</li>
+        <li>A defeated Evernight Knight has a <strong>1%</strong> chance to drop the weapon it was holding.</li>
+        <li>Holding a Looting weapon in your main hand adds <strong>8.5%</strong> per level of Looting to that drop chance.</li>
       </ul>
-      <div class="note">Eternal Divine Weapons have the Curse of Vanishing and cannot be destroyed by fire, lava, explosion, lightning, cactus.<br>
-      Unenchanted Eternal Divine Weapons can be purified and returned to their origin as Night Spirit Divine Weapons.</div>
+      <div class="note">Cursed Eternal Weapons carry Curse of Vanishing and cannot be destroyed by fire, lava, explosions, lightning, or cacti.<br>A Cursed Eternal Weapon with no extra enchantments can be returned to its origin as a Night Spirit Eternal Weapon.</div>
     </div>
 
-    <h3>🍖 <span class="zh">掉落物</span><span class="en">Drops</span></h3>
+    <h3>🍖 <span class="zh">掉落物</span><span class="en">Mob Drops</span></h3>
     <div class="zh">
       <ul>
         <li>被 <strong>永夜骑士、监守者、远古守卫者、守卫者、铁傀儡</strong> 击败的生物视为被玩家击败。</li>
@@ -1009,11 +1001,11 @@ li::marker{color:#d99a2e}
     </div>
     <div class="en">
       <ul>
-        <li>Mobs defeated by <strong>Eternal Night Knights, Wardens, Elder Guardians, Guardians, and Iron Golems</strong> are counted as being defeated by a player.</li>
+        <li>Mobs defeated by <strong>Evernight Knights, Wardens, Elder Guardians, Guardians, and Iron Golems</strong> count as player kills.</li>
       </ul>
     </div>
 
-    <h3>🐞 <span class="zh">世界之虫</span><span class="en">Bugs of the World</span></h3>
+    <h3>🐞 <span class="zh">世界之虫</span><span class="en">World Bugs</span></h3>
     <div class="zh">
       <ul>
         <li>永夜骑士、边界维系者、神匠为世界之虫目标。</li>
@@ -1032,22 +1024,18 @@ li::marker{color:#d99a2e}
     </div>
     <div class="en">
       <ul>
-        <li>Eternal Night Knights, the Border Sustainer, and the Divine Artificer are Bugs of the World targets.</li>
-        <li>Bugs of the World targets draw the aggro of all monsters within a horizontal distance of 384 blocks.</li>
-        <li>When a monster is below a Bug of the World target, its vertical pursuit distance is 16 blocks.</li>
-        <li>When a monster is above a Bug of the World target, in a vanilla or amplified world, if the target's position is at or above Y48, its vertical pursuit distance is infinite blocks; otherwise 16 blocks.</li>
-        <li>When a monster is above a Bug of the World target, in a floating island, cave, or void world, its vertical pursuit distance is infinite blocks.</li>
-        <li>Monsters other than Eternal Night Knights and Night Knights will not retaliate while pursuing Bugs of the World targets.</li>
-        <li>While pursuing a Bug of the World target, if a player comes within line of sight, the monster will prioritize attacking the player.</li>
+        <li>Evernight Knights, Sustainers, and Chaos Smiths are World Bugs.</li>
+        <li>Every mob within 384 blocks horizontally will aggro the World Bug.</li>
+        <li>A mob below the World Bug chases it 16 blocks down.</li>
+        <li>A mob above the World Bug in a <strong>vanilla or amplified</strong> world chases it infinitely far down if the World Bug sits at Y 48 or higher, and 16 blocks otherwise.</li>
+        <li>A mob above the World Bug in a <strong>floating island, cave, or void</strong> world chases it infinitely far down.</li>
+        <li>Mobs other than Evernight Knights and Night Riders do not fight back while chasing the World Bug.</li>
+        <li>If a player is in line of sight, a mob chasing the World Bug switches to that player first.</li>
       </ul>
-      <div class="note">Endermen will not naturally switch targets to players who haven't looked at them.<br>
-      Evokers pursue Bugs of the World targets with both horizontal and vertical distances of 384 blocks.<br>
-      When a Drowned is pursuing a Bug of the World target, if the Euclidean distance to the target is ≤16 blocks, it gains wallhack vision.<br>
-      When a Creeper is pursuing a Bug of the World target, if the Euclidean distance to the target is ≤8 blocks and the vertical distance is ≤4 blocks, it gains wallhack vision. If its pathfinding is blocked, it will instantly ignite itself.<br>
-      Creepers will not actively flee from Bugs of the World targets.</div>
+      <div class="note">Endermen will not aggro a player who is not looking at them.<br>Evokers chase the World Bug 384 blocks horizontally and 384 blocks vertically.<br>A Drowned chasing the World Bug sees through blocks once it is within 16 blocks of it.<br>A Creeper chasing the World Bug sees through blocks once it is within 8 blocks horizontally and 4 blocks vertically, and will ignite itself on the spot if its path is blocked.<br>Creepers never back away from the World Bug on their own.</div>
     </div>
 
-    <h3>🐈 <span class="zh">边界维系者</span><span class="en">Border Sustainer</span></h3>
+    <h3>🐈 <span class="zh">边界维系者</span><span class="en">Sustainer</span></h3>
     <div class="zh">
       <ul>
         <li>维系者会降临在世界出生点，负责维系边界能量的稳定。</li>
@@ -1062,18 +1050,16 @@ li::marker{color:#d99a2e}
     </div>
     <div class="en">
       <ul>
-        <li>The Sustainer descends at the world spawn point and is responsible for maintaining the stability of the border energy.</li>
-        <li>If no Sustainer exists near the world spawn point, border energy will continuously drain.</li>
-        <li>If the Sustainer is too far from the world spawn point, it will attempt to return there.</li>
-        <li>If the Sustainer dies, it will descend again at the world spawn point after some time.</li>
-        <li>Additionally, as a Bug of the World (bug), all monsters seek to eliminate it.</li>
+        <li>A Sustainer descends at the world spawn and keeps Border Energy stable.</li>
+        <li>Without a Sustainer near the world spawn, Border Energy drains continuously.</li>
+        <li>If a Sustainer strays too far from the world spawn, it heads back.</li>
+        <li>If a Sustainer dies, it descends again at the world spawn after a while.</li>
+        <li>Because it counts as a World Bug, every mob wants it dead.</li>
       </ul>
-      <div class="note">When the Sustainer is near the Divine Artificer, it provides healing to nearby players.<br>
-      The Sustainer is a baby cat and can be tamed and given gifts normally.<br>
-      The Sustainer will not leave its current dimension and will not ride vehicles.</div>
+      <div class="note">While a Chaos Smith is nearby, a Sustainer heals nearby players.<br>Sustainers are baby cats and can be tamed and given gifts like any other cat.<br>Sustainers never leave their dimension and never ride vehicles.</div>
     </div>
 
-    <h3>🔆 <span class="zh">神匠</span><span class="en">Divine Artificer</span></h3>
+    <h3>🔆 <span class="zh">神匠</span><span class="en">Chaos Smith</span></h3>
     <div class="zh">
       <ul>
         <li>掌握了混沌之星锻造术的盔甲匠村民，与永夜骑士颇有渊源，从祂手中可以兑换到一些特殊物品，详见下文。</li>
@@ -1084,14 +1070,13 @@ li::marker{color:#d99a2e}
     </div>
     <div class="en">
       <ul>
-        <li>An Armorer villager who has mastered the art of forging the Chaos Star, sharing a deep origin with the Eternal Night Knights. From him, you can exchange for some special items — see below.</li>
-        <li>Additionally, as a Bug of the World (bug), all monsters seek to eliminate him.</li>
+        <li>An armorer villager who masters Chaos Star smithing and has a lot in common with the Evernight Knights. You can trade one for special items — see below.</li>
+        <li>Because it counts as a World Bug, every mob wants it dead.</li>
       </ul>
-      <div class="note">The Divine Artificer is an Armorer Villager and can breed and restock normally.<br>
-      The Divine Artificer is not considered to exist when not in a loaded chunk.</div>
+      <div class="note">Chaos Smiths are armorer villagers and breed and restock like any other.<br>A Chaos Smith outside loaded chunks does not count as existing.</div>
     </div>
 
-    <h3>🪵 <span class="zh">无损灵材</span><span class="en">Flawless Spirit Materials</span></h3>
+    <h3>🪵 <span class="zh">无损灵材</span><span class="en">Unbreakable Spirit Material</span></h3>
     <div class="zh">
       <ul>
         <li>由海洋之心、下界之星、末地水晶融合而成的混沌之星，再经神匠淬炼而成的不朽灵材，经其锻造的无损灵器具有<strong>无耐久度</strong>的特质，详见下文。</li>
@@ -1100,15 +1085,15 @@ li::marker{color:#d99a2e}
     </div>
     <div class="en">
       <ul>
-        <li>Immortal spirit materials obtained by tempering with the Divine Artificer a Chaos Star — itself fused from the Heart of the Sea, Nether Star, and End Crystal. Gear forged from them is unbreakable; see below.</li>
+        <li>Unbreakable Spirit Material is what is left of a Chaos Star — itself a fusion of a Heart of the Sea, a Nether Star, and an End Crystal — once the Chaos Smith has refined it. Gear forged from it has <strong>no durability at all</strong>; see below.</li>
       </ul>
-      <div class="note">Flawless Spirit Materials can be infused into the Border Upgrade function sign to increase the border energy by a certain number of levels.</div>
+      <div class="note">Hold Unbreakable Spirit Material and right-click the <strong>Border Upgrade</strong> sign to infuse it, raising your Border Energy by a set amount.</div>
     </div>
 
-    <h3>✨ <span class="zh">无损灵器</span><span class="en">Flawless Spirit Tools</span></h3>
+    <h3>✨ <span class="zh">无损灵器</span><span class="en">Unbreakable Spirit Equipment</span></h3>
     <div class="zh">
       <p>将无损灵材交由神匠锻造而成的装备，具有<strong>无耐久度</strong>的特质。</p>
-      <p><strong>部分无损灵器被副手手持时，会提供特殊效果：</strong></p>
+      <p><strong>以下无损灵器被副手手持时，会提供特殊效果：</strong></p>
       <ul>
         <li><strong>混沌之星</strong>：生命恢复Ⅱ</li>
         <li><strong>裁灵剪</strong>：急迫Ⅱ</li>
@@ -1126,8 +1111,8 @@ li::marker{color:#d99a2e}
       </ul>
     </div>
     <div class="en">
-      <p>Flawless Spirit Tools forged by the Divine Artificer from Flawless Spirit Materials are unbreakable.</p>
-      <p><strong>Some Flawless Spirit Tools provide special effects when held in the offhand:</strong></p>
+      <p>Gear forged by the Chaos Smith out of Unbreakable Spirit Material, with <strong>no durability</strong> at all.</p>
+      <p><strong>The following Unbreakable Spirit equipment grants an effect while held in the offhand:</strong></p>
       <ul>
         <li><strong>Chaos Star</strong>: Regeneration II</li>
         <li><strong>Spirit Shears</strong>: Haste II</li>
@@ -1139,8 +1124,9 @@ li::marker{color:#d99a2e}
         <li><strong>Vast Sea Spirit Trident</strong>: Dolphin's Grace</li>
         <li><strong>Whirling Spirit Mace</strong>: Strength III</li>
         <li><strong>Soaring Spirit Wings</strong>: Slow Falling</li>
-        <li><strong>Spirit Wolf Armor</strong>: Resistance II; when worn by a wolf, additionally provides Instant Health.</li>
-        <li><strong>Spirit Flint and Steel</strong>: The holder, Eternal Night Knights, Divine Artificer, Illagers, Witches, Wandering Traders, and Trader Llamas constantly glow.</li>
+        <li><strong>Soaring Spirit Wingplate</strong>: Slow Falling</li>
+        <li><strong>Spirit Wolf Armor</strong>: Resistance II; while a Wolf wears it, it also grants Instant Health.</li>
+        <li><strong>Spirit Flint and Steel</strong>: the holder, plus Evernight Knights, Chaos Smiths, Illagers, Witches, Wandering Traders, and Trader Llamas, all glow continuously.</li>
       </ul>
     </div>
 
@@ -1155,10 +1141,13 @@ li::marker{color:#d99a2e}
     </div>
     <div class="en">
       <ul>
-        <li>A treasure chest forged by the Divine Artificer from a Spirit Emerald. When placed and opened:</li>
-        <li>High chance to open a random Structure loot chest.</li>
-        <li>Medium chance to open a random Village loot chest.</li>
-        <li>Low chance to open a random Treasure loot chest.</li>
+        <li>The mysterious chest the Chaos Smith forges out of a Spirit Emerald. Place it, open it, and:
+          <ul>
+            <li>there is a high chance you get a random structure loot chest;</li>
+            <li>a moderate chance you get a random village loot chest;</li>
+            <li>a low chance you get a random treasure loot chest.</li>
+          </ul>
+        </li>
       </ul>
     </div>
 
@@ -1180,27 +1169,19 @@ li::marker{color:#d99a2e}
       <div class="imgbox"><img src="https://files.seeusercontent.com/2026/07/31/4hLl/zh.png" alt="切石机"></div>
     </div>
     <div class="en">
-      <div class="note">The Spirit Emerald can also be used as an Emerald.</div>
+      <div class="note">A Spirit Emerald counts as an Emerald when used.</div>
       <ul>
-        <li><strong>Gather Items</strong>:
-          <ul>
-            <li><strong>General Spirit Emerald</strong>: When held in the offhand or placed in any Item Frame, it gathers item entities within a 16-block radius (33x33x33) cube around it to its own location.</li>
-            <li><strong>Container Spirit Emerald</strong>: If the Item Frame containing the Spirit Emerald is attached to a Chest, Barrel, or Shulker Box, it will only gather item types that already exist in the container. If attached to an empty container, it will not gather any item entities.</li>
-            <li>When multiple <strong>General Spirit Emeralds</strong> are near an item entity, it is gathered by the closest Spirit Emerald.</li>
-            <li>When multiple valid <strong>Container Spirit Emeralds</strong> are near an item entity, it splits into several item entities, evenly gathered among those Spirit Emeralds.</li>
-            <li>When both <strong>General Spirit Emeralds</strong> and <strong>Container Spirit Emeralds</strong> are near an item entity, it is first gathered by the closest former, then split and evenly gathered among the latter.</li>
-          </ul>
-        </li>
-        <li><strong>Convert Materials</strong>: Can be converted into a certain amount of basic building materials via a Stonecutter.</li>
+        <li><strong>Gathering items</strong>:<ul><li><strong>General Spirit Emerald</strong>: hold one in your offhand or place it in any Item Frame, and it pulls every item entity inside the 16-block (33x33x33) cube around it into its own position.</li><li><strong>Container Spirit Emerald</strong>: if the Item Frame holding it is attached to a Chest, Barrel, or Shulker Box, it only gathers item types found in that container. Attached to an empty container, it gathers nothing at all.</li><li>When several <strong>General</strong> Spirit Emeralds sit near one item entity, the nearest one takes it.</li><li>When several valid <strong>Container</strong> Spirit Emeralds sit near one item entity, the item splits into several entities that they gather equally.</li><li>If <strong>General</strong> and <strong>Container</strong> Spirit Emeralds are both in range, the nearest General one takes the item first, then the Container ones share it out equally.</li></ul></li>
+        <li><strong>Converting to building blocks</strong>: use a Stonecutter to convert it into a set amount of basic blocks:</li>
       </ul>
       <div class="imgbox"><img src="https://files.seeusercontent.com/2026/07/31/Bn4e/e0c5562.png" alt="Stonecutter"></div>
     </div>
   </section>
   <section class="card" id="unique">
-    <h2>🌕 <span class="zh">世界独有特性</span><span class="en">Unique Features</span></h2>
-    <div class="note warn">❗<span class="zh">以下特性为对应世界的独有特性，仅在对应世界中生效。</span><span class="en">The following features are unique to their respective worlds and only take effect in those worlds.</span></div>
+    <h2>🌕 <span class="zh">世界独有特性</span><span class="en">World-Exclusive Features</span></h2>
+    <div class="note warn">❗<span class="zh">以下特性为对应世界的独有特性，仅在对应世界中生效。</span><span class="en">The following features belong to one specific world and only work there.</span></div>
 
-    <h3>🌸 <span class="zh">守护 - 护樱山（繁樱山谷）</span><span class="en">Guard - Mountain of Cherry Protection (Cherry Blossom Valley)</span></h3>
+    <h3>🌸 <span class="zh">守护 - 护樱山（繁樱山谷）</span><span class="en">Guardian - Cherry Mountain (Cherry Valley)</span></h3>
     <div class="zh">
       <ul>
         <li><del>存在神匠，所有怪物都欲图消灭祂。当神匠死亡后，边界能量流失。</del>（已被边界维系者取代）</li>
@@ -1208,11 +1189,11 @@ li::marker{color:#d99a2e}
     </div>
     <div class="en">
       <ul>
-        <li><del>A Divine Artificer exists, and all monsters seek to eliminate him. When the Divine Artificer dies, border energy drains.</del> (Replaced by the Border Sustainer)</li>
+        <li><del>A Chaos Smith exists, and every mob wants to kill it. When it dies, Border Energy drains.</del> (replaced by the Sustainer)</li>
       </ul>
     </div>
 
-    <h3>🌑 <span class="zh">永夜 - 夜屿苍园</span><span class="en">Eternal Night - Night Island Garden</span></h3>
+    <h3>🌑 <span class="zh">永夜 - 夜屿苍园</span><span class="en">Evernight - Night Garden</span></h3>
     <div class="zh">
       <ul>
         <li>世界仅夜晚循环，没有白天。</li>
@@ -1223,10 +1204,10 @@ li::marker{color:#d99a2e}
     </div>
     <div class="en">
       <ul>
-        <li>The world cycles only through night, with no daytime.</li>
-        <li>Day-Night mode is locked and cannot be switched.</li>
-        <li>Villager daily schedules are reversed; villagers and players can only sleep after tick 23000.</li>
-        <li><del>A Sustainer exists, and all monsters seek to eliminate it. When the Sustainer dies, border energy drains.</del> (Permanently implemented)</li>
+        <li>The world runs on a night-only cycle. There is no day.</li>
+        <li>Locked into Day/Night Mode, which cannot be switched.</li>
+        <li>Villager schedules run backwards: villagers and players can only sleep after tick 23000.</li>
+        <li><del>A Sustainer exists, and every mob wants to kill it. When it dies, Border Energy drains.</del> (now permanent)</li>
       </ul>
     </div>
 
@@ -1244,22 +1225,22 @@ li::marker{color:#d99a2e}
     </div>
     <div class="en">
       <ul>
-        <li>Build a portal frame using the themed block of the respective world and activate it with a fire source to travel to different dimensions.</li>
-        <li>Unlike Nether Portals, regardless of the coordinates, a Void Portal will search for the nearest portal within a 256-block radius centered on the world spawn of the target dimension. If none is found, a portal structure will be generated near the world spawn.</li>
-        <li>Each Persisting World dimension has independent border energy, except for the Nether and the End.</li>
-        <li>Each Persisting World dimension has a Sustainer, except for the Nether and the End.</li>
-        <li>Eternal Night Knights will only descend in the Overworld or Persisting World dimensions that have at least <strong>level 100</strong> border energy, excluding the Nether and the End.</li>
-        <li>If multiple dimensions simultaneously have border energy above <strong>level 100</strong>, the Eternal Night Knights will randomly descend in one of those dimensions that has at least one non-spectator player.</li>
-        <li>If no dimension meets the criteria, they will first attempt to descend in the Overworld. If the Overworld's border energy is below <strong>level 100</strong>, they will not descend.</li>
+        <li>Build a portal frame out of a dimension's own theme blocks and light it with a fire source to travel to that dimension.</li>
+        <li>Unlike a Nether Portal, a Void Portal searches for the nearest matching portal within 256 blocks of the target dimension's world spawn, no matter where you entered from. If it finds none, it builds a portal structure near the world spawn.</li>
+        <li>Every Persisting dimension keeps its own Border Energy, except the Nether and the End.</li>
+        <li>Every Persisting dimension has its own Sustainer, except the Nether and the End.</li>
+        <li>Evernight Knights only descend into the Overworld or a Persisting dimension whose Border Energy has reached <strong>level 100</strong>, excluding the Nether and the End.</li>
+        <li>If several dimensions hold <strong>level 100</strong> or more, Evernight Knights descend at random into one of them that has at least one player who is not in Spectator Mode.</li>
+        <li>If no dimension qualifies, they try the Overworld first; if its Border Energy is below <strong>level 100</strong>, they do not descend at all.</li>
       </ul>
     </div>
   </section>
 
   <section class="card" id="maps">
-    <h2>🧭 <span class="zh">世界库</span><span class="en">Worlds Library</span> <span class="chip">🗺️ 17</span></h2>
+    <h2>🧭 <span class="zh">世界库</span><span class="en">World Library</span> <span class="chip">🗺️ 17</span></h2>
     <div class="note">
-      <strong class="zh">必须使用专用世界存档</strong><strong class="en">You must use the dedicated world save</strong><span class="zh">，如果自行创建世界，将无法正常进行游戏。</span><span class="en">. The game cannot be played properly if you create a new world yourself.</span><br>
-      <span class="zh">世界按<strong>类型与综合难度从高到低</strong>排序。越高的星级往往代表着越高的生存难度或资源获取难度。</span><span class="en">Worlds are sorted by <strong>type and overall difficulty from high to low</strong>. Higher star ratings generally indicate higher survival or resource acquisition difficulty.</span>
+      <strong class="zh">必须使用专用世界存档</strong><strong class="en">You must use a dedicated world save</strong><span class="zh">，如果自行创建世界，将无法正常进行游戏。</span><span class="en">. Create your own world instead and the game will not work as intended.</span><br>
+      <span class="zh">世界按<strong>类型与综合难度从高到低</strong>排序。越高的星级往往代表着越高的生存难度或资源获取难度。</span><span class="en">Worlds are sorted by <strong>type and overall difficulty, hardest first</strong>. More stars usually mean a rougher survival or a longer grind.</span>
     </div>
 
     <div class="view-switch">
@@ -1274,11 +1255,11 @@ li::marker{color:#d99a2e}
         <h4 class="group-head">🎂 <span class="zh">周年型</span><span class="en">Anniversary</span> <span class="chip">5</span></h4>
         <div class="map-grid">
           <article class="map-card" data-order="1" data-group="1">
-        <div class="thumb"><img src="https://files.seeusercontent.com/2026/09/23/fbT3/0d48ad2.jpg" alt="虚无十五界-存世阵屿" loading="lazy"></div>
+        <div class="thumb"><img src="https://files.seeusercontent.com/2026/09/23/fbT3/0d48ad2.jpg" alt="Void Fifteen Realms - Persisting Worlds Array Island" loading="lazy"></div>
         <div class="map-body">
-          <h3>🔥 <span class="zh">虚无十五界 — 存世阵屿</span><span class="en">Void Fifteen Worlds — Persisting Worlds Array Island</span></h3>
+          <h3>🔥 <span class="zh">虚无十五界 — 存世阵屿</span><span class="en">Void Fifteen Realms — Persisting Worlds Array Island</span></h3>
           <div class="chips">
-            <span class="chip">🔥 <span class="zh">类型：六周年 — 虚空型</span><span class="en">Type: 6th Anniversary — Main Island Type</span></span>
+            <span class="chip">🔥 <span class="zh">类型：六周年 — 虚空型</span><span class="en">Type: 6th Anniversary — Void</span></span>
             <span class="chip diff">✨ <span class="zh">难度：🔥🔥🔥</span><span class="en">Difficulty: 🔥🔥🔥</span></span>
           </div>
           <div class="lore zh">境虚空无，块铸框扉，源火燃显，入界世存……<br>
@@ -1289,14 +1270,14 @@ li::marker{color:#d99a2e}
           边界能量42：免结冰环形宝藏钓鱼池<br>
           边界能量90：虚无界门微群系外环<br>
           边界能量99：完整阵屿</div>
-          <div class="lore en">A void realm, blocks form the frame, source fire ignites, enter the persisting world...<br>
-          The "Void Fifteen Worlds, Persisting Worlds" world uses the fishing pool from the author's save as the world spawn, and includes:<br>
-          Border Energy 00: Rainbow Beacon<br>
-          Border Energy 16: Sevenfold Ascending Stairway<br>
-          Border Energy 28: Spirit Emerald Auto Sorting Warehouse (84 sorting units + 4 cache layers + 16 block central hub)<br>
-          Border Energy 42: Ice Free Ring Treasure Fishing Pool<br>
-          Border Energy 90: Void Portal Micro Biome Outer Ring<br>
-          Border Energy 99: Complete Array Island</div>
+          <div class="lore en">Void Realms, Blocks become doorways, Primordial fire reveals, World Persists…<br>
+          A Void Fifteen Realms - Persisting Worlds world built around the fishing pool of the original Persisting Worlds author's save, which now serves as the world spawn. It includes:<br>
+          Border Energy 00: a Rainbow Beacon<br>
+          Border Energy 16: a Seven-tier Stairway to the Sky<br>
+          Border Energy 28: an auto-sorting warehouse for Spirit Emeralds (84 sorting cells + 4 cache tiers + 16-block proximity hub)<br>
+          Border Energy 42: a ring-shaped treasure fishing pool that never freezes<br>
+          Border Energy 90: an outer ring of micro-biomes for Void Portals<br>
+          Border Energy 99: the complete array island</div>
         
           <div class="meta">
             <div class="release portal zh">📅 2026-09-01 - 26.2</div>
@@ -1305,15 +1286,15 @@ li::marker{color:#d99a2e}
         </div>
       </article>
           <article class="map-card" data-order="2" data-group="1">
-        <div class="thumb"><img src="https://files.seeusercontent.com/2026/09/23/tJj4/a19fbb4.jpg" alt="虚无十五界-存世" loading="lazy"></div>
+        <div class="thumb"><img src="https://files.seeusercontent.com/2026/09/23/tJj4/a19fbb4.jpg" alt="Void Fifteen Realms - Persisting Worlds" loading="lazy"></div>
         <div class="map-body">
-          <h3>🔥 <span class="zh">虚无十五界 — 存世</span><span class="en">Void Fifteen Worlds — Persisting Worlds</span></h3>
+          <h3>🔥 <span class="zh">虚无十五界 — 存世</span><span class="en">Void Fifteen Realms — Persisting Worlds</span></h3>
           <div class="chips">
-            <span class="chip">🔆 <span class="zh">类型：六周年 — 虚空型</span><span class="en">Type: 6th Anniversary — Void Type</span></span>
+            <span class="chip">🔆 <span class="zh">类型：六周年 — 虚空型</span><span class="en">Type: 6th Anniversary — Void</span></span>
             <span class="chip diff">✨ <span class="zh">难度：🔥🔥🔥🔥🔥</span><span class="en">Difficulty: 🔥🔥🔥🔥🔥</span></span>
           </div>
           <div class="lore zh">境虚空无，块铸框扉，源火燃显，入界世存……</div>
-          <div class="lore en">A void realm, blocks form the frame, source fire ignites, enter the persisting world...</div>
+          <div class="lore en">Void Realms, Blocks become doorways, Primordial fire reveals, World Persists…</div>
         
           <div class="meta">
             <div class="release portal zh">📅 2026-06-23 - 26.2</div>
@@ -1322,30 +1303,31 @@ li::marker{color:#d99a2e}
         </div>
       </article>
           <article class="map-card" data-order="3" data-group="1">
-        <div class="thumb"><img src="https://files.seeusercontent.com/2026/06/26/C9dl/36aad17.jpg" alt="咒世永夜-夜屿苍园" loading="lazy"></div>
+        <div class="thumb"><img src="https://files.seeusercontent.com/2026/06/26/C9dl/36aad17.jpg" alt="Cursed Evernight World - Night Garden" loading="lazy"></div>
         <div class="map-body">
-          <h3>🌑 <span class="zh">咒世永夜 — 夜屿苍园</span><span class="en">Cursed Eternal Night — Night Garden</span></h3>
+          <h3>🌑 <span class="zh">咒世永夜 — 夜屿苍园</span><span class="en">Cursed Evernight World — Night Garden</span></h3>
           <div class="chips">
-            <span class="chip">🥥 <span class="zh">类型：五周年 — 浮屿型</span><span class="en">Type: 5th Anniversary — Floating Island Type</span></span>
+            <span class="chip">🥥 <span class="zh">类型：五周年 — 浮屿型</span><span class="en">Type: 5th Anniversary — Floating Island</span></span>
             <span class="chip diff">⚡ <span class="zh">难度：🌙🌙🌙🌙🌙🌙</span><span class="en">Difficulty: 🌙🌙🌙🌙🌙🌙</span></span>
           </div>
           <div class="lore zh">上苍失色之域，诅咒与永夜轮回……<br>与群魔共舞……与乱潮共生……</div>
-          <div class="lore en">A realm forsaken by the heavens, a cycle of curses and eternal night...<br>Dance with the demons... Live with the chaos...</div>
+          <div class="lore en">A realm where the heavens lose their color, where curses and the Evernight cycle…<br>
+          Dance with the monsters… live in symbiosis with the chaos…</div>
         
           <div class="meta">
             <div class="portal zh"><img class="gate-icon" src="https://minecraft.wiki/images/Pale_Moss_Block_JE1_BE1.png" alt="苍白苔藓块"> <strong>界门：</strong>苍白苔藓块</div>
-            <div class="portal en"><img class="gate-icon" src="https://minecraft.wiki/images/Pale_Moss_Block_JE1_BE1.png" alt="Pale Moss Block"> <strong>Portal:</strong> Pale Moss Block</div>
+            <div class="portal en"><img class="gate-icon" src="https://minecraft.wiki/images/Pale_Moss_Block_JE1_BE1.png" alt="Pale Moss Block"> <strong>Portal frame:</strong> Pale Moss Block</div>
             <div class="release portal zh">📅 2025-01-15 - 1.21.4</div>
             <div class="release portal en">📅 2025-01-15 - 1.21.4</div>
           </div>
         </div>
       </article>
           <article class="map-card" data-order="4" data-group="1">
-        <div class="thumb"><img src="https://files.seeusercontent.com/2026/06/26/zs8K/d40646d.jpg" alt="幽螈世界-繁茂洞穴" loading="lazy"></div>
+        <div class="thumb"><img src="https://files.seeusercontent.com/2026/06/26/zs8K/d40646d.jpg" alt="Gloom Axolotl World - Lush Caves" loading="lazy"></div>
         <div class="map-body">
-          <h3>🌿 <span class="zh">幽螈世界 — 繁茂洞穴</span><span class="en">Axolotl World — Lush Caves</span></h3>
+          <h3>🌿 <span class="zh">幽螈世界 — 繁茂洞穴</span><span class="en">Gloom Axolotl World — Lush Caves</span></h3>
           <div class="chips">
-            <span class="chip">🛖 <span class="zh">类型：四周年 — 洞穴型</span><span class="en">Type: 4th Anniversary — Cave Type</span></span>
+            <span class="chip">🛖 <span class="zh">类型：四周年 — 洞穴型</span><span class="en">Type: 4th Anniversary — Cave</span></span>
             <span class="chip diff">✨ <span class="zh">难度：🌿🌿🌿🌿🌿</span><span class="en">Difficulty: 🌿🌿🌿🌿🌿</span></span>
           </div>
           <div class="lore zh">传说，曾有一片美西螈的国度……<br>
@@ -1354,39 +1336,39 @@ li::marker{color:#d99a2e}
           它是繁茂壮丽的洞穴，它是贫瘠匮乏的世界……<br>
           它是幽暗无光的维度，亦是星光点缀的乐园……<br>
           ——某位神匠遗落的日记</div>
-          <div class="lore en">Legend speaks of a land of axolotls...<br>
-          Its flora was boundless, its darkness limitless...<br>
-          Its children danced in the pools, its monsters covered the hollow earth...<br>
-          It was a lush and magnificent cave, a barren and impoverished world...<br>
-          A dimension of deep darkness, yet a paradise dotted with starlight...<br>
-          —From a lost diary of a Divine Artificer</div>
+          <div class="lore en">Legend tells of a land of gloom axolotls…<br>
+          Its vegetation stretches on without end, its darkness is boundless…<br>
+          Its people dance in the pools, its monsters swarm the hollow earth…<br>
+          It is a lush, magnificent cave; it is a barren, threadbare world…<br>
+          It is a dim dimension, and a paradise dotted with starlight…<br>
+          —A diary left behind by a certain Chaos Smith</div>
         
           <div class="meta">
             <div class="portal zh"><img class="gate-icon" src="https://minecraft.wiki/images/Moss_Block_JE1_BE1.png" alt="苔藓块"> <strong>界门：</strong>苔藓块</div>
-            <div class="portal en"><img class="gate-icon" src="https://minecraft.wiki/images/Moss_Block_JE1_BE1.png" alt="Moss Block"> <strong>Portal:</strong> Moss Block</div>
+            <div class="portal en"><img class="gate-icon" src="https://minecraft.wiki/images/Moss_Block_JE1_BE1.png" alt="Moss Block"> <strong>Portal frame:</strong> Moss Block</div>
             <div class="release portal zh">📅 2024-08-17 - 1.21.1</div>
             <div class="release portal en">📅 2024-08-17 - 1.21.1</div>
           </div>
         </div>
       </article>
           <article class="map-card" data-order="5" data-group="1">
-        <div class="thumb"><img src="https://files.seeusercontent.com/2026/06/26/xfV3/29cb24f.jpg" alt="世外桃源-繁樱山谷" loading="lazy"></div>
+        <div class="thumb"><img src="https://files.seeusercontent.com/2026/06/26/xfV3/29cb24f.jpg" alt="Idyll Beyond World - Cherry Valley" loading="lazy"></div>
         <div class="map-body">
-          <h3>🌺 <span class="zh">世外桃源 — 繁樱山谷</span><span class="en">Hidden Paradise — Cherry Valley</span></h3>
+          <h3>🌺 <span class="zh">世外桃源 — 繁樱山谷</span><span class="en">Idyll Beyond World — Cherry Valley</span></h3>
           <div class="chips">
-            <span class="chip">🍀 <span class="zh">类型：三周年 — 原版型</span><span class="en">Type: 3rd Anniversary — Vanilla Type</span></span>
+            <span class="chip">🍀 <span class="zh">类型：三周年 — 原版型</span><span class="en">Type: 3rd Anniversary — Vanilla</span></span>
             <span class="chip diff">✨ <span class="zh">难度：🌸🌸</span><span class="en">Difficulty: 🌸🌸</span></span>
           </div>
           <div class="lore zh">曾经，有一位神匠被禁锢在一片繁樱山谷之中。<br>
           现在，当月夜降临，此地仍会产生无尽的乱潮。<br>
           但不同的是，维系者接管了此方地界的镇守……</div>
-          <div class="lore en">Once, a Divine Artificer was imprisoned in a cherry blossom valley.<br>
-          Now, when the moonlit night descends, endless chaos still arises here.<br>
-          But what's different is, the Sustainer has taken over the guard of this realm...</div>
+          <div class="lore en">Once, a Chaos Smith was trapped in a valley of cherry blossoms.<br>
+          Now, whenever the moon is high, endless chaos still rises here.<br>
+          What has changed is that the Sustainer has taken over the guardianship of this land…</div>
         
           <div class="meta">
             <div class="portal zh"><img class="gate-icon" src="https://minecraft.wiki/images/Cherry_Wood_%28UD%29_JE1_BE1.png" alt="樱花木"> <strong>界门：</strong>樱花木</div>
-            <div class="portal en"><img class="gate-icon" src="https://minecraft.wiki/images/Cherry_Wood_%28UD%29_JE1_BE1.png" alt="Cherry Wood"> <strong>Portal:</strong> Cherry Wood</div>
+            <div class="portal en"><img class="gate-icon" src="https://minecraft.wiki/images/Cherry_Wood_%28UD%29_JE1_BE1.png" alt="Cherry Wood"> <strong>Portal frame:</strong> Cherry Wood</div>
             <div class="release portal zh">📅 2024-02-09 - 1.20.4</div>
             <div class="release portal en">📅 2024-02-09 - 1.20.4</div>
           </div>
@@ -1398,15 +1380,15 @@ li::marker{color:#d99a2e}
         <h4 class="group-head">🏝️ <span class="zh">虚空型 · 洞穴型 · 浮屿型</span><span class="en">Void · Cave · Floating</span> <span class="chip">4</span></h4>
         <div class="map-grid">
           <article class="map-card" data-order="6" data-group="2">
-        <div class="thumb"><img src="https://files.seeusercontent.com/2026/06/26/3anO/da8f020.jpg" alt="虚无" loading="lazy"></div>
+        <div class="thumb"><img src="https://files.seeusercontent.com/2026/06/26/3anO/da8f020.jpg" alt="Void" loading="lazy"></div>
         <div class="map-body">
           <h3>⛅ <span class="zh">虚无</span><span class="en">Void</span></h3>
           <div class="chips">
-            <span class="chip">🔆 <span class="zh">类型：虚空型</span><span class="en">Type: Void Type</span></span>
+            <span class="chip">🔆 <span class="zh">类型：虚空型</span><span class="en">Type: Void</span></span>
             <span class="chip diff">⚡ <span class="zh">难度：🔆🔆🔆🔆🔆🔆</span><span class="en">Difficulty: 🔆🔆🔆🔆🔆🔆</span></span>
           </div>
           <div class="lore zh">主世界与下界皆为虚空的世界。<br><strong>建议在具有充裕时间、且熟知原版特性及核心特性的情况下尝试。</strong></div>
-          <div class="lore en">A world where both the Overworld and the Nether are void.<br><strong>Recommended to attempt only with ample time and thorough knowledge of vanilla and core features.</strong></div>
+          <div class="lore en">A world where both the Overworld and the Nether are void.<br><strong>Only attempt this if you have plenty of time and a solid grasp of both vanilla and core mechanics.</strong></div>
         
           <div class="meta">
             <div class="release portal zh">📅 2024-11-10 - 1.21.1</div>
@@ -1415,61 +1397,61 @@ li::marker{color:#d99a2e}
         </div>
       </article>
           <article class="map-card" data-order="7" data-group="2">
-        <div class="thumb"><img src="https://files.seeusercontent.com/2026/06/26/tH4c/f2bd16e.jpg" alt="彩绘洞天-硫黄洞穴" loading="lazy"></div>
+        <div class="thumb"><img src="https://files.seeusercontent.com/2026/06/26/tH4c/f2bd16e.jpg" alt="Painted Grotto - Sulfur Caves" loading="lazy"></div>
         <div class="map-body">
-          <h3>🦠 <span class="zh">彩绘洞天 — 硫黄洞穴</span><span class="en">Painted Caverns — Sulfur Caves</span></h3>
+          <h3>🦠 <span class="zh">彩绘洞天 — 硫黄洞穴</span><span class="en">Painted Grotto — Sulfur Caves</span></h3>
           <div class="chips">
-            <span class="chip">🛖 <span class="zh">类型：洞穴型</span><span class="en">Type: Cave Type</span></span>
+            <span class="chip">🛖 <span class="zh">类型：洞穴型</span><span class="en">Type: Cave</span></span>
             <span class="chip diff">✨ <span class="zh">难度：⭐⭐⭐⭐⭐</span><span class="en">Difficulty: ⭐⭐⭐⭐⭐</span></span>
           </div>
           <div class="lore zh">26.2主题世界，如上古画卷般的地下世界。</div>
-          <div class="lore en">26.2 themed world, an underground world like an ancient painted scroll.</div>
+          <div class="lore en">A 26.2-themed world: an underground realm like an ancient scroll painting.</div>
         
           <div class="meta">
             <div class="portal zh"><img class="gate-icon" src="https://minecraft.wiki/images/Chiseled_Sulfur_JE2_BE2.png" alt="雕纹硫黄"> <strong>界门：</strong>雕纹硫黄</div>
-            <div class="portal en"><img class="gate-icon" src="https://minecraft.wiki/images/Chiseled_Sulfur_JE2_BE2.png" alt="Chiseled Sulfur"> <strong>Portal:</strong> Chiseled Sulfur</div>
+            <div class="portal en"><img class="gate-icon" src="https://minecraft.wiki/images/Chiseled_Sulfur_JE2_BE2.png" alt="Chiseled Sulfur"> <strong>Portal frame:</strong> Chiseled Sulfur</div>
             <div class="release portal zh">📅 2026-06-23 - 26.2</div>
             <div class="release portal en">📅 2026-06-23 - 26.2</div>
           </div>
         </div>
       </article>
           <article class="map-card" data-order="8" data-group="2">
-        <div class="thumb"><img src="https://files.seeusercontent.com/2026/06/26/Ac4g/18eae77.jpg" alt="湖峦圣地-环杉屿" loading="lazy"></div>
+        <div class="thumb"><img src="https://files.seeusercontent.com/2026/06/26/Ac4g/18eae77.jpg" alt="Lakes Peaks Place - Spruce Floating Island" loading="lazy"></div>
         <div class="map-body">
-          <h3>🌳 <span class="zh">湖峦圣地 — 环杉屿</span><span class="en">Sacred Lake and Peaks — Spruce Floating Island</span></h3>
+          <h3>🌳 <span class="zh">湖峦圣地 — 环杉屿</span><span class="en">Lakes Peaks Place — Spruce Floating Island</span></h3>
           <div class="chips">
-            <span class="chip">🥥 <span class="zh">类型：浮屿型</span><span class="en">Type: Floating Island Type</span></span>
+            <span class="chip">🥥 <span class="zh">类型：浮屿型</span><span class="en">Type: Floating Island</span></span>
             <span class="chip diff">✨ <span class="zh">难度：⭐⭐⭐</span><span class="en">Difficulty: ⭐⭐⭐</span></span>
           </div>
           <div class="lore zh">群杉环绕的浮空孤屿，筑城者的圣地。<br>
           <strong>该世界地形由kinbee的<a href="https://modrinth.com/datapack/revamped-floating-islands">RevampedFloatingIslands</a>数据包生成！</strong></div>
-          <div class="lore en">A floating solitary island surrounded by spruce, a sacred ground for builders.<br>
-          <strong>This world's terrain was generated by kinbee's <a href="https://modrinth.com/datapack/revamped-floating-islands">RevampedFloatingIslands</a> datapack!</strong></div>
+          <div class="lore en">A floating isle ringed with spruces, a holy place for builders.<br>
+          <strong>This world's terrain is generated by kinbee's <a href="https://modrinth.com/datapack/revamped-floating-islands">RevampedFloatingIslands</a> datapack!</strong></div>
         
           <div class="meta">
             <div class="portal zh"><img class="gate-icon" src="https://minecraft.wiki/images/Spruce_Wood_%28UD%29_JE7_BE2.png" alt="云杉木"> <strong>界门：</strong>云杉木</div>
-            <div class="portal en"><img class="gate-icon" src="https://minecraft.wiki/images/Spruce_Wood_%28UD%29_JE7_BE2.png" alt="Spruce Wood"> <strong>Portal:</strong> Spruce Wood</div>
+            <div class="portal en"><img class="gate-icon" src="https://minecraft.wiki/images/Spruce_Wood_%28UD%29_JE7_BE2.png" alt="Spruce Wood"> <strong>Portal frame:</strong> Spruce Wood</div>
             <div class="release portal zh">📅 2025-12-18 - 1.21.10</div>
             <div class="release portal en">📅 2025-12-18 - 1.21.10</div>
           </div>
         </div>
       </article>
           <article class="map-card" data-order="9" data-group="2">
-        <div class="thumb"><img src="https://files.seeusercontent.com/2026/06/26/kJw5/5d446c5.jpg" alt="丰雨之境-繁茂森屿" loading="lazy"></div>
+        <div class="thumb"><img src="https://files.seeusercontent.com/2026/06/26/kJw5/5d446c5.jpg" alt="Abundant Rain Realm - Lush Floating Island" loading="lazy"></div>
         <div class="map-body">
-          <h3>🌿 <span class="zh">丰雨之境 — 繁茂森屿</span><span class="en">Land Abundant Rain — Lush Floating Island</span></h3>
+          <h3>🌿 <span class="zh">丰雨之境 — 繁茂森屿</span><span class="en">Abundant Rain Realm — Lush Floating Island</span></h3>
           <div class="chips">
-            <span class="chip">🥥 <span class="zh">类型：浮屿型</span><span class="en">Type: Floating Island Type</span></span>
+            <span class="chip">🥥 <span class="zh">类型：浮屿型</span><span class="en">Type: Floating Island</span></span>
             <span class="chip diff">✨ <span class="zh">难度：⭐⭐⭐</span><span class="en">Difficulty: ⭐⭐⭐</span></span>
           </div>
           <div class="lore zh">位于巨大繁茂浮屿上的雨林孤屿。<br>
           <strong>该世界地形由kinbee的<a href="https://modrinth.com/datapack/revamped-floating-islands">RevampedFloatingIslands</a>数据包生成！</strong></div>
-          <div class="lore en">A rainforest island atop a massive lush floating island.<br>
-          <strong>This world's terrain was generated by kinbee's <a href="https://modrinth.com/datapack/revamped-floating-islands">RevampedFloatingIslands</a> datapack!</strong></div>
+          <div class="lore en">A jungle isle sitting on a giant lush floating island.<br>
+          <strong>This world's terrain is generated by kinbee's <a href="https://modrinth.com/datapack/revamped-floating-islands">RevampedFloatingIslands</a> datapack!</strong></div>
         
           <div class="meta">
             <div class="portal zh"><img class="gate-icon" src="https://minecraft.wiki/images/Clay_JE2_BE2.png" alt="黏土块"> <strong>界门：</strong>黏土块</div>
-            <div class="portal en"><img class="gate-icon" src="https://minecraft.wiki/images/Clay_JE2_BE2.png" alt="Clay"> <strong>Portal:</strong> Clay</div>
+            <div class="portal en"><img class="gate-icon" src="https://minecraft.wiki/images/Clay_JE2_BE2.png" alt="Clay"> <strong>Portal frame:</strong> Clay</div>
             <div class="release portal zh">📅 2025-12-18 - 1.21.10</div>
             <div class="release portal en">📅 2025-12-18 - 1.21.10</div>
           </div>
@@ -1481,156 +1463,157 @@ li::marker{color:#d99a2e}
         <h4 class="group-head">🌿 <span class="zh">放大化 · 原版型</span><span class="en">Amplified · Vanilla</span> <span class="chip">8</span></h4>
         <div class="map-grid">
           <article class="map-card" data-order="10" data-group="3">
-        <div class="thumb"><img src="https://files.seeusercontent.com/2026/06/26/A6im/9e53fe7.jpg" alt="极冰之域-凛冰域脉" loading="lazy"></div>
+        <div class="thumb"><img src="https://files.seeusercontent.com/2026/06/26/A6im/9e53fe7.jpg" alt="Extreme Ice Realm - Frozen Icebergs" loading="lazy"></div>
         <div class="map-body">
-          <h3>🧊 <span class="zh">极冰之域 — 凛冰域脉</span><span class="en">Realm Extreme Ice — Frozen Icebergs</span></h3>
+          <h3>🧊 <span class="zh">极冰之域 — 凛冰域脉</span><span class="en">Extreme Ice Realm — Frozen Icebergs</span></h3>
           <div class="chips">
             <span class="chip">💠 <span class="zh">类型：放大化</span><span class="en">Type: Amplified</span></span>
             <span class="chip diff">✨ <span class="zh">难度：⭐⭐⭐⭐</span><span class="en">Difficulty: ⭐⭐⭐⭐</span></span>
           </div>
           <div class="lore zh">极寒的地域，高耸入云的山峰。<br>破顶的冰锥，无垠冰封的冻洋。</div>
-          <div class="lore en">An extremely cold region with towering mountain peaks.<br>Ceiling-piercing ice spikes, a boundless frozen ocean.</div>
+          <div class="lore en">A frozen land, and peaks that pierce the clouds.<br>
+          Ice spires breaking the surface, an ocean sealed to every horizon.</div>
         
           <div class="meta">
             <div class="portal zh"><img class="gate-icon" src="https://minecraft.wiki/images/Blue_Ice_JE1.png" alt="蓝冰"> <strong>界门：</strong>蓝冰</div>
-            <div class="portal en"><img class="gate-icon" src="https://minecraft.wiki/images/Blue_Ice_JE1.png" alt="Blue Ice"> <strong>Portal:</strong> Blue Ice</div>
+            <div class="portal en"><img class="gate-icon" src="https://minecraft.wiki/images/Blue_Ice_JE1.png" alt="Blue Ice"> <strong>Portal frame:</strong> Blue Ice</div>
             <div class="release portal zh">📅 2024-04-24 - 1.20.4</div>
             <div class="release portal en">📅 2024-04-24 - 1.20.4</div>
           </div>
         </div>
       </article>
           <article class="map-card" data-order="11" data-group="3">
-        <div class="thumb"><img src="https://files.seeusercontent.com/2026/06/26/eI5s/0d02daf.jpg" alt="珊雨竹陆-雨林海岛" loading="lazy"></div>
+        <div class="thumb"><img src="https://files.seeusercontent.com/2026/06/26/eI5s/0d02daf.jpg" alt="Coral Rain Bamboo Land - Jungle Island" loading="lazy"></div>
         <div class="map-body">
           <h3>🌴 <span class="zh">珊雨竹陆 — 雨林海岛</span><span class="en">Coral Rain Bamboo Land — Jungle Island</span></h3>
           <div class="chips">
-            <span class="chip">🍀 <span class="zh">类型：原版型</span><span class="en">Type: Vanilla Type</span></span>
+            <span class="chip">🍀 <span class="zh">类型：原版型</span><span class="en">Type: Vanilla</span></span>
             <span class="chip diff">✨ <span class="zh">难度：⭐⭐⭐</span><span class="en">Difficulty: ⭐⭐⭐</span></span>
           </div>
           <div class="lore zh">含有珊瑚海、雨林、竹林的岛屿。</div>
-          <div class="lore en">An island containing a coral sea, rainforest, and bamboo forest.</div>
+          <div class="lore en">An island of coral seas, jungles, and bamboo groves.</div>
         
           <div class="meta">
             <div class="portal zh"><img class="gate-icon" src="https://minecraft.wiki/images/Jungle_Wood_%28UD%29_JE6_BE2.png" alt="丛林木"> <strong>界门：</strong>丛林木</div>
-            <div class="portal en"><img class="gate-icon" src="https://minecraft.wiki/images/Jungle_Wood_%28UD%29_JE6_BE2.png" alt="Jungle Wood"> <strong>Portal:</strong> Jungle Wood</div>
+            <div class="portal en"><img class="gate-icon" src="https://minecraft.wiki/images/Jungle_Wood_%28UD%29_JE6_BE2.png" alt="Jungle Wood"> <strong>Portal frame:</strong> Jungle Wood</div>
             <div class="release portal zh">📅 2025-02-02 - 1.21.4</div>
             <div class="release portal en">📅 2025-02-02 - 1.21.4</div>
           </div>
         </div>
       </article>
           <article class="map-card" data-order="12" data-group="3">
-        <div class="thumb"><img src="https://files.seeusercontent.com/2026/09/21/hI4w/2026-09-21_1638.jpg" alt="坠日峡森-斑驳山谷" loading="lazy"></div>
+        <div class="thumb"><img src="https://files.seeusercontent.com/2026/09/21/hI4w/2026-09-21_1638.jpg" alt="Sunfall Gorge Forest - Dappled Valley" loading="lazy"></div>
         <div class="map-body">
-          <h3>🍁 <span class="zh">坠日峡森 — 斑驳山谷</span><span class="en">Sunset Gorge — Dappled Valley</span></h3>
+          <h3>🍁 <span class="zh">坠日峡森 — 斑驳山谷</span><span class="en">Sunfall Gorge Forest — Dappled Valley</span></h3>
           <div class="chips">
-            <span class="chip">🍀 <span class="zh">类型：原版型</span><span class="en">Type: Vanilla Type</span></span>
+            <span class="chip">🍀 <span class="zh">类型：原版型</span><span class="en">Type: Vanilla</span></span>
             <span class="chip diff">✨ <span class="zh">难度：⭐⭐</span><span class="en">Difficulty: ⭐⭐</span></span>
           </div>
           <div class="lore zh">26.3主题世界，一方包含斑驳森林与樱花树林的盆地世界。</div>
-          <div class="lore en">26.3 themed world, a basin world containing a dappled forest and a cherry blossom grove.</div>
+          <div class="lore en">A 26.3-themed world: a basin holding both a Dappled Forest and a Cherry Grove.</div>
         
           <div class="meta">
             <div class="portal zh"><img class="gate-icon" src="https://minecraft.wiki/images/Poplar_Wood_%28UD%29_JE1.png" alt="杨木"> <strong>界门：</strong>杨木</div>
-            <div class="portal en"><img class="gate-icon" src="https://minecraft.wiki/images/Poplar_Wood_%28UD%29_JE1.png" alt="Poplar Wood"> <strong>Portal:</strong> Poplar Wood</div>
+            <div class="portal en"><img class="gate-icon" src="https://minecraft.wiki/images/Poplar_Wood_%28UD%29_JE1.png" alt="Poplar Wood"> <strong>Portal frame:</strong> Poplar Wood</div>
             <div class="release portal zh">📅 2026-09-25 - 26.3</div>
             <div class="release portal en">📅 2026-09-25 - 26.3</div>
           </div>
         </div>
       </article>
           <article class="map-card" data-order="13" data-group="3">
-        <div class="thumb"><img src="https://files.seeusercontent.com/2026/06/26/oH8i/dd7d1bf.jpg" alt="泽中净土-环沼草原" loading="lazy"></div>
+        <div class="thumb"><img src="https://files.seeusercontent.com/2026/06/26/oH8i/dd7d1bf.jpg" alt="Savanna In Swamp - Swamp Savanna" loading="lazy"></div>
         <div class="map-body">
-          <h3>🌿 <span class="zh">泽中净土 — 环沼草原</span><span class="en">Pure Land Marsh — Marsh Savanna</span></h3>
+          <h3>🌿 <span class="zh">泽中净土 — 环沼草原</span><span class="en">Savanna In Swamp — Swamp Savanna</span></h3>
           <div class="chips">
-            <span class="chip">🍀 <span class="zh">类型：原版型</span><span class="en">Type: Vanilla Type</span></span>
+            <span class="chip">🍀 <span class="zh">类型：原版型</span><span class="en">Type: Vanilla</span></span>
             <span class="chip diff">✨ <span class="zh">难度：⭐⭐</span><span class="en">Difficulty: ⭐⭐</span></span>
           </div>
           <div class="lore zh">1.19主题世界，环绕着红树林沼泽的金合欢平原与平原村庄。</div>
-          <div class="lore en">1.19 themed world, an acacia plains and plains village surrounded by a mangrove swamp.</div>
+          <div class="lore en">A 1.19-themed world: Acacia Plains and Plains Villages ringed by Mangrove Swamp.</div>
         
           <div class="meta">
             <div class="portal zh"><img class="gate-icon" src="https://minecraft.wiki/images/Mud_JE1_BE1.png" alt="泥巴"> <strong>界门：</strong>泥巴</div>
-            <div class="portal en"><img class="gate-icon" src="https://minecraft.wiki/images/Mud_JE1_BE1.png" alt="Mud"> <strong>Portal:</strong> Mud</div>
+            <div class="portal en"><img class="gate-icon" src="https://minecraft.wiki/images/Mud_JE1_BE1.png" alt="Mud"> <strong>Portal frame:</strong> Mud</div>
             <div class="release portal zh">📅 2022-06-18 - 1.19</div>
             <div class="release portal en">📅 2022-06-18 - 1.19</div>
           </div>
         </div>
       </article>
           <article class="map-card" data-order="14" data-group="3">
-        <div class="thumb"><img src="https://files.seeusercontent.com/2026/06/26/hlC8/d4ae6bd.jpg" alt="落谷森池-苍翠林湖" loading="lazy"></div>
+        <div class="thumb"><img src="https://files.seeusercontent.com/2026/06/26/hlC8/d4ae6bd.jpg" alt="Hollow Forest Pool - Verdant Lake" loading="lazy"></div>
         <div class="map-body">
-          <h3>🪵 <span class="zh">落谷森池 — 苍翠林湖</span><span class="en">Valley Forest Lake — Verdant Lake</span></h3>
+          <h3>🪵 <span class="zh">落谷森池 — 苍翠林湖</span><span class="en">Hollow Forest Pool — Verdant Lake</span></h3>
           <div class="chips">
-            <span class="chip">🍀 <span class="zh">类型：原版型</span><span class="en">Type: Vanilla Type</span></span>
+            <span class="chip">🍀 <span class="zh">类型：原版型</span><span class="en">Type: Vanilla</span></span>
             <span class="chip diff">✨ <span class="zh">难度：⭐⭐</span><span class="en">Difficulty: ⭐⭐</span></span>
           </div>
           <div class="lore zh">1.20主题世界，围绕着陡峭山峰的樱花森林与平原心湖。</div>
-          <div class="lore en">1.20 themed world, a cherry blossom forest and a plains heart lake surrounded by steep mountains.</div>
+          <div class="lore en">A 1.20-themed world: a Cherry forest and a heart-shaped Plains lake ringed by steep peaks.</div>
         
           <div class="meta">
             <div class="portal zh"><img class="gate-icon" src="https://minecraft.wiki/images/Oak_Wood_%28UD%29_JE7_BE2.png" alt="橡木"> <strong>界门：</strong>橡木</div>
-            <div class="portal en"><img class="gate-icon" src="https://minecraft.wiki/images/Oak_Wood_%28UD%29_JE7_BE2.png" alt="Oak Wood"> <strong>Portal:</strong> Oak Wood</div>
+            <div class="portal en"><img class="gate-icon" src="https://minecraft.wiki/images/Oak_Wood_%28UD%29_JE7_BE2.png" alt="Oak Wood"> <strong>Portal frame:</strong> Oak Wood</div>
             <div class="release portal zh">📅 2025-12-21 - 1.21.10</div>
             <div class="release portal en">📅 2025-12-21 - 1.21.10</div>
           </div>
         </div>
       </article>
           <article class="map-card" data-order="15" data-group="3">
-        <div class="thumb"><img src="https://files.seeusercontent.com/2026/06/26/zy4Q/db372d6.jpg" alt="山巅繁樱-樱花平原" loading="lazy"></div>
+        <div class="thumb"><img src="https://files.seeusercontent.com/2026/06/26/zy4Q/db372d6.jpg" alt="Summit Cherry Blossoms - Cherry Plain" loading="lazy"></div>
         <div class="map-body">
-          <h3>🌸 <span class="zh">山巅繁樱 — 樱花平原</span><span class="en">Summit Cherry Blossom — Cherry Plain</span></h3>
+          <h3>🌸 <span class="zh">山巅繁樱 — 樱花平原</span><span class="en">Summit Cherry Blossoms — Cherry Plain</span></h3>
           <div class="chips">
-            <span class="chip">🍀 <span class="zh">类型：原版型</span><span class="en">Type: Vanilla Type</span></span>
+            <span class="chip">🍀 <span class="zh">类型：原版型</span><span class="en">Type: Vanilla</span></span>
             <span class="chip diff">✨ <span class="zh">难度：⭐⭐</span><span class="en">Difficulty: ⭐⭐</span></span>
           </div>
           <div class="lore zh">1.20主题世界，围绕着陡峭山峰的樱花森林。</div>
-          <div class="lore en">1.20 themed world, a cherry blossom forest surrounded by steep mountains.</div>
+          <div class="lore en">A 1.20-themed world: a Cherry forest ringed by steep peaks.</div>
         
           <div class="meta">
             <div class="portal zh"><img class="gate-icon" src="https://minecraft.wiki/images/Cherry_Log_%28UD%29_JE1_BE1.png" alt="樱花原木"> <strong>界门：</strong>樱花原木</div>
-            <div class="portal en"><img class="gate-icon" src="https://minecraft.wiki/images/Cherry_Log_%28UD%29_JE1_BE1.png" alt="Cherry Log"> <strong>Portal:</strong> Cherry Log</div>
+            <div class="portal en"><img class="gate-icon" src="https://minecraft.wiki/images/Cherry_Log_%28UD%29_JE1_BE1.png" alt="Cherry Log"> <strong>Portal frame:</strong> Cherry Log</div>
             <div class="release portal zh">📅 2024-01-29 - 1.20.4</div>
             <div class="release portal en">📅 2024-01-29 - 1.20.4</div>
           </div>
         </div>
       </article>
           <article class="map-card" data-order="16" data-group="3">
-        <div class="thumb"><img src="https://files.seeusercontent.com/2026/06/26/gu3P/eb05458.jpg" alt="岸海三栖-沿海集落" loading="lazy"></div>
+        <div class="thumb"><img src="https://files.seeusercontent.com/2026/06/26/gu3P/eb05458.jpg" alt="Three Shores Biome - Coastal Settlement" loading="lazy"></div>
         <div class="map-body">
-          <h3>🌵 <span class="zh">岸海三栖 — 沿海集落</span><span class="en">Triphibious Coast — Coastal Settlement</span></h3>
+          <h3>🌵 <span class="zh">岸海三栖 — 沿海集落</span><span class="en">Three Shores Biome — Coastal Settlement</span></h3>
           <div class="chips">
-            <span class="chip">🍀 <span class="zh">类型：原版型</span><span class="en">Type: Vanilla Type</span></span>
+            <span class="chip">🍀 <span class="zh">类型：原版型</span><span class="en">Type: Vanilla</span></span>
             <span class="chip diff">✨ <span class="zh">难度：⭐</span><span class="en">Difficulty: ⭐</span></span>
           </div>
           <div class="lore zh">环绕三种群系的海岸之上，存在着一个十分热闹的海上集镇。<br>
           珊瑚海群系，适合喜欢靠海、海底建筑的玩家。<br>
           该系列第一个世界《海岛村庄》的纪念作品。</div>
-          <div class="lore en">On a coast surrounded by three biomes, there exists a very lively seaside settlement.<br>
-          Coral Sea biome, suitable for players who like coastal and underwater building.<br>
-          A commemorative work for the series' first world, "Island Village".</div>
+          <div class="lore en">Above a coast spanning three biomes sits a lively seaside town.<br>
+          A coral sea biome — good for players who love the sea and building underwater.<br>
+          A memorial piece for this series' very first world, Island Village.</div>
         
           <div class="meta">
             <div class="portal zh"><img class="gate-icon" src="https://minecraft.wiki/images/Smooth_Sandstone_JE7_BE2.png" alt="平滑砂岩"> <strong>界门：</strong>平滑砂岩</div>
-            <div class="portal en"><img class="gate-icon" src="https://minecraft.wiki/images/Smooth_Sandstone_JE7_BE2.png" alt="Smooth Sandstone"> <strong>Portal:</strong> Smooth Sandstone</div>
+            <div class="portal en"><img class="gate-icon" src="https://minecraft.wiki/images/Smooth_Sandstone_JE7_BE2.png" alt="Smooth Sandstone"> <strong>Portal frame:</strong> Smooth Sandstone</div>
             <div class="release portal zh">📅 2024-02-03 - 1.20.4</div>
             <div class="release portal en">📅 2024-02-03 - 1.20.4</div>
           </div>
         </div>
       </article>
           <article class="map-card" data-order="17" data-group="3">
-        <div class="thumb"><img src="https://files.seeusercontent.com/2026/09/21/5bMo/fa88de3.jpg" alt="启航之地-海岛村庄" loading="lazy"></div>
+        <div class="thumb"><img src="https://files.seeusercontent.com/2026/09/21/5bMo/fa88de3.jpg" alt="Departure Land - Island Village" loading="lazy"></div>
         <div class="map-body">
-          <h3>🔱 <span class="zh">启航之地 — 海岛村庄</span><span class="en">Departure Point — Island Village</span></h3>
+          <h3>🔱 <span class="zh">启航之地 — 海岛村庄</span><span class="en">Departure Land — Island Village</span></h3>
           <div class="chips">
-            <span class="chip">🍀 <span class="zh">类型：原版型</span><span class="en">Type: Vanilla Type</span></span>
+            <span class="chip">🍀 <span class="zh">类型：原版型</span><span class="en">Type: Vanilla</span></span>
             <span class="chip diff">✨ <span class="zh">难度：⭐</span><span class="en">Difficulty: ⭐</span></span>
           </div>
           <div class="lore zh">“梦，重新开始的地方”</div>
-          <div class="lore en">"Where the dream begins anew."</div>
+          <div class="lore en">"A dream, and the place to start over."</div>
         
           <div class="meta">
             <div class="portal zh"><img class="gate-icon" src="https://minecraft.wiki/images/Poplar_Log_%28UD%29_JE2.png" alt="杨木原木"> <strong>界门：</strong>杨木原木</div>
-            <div class="portal en"><img class="gate-icon" src="https://minecraft.wiki/images/Poplar_Log_%28UD%29_JE2.png" alt="Poplar Log"> <strong>Portal:</strong> Poplar Log</div>
+            <div class="portal en"><img class="gate-icon" src="https://minecraft.wiki/images/Poplar_Log_%28UD%29_JE2.png" alt="Poplar Log"> <strong>Portal frame:</strong> Poplar Log</div>
             <div class="release portal zh">📅 2026-09-25 - 26.3</div>
             <div class="release portal en">📅 2026-09-25 - 26.3</div>
           </div>
@@ -1642,7 +1625,7 @@ li::marker{color:#d99a2e}
   </section>
 
   <section class="card" id="rules">
-    <h2>📕 <span class="zh">游戏规则</span><span class="en">Gamerules</span></h2>
+    <h2>📕 <span class="zh">游戏规则</span><span class="en">Game Rules</span></h2>
     <div class="zh">
       <div class="note warn">❗ <strong>即使开启死亡不掉落，死亡后也会掉落经验。</strong></div>
       <div class="note warn">❗ <strong>即使开启死亡不掉落，消失诅咒也会生效。</strong></div>
@@ -1657,61 +1640,61 @@ li::marker{color:#d99a2e}
       <div class="note ok">✅ 若需要阻止玩家踩坏耕地，推荐使用以下指令：<br><code>/gamerule farmland_player_griefing false</code></div>
     </div>
     <div class="en">
-      <div class="note warn">❗ <strong>Even with keepInventory enabled, experience is still dropped on death.</strong></div>
-      <div class="note warn">❗ <strong>Even with keepInventory enabled, the Curse of Vanishing still takes effect.</strong></div>
-      <div class="note">❌ The vanilla <code>/gamerule mob_griefing false</code> command is commonly used for anti-griefing, but it prevents villagers from picking up food, piglins from picking up gold, and monsters from picking up armor/tools.</div>
-      <div class="note">The rules below can also be quickly enabled or disabled: <strong>ESC->World Options->Edit Game Rules->search "Allow"->Mobs</strong>.</div>
-      <div class="note ok">✅ If you need anti-griefing against Creepers, we recommend using the following command:<br><code>/gamerule creeper_griefing false</code></div>
-      <div class="note ok">✅ If you need to stop Endermen from moving blocks, we recommend using the following command:<br><code>/gamerule endman_griefing false</code></div>
-      <div class="note ok">✅ If you need to stop Zombies from breaking doors, we recommend using the following command:<br><code>/gamerule zombie_griefing false</code></div>
-      <div class="note ok">✅ If you need anti-griefing against Ghast fireballs, we recommend using the following command:<br><code>/gamerule ghast_griefing false</code></div>
-      <div class="note ok">✅ If you need to stop Ravagers from destroying blocks, we recommend using the following command:<br><code>/gamerule ravager_griefing false</code></div>
-      <div class="note ok">✅ If you need to stop mobs from trampling farmland, we recommend using the following command:<br><code>/gamerule farmland_griefing false</code></div>
-      <div class="note ok">✅ If you need to stop players from trampling farmland, we recommend using the following command:<br><code>/gamerule farmland_player_griefing false</code></div>
+      <div class="note warn">❗ <strong>Experience drops on death even with Keep Inventory on.</strong></div>
+      <div class="note warn">❗ <strong>Curse of Vanishing still applies even with Keep Inventory on.</strong></div>
+      <div class="note">❌ The vanilla <code>/gamerule mob_griefing false</code> command is often used to stop Creepers from blowing holes, but it also stops villagers from picking up food, Piglins from picking up gold ingots, and mobs from picking up armor and tools.</div>
+      <div class="note">You can also toggle every rule below quickly: <strong>ESC -> World Options -> Edit Game Rules -> search "Allow" -> Mobs</strong>.</div>
+      <div class="note ok">✅ To stop Creepers from blowing blocks up:<br><code>/gamerule creeper_griefing false</code></div>
+      <div class="note ok">✅ To stop Endermen from picking up blocks:<br><code>/gamerule endman_griefing false</code></div>
+      <div class="note ok">✅ To stop Zombies from breaking doors:<br><code>/gamerule zombie_griefing false</code></div>
+      <div class="note ok">✅ To stop Ghasts from wrecking terrain with fireballs:<br><code>/gamerule ghast_griefing false</code></div>
+      <div class="note ok">✅ To stop Ravagers from destroying blocks:<br><code>/gamerule ravager_griefing false</code></div>
+      <div class="note ok">✅ To stop mobs from trampling farmland:<br><code>/gamerule farmland_griefing false</code></div>
+      <div class="note ok">✅ To stop players from trampling farmland:<br><code>/gamerule farmland_player_griefing false</code></div>
     </div>
   </section>
 
   <section class="card" id="hotkeys">
-    <h2>🎓 <span class="zh">辅助模组快捷键</span><span class="en">Hotkeys</span></h2>
-    <p><strong class="zh">在整合包中为部分模组的功能进行了快捷键配置：</strong><strong class="en">Keybind configurations for some mod features within the modpack:</strong></p>
+    <h2>🎓 <span class="zh">辅助模组快捷键</span><span class="en">Helper Mod Keybinds</span></h2>
+    <p><strong class="zh">在整合包中为部分模组的功能进行了快捷键配置：</strong><strong class="en">The modpack binds keys to a few mod features:</strong></p>
     <div class="tablewrap">
       <table class="grid">
         <thead>
           <tr>
-            <th><span class="zh">快捷键</span><span class="en">Hotkey</span></th>
-            <th><span class="zh">功能</span><span class="en">Function</span></th>
+            <th><span class="zh">快捷键</span><span class="en">Keybind</span></th>
+            <th><span class="zh">功能</span><span class="en">Action</span></th>
           </tr>
         </thead>
         <tbody>
-          <tr><td><strong class="zh">鼠标右键</strong><strong class="en">Right-Click</strong> <span class="zh">点击村民交易项</span><span class="en">on a villager trade</span></td><td><span class="zh">一键交易</span><span class="en">One-click trade</span></td></tr>
-          <tr><td><strong class="zh">鼠标中键</strong><strong class="en">Middle-Click</strong> <span class="zh">点击村民交易项</span><span class="en">on a villager trade</span></td><td><span class="zh">置顶交易</span><span class="en">Pin trade to top</span></td></tr>
-          <tr><td><strong>R</strong></td><td><span class="zh">整理背包/箱子 (需将鼠标放在物品上)</span><span class="en">Sort inventory/chest (mouse must be over an item)</span></td></tr>
+          <tr><td><strong class="zh">鼠标右键</strong><strong class="en">Right-click</strong> <span class="zh">点击村民交易项</span><span class="en">a villager trade offer</span></td><td><span class="zh">一键交易</span><span class="en">Trade all at once</span></td></tr>
+          <tr><td><strong class="zh">鼠标中键</strong><strong class="en">Middle-click</strong> <span class="zh">点击村民交易项</span><span class="en">a villager trade offer</span></td><td><span class="zh">置顶交易</span><span class="en">Pin the trade</span></td></tr>
+          <tr><td><strong>R</strong></td><td><span class="zh">整理背包/箱子 (需将鼠标放在物品上)</span><span class="en">Sort inventory / chest (hover an item first)</span></td></tr>
           <tr><td><strong>Shift</strong></td><td><span class="zh">预览潜影盒内容</span><span class="en">Preview Shulker Box contents</span></td></tr>
-          <tr><td><strong>G, J, ↑, ↓, ←, →</strong></td><td><span class="zh">调整 Gamma、夜视值</span><span class="en">Adjust Gamma / Night Vision values</span></td></tr>
-          <tr><td><strong>F6</strong></td><td><span class="zh">开启摄像机模式 (Tweakeroo灵魂出窍)</span><span class="en">Activate Free Camera mode (Tweakeroo Soul Out)</span></td></tr>
-          <tr><td><strong>F7</strong></td><td><span class="zh">显示光照等级</span><span class="en">Show light level overlay</span></td></tr>
-          <tr><td><strong>F8</strong></td><td><span class="zh">查看史莱姆区块 (需先用 <code>/seed</code> 为 Minihud 绑定世界种子)</span><span class="en">View Slime Chunks (Must first bind world seed for Minihud via <code>/seed</code>)</span></td></tr>
-          <tr><td><strong>F9</strong></td><td><span class="zh">查看结构区块</span><span class="en">View Structure Bounds</span></td></tr>
-          <tr><td><strong>B</strong></td><td><span class="zh">查看群系边界</span><span class="en">View Biome Borders</span></td></tr>
-          <tr><td><strong>[</strong></td><td><span class="zh">开关灵活放置方块</span><span class="en">Toggle Flexible Block Placement</span></td></tr>
-          <tr><td><strong>]</strong></td><td><span class="zh">开关方块快速放置</span><span class="en">Toggle Fast Block Placement</span></td></tr>
-          <tr><td><strong class="zh">右 Shift</strong><strong class="en">Right Shift</strong></td><td><span class="zh">开关伪潜行</span><span class="en">Toggle Pseudo-Sneak</span></td></tr>
-          <tr><td><strong class="zh">滑动滚轮</strong><strong class="en">Scroll Wheel</strong></td><td><span class="zh">移动单个物品</span><span class="en">Move individual items</span></td></tr>
-          <tr><td><strong class="zh">Shift + 左键</strong><strong class="en">Shift + Left-Click</strong></td><td><span class="zh">移动一组物品</span><span class="en">Move a stack of items</span></td></tr>
-          <tr><td><strong class="zh">Shift + 左键按住 + 拖动鼠标</strong><strong class="en">Shift + Left-Click hold + Drag</strong></td><td><span class="zh">快速移动多组物品</span><span class="en">Quickly move multiple stacks</span></td></tr>
-          <tr><td><strong class="zh">Shift + 左键按住 + 拖动鼠标 + Q</strong><strong class="en">Shift + Left-Click hold + Drag + Q</strong></td><td><span class="zh">快速丢出多组物品</span><span class="en">Quickly drop multiple stacks</span></td></tr>
-          <tr><td><strong class="zh">Alt + 左键</strong><strong class="en">Alt + Left-Click</strong></td><td><span class="zh">移动所有相同物品</span><span class="en">Move all identical items</span></td></tr>
-          <tr><td><strong class="zh">Shift + Alt + 左键</strong><strong class="en">Shift + Alt + Left-Click</strong></td><td><span class="zh">移动所有物品</span><span class="en">Move all items</span></td></tr>
+          <tr><td><strong>G, J, ↑, ↓, ←, →</strong></td><td><span class="zh">调整 Gamma、夜视值</span><span class="en">Adjust gamma and night vision</span></td></tr>
+          <tr><td><strong>F6</strong></td><td><span class="zh">开启摄像机模式 (Tweakeroo灵魂出窍)</span><span class="en">Toggle camera mode (Tweakeroo)</span></td></tr>
+          <tr><td><strong>F7</strong></td><td><span class="zh">显示光照等级</span><span class="en">Show light levels</span></td></tr>
+          <tr><td><strong>F8</strong></td><td><span class="zh">查看史莱姆区块 (需先用 <code>/seed</code> 为 Minihud 绑定世界种子)</span><span class="en">Show Slime Chunks (bind the world seed to Minihud with <code>/seed</code> first)</span></td></tr>
+          <tr><td><strong>F9</strong></td><td><span class="zh">查看结构区块</span><span class="en">Show chunk borders</span></td></tr>
+          <tr><td><strong>B</strong></td><td><span class="zh">查看群系边界</span><span class="en">Show biome borders</span></td></tr>
+          <tr><td><strong>[</strong></td><td><span class="zh">开关灵活放置方块</span><span class="en">Toggle flexible block placement</span></td></tr>
+          <tr><td><strong>]</strong></td><td><span class="zh">开关方块快速放置</span><span class="en">Toggle fast block placement</span></td></tr>
+          <tr><td><strong class="zh">右 Shift</strong><strong class="en">Right Shift</strong></td><td><span class="zh">开关伪潜行</span><span class="en">Toggle fake sneak</span></td></tr>
+          <tr><td><strong class="zh">滑动滚轮</strong><strong class="en">Scroll wheel</strong></td><td><span class="zh">移动单个物品</span><span class="en">Move one item</span></td></tr>
+          <tr><td><strong class="zh">Shift + 左键</strong><strong class="en">Shift + Left-click</strong></td><td><span class="zh">移动一组物品</span><span class="en">Move a stack</span></td></tr>
+          <tr><td><strong class="zh">Shift + 左键按住 + 拖动鼠标</strong><strong class="en">Hold Shift + Left-click + drag the mouse</strong></td><td><span class="zh">快速移动多组物品</span><span class="en">Move several stacks at once</span></td></tr>
+          <tr><td><strong class="zh">Shift + 左键按住 + 拖动鼠标 + Q</strong><strong class="en">Hold Shift + Left-click + drag the mouse + Q</strong></td><td><span class="zh">快速丢出多组物品</span><span class="en">Drop several stacks at once</span></td></tr>
+          <tr><td><strong class="zh">Alt + 左键</strong><strong class="en">Alt + Left-click</strong></td><td><span class="zh">移动所有相同物品</span><span class="en">Move every matching item</span></td></tr>
+          <tr><td><strong class="zh">Shift + Alt + 左键</strong><strong class="en">Shift + Alt + Left-click</strong></td><td><span class="zh">移动所有物品</span><span class="en">Move everything</span></td></tr>
         </tbody>
       </table>
     </div>
   </section>
   <section class="card" id="upgrades">
     <h2>📚 <span class="zh">存档升级</span><span class="en">Save Upgrades</span></h2>
-    <div class="note danger"><strong class="zh">❌ 已停止维护的世界不可进行升级：雷海迷航、雪藏遗城、丰林森屿、棘府洞天。</strong><strong class="en">❌ Worlds no longer maintained cannot be upgraded: Thunderous Sea Voyage, Snowbound Ruined City, Abundant Forest Isle, Thorn Palace Cave.</strong></div>
+    <div class="note danger"><strong class="zh">❌ 已停止维护的世界不可进行升级：雷海迷航、雪藏遗城、丰林森屿、棘府洞天。</strong><strong class="en">❌ Worlds that are no longer maintained cannot be upgraded: Lost at Sea, Snowbound Ruins, Lush Forest Island, and Thorn Hollow.</strong></div>
 
-    <h3>🍁 <span class="zh">存档升级方式：适用于 26.2 -> 26.3</span><span class="en">Save Upgrade Method: Applicable for 26.2 -> 26.3</span></h3>
-    <div class="note warn"><strong class="zh">❗ 升级前务必备份存档！以防操作失误或意外情况发生！</strong><strong class="en">❗ Back up your save before upgrading! To prevent operational errors or unexpected situations!</strong></div>
+    <h3>🍁 <span class="zh">存档升级方式：适用于 26.2 -> 26.3</span><span class="en">Save upgrade: 26.2 -> 26.3</span></h3>
+    <div class="note warn"><strong class="zh">❗ 升级前务必备份存档！以防操作失误或意外情况发生！</strong><strong class="en">❗ Always back up your save before upgrading, in case anything goes wrong!</strong></div>
     <div class="zh">
       <ul>
         <li>存世/存世阵屿：
@@ -1731,16 +1714,20 @@ li::marker{color:#d99a2e}
       <ul>
         <li>Persisting Worlds / Persisting Worlds Array Island:
           <ol>
-            <li>Download the "World Upgrade - Persisting Worlds &amp; Persisting Worlds Array Island - 26.2→26.3" overwrite world upgrade pack.</li>
-            <li>Extract both folders "data" and "dimensions" from the upgrade archive to the root directory of the corresponding save for overwrite upgrade.</li>
+            <li>Download the <code>世界升级-存世&amp;存世阵屿-26.2→26.3-v1（解压后覆盖对应存档根目录）.zip</code> world upgrade pack.</li>
+            <li>Select the <code>data</code> and <code>dimensions</code> folders inside the upgrade pack, extract both into the root of the matching save, and overwrite.</li>
           </ol>
         </li>
-        <li>Other worlds: Import directly into the new modpack version to play. Can be upgraded directly, or via the Optimize World feature.</li>
+        <li>All other worlds:
+          <ol>
+            <li>Just import the save into the new modpack version. It upgrades on its own, or you can use the Optimize World feature.</li>
+          </ol>
+        </li>
       </ul>
     </div>
 
-    <h3>🟨 <span class="zh">存档升级方式：适用于 1.21.10 -> 26.2</span><span class="en">Save Upgrade Method: Applicable for 1.21.10 -> 26.2</span></h3>
-    <div class="note warn"><strong class="zh">❗ 升级前务必备份存档！以防操作失误或意外情况发生！</strong><strong class="en">❗ Back up your save before upgrading! To prevent operational errors or unexpected situations!</strong></div>
+    <h3>🟨 <span class="zh">存档升级方式：适用于 1.21.10 -> 26.2</span><span class="en">Save upgrade: 1.21.10 -> 26.2</span></h3>
+    <div class="note warn"><strong class="zh">❗ 升级前务必备份存档！以防操作失误或意外情况发生！</strong><strong class="en">❗ Always back up your save before upgrading, in case anything goes wrong!</strong></div>
     <div class="zh">
       <ul>
         <li>原版型/放大化世界：直接导入到新整合包版本中游玩，可直接升级，或通过优化世界功能升级。</li>
@@ -1759,16 +1746,16 @@ li::marker{color:#d99a2e}
     </div>
     <div class="en">
       <ul>
-        <li>Vanilla / Amplified worlds: Import directly into the new modpack version to play. Can be upgraded directly, or via the Optimize World feature.</li>
-        <li>Other world types (Void, Floating Island, Cave):
+        <li>Vanilla / Amplified worlds: just import the save into the new modpack version. It upgrades on its own, or you can use the Optimize World feature.</li>
+        <li>All other world types (including Void, Floating Island, and Cave):
           <ol>
-            <li><strong>Back up your save</strong>, import the save into the new modpack version (26.2).</li>
-            <li>Launch the game, select the save, choose <code>Upgrade and open the world</code>, choose <code>I know what I'm doing</code> to upgrade the save format.</li>
-            <li>Select <code>No</code> when asked "Do you want to join the world now?".</li>
-            <li>Download the corresponding 26.2 version world. (The following steps require precise file replacement/deletion. Do not touch any other files.)</li>
-            <li>Replace the <code>data/minecraft/world_gen_settings.dat</code> file in the save directory with the one from the 26.2 version world archive.</li>
-            <li>Delete all datapack files or folders inside the save's <code>datapacks</code> directory except for the <code>init</code> folder, leaving only the <code>init</code> folder.</li>
-            <li>Upgrade complete. You can now enter the game.</li>
+            <li><strong>Back up the save</strong>, then import it into the new modpack version (26.2).</li>
+            <li>Launch the game, select the save, choose <code>Upgrade and Open World</code>, then confirm with <code>I know what I'm doing</code> to upgrade the save format.</li>
+            <li>When asked <code>Join this world now?</code>, choose <code>No</code>.</li>
+            <li>Download the matching 26.2 world. (The next steps need exact file replacement and deletion — do not touch anything else.)</li>
+            <li>Replace <code>data/minecraft/world_gen_settings.dat</code> from the 26.2 world zip with the file in your save folder.</li>
+            <li>Delete every file and folder in the save's <code>datapacks</code> directory except <code>init</code>, leaving only the single <code>init</code> folder.</li>
+            <li>That is it — you can enter the world now.</li>
           </ol>
         </li>
       </ul>
@@ -1778,17 +1765,17 @@ li::marker{color:#d99a2e}
   <section class="card" id="notes">
     <h2>📖 <span class="zh">注意事项</span><span class="en">Notes</span></h2>
 
-    <h3><span class="zh">配置需求</span><span class="en">System Requirements</span></h3>
+    <h3><span class="zh">配置需求</span><span class="en">Requirements</span></h3>
     <div class="zh">
       <div class="note warn">❗ <strong>该系列需要至少 Java 25 以上才能运行。</strong></div>
       <p>该系列大多数为优化辅助模组，且本身就是原版。只要对应版本的原版生存能够流畅游玩即可。</p>
     </div>
     <div class="en">
-      <div class="note warn">❗ <strong>This series requires at least Java 25 or higher to run.</strong></div>
-      <p>The series mostly consists of optimization and auxiliary mods and is essentially vanilla. It should run smoothly as long as vanilla survival for that version can run smoothly.</p>
+      <div class="note warn">❗ <strong>This series needs at least Java 25 to run.</strong></div>
+      <p>Most of the mods here are optimization and helper mods, and the game itself is vanilla. If vanilla survival runs smoothly on your setup for that version, this will too.</p>
     </div>
 
-    <h3><span class="zh">关于模组</span><span class="en">About Mods</span></h3>
+    <h3><span class="zh">关于模组</span><span class="en">About mods</span></h3>
     <div class="zh">
       <div class="note warn">❗ <strong>被标注了 <code>[Core]</code> 标签的模组不可删除。</strong></div>
       <div class="note warn">❗如若需要自行添加模组，需知悉这可能导致特性异常、崩溃、存档损坏等兼容性问题，并建议为模组文件名添加 [自加] 等前缀以方便在更新整合包时替换模组。<br>
@@ -1799,13 +1786,10 @@ li::marker{color:#d99a2e}
       ❗注意事项：根据使用协议，经过修改后的整合包仅限您自己使用，您不可在公共场合二次分发本系列的原文件或经过修改后的文件。</div>
     </div>
     <div class="en">
-      <div class="note warn">❗ <strong>Mods marked with the <code>[Core]</code> tag must not be removed.</strong></div>
-      <div class="note warn">❗ If you wish to add your own mods, be aware that this may lead to feature anomalies, crashes, save corruption, and other compatibility issues. It is recommended to add a prefix like [Custom] to mod filenames for easier replacement when updating the modpack.<br>
-      ❗ We only recommend adding small mods of the decorative, display, assistance, or time-saving types. (e.g., Litematica, MusicNotification, voxy, Advancement Plaques, Auto Fishing, FallingTree, Vein Miner)<br>
-      ❗ It is not recommended to add mods that modify vanilla game mechanics, add new items, blocks, or entities, alter terrain generation, or disrupt the combat system and numerical balance.</div>
-      <div class="note danger"><strong>❌ It is strictly forbidden to use entity-carrying mods (e.g. CarryOn) to carry this series' special entities (the Border Sustainer, Eternal Night Knights, and the Divine Artificer). It is known that carrying these entities causes partial data reset or corruption, leading to feature anomalies.</strong></div>
-      <div class="note warn">❗ This series will not actively attempt to be compatible with non-natively added mods. If you encounter issues arising from mods you added yourself, please take responsibility yourself.<br>
-      ❗ Note: According to the usage agreement, modified modpacks are for your personal use only. You may not redistribute the original or modified files of this series in public settings.</div>
+      <div class="note warn">❗ <strong>Never remove a mod tagged <code>[Core]</code>.</strong></div>
+      <div class="note warn">❗Want to add your own mods? Know that this can cause compatibility problems: broken features, crashes, or a corrupted save. We recommend prefixing added mod filenames with a tag such as <code>[custom]</code> so they are easy to replace when the modpack updates.<br>❗Only small decorative, display, helper, or time-saving mods are recommended. (For example: Litematica, MusicNotification, voxy, advancement plaques, auto fishing, FallingTree, vein mining.)<br>❗Mods that change vanilla mechanics, add new items, blocks, or entities, alter terrain generation, or upset combat balance are not recommended.</div>
+      <div class="note danger"><strong>❌ Never use an entity-carrying mod (such as CarryOn) to carry this series' special entities (the Sustainer, the Evernight Knight, the Chaos Smith). Parts of their data are known to reset or corrupt when carried, which breaks their features.</strong></div>
+      <div class="note warn">❗This series does not actively support mods you add yourself. If your own mods react badly with them, that is on you.<br>❗Note: by the terms of use, a modified copy of this modpack is for your own use only. You may not redistribute the original or modified files in public.</div>
     </div>
   </section>
   <section class="card" id="faq">
@@ -1815,7 +1799,7 @@ li::marker{color:#d99a2e}
     </div>
 
     <details class="faq">
-      <summary><span class="qtag">Q</span><span class="qtext"><span class="zh">如何安装该系列？</span><span class="en">How to install this series?</span></span></summary>
+      <summary><span class="qtag">Q</span><span class="qtext"><span class="zh">如何安装该系列？</span><span class="en">How do I install this series?</span></span></summary>
       <div class="ans">
         <div class="zh">
           <p><strong>A：</strong>下面以整合包<code>BorderSurvival 14.0</code>版本；世界包<code>海岛村庄 (Island Village) 26.3-v1</code>版本为例，演示安装过程。</p>
@@ -1839,30 +1823,31 @@ li::marker{color:#d99a2e}
           </ol>
         </div>
         <div class="en">
-          <p><strong>A:</strong> The walkthrough below uses the modpack version <code>BorderSurvival 14.0-pre1</code> and the world pack version <code>海岛村庄 (Island Village) 26.3-v1</code> as examples.</p>
-          <p><strong>Download:</strong></p>
+          <p><strong>A:</strong> This walkthrough uses the modpack <code>BorderSurvival 14.0</code> and the world pack <code>边界生存-海岛村庄 (Island Village) 26.3-v1</code> as examples.</p>
+          <p><strong>Downloads:</strong></p>
           <ol>
-            <li>Download the modpack named in the <code>BorderSurvival 14.0-pre1.mrpack</code> format.</li>
-            <li>Download the world pack named in the <code>边界生存-海岛村庄 (Island Village) 26.3-v1.zip</code> format.</li>
+            <li>Download the modpack: <code>BorderSurvival 14.0.mrpack</code>.</li>
+            <li>Download the world pack: <code>边界生存-海岛村庄 (Island Village) 26.3-v1.zip</code>.</li>
           </ol>
-          <p><strong>Install the modpack:</strong></p>
+          <p><strong>Installing the modpack:</strong></p>
           <ol>
-            <li>Use a Minecraft launcher that supports installing <code>Modrinth</code> modpacks, drag the <code>BorderSurvival 14.0-pre1.mrpack</code> file onto the launcher interface so it is detected automatically, enter the instance name <code>BorderSurvival</code> (this name is customizable), confirm the modpack instance installation and wait for it to finish. If a network problem causes the installation to fail, retry this step until it succeeds.</li>
+            <li>Drop <code>BorderSurvival 14.0.mrpack</code> onto any launcher that supports Modrinth modpacks — it detects the file on its own.</li>
+            <li>Enter the instance name <code>BorderSurvival</code> (or any name you like) and confirm. Wait for the installation to finish.</li>
+            <li>If the installation fails because of a network problem, retry until it goes through.</li>
           </ol>
-          <p><strong>Install the world pack:</strong></p>
+          <p><strong>Installing the world pack:</strong></p>
           <ol>
-            <li>Use the launcher's function to open the saves folder, or open the <code>.minecraft/versions/BorderSurvival/saves</code> directory manually. If there is no <code>saves</code> directory, create one with <code>New folder</code> and then rename it to <code>saves</code>.</li>
-            <li>Move, cut, or copy the <code>边界生存-海岛村庄 (Island Village) 26.3-v1.zip</code> file into the <code>saves</code> directory opened in step 4.</li>
-            <li>Open the <code>边界生存-海岛村庄 (Island Village) 26.3-v1.zip</code> file with an archive tool to preview its contents.</li>
-            <li>After opening the world pack, find the save folder named <code>边界生存-海岛村庄 (Island Village)</code> inside (the one without the version number), and drag or extract that folder into the <code>saves</code> directory opened in step 4.</li>
-            <li>Launch the game, then select <code>Singleplayer</code> after entering the game. If the world pack was installed correctly, you should now see an existing world save to enter rather than creating a new world.</li>
+            <li>Use your launcher's import feature, or open the saves directory <code>.minecraft/versions/BorderSurvival/saves</code> by hand. If there is no <code>saves</code> directory, create a new folder and rename it <code>saves</code>.</li>
+            <li>Move <code>边界生存-海岛村庄 (Island Village) 26.3-v1.zip</code> into the <code>saves</code> directory from <strong>step 1</strong>.</li>
+            <li>With an archive tool, extract the save folder inside the world pack — the one named <code>边界生存-海岛村庄 (Island Village)</code>, <strong>without</strong> the version suffix — into the <code>saves</code> directory from <strong>step 1</strong>.</li>
+            <li>Launch the game and choose <code>Singleplayer</code>. If the world pack installed correctly, you will see an existing save to enter rather than the create-world screen.</li>
           </ol>
         </div>
       </div>
     </details>
 
     <details class="faq">
-      <summary><span class="qtag">Q</span><span class="qtext"><span class="zh">如何更新整合包以获取最新版特性？</span><span class="en">How to update the modpack to get the latest features?</span></span></summary>
+      <summary><span class="qtag">Q</span><span class="qtext"><span class="zh">如何更新整合包以获取最新版特性？</span><span class="en">How do I update the modpack to get the latest features?</span></span></summary>
       <div class="ans">
         <div class="zh">
           <p><strong>A：</strong>仅更新模组（该方式仅适用于Minecraft版本未升级）</p>
@@ -1884,46 +1869,39 @@ li::marker{color:#d99a2e}
           </ol>
         </div>
         <div class="en">
-          <p><strong>A:</strong> Update the mods only (this method applies only when the Minecraft version has not been upgraded)</p>
+          <p><strong>Option A — update the mods only</strong> (this only works if the Minecraft version has not changed):</p>
           <ol>
-            <li>Use the launcher's mod update function to update the <code>Border Survival Core</code> mod to the latest version for the Minecraft version of the current instance.</li>
-            <li>Use the launcher's mod update function to update the mods explicitly listed in the <a href="https://fndream.github.io/BorderSurvivalModpack/?mode=update&amp;lang=en"><strong>Changelog</strong></a> to the specified versions. (From version 26.3 onward, the changelog will explicitly state mod version changes.)</li>
+            <li>Use the launcher's mod update feature to update the <code>Border Survival Core</code> mod to the latest version for this instance's Minecraft version.</li>
+            <li>Use the launcher's mod update feature to update every mod named in the <a href="https://fndream.github.io/BorderSurvivalModpack/?mode=update&amp;lang=en">changelog</a> to the listed version. (Starting with 26.3, the changelog spells out every mod version change.)</li>
           </ol>
-          <p><strong>B:</strong> Migrate resources, clean install new version</p>
+          <p><strong>Option B — migrate your stuff and reinstall the new version:</strong></p>
           <ol>
-            <li>Download and install the new modpack via the launcher.</li>
-            <li>Copy the following directories from the original game instance to the new game instance directory:
-              <ul>
-                <li><code>resourcepacks</code> (Resource pack folder)</li>
-                <li><code>saves</code> (Save folder)</li>
-                <li><code>screenshots</code> (Screenshot folder)</li>
-                <li><code>shaderpacks</code> (Shader pack folder)</li>
-              </ul>
-            </li>
+            <li>Download the new modpack and install it with your launcher.</li>
+            <li>Copy the following folders from your old game instance into the new one:<ul><li><code>resourcepacks</code> (resource packs)</li><li><code>saves</code> (saves)</li><li><code>screenshots</code> (screenshots)</li><li><code>shaderpacks</code> (shader packs)</li></ul></li>
           </ol>
         </div>
       </div>
     </details>
 
     <details class="faq">
-      <summary><span class="qtag">Q</span><span class="qtext"><span class="zh">功能牌损坏如何修复？</span><span class="en">How to repair a broken function sign?</span></span></summary>
+      <summary><span class="qtag">Q</span><span class="qtext"><span class="zh">功能牌损坏如何修复？</span><span class="en">How do I repair a damaged function sign?</span></span></summary>
       <div class="ans">
         <div class="zh"><p><strong>A：</strong>使用以下指令获得，需创造模式放置有效。</p></div>
-        <div class="en"><p><strong>A:</strong> Use the following command to obtain it. Placing it requires Creative Mode.</p></div>
+        <div class="en"><p><strong>A:</strong> Get a working one with this command. You need Creative Mode to place it.</p></div>
         <pre><code>/function border_survival:get_sign</code></pre>
       </div>
     </details>
 
     <details class="faq">
-      <summary><span class="qtag">Q</span><span class="qtext"><span class="zh">功能牌右键没反应？</span><span class="en">Right-clicking a function sign does nothing?</span></span></summary>
+      <summary><span class="qtag">Q</span><span class="qtext"><span class="zh">功能牌右键没反应？</span><span class="en">Why does right-clicking a function sign do nothing?</span></span></summary>
       <div class="ans">
         <div class="zh"><p><strong>A：</strong>这是由于模组没有被加载导致的，请检查整合包是否安装正确，且启动的游戏版本名是否为整合包所安装的版本名。</p></div>
-        <div class="en"><p><strong>A:</strong> This is caused by mods not being loaded. Please check if the modpack is installed correctly and if the launched game version name matches the version name installed by the modpack.</p></div>
+        <div class="en"><p><strong>A:</strong> The mod is not loaded. Check that the modpack installed correctly and that the profile you launched is the one the modpack created.</p></div>
       </div>
     </details>
 
     <details class="faq">
-      <summary><span class="qtag">Q</span><span class="qtext"><span class="zh">命令无法使用？</span><span class="en">Commands cannot be used?</span></span></summary>
+      <summary><span class="qtag">Q</span><span class="qtext"><span class="zh">命令无法使用？</span><span class="en">Why can't I use commands?</span></span></summary>
       <div class="ans">
         <div class="zh">
           <p><strong>A：</strong>绝大多数命令都需要作弊权限才能使用，需要通过以下步骤获取命令权限：</p>
@@ -1933,39 +1911,39 @@ li::marker{color:#d99a2e}
           </ul>
         </div>
         <div class="en">
-          <p><strong>A:</strong> Most commands require cheats permission. Obtain command permission through the following steps:</p>
+          <p><strong>A:</strong> Most commands need cheats. Enable them like this:</p>
           <ul>
-            <li><strong>Singleplayer</strong>: Press <code>ESC</code> -> Click <strong>Options</strong> -> Click <strong>World Options</strong> -> Change <strong>Allow Cheats: OFF</strong> to <strong>Allow Cheats: ON</strong> -> Click <strong>Apply Changes</strong>.</li>
-            <li><strong>Server</strong>: Use the <code>/op &lt;playername&gt;</code> command via the server console to grant command permission to the specified player.</li>
+            <li><strong>Singleplayer</strong>: press <code>ESC</code> -> click <strong>Options</strong> -> click <strong>World Options</strong> -> change <strong>Allow Commands: OFF</strong> to <strong>Allow Commands: ON</strong> -> click <strong>Apply Changes</strong>.</li>
+            <li><strong>Server</strong>: run <code>/op &lt;player name&gt;</code> in the server console to give that player command permissions.</li>
           </ul>
         </div>
       </div>
     </details>
 
     <details class="faq">
-      <summary><span class="qtag">Q</span><span class="qtext"><span class="zh">边界能量异常流逝？</span><span class="en">Border energy is draining abnormally?</span></span></summary>
+      <summary><span class="qtag">Q</span><span class="qtext"><span class="zh">边界能量异常流逝？</span><span class="en">Why is my Border Energy draining?</span></span></summary>
       <div class="ans">
         <div class="zh">
           <p><strong>A：</strong>边界维系者所在的区块需要被加载。在Minecraft1.21.9版本后，不再有世界出生点区块的概念。</p>
           <p><strong>B：</strong>可使用Carpet mod在主世界加入一位假玩家并将其tp到安全位置，或使用珍珠气泡柱制作区块加载器，保证维系者所在的区块被正常加载。</p>
         </div>
         <div class="en">
-          <p><strong>A:</strong> The chunk containing the Border Sustainer must be loaded. As of Minecraft 1.21.9, there is no longer a concept of world spawn chunks.</p>
-          <p><strong>B:</strong> You can use the Carpet mod to spawn a fake player in the Overworld and teleport it to a safe location, or use a pearl stasis chamber to create a chunk loader, ensuring the Sustainer's chunk is normally loaded.</p>
+          <p><strong>A:</strong> The chunk the Sustainer stands in has to be loaded, and since Minecraft 1.21.9 there is no world spawn chunk that loads itself.</p>
+          <p><strong>If that is not the cause:</strong> use the Carpet mod to add a fake player to the Overworld and TP it somewhere safe, or build a chunk loader out of a bubble column cobble generator, so the chunk holding the Sustainer stays loaded.</p>
         </div>
       </div>
     </details>
 
     <details class="faq">
-      <summary><span class="qtag">Q</span><span class="qtext"><span class="zh">进入末地为什么直接死亡？</span><span class="en">Why do I die immediately upon entering the End?</span></span></summary>
+      <summary><span class="qtag">Q</span><span class="qtext"><span class="zh">进入末地为什么直接死亡？</span><span class="en">Why do I die the instant I enter the End?</span></span></summary>
       <div class="ans">
         <div class="zh">
           <p><strong>A：</strong>边界能量不足，边界未扩展到末地黑曜石平台坐标，传送门将玩家传送到末地主岛后，距离边界过远，故而窒息而死。</p>
           <p><strong>B：</strong>请将边界范围至少提升至100格半径后，再尝试进入末地。</p>
         </div>
         <div class="en">
-          <p><strong>A:</strong> Insufficient border energy. The border hasn't expanded to cover the End's obsidian platform coordinates. When the portal transports you to the main End island, you are too far outside the border and thus die of suffocation.</p>
-          <p><strong>B:</strong> Please increase the border radius to at least 100 blocks before attempting to enter the End.</p>
+          <p><strong>A:</strong> Your Border Energy is too low. The border has not reached the Obsidian Platform, so the portal drops you onto the main island, far outside the border, and you suffocate.</p>
+          <p><strong>Fix:</strong> raise the border to at least a 100-block radius before trying the End again.</p>
         </div>
       </div>
     </details>
@@ -1978,37 +1956,37 @@ li::marker{color:#d99a2e}
           <p><strong>B：</strong>因边界外部不会刷怪，如果边界等级小于10级，刷怪效率会较为缓慢。</p>
         </div>
         <div class="en">
-          <p><strong>A:</strong> Check if you are in Peaceful mode. If the world defaults to Peaceful mode, please provide the world name for a fix.</p>
-          <p><strong>B:</strong> Since mobs cannot spawn outside the border, if the border level is below 10, mob spawning efficiency will be relatively slow.</p>
+          <p><strong>A:</strong> Check whether you are in Peaceful Mode. If the world defaults to Peaceful, please report the world name so it can be fixed.</p>
+          <p><strong>Also:</strong> mobs do not spawn outside the border, and below border level 10 spawning is slow.</p>
         </div>
       </div>
     </details>
 
     <details class="faq">
-      <summary><span class="qtag">Q</span><span class="qtext"><span class="zh">我在《存世》世界中利用虚无界门特性制造了一个多维度刷怪塔后，出现严重掉刻延迟？</span><span class="en">After building a multi-dimensional mob farm using the Void Portal mechanics in the "Persisting Worlds" world, I'm experiencing severe TPS lag/delay?</span></span></summary>
+      <summary><span class="qtag">Q</span><span class="qtext"><span class="zh">我在《存世》世界中利用虚无界门特性制造了一个多维度刷怪塔后，出现严重掉刻延迟？</span><span class="en">I built a multi-dimension mob tower in Persisting Worlds using Void Portals and now the server lags badly?</span></span></summary>
       <div class="ans">
         <div class="zh">
           <p><strong>A：</strong>Minecraft每额外加载一个维度，刻运算延迟便会增加一倍，当mspt超过50.0ms/刻后，tps便会降低，从而导致服务端延迟，这是正常现象。</p>
           <p><strong>B：</strong>在做此类事情之前，请先使用假人让多个维度同时加载，并在执行以下指令后按住TAB键查看tps/mspt，再根据CPU性能(mspt数值)删减或酌情增加同时加载维度的数量。</p>
         </div>
         <div class="en">
-          <p><strong>A:</strong> Minecraft's tick computation latency doubles with every additional loaded dimension. Once mspt exceeds 50.0ms/tick, TPS will drop, resulting in server-side lag. This is normal behavior.</p>
-          <p><strong>B:</strong> Before undertaking such a project, first use fake players to keep multiple dimensions loaded. Run the following command, then hold the TAB key to monitor TPS/MSPT. Based on your CPU performance (MSPT values), reduce or cautiously increase the number of dimensions loaded simultaneously.</p>
+          <p><strong>A:</strong> This is normal. Every extra dimension Minecraft loads roughly doubles the tick cost; once mspt passes 50.0 ms/tick, TPS drops and the server starts to lag.</p>
+          <p><strong>Before building anything like that:</strong> use a fake player to keep several dimensions loaded at once, run the command below, hold TAB to watch TPS/MSPT, then add or remove loaded dimensions based on your CPU (the mspt figure).</p>
         </div>
         <pre><code>/log tps</code></pre>
       </div>
     </details>
 
     <details class="faq">
-      <summary><span class="qtag">Q</span><span class="qtext"><span class="zh">放置方块延迟？区块加载卡顿？活塞动画不流畅？</span><span class="en">Block placement delay? Chunk loading lag? Piston animations not smooth?</span></span></summary>
+      <summary><span class="qtag">Q</span><span class="qtext"><span class="zh">放置方块延迟？区块加载卡顿？活塞动画不流畅？</span><span class="en">Why is placing blocks laggy? Why does chunk loading stutter? Why do piston animations stutter?</span></span></summary>
       <div class="ans">
         <div class="zh"><p><strong>A：</strong>这可能是动态光源导致的，请尝试关闭动态光源。</p></div>
-        <div class="en"><p><strong>A:</strong> This might be caused by dynamic lighting. Try turning off dynamic lighting.</p></div>
+        <div class="en"><p><strong>A:</strong> This is probably dynamic lighting. Try turning dynamic lighting off.</p></div>
       </div>
     </details>
 
     <details class="faq">
-      <summary><span class="qtag">Q</span><span class="qtext"><span class="zh">如何搭建服务端？</span><span class="en">How to set up a server?</span></span></summary>
+      <summary><span class="qtag">Q</span><span class="qtext"><span class="zh">如何搭建服务端？</span><span class="en">How do I set up a server?</span></span></summary>
       <div class="ans">
         <div class="zh">
           <ol>
@@ -2022,27 +2000,27 @@ li::marker{color:#d99a2e}
         </div>
         <div class="en">
           <ol>
-            <li>Install a Fabric server for the corresponding Minecraft version yourself.</li>
-            <li>Install the modpack, and add all files from the <code>mods</code> and <code>config</code> directories of the modpack to the server's <code>mods</code> and <code>config</code> folders.</li>
-            <li>Extract the world pack to the server's root directory, and rename the world save to <code>world</code>, or to the value of the <code>level-name</code> setting in the <code>server.properties</code> file.</li>
-            <li>Delete the <strong><code>[Advanced Connection Settings] mcwifipnp</code></strong> mod</li>
-            <li>Copy the <code>config/carpet/default_carpet.conf</code> file to the save directory (usually <code>world</code>) and rename it to <code>carpet.conf</code> to enable the <code>[Carpet] carpet</code> mod family</li>
-            <li>Setup complete, start the server.</li>
+            <li>Install the Fabric server for your Minecraft version yourself.</li>
+            <li>Install the modpack, then copy every file from the modpack's <code>mods</code> and <code>config</code> directories into your server's <code>mods</code> and <code>config</code> folders.</li>
+            <li>Extract the world pack into the server root and rename the world save to <code>world</code>, or to whatever <code>level-name</code> is set to in <code>server.properties</code>.</li>
+            <li>Delete the <strong><code>mcwifipnp</code></strong> mod (*Advanced Multiplayer Settings*).</li>
+            <li>Copy <code>config/carpet/default_carpet.conf</code> into the world save folder (usually <code>world</code>) and rename it <code>carpet.conf</code> to enable the <strong><code>carpet</code></strong> mod features.</li>
+            <li>Once the setup is done, start the server.</li>
           </ol>
         </div>
       </div>
     </details>
 
     <details class="faq">
-      <summary><span class="qtag">Q</span><span class="qtext"><span class="zh">搭建的服务端覆盖整合包模组后无法正常启动？</span><span class="en">The set up server fails to start normally after overwriting with modpack mods?</span></span></summary>
+      <summary><span class="qtag">Q</span><span class="qtext"><span class="zh">搭建的服务端覆盖整合包模组后无法正常启动？</span><span class="en">My server will not start after I overwrite it with the modpack mods?</span></span></summary>
       <div class="ans">
         <div class="zh"><p><strong>A：</strong>服务端需删除 <strong><code>[更高级联机设置]mcwifipnp</code></strong> 模组才可正常运行。</p></div>
-        <div class="en"><p><strong>A:</strong> The server requires deleting the <strong><code>[Advanced Connection Settings] mcwifipnp</code></strong> mod to run properly.</p></div>
+        <div class="en"><p><strong>A:</strong> You must delete the <strong><code>mcwifipnp</code></strong> mod (*Advanced Multiplayer Settings*).</p></div>
       </div>
     </details>
 
     <details class="faq">
-      <summary><span class="qtag">Q</span><span class="qtext"><span class="zh">搭建的服务端默认没有开启地毯 (Carpet) 模组的任何功能？</span><span class="en">The set up server does not have any Carpet mod features enabled by default?</span></span></summary>
+      <summary><span class="qtag">Q</span><span class="qtext"><span class="zh">搭建的服务端默认没有开启地毯 (Carpet) 模组的任何功能？</span><span class="en">None of the Carpet features are enabled on my server?</span></span></summary>
       <div class="ans">
         <div class="zh">
           <p><strong>A：</strong>服务端的地毯模组需要单独为存档进行配置：</p>
@@ -2053,21 +2031,21 @@ li::marker{color:#d99a2e}
           </ol>
         </div>
         <div class="en">
-          <p><strong>A:</strong> The server's Carpet mod requires separate configuration for the save:</p>
+          <p><strong>A:</strong> Carpet has to be configured per save:</p>
           <ol>
-            <li>Copy the <code>config/carpet/default_carpet.conf</code> file to the save directory (usually <code>world</code>).</li>
-            <li>Rename the copied file to <code>carpet.conf</code>.</li>
+            <li>Copy <code>config/carpet/default_carpet.conf</code> into the world save folder (usually <code>world</code>).</li>
+            <li>Rename the copy to <code>carpet.conf</code>.</li>
             <li>Restart the server.</li>
           </ol>
         </div>
       </div>
     </details>
 
-    <div class="note"><strong class="zh">若遇到其他疑难杂症或困难，或以上问题根据步骤并没有解决，请在<a href="https://github.com/Fndream/BorderSurvivalModpack/issues">Issues</a>发布提问。</strong><strong class="en">If you encounter other issues or difficulties, or if the above steps did not resolve the problem, please post your question on the <a href="https://github.com/Fndream/BorderSurvivalModpack/issues">Issues page</a>.</strong></div>
+    <div class="note"><strong class="zh">若遇到其他疑难杂症或困难，或以上问题根据步骤并没有解决，请在<a href="https://github.com/Fndream/BorderSurvivalModpack/issues">Issues</a>发布提问。</strong><strong class="en">If anything else is unclear, or if the steps above did not solve it, please ask on <a href="https://github.com/Fndream/BorderSurvivalModpack/issues">Issues</a>.</strong></div>
   </section>
 
   <section class="card" id="history">
-    <h2>© <span class="zh">历史版本</span><span class="en">Version History</span></h2>
+    <h2>© <span class="zh">历史版本</span><span class="en">Older Versions</span></h2>
     <div class="zh">
       <ul>
         <li>若未来本系列更新到更高的 Minecraft 版本后，<strong>旧版本将不再维护</strong>。</li>
@@ -2077,20 +2055,20 @@ li::marker{color:#d99a2e}
     </div>
     <div class="en">
       <ul>
-        <li>If this series updates to a higher Minecraft version in the future, <strong>older versions will no longer be maintained</strong>.</li>
-        <li>❗ <strong>This series does not preserve or recommend playing historical versions. Any secondary distribution of historical versions is prohibited.</strong></li>
-        <li>❗ <strong>By downloading resources from this series, you agree to and abide by the <a href="#agreement">Usage Agreement</a>.</strong></li>
+        <li>If this series ever updates to a newer Minecraft version, <strong>older versions stop being maintained</strong>.</li>
+        <li>❗ <strong>Old versions are neither kept nor recommended. Redistributing any old version is forbidden.</strong></li>
+        <li>❗ <strong>By downloading any of this series' resources, you agree to and comply with the <a href="#agreement">license</a>.</strong></li>
       </ul>
     </div>
   </section>
 
   <section class="card" id="agreement">
-    <h2>© <span class="zh">使用协议</span><span class="en">Usage Agreement</span></h2>
-    <h3><span class="zh">本文档内容</span><span class="en">Content of This Document</span></h3>
+    <h2>© <span class="zh">使用协议</span><span class="en">License</span></h2>
+    <h3><span class="zh">本文档内容</span><span class="en">This Document</span></h3>
     <div class="zh"><p>在未经授权的情况下，您不可对该文档文本、图片进行摘抄或转载。</p></div>
-    <div class="en"><p>Unauthorized excerpts or reproductions of the text and images in this document are prohibited.</p></div>
+    <div class="en"><p>You may not excerpt or reproduce the text or images of this document without authorization.</p></div>
 
-    <h3><span class="zh">本系列资源</span><span class="en">Resources of This Series</span></h3>
+    <h3><span class="zh">本系列资源</span><span class="en">This Series' Resources</span></h3>
     <div class="zh">
       <ul>
         <li>✅ 允许：您可以将本系列用于单人游戏、多人联机、服务端联机、实况录制。</li>
@@ -2100,19 +2078,32 @@ li::marker{color:#d99a2e}
     </div>
     <div class="en">
       <ul>
-        <li>✅ Allowed: You may use this series for singleplayer, multiplayer LAN, server play, and content recording/streaming.</li>
-        <li>❌ Prohibited: Without authorization, you may not redistribute (upload, share, publish) the original or modified files of this series in any public setting (including but not limited to communities, websites, cloud drives, resource groups, social media, etc.).</li>
-        <li>❌ Prohibited: You may not use this series for any commercial purpose, including but not limited to sales, bundling, server operation, etc.</li>
+        <li>✅ Allowed: you may use this series for singleplayer, multiplayer, server play, live recording, and streaming.</li>
+        <li>❌ Forbidden: you may not redistribute (upload, share, publish) the original or modified files of this series in public — including, but not limited to, communities, websites, netdisks, resource groups, and social media — without authorization.</li>
+        <li>❌ Forbidden: you may not use this series for any commercial purpose, including but not limited to selling, bundling it into paid offerings, and running servers for profit.</li>
       </ul>
     </div>
   </section>
 
   <section class="card" id="first-release">
-    <h2>⌛ <span class="zh">首发日期</span><span class="en">First release date</span></h2>
-    <p><strong>2020-05-23 - </strong><span class="zh"><strong>海岛村庄 - 1.15.2</strong></span><span class="en"><strong>Island Village - Minecraft 1.15.2</strong></span></p>
+    <h2>⌛ <span class="zh">首发日期</span><span class="en">First Release</span></h2>
+    <p><strong>2020-05-23 - </strong><span class="zh"><strong>海岛村庄 - 1.15.2</strong></span><span class="en"><strong>Island Village - 1.15.2</strong></span></p>
   </section>
 
   <section class="card cl-entry" id="changelog-v1">
+    <h2>🍁 <span class="zh">14.0-rc5 <span class="chip cl-chip">26.3</span> <span class="chip cl-chip">2026-10-07</span></span><span class="en">14.0-rc5 <span class="chip cl-chip">26.3</span> <span class="chip cl-chip">2026-10-07</span></span></h2>
+    <div class="zh">
+      <h4>📱 模组更新</h4>
+      <ul>
+        <li>[API]mru 更新至 1.0.43+26.3</li>
+        <li>[Core]fabric-api 更新至 0.162.0+26.3</li>
+        <li>[Core][更多声效]sounds 更新至 2.6.0（修复创造模式滚动栏音爆）</li>
+        <li>[HUD][聊天头像]chat_heads 更新至 1.3.2</li>
+        <li>[Texture][实体模型特性]entity_model_features 更新至 3.3.11</li>
+      </ul>
+    </div>
+  </section>
+  <section class="card cl-entry" id="changelog-v2">
     <h2>🍁 <span class="zh">14.0-rc4 <span class="chip cl-chip">26.3</span> <span class="chip cl-chip">2026-10-06</span></span><span class="en">14.0-rc4 <span class="chip cl-chip">26.3</span> <span class="chip cl-chip">2026-10-06</span></span></h2>
     <div class="zh">
       <h4>✨ 无损灵器</h4>
@@ -2126,7 +2117,7 @@ li::marker{color:#d99a2e}
       </ul>
     </div>
   </section>
-  <section class="card cl-entry" id="changelog-v2">
+  <section class="card cl-entry" id="changelog-v3">
     <h2>🍁 <span class="zh">14.0-rc3 <span class="chip cl-chip">26.3</span> <span class="chip cl-chip">2026-10-04</span></span><span class="en">14.0-rc3 <span class="chip cl-chip">26.3</span> <span class="chip cl-chip">2026-10-04</span></span></h2>
     <div class="zh">
       <h4>📱 模组更新</h4>
@@ -2140,7 +2131,7 @@ li::marker{color:#d99a2e}
       </ul>
     </div>
   </section>
-  <section class="card cl-entry" id="changelog-v3">
+  <section class="card cl-entry" id="changelog-v4">
     <h2>🍁 <span class="zh">14.0-rc2 <span class="chip cl-chip">26.3</span> <span class="chip cl-chip">2026-10-04</span></span><span class="en">14.0-rc2 <span class="chip cl-chip">26.3</span> <span class="chip cl-chip">2026-10-04</span></span></h2>
     <div class="zh">
       <h4>📄 文本</h4>
@@ -2149,7 +2140,7 @@ li::marker{color:#d99a2e}
       </ul>
     </div>
   </section>
-  <section class="card cl-entry" id="changelog-v4">
+  <section class="card cl-entry" id="changelog-v5">
     <h2>🍁 <span class="zh">14.0-rc1 <span class="chip cl-chip">26.3</span> <span class="chip cl-chip">2026-10-03</span></span><span class="en">14.0-rc1 <span class="chip cl-chip">26.3</span> <span class="chip cl-chip">2026-10-03</span></span></h2>
     <div class="zh">
       <h4>🌗 昼夜模式</h4>
@@ -2185,7 +2176,7 @@ li::marker{color:#d99a2e}
       </ul>
     </div>
   </section>
-  <section class="card cl-entry" id="changelog-v5">
+  <section class="card cl-entry" id="changelog-v6">
     <h2>🍁 <span class="zh">14.0-pre1 <span class="chip cl-chip">26.3</span> <span class="chip cl-chip">2026-09-25</span></span><span class="en">14.0-pre1 <span class="chip cl-chip">26.3</span> <span class="chip cl-chip">2026-09-25</span></span></h2>
     <div class="zh">
       <h4>🌊 核心特性</h4>
@@ -2239,7 +2230,7 @@ li::marker{color:#d99a2e}
       </ul>
       <h4>🔥 Void Portal</h4>
       <ul>
-        <li>The following features are exclusive to the "Void Fifteen Worlds — Persisting Worlds / Persisting Worlds Array Island" worlds and only take effect in those worlds.</li>
+        <li>The following features are exclusive to the "Void Fifteen Realms — Persisting Worlds / Persisting Worlds Array Island" worlds and only take effect in those worlds.</li>
         <li>Added: Island Village and Dappled Valley portals.</li>
         <li>Void Portal destination search radius: 128 blocks -&gt; 256 blocks.</li>
       </ul>
@@ -2253,7 +2244,7 @@ li::marker{color:#d99a2e}
       </ul>
       <h4>🍁 Advancements</h4>
       <ul>
-        <li>Added the hidden challenge advancements "Departure Point" and "Sunset Gorge", completed after reaching the corresponding dimension through the Void Portal. Only obtainable in the "Void Fifteen Worlds — Persisting Worlds / Persisting Worlds Array Island" worlds.</li>
+        <li>Added the hidden challenge advancements "Departure Land" and "Sunfall Gorge Forest", completed after reaching the corresponding dimension through the Void Portal. Only obtainable in the "Void Fifteen Realms — Persisting Worlds / Persisting Worlds Array Island" worlds.</li>
       </ul>
       <h4>📱 Resources</h4>
       <ul>
@@ -2268,11 +2259,11 @@ li::marker{color:#d99a2e}
       </ul>
       <h4>🧭 Worlds</h4>
       <ul>
-        <li>New world "Departure Point — Island Village" ⭐ released.</li>
-        <li>New world "Sunset Gorge — Dappled Valley" ⭐⭐ released.</li>
-        <li>"Void Thirteen Worlds — Persisting Worlds" upgraded to "Void Fifteen Worlds — Persisting Worlds".</li>
-        <li>"Void Thirteen Worlds — Persisting Worlds Array Island" upgraded to "Void Fifteen Worlds — Persisting Worlds Array Island".</li>
-        <li>New "World Upgrade - Persisting Worlds &amp; Persisting Worlds Array Island - 26.2-&gt;26.3" overwrite upgrade pack released. Extract it and overwrite the root of the corresponding save to make the "Departure Point — Island Village" and "Sunset Gorge — Dappled Valley" dimensions compatible.</li>
+        <li>New world "Departure Land — Island Village" ⭐ released.</li>
+        <li>New world "Sunfall Gorge Forest — Dappled Valley" ⭐⭐ released.</li>
+        <li>"Void Thirteen Worlds — Persisting Worlds" upgraded to "Void Fifteen Realms — Persisting Worlds".</li>
+        <li>"Void Thirteen Worlds — Persisting Worlds Array Island" upgraded to "Void Fifteen Realms — Persisting Worlds Array Island".</li>
+        <li>New "World Upgrade - Persisting Worlds &amp; Persisting Worlds Array Island - 26.2-&gt;26.3" overwrite upgrade pack released. Extract it and overwrite the root of the corresponding save to make the "Departure Land — Island Village" and "Sunfall Gorge Forest — Dappled Valley" dimensions compatible.</li>
       </ul>
     </div>
   </section>
@@ -2287,7 +2278,7 @@ li::marker{color:#d99a2e}
       <a href="https://github.com/Fndream/BorderSurvivalModpack/issues">Issues</a>
       <a href="#agreement"><span class="zh">使用协议</span><span class="en">Usage Agreement</span></a>
     </div>
-    <p class="muted"><span class="zh">首发日期：2020-05-23 - 海岛村庄 - 1.15.2 · © Fndream，未经许可不得转载文本与图片</span><span class="en">First release: 2020-05-23 - Island Village - Minecraft 1.15.2 · © Fndream, unauthorized reproduction prohibited</span></p>
+    <p class="muted"><span class="zh">首发日期：2020-05-23 - 海岛村庄 - 1.15.2 · © Fndream，未经许可不得转载文本与图片</span><span class="en">First release: 2020-05-23 - Island Village - 1.15.2 · © Fndream, unauthorized reproduction of text and images prohibited</span></p>
   </div>
 </footer>
 
@@ -2304,7 +2295,7 @@ li::marker{color:#d99a2e}
         </div>
       </div>
       <div class="mapdl-group">
-        <p class="mapdl-glabel"><span class="zh">下载世界包</span><span class="en">Download Worlds</span></p>
+        <p class="mapdl-glabel"><span class="zh">下载世界包</span><span class="en">Download World Packs</span></p>
         <div class="mapdl-btns">
           <a class="mapdl-btn" data-src="github" href="https://github.com/Fndream/BorderSurvivalModpack/tree/master/Worlds_26.3" target="_blank" rel="noopener"><svg class="mapdl-ic" viewBox="0 0 16 16" aria-hidden="true"><path fill="currentColor" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8z"/></svg><span>GitHub</span></a>
           <a class="mapdl-btn" data-src="ifdian" data-href="https://ifdian.net/album/8c2c1f82702e11f1858c52540025c377" aria-disabled="true"><img class="mapdl-ic round" src="data:image/png;base64,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" alt="爱发电图标" draggable="false"><span class="zh">爱发电</span><span class="en">Afdian</span><span class="mapdl-pwd"><span class="zh">建设中</span><span class="en">Under Construction</span></span></a>
@@ -2328,8 +2319,8 @@ li::marker{color:#d99a2e}
     <h4 class="mapdl-title" id="mapDlSubT"><span class="zh">夸克网盘，扫码下载</span><span class="en">Quark Drive · Scan to download</span></h4>
     <div class="mapdl-sub-body">
       <div class="mapdl-qr">
-        <img class="qr-svg" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAJQAAACUAQAAAABdRz15AAABJ0lEQVR42s2WMQ7DMAwDhX5A//8lf6CSVNGlSwFqiDPEyXCQKZp2zc9APepfVXUVOOejD7zqd/z7r6ZnGuQK1v4IeaQU+JRnfcIrVThnPACifT5y/VgeB1kH+qml33HQX40mFe1a6ZuM91koYTQgqQfrJWZsaOHzfqinLQe2yjvgAVti2TIpD7JLW0hRU56FG6u3bU7rE2XUCLqvNYn9MrZLwdiU58pWPPkw5mnHOlgUrsqFOF9sPek4fqX1tQVUZklG5P1wwsBbbXLe1rcSkog8DxwDU1thrJ+c0rKNxDvJF+HY2j2LD/xHmCO6vd0uzo9yRo/2Xbx/93yTgEL2HJ2/2sTt9V/dN8Y9xgWPRlGw3Kx32wBf1ybPF18JSHGR0yf+e+599w2Ap3H5VyzrcQAAAABJRU5ErkJggg==" width="148" height="148" alt="夸克网盘链接二维码 Quark Drive QR code">
-        <p class="mapdl-qrcap"><span class="zh">扫码转存能为作者带来收入，激励作者创作的动力<br>推荐用手机扫码转存后再用PC端下载，防止链接失效</span><span class="en">Scanning to save brings the author income — the driving force behind more creations<br>Recommended: scan and save on your phone, then download from the PC client to prevent link expiry</span></p>
+        <img class="qr-svg" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAJQAAACUAQAAAABdRz15AAABJ0lEQVR42s2WMQ7DMAwDhX5A//8lf6CSVNGlSwFqiDPEyXCQKZp2zc9APepfVXUVOOejD7zqd/z7r6ZnGuQK1v4IeaQU+JRnfcIrVThnPACifT5y/VgeB1kH+qml33HQX40mFe1a6ZuM91koYTQgqQfrJWZsaOHzfqinLQe2yjvgAVti2TIpD7JLW0hRU56FG6u3bU7rE2XUCLqvNYn9MrZLwdiU58pWPPkw5mnHOlgUrsqFOF9sPek4fqX1tQVUZklG5P1wwsBbbXLe1rcSkog8DxwDU1thrJ+c0rKNxDvJF+HY2j2LD/xHmCO6vd0uzo9yRo/2Xbx/93yTgEL2HJ2/2sTt9V/dN8Y9xgWPRlGw3Kx32wBf1ybPF18JSHGR0yf+e+599w2Ap3H5VyzrcQAAAABJRU5ErkJggg==" width="148" height="148" alt="Quark Drive QR code">
+        <p class="mapdl-qrcap"><span class="zh">扫码转存能为作者带来收入，激励作者创作的动力<br>推荐用手机扫码转存后再用PC端下载，防止链接失效</span><span class="en">Scanning to save earns the author income — the motivation behind more creations<br>Recommended: scan and save on your phone, then download from the PC client so the link does not expire</span></p>
       </div>
       <div class="mapdl-btns">
         <a class="mapdl-btn" href="https://pan.quark.cn/s/e1aa60b8fd18?pwd=QzaT" target="_blank" rel="noopener"><img class="mapdl-ic" src="data:image/png;base64,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" alt="夸克网盘图标" draggable="false"><span class="zh">PC下载</span><span class="en">PC Download</span></a>
@@ -2355,8 +2346,7 @@ li::marker{color:#d99a2e}
     for(var i=0;i<opts.length;i++){opts[i].classList.toggle('cur',opts[i].getAttribute('data-l')===l)}
   }
   function setLang(l){
-    /* 英文源关闭（2026-10-04）：只接受 zh。切换器已被 CSS 隐藏，这里再兜一道，
-       防止日后恢复英文时改了 IIFE 却忘了同步这里（或用脚本强行切英文）。 */
+    /* ⚠️ 英文源关闭：语言切换器已被 CSS 隐藏，这里再兜一层，保证任何路径都回不到英文 */
     if(l!=='zh')return;
     document.documentElement.className='lang-'+l;
     document.documentElement.lang=(l==='zh')?'zh-CN':'en';
