@@ -73,14 +73,14 @@ Hand a Piglin a gold ingot and it may toss out some special Nether Fortress loot
 ### 💎 Loot Chests
 Open the matching loot chest and you may find some special resources:
 
-- Plains Village Houses now include: Sunflower, Rose, Peony, Lilac, Pink Petals, Wildflowers, Leaf Litter, Glow Lichen.
+- Plains Village Houses now include: Sunflower, Rose Bush, Peony, Lilac, Pink Petals, Wildflowers, Leaf Litter, Glow Lichen.
 - Acacia Village Houses now include: Armadillo Scute, Bush, Firefly Bush, Red Shrub.
 - Village Mason Houses now include: Pointed Dripstone, Sulfur Spike.
 - Shipwreck Supply Chests now include: Pale Moss Block, Pale Hanging Moss.
 - Buried Treasure now includes: Turtle Egg.
-- End City chests now include: Shulker Shell.
+- End City Treasure now includes: Shulker Shell.
 - Bastion Remnant Hoglin Stables now include: Crimson Nylium, Warped Nylium.
-- Normal Trial Chamber Vaults and Ominous Trial Chamber Vaults now include: Breeze Rod.
+- Trial Chamber Vaults and Ominous Trial Chamber Vaults now include: Breeze Rod.
 
 ### ⚫ Ender Dragon
 - Defeat the Ender Dragon once and a Dragon Head spawns on the End Podium.
