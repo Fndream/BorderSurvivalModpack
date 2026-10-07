@@ -222,6 +222,7 @@ mark.ss-hit{background:var(--accent-soft);color:var(--link);border-radius:3px;pa
 .mapdl-glabel{margin:0 3px;font-size:.8rem;font-weight:800;letter-spacing:.05em;color:var(--muted)}
 .mapdl-btns{display:flex;flex-direction:column;gap:10px;flex:1;min-width:0}
 .mapdl-btn{display:flex;align-items:center;gap:11px;padding:13px 16px;border-radius:18px;border:2px solid var(--dl-bd);background:var(--btn-bg);color:var(--text);text-decoration:none;font-family:inherit;cursor:pointer;font-weight:700;font-size:.98rem;transition:background-color .16s ease-out,border-color .16s ease-out,color .16s ease-out,transform .18s,box-shadow .18s}
+/* 悬停用深棕胶囊（用户 2026-10-07 确认：深色主题那套金色和浅金都试过，还是这个深棕好看） */
 .mapdl-btn:hover{background:#332a21;border-color:#332a21;color:#f3eddd;transform:translateY(-2px);box-shadow:0 6px 14px rgba(28,20,8,.22)}
 /* 禁用态（Modrinth 审核中）：灰显、不可点、右键也打不开——勿加回 href */
 .mapdl-btn[aria-disabled="true"]{opacity:.45;cursor:not-allowed;pointer-events:none;box-shadow:none;transform:none}
@@ -245,6 +246,7 @@ mark.ss-hit{background:var(--accent-soft);color:var(--link);border-radius:3px;pa
 .mapdl-qrcap{margin:0;font-size:.76rem;color:var(--muted);text-align:center;max-width:300px;line-height:1.65}
 /* 主胶囊右端的「›」：暗示点开是子弹窗而不是直接跳转 */
 .mapdl-caret{margin-left:auto;flex:none;display:flex;align-items:center;justify-content:center;font-size:1.15rem;line-height:1;color:var(--muted);transition:color .16s ease-out,transform .16s ease-out}
+/* 箭头颜色跟着 hover 底色走（深棕底配浅色字） */
 .mapdl-btn:hover .mapdl-caret{color:#f3eddd;transform:translateX(2px)}
 :root[data-theme="dark"] .mapdl-btn:hover .mapdl-caret{color:#2b2318}
 /* ===== 深浅主题开关（APP 式滑块） ===== */
@@ -276,7 +278,10 @@ section.card{background:var(--card);border:1px solid var(--border);border-radius
 h2{font-size:1.42rem;line-height:1.4;display:flex;align-items:center;gap:10px;flex-wrap:wrap;padding-bottom:12px;margin-bottom:14px;border-bottom:2px solid var(--border);color:var(--text-strong)}
 /* 更新日志标题：整合包版本号是主体，Minecraft 版本与日期降权为小徽章 */
 h2 .cl-chip{font-size:.5em;font-weight:600;padding:1px 9px;vertical-align:.42em;white-space:nowrap;letter-spacing:0}
-.toc .cl-chip{font-size:.62rem;padding:0 7px;vertical-align:.1em}
+/* 侧栏版本导航里的 chip（26.3 / 发布日期）：侧栏在两个主题下都是深棕（见皮肤块 .sidebar），
+   不能用 var(--chip-bg)——亮色主题下它是浅米色，在深色侧栏上糊成一块高对比亮斑（用户 2026-10-07 反馈）。
+   与搜索框同理：半透明白叠层 + 浅色字，两主题通用；正文里的 chip 不受影响（那是浅色卡片）。 */
+.toc .cl-chip{font-size:.62rem;padding:0 7px;vertical-align:.1em;background:rgba(255,255,255,.08);border-color:rgba(255,255,255,.14);color:#b3a68f}
 h3{font-size:1.08rem;margin:24px 0 8px;color:var(--text-strong)}
 h4{font-size:1rem;margin:16px 0 6px;color:var(--text-strong)}
 p{margin:8px 0}
@@ -555,6 +560,8 @@ li::marker{color:#d99a2e}
   document.documentElement.lang='zh-CN';
   document.title='边界生存 · 原版风格边界生存地图系列';
   var t=null;try{t=localStorage.getItem('bs-theme')}catch(e){}
+  /* 默认跟随系统：prefers-color-scheme 深→dark，浅→light。
+     （曾一度改成固定浅色，2026-10-07 当天又改回跟随系统） */
   if(t!=='dark'&&t!=='light'){t=(window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches)?'dark':'light'}
   document.documentElement.setAttribute('data-theme',t);
 })();
@@ -758,7 +765,7 @@ li::marker{color:#d99a2e}
 
     <h3>💎 <span class="zh">战利品箱</span><span class="en">Loot Chests</span></h3>
     <div class="zh">
-      <p>开启对应战利品箱时，可能会获得一些特殊资源：</p>
+      <p>开启对应战利品箱时，可能会发现一些特殊资源：</p>
       <ul>
         <li>平原村庄小屋加入：向日葵、玫瑰、牡丹、丁香、粉红色花簇、野花簇、枯叶堆、发光地衣。</li>
         <li>金合欢村庄小屋加入：犰狳鳞甲、灌木丛、萤火虫灌木丛、红灌木。</li>

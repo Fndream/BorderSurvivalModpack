@@ -71,7 +71,7 @@ Hand a Piglin a gold ingot and it may toss out some special Nether Fortress loot
 - Barter loot pool now includes: Blaze Rod, Nether Wart, Wither Skeleton Skull.
 
 ### 💎 Loot Chests
-Open the matching loot chest and you may walk away with something special:
+Open the matching loot chest and you may find some special resources:
 
 - Plains Village Houses now include: Sunflower, Rose, Peony, Lilac, Pink Petals, Wildflowers, Leaf Litter, Glow Lichen.
 - Acacia Village Houses now include: Armadillo Scute, Bush, Firefly Bush, Red Shrub.
