@@ -282,6 +282,8 @@ h2 .cl-chip{font-size:.5em;font-weight:600;padding:1px 9px;vertical-align:.42em;
    不能用 var(--chip-bg)——亮色主题下它是浅米色，在深色侧栏上糊成一块高对比亮斑（用户 2026-10-07 反馈）。
    与搜索框同理：半透明白叠层 + 浅色字，两主题通用；正文里的 chip 不受影响（那是浅色卡片）。 */
 .toc .cl-chip{font-size:.62rem;padding:0 7px;vertical-align:.1em;background:rgba(255,255,255,.08);border-color:rgba(255,255,255,.14);color:#b3a68f}
+/* 高亮行是金底，chip 必须跟着换深色，否则灰字压在金色上看不清（用户 2026-10-07 反馈） */
+.toc-link.active .cl-chip{color:#33291f;background:rgba(51,41,31,.14);border-color:rgba(51,41,31,.3)}
 h3{font-size:1.08rem;margin:24px 0 8px;color:var(--text-strong)}
 h4{font-size:1rem;margin:16px 0 6px;color:var(--text-strong)}
 p{margin:8px 0}
@@ -622,7 +624,7 @@ li::marker{color:#d99a2e}
   </section>
     <section class="card" id="intro">
     <h2>📓 <span class="zh">简介</span><span class="en">Introduction</span></h2>
-    <div class="zh"><p>这是一个以<strong>原版生存</strong>为主要玩法的边界生存地图系列。从狭隘的空间启程，以智慧觅取资源，以勇气宣战昼夜，以经验开拓世界边界。适合熟悉原版特性的玩家。</p></div>
+    <div class="zh"><p>这是一个以<strong>原版生存</strong>为主要玩法的边界生存地图系列。你将从狭隘的空间启程，以智慧觅取资源，以勇气宣战昼夜，以经验开拓世界边界。</p></div>
     <div class="en"><p>This is a map series built around <strong>vanilla survival</strong>, played inside the World Border. You start boxed into a tiny world, gather what you need with your wits, take on the turning of day and night with courage, and push the border outward with experience. It is made for players who already know how vanilla plays.</p></div>
   </section>
 
@@ -632,7 +634,7 @@ li::marker{color:#d99a2e}
       <ul>
         <li>该系列并非常规整合包，它的本体由<strong>专属地图</strong>与<strong>核心模组</strong>相互依赖运行，安装整合包后务必导入本系列的专属地图才可正常进行游戏，详细安装教程见<strong>常见问题</strong>。</li>
         <li><strong>该系列保持原版风格，没有固定的目标。</strong> 它的诞生，源于该系列的第一位玩家<strong>喜欢世界边界的特效，并钟爱游玩长期原版生存</strong>，两者结合之下创作而成。</li>
-        <li>在开始之前，可以先略读该系列的<strong>核心特性、资源特性、扩展特性、世界独有特性、世界库、游戏规则、辅助模组快捷键</strong>，以便对整体形成初步印象。</li>
+        <li>在开始之前，可先略读该系列的<strong>核心特性、资源特性、扩展特性、世界独有特性、世界库、游戏规则、辅助模组快捷键</strong>，以便对整体形成初步印象。</li>
         <li><strong>亦可直接开始，享受陌生与摸索的乐趣。</strong></li>
         <li>推荐搭配自己喜欢的<strong>资源包、光影包</strong>进行游玩。</li>
         <li>支持语言：<strong>简体中文、繁体中文、文言华夏[推荐]、English</strong>。</li>
@@ -1011,7 +1013,7 @@ li::marker{color:#d99a2e}
     <div class="zh">
       <ul>
         <li>每当累计度过<strong>3次</strong>永恒之夜，下次永恒之夜将会降临<strong>亡灵军团</strong>或<strong>灾厄军团</strong>。</li>
-        <li>每当累计度过<strong>8次</strong>永恒之夜，下次永恒之夜将会降临<strong>永夜军团</strong>。</li>
+        <li>每当累计度过<strong>8次</strong>永恒之夜，下次永恒之夜将会降临<strong>永恒军团</strong>。</li>
       </ul>
     </div>
     <div class="en">
