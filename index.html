@@ -139,6 +139,45 @@ body.changelog-only .cta a.ghost[data-changelog]:hover{background:linear-gradien
 .toc-link.active{background:var(--accent-soft);color:var(--link);font-weight:700}
 .toc-children{margin:1px 0 6px}
 .toc-link.sub{padding-left:33px;font-size:.83rem}
+
+/* ===== 侧栏搜索 =====
+   玩家来查攻略时大多只记得一个名词（聚灵石、刷怪笼、灿金、虚无界门…），
+   所以拿「章节标题 + 该小节正文」一起建索引，空格分词按 AND 匹配，命中即跳到该小节。 */
+.side-search{padding:9px 10px 8px;border-bottom:1px solid #3b3227}
+/* ⚠ 侧栏在**两个主题下都是深棕**（V2.1 皮肤把 .sidebar 写死成 #332a21 / #1d1811，
+   见下方 V2.1 块的 .sidebar 规则），所以搜索 UI 不能用 var(--btn-bg)/var(--text)/var(--muted)
+   这类随主题翻转的变量：亮色主题下它们是浅色奶白/深棕，一个奶白输入框扣在深色侧栏上，
+   对比度刺眼（用户 2026-10-07 反馈）。这里改成半透明白叠层 + 固定的浅色字，
+   两个主题通用，深浅侧栏底色不同也不会翻车。 */
+.ss-box{flex:none;display:flex;align-items:center;gap:6px;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.14);border-radius:10px;padding:6px 9px;transition:border-color .15s,box-shadow .15s}
+.ss-box:focus-within{border-color:#e5aa2e;box-shadow:0 0 0 3px rgba(229,170,46,.22)}
+.ss-ic{font-size:.85rem;opacity:.75;line-height:1}
+.ss-input{flex:1;min-width:0;border:0;background:transparent;color:#f3eddd;font-family:inherit;font-size:.86rem;line-height:1.5;outline:none}
+.ss-input::placeholder{color:#a1957d}
+.ss-input::-webkit-search-cancel-button{-webkit-appearance:none}
+.ss-clear{flex:none;border:0;background:transparent;color:#a1957d;cursor:pointer;font-size:.78rem;line-height:1;padding:3px 5px;border-radius:6px;visibility:hidden}
+.side-search.has-q .ss-clear{visibility:visible}
+.ss-clear:hover{color:#f3eddd;background:#443a2c}
+.ss-res{overflow-y:auto;padding:4px 0 2px}
+/* 有查询词时结果面板接管侧栏剩余高度并自行滚动。
+   之前给 .ss-res 写死 max-height:min(52vh,460px)，在窄屏抽屉里列表会被截成一小截，
+   下方还空着一大片（用户 2026-10-07 反馈）；改成 flex 撑满侧栏，不够长时才出现滚动条。 */
+.side-search.searching{flex:1;min-height:0;display:flex;flex-direction:column}
+.side-search.searching~.toc{display:none}
+.side-search.searching .ss-res{flex:1;min-height:0}
+.ss-count{padding:5px 9px 3px;font-size:.74rem;color:#a1957d}
+.ss-item{display:block;padding:6px 9px;border-radius:8px;cursor:pointer;color:#f3eddd}
+.ss-item:hover,.ss-item.cur{background:#443a2c}
+.ss-crumb{font-size:.71rem;color:#a1957d;line-height:1.4}
+.ss-t{font-size:.86rem;font-weight:700;line-height:1.4;margin-top:1px}
+.ss-s{font-size:.775rem;color:#b3a68f;line-height:1.5;margin-top:2px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.ss-item mark{background:rgba(229,170,46,.32);color:#fbe6b4;border-radius:3px;padding:0 1px}
+.ss-msg{padding:9px;font-size:.8rem;color:#b3a68f;line-height:1.65}
+/* 命中高亮：点结果后在正文里把该次搜索的词标出来（几秒后自动淡出并清除） */
+mark.ss-hit{background:var(--accent-soft);color:var(--link);border-radius:3px;padding:0 1px;animation:ssHitFade 6s ease-out forwards}
+@keyframes ssHitFade{0%,70%{background:var(--accent-soft);color:var(--link)}100%{background:transparent;color:inherit}}
+.ss-flash{animation:ssFlash 1.8s ease-out 1}
+@keyframes ssFlash{0%,35%{box-shadow:0 0 0 3px var(--accent-soft)}100%{box-shadow:0 0 0 3px rgba(0,0,0,0)}}
 .side-overlay{position:fixed;inset:0;background:rgba(0,0,0,.45);opacity:0;pointer-events:none;transition:opacity .2s;z-index:54}
 .side-overlay.show{opacity:1;pointer-events:auto}
 
@@ -295,6 +334,12 @@ table.grid td:first-child{white-space:nowrap;font-weight:600}
 .map-body h3{margin:0;font-size:1.05rem;line-height:1.45}
 .chips{display:flex;flex-direction:column;align-items:flex-start;gap:6px}
 .chip{font-size:.78rem;font-weight:600;padding:3px 10px;border-radius:999px;background:var(--chip-bg);border:1px solid var(--border);color:var(--chip-text);line-height:1.6}
+/* 首屏的「当前版本」徽章：可点击进入更新日志并定位到最新一节。
+   默认不高亮（与旁边手写的「Minecraft 26.3」chip 同款），鼠标悬停 / 键盘聚焦才上强调色。
+   文字由 JS 从第一条更新日志动态取（见 labelVer），故样式上不再区分来历。 */
+#verChip{white-space:nowrap;cursor:pointer;text-decoration:none;transition:border-color .16s ease-out,color .16s ease-out,background-color .16s ease-out}
+#verChip:hover,#verChip:focus-visible{border-color:var(--accent);color:var(--accent);background:var(--chip-bg)}
+#verChip:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
 .chip.diff{background:var(--diff-bg);border-color:var(--diff-border);color:var(--diff-text)}
 .lore{font-size:.87rem;color:var(--lore-text);background:var(--lore-bg);border:1px solid var(--lore-border);border-radius:10px;padding:9px 12px;line-height:1.65;flex:1}
 .lore strong{color:var(--text-strong)}
@@ -541,6 +586,14 @@ li::marker{color:#d99a2e}
     <span>📑 <span class="zh">目录</span><span class="en">Contents</span></span>
     <button id="sideClose" class="icon-btn side-close" type="button" aria-label="关闭 Close">✕</button>
   </div>
+  <div class="side-search" id="ssWrap">
+    <div class="ss-box">
+      <span class="ss-ic">🔍</span>
+      <input id="ssInput" class="ss-input" type="search" autocomplete="off" spellcheck="false" aria-label="搜索 Search" placeholder="搜索">
+      <button id="ssClear" class="ss-clear" type="button" aria-label="清空 Clear">✕</button>
+    </div>
+    <div id="ssRes" class="ss-res" hidden></div>
+  </div>
   <nav class="toc" id="toc"></nav>
 </aside>
 <div class="side-overlay" id="sideOverlay"></div>
@@ -550,7 +603,7 @@ li::marker{color:#d99a2e}
     <img class="banner" src="images/banner.jpg" alt="Border Survival banner">
     <div class="hero-head">
       <div>
-        <h1>🧭 <span class="zh">边界生存</span><span class="en">Border Survival</span> <span class="chip">🍁 Minecraft 26.3</span></h1>
+        <h1>🧭 <span class="zh">边界生存</span><span class="en">Border Survival</span> <span class="chip">🍁 Minecraft 26.3</span> <a class="chip" id="verChip" href="#changelog-v1">🍁 <span id="verTxt">14.0-rc5</span></a></h1>
         <p class="tagline"><span class="zh">以原版生存为主要玩法的边界生存地图系列</span><span class="en">A world series built around vanilla survival, played inside the World Border</span></p>
       </div>
       <div class="cta">
@@ -613,7 +666,7 @@ li::marker{color:#d99a2e}
 
     <h3>📋️ <span class="zh">功能牌</span><span class="en">Function Signs</span></h3>
     <div class="zh">
-      <p>进入该系列的专属世界后，在世界出生点会看到三种功能告示牌，对其右键可使用对应功能。</p>
+      <p>进入该系列的专属世界后，在世界出生点会看到三种功能告示牌，对其右键可触发对应功能。</p>
       <ul>
         <li><strong>边界升级</strong>：消耗经验等级并提升边界能量。</li>
         <li><strong>切换模式</strong>：在昼夜模式与禁锢模式之间切换。关于边界模式的更多信息，详见<strong>扩展特性</strong>。</li>
@@ -964,7 +1017,7 @@ li::marker{color:#d99a2e}
     <h3>💙 <span class="zh">永恒之心</span><span class="en">Eternal Heart</span></h3>
     <div class="zh">
       <ul>
-        <li>军团首领被玩家击败后，将会掉落一颗<strong>永恒之心</strong>。</li>
+        <li>军团首领被玩家击败后，会掉落一颗<strong>永恒之心</strong>。</li>
       </ul>
       <div class="note"><strong>右键使用</strong>可摧毁永恒之心，在当前或下次永恒之夜中，永夜骑士将不再团结一心。<br>
       永恒之心可视为海洋之心使用。</div>
@@ -1081,7 +1134,7 @@ li::marker{color:#d99a2e}
       <ul>
         <li>由海洋之心、下界之星、末地水晶融合而成的混沌之星，再经神匠淬炼而成的不朽灵材，经其锻造的无损灵器具有<strong>无耐久度</strong>的特质，详见下文。</li>
       </ul>
-      <div class="note">手持无损灵材并对着<strong>边界升级</strong>功能牌右键，可将其注入其中，以提升一定等级的边界能量。</div>
+      <div class="note">手持无损灵材并对着<strong>边界升级</strong>功能牌右键，可将灵材注入其中，以提升一定等级的边界能量。</div>
     </div>
     <div class="en">
       <ul>
@@ -2091,7 +2144,7 @@ li::marker{color:#d99a2e}
   </section>
 
   <section class="card cl-entry" id="changelog-v1">
-    <h2>🍁 <span class="zh">14.0-rc5 <span class="chip cl-chip">26.3</span> <span class="chip cl-chip">2026-10-06</span></span><span class="en">14.0-rc5 <span class="chip cl-chip">26.3</span> <span class="chip cl-chip">2026-10-07</span></span></h2>
+    <h2>🍁 <span class="zh">14.0-rc5 <span class="chip cl-chip">26.3</span> <span class="chip cl-chip">2026-10-07</span></span><span class="en">14.0-rc5 <span class="chip cl-chip">26.3</span> <span class="chip cl-chip">2026-10-07</span></span></h2>
     <div class="zh">
       <h4>📱 模组更新</h4>
       <ul>
@@ -2353,6 +2406,7 @@ li::marker{color:#d99a2e}
     document.title=(l==='zh')?'边界生存 · 原版风格边界生存地图系列':'Border Survival · Vanilla Border Survival Worlds';
     try{localStorage.setItem('bs-lang',l)}catch(e){}
     labelLang();
+    labelVer();
   }
   function openLangPop(on){langWrap.classList.toggle('open',on);langBtn.setAttribute('aria-expanded',on?'true':'false')}
   langBtn.addEventListener('click',function(e){e.stopPropagation();openLangPop(!langWrap.classList.contains('open'))});
@@ -2368,6 +2422,65 @@ li::marker{color:#d99a2e}
     setLang(l);
   });
   labelLang();
+
+  /* ===== 首屏「当前版本」徽章（#verChip）=====
+     文字不手写：从第一条更新日志（main > section.card.cl-entry）的 h2 里取，
+     去掉 .cl-chip（MC 版本 + 发布日期两个 chip），只留当前语言那一半的文本。
+     以后加版本只需在 #changelog 顶部插一节，徽章自动跟上，不会写重。
+     取不到（还没写更新日志 / 结构变了）就整个隐藏，不给用户看空壳。 */
+  window.labelVer=labelVer;
+  function labelVer(){
+    var box=document.getElementById('verChip');
+    if(!box)return;
+    var txt='',lang=curLang();
+    var s=document.querySelector('main > section.card.cl-entry');
+    var h=s&&s.querySelector('h2');
+    if(h){
+      var c=h.cloneNode(true),i,ns;
+      /* ① 删掉 MC 版本与日期 chip */
+      ns=c.querySelectorAll('.cl-chip');
+      for(i=0;i<ns.length;i++){if(ns[i].parentNode)ns[i].parentNode.removeChild(ns[i])}
+      /* ② 删掉非当前语言的那一半（.en 在中文下 display:none，但 textContent 照样取得到，
+            不删就会叠成「14.0-rc514.0-rc5」） */
+      ns=c.querySelectorAll('.zh,.en');
+      for(i=0;i<ns.length;i++){
+        var isZh=(ns[i].className==='zh')||((' '+ns[i].className+' ').indexOf(' zh ')>-1);
+        if((lang==='zh')!==isZh&&ns[i].parentNode)ns[i].parentNode.removeChild(ns[i]);
+      }
+      txt=(c.textContent||'').replace(/\s+/g,' ').replace(/^\s+|\s+$/g,'');
+      /* h2 开头自带一枚 🍁（与右侧 Minecraft chip 同一个），而徽章里已经画了一枚，
+         不去重会显示成「🍁🍁 14.0-rc5」。先把 🍁 去掉，再兜一层通用 emoji 前缀。 */
+      txt=txt.replace(/^🍁\s*/,'').replace(/^[\s\p{Extended_Pictographic}]+/u,'').replace(/^\s+|\s+$/g,'');
+    }
+    if(!txt){box.style.display='none';return}
+    box.style.display='';
+    var t=document.getElementById('verTxt');
+    if(t)t.textContent=txt;
+    box.setAttribute('title',(lang==='zh'?'最新版本：':'Latest version: ')+txt);
+    /* href 始终指向最新一节：在更新日志模式里点它就是一次普通锚点跳转（也能中键/复制链接） */
+    if(s)box.setAttribute('href','#'+(s.id||'changelog-v1'));
+  }
+  labelVer();
+
+  /* 徽章点击：文档模式下先进日志模式，再滚到最新一节；
+     已在日志模式则不拦，让浏览器按 href 正常跳。 */
+  var verChip=document.getElementById('verChip');
+  if(verChip){
+    verChip.addEventListener('click',function(e){
+      var s=document.querySelector('main > section.card.cl-entry');
+      if(!s)return;
+      if(document.body.classList.contains('changelog-only'))return;
+      e.preventDefault();
+      if(window.toggleChangelog)window.toggleChangelog(true);
+      /* toggleChangelog() 内部有一次 rAF 归零补偿（会把滚动位置抹回页顶），要等它跑完再定位，故延迟 50ms。
+         用 scrollIntoView 而非 window.scrollTo：吸顶顶栏靠 html{scroll-padding-top:76px} 让位，
+         scroll-padding 只作用于「滚动到元素」的 API（scrollIntoView / 锚点跳转），
+         手写 scrollTo(0,rect.top) 是无视它的，标题就会被顶栏盖住（用户 2026-10-07 反馈）。 */
+      setTimeout(function(){
+        s.scrollIntoView({block:'start'});
+      },50);
+    });
+  }
 
   /* ===== 深浅主题切换 ===== */
   var themeBtn=document.getElementById('themeBtn');
@@ -2644,6 +2757,244 @@ li::marker{color:#d99a2e}
     toc.scrollTop=0;
     updateActive();
   };
+  /* ===== 侧栏搜索 =====
+     玩家来查攻略时通常只记得一个名词（聚灵石、刷怪笼、灿金、虚无界门…），
+     所以拿「标题 + 该小节正文」一起建索引，空格分词按 AND 匹配，点结果跳到对应小节并闪一下。
+     索引只收 main > section.card 的**正文区**，不收 .cl-entry 更新日志——
+     那节全是模组名与版本号，混进来会把「名词解释」的结果冲掉。 */
+  var ssWrap=document.getElementById('ssWrap'),
+      ssInput=document.getElementById('ssInput'),
+      ssClear=document.getElementById('ssClear'),
+      ssRes=document.getElementById('ssRes');
+  var ssIdx=null,ssHits=[],ssCur=-1,ssTimer=null;
+  function ssText(node){
+    /* .en 在中文下不可见，但 textContent 照样取得到 → 会把整段英文混进索引，必须剔掉。
+       注意 querySelectorAll 只搜**后代**不搜自身：直接对 div.en 调它会一个都找不到，
+       所以先在根节点上判一次（否则「永恒神兵」这类小节的摘要会带出整段英文）。 */
+    if(node.classList&&(node.classList.contains('en')||node.classList.contains('copy-btn')))return '';
+    var c=node.cloneNode(true);
+    var junk=c.querySelectorAll('.en,.copy-btn,script,style');
+    for(var i=0;i<junk.length;i++){if(junk[i].parentNode)junk[i].parentNode.removeChild(junk[i])}
+    return (c.textContent||'').replace(/\s+/g,' ').trim();
+  }
+  /* 标题专用：额外抹掉 .chip / .muted（与目录的 clean() 一致），
+     否则「世界库」会变成「世界库 🗺️ 17」、「14.0-rc5 26.3 2026-10-07」这种夹带计数/日期的标题。 */
+  function ssTitle(node){
+    if(!node)return '';
+    var c=node.cloneNode(true);
+    var junk=c.querySelectorAll('.en,.chip,.muted,.copy-btn,script,style');
+    for(var i=0;i<junk.length;i++){if(junk[i].parentNode)junk[i].parentNode.removeChild(junk[i])}
+    return (c.textContent||'').replace(/\s+/g,' ').trim();
+  }
+  function ssBuild(){
+    var list=[];
+    Array.prototype.forEach.call(document.querySelectorAll('main > section.card'),function(sec){
+      if(sec.classList.contains('cl-entry'))return;
+      var h2=sec.querySelector('h2');
+      if(!h2||!sec.id)return;
+      var card=ssTitle(h2);
+      list.push({id:sec.id,card:card,title:card,text:ssText(sec),sub:false});
+      var i=0;
+      Array.prototype.forEach.call(sec.querySelectorAll('h3'),function(h){
+        var id=h.id;
+        /* 目录已经给直接子级 h3 补过 id（sec.id-N）；嵌套在地图卡/details 里的 h3 没有，
+           这里用 -sN 命名，与目录的 -N 错开，免得撞号把侧栏锚点指到别处。 */
+        if(!id){id=sec.id+'-s'+(++i);h.id=id}
+        var buf=[],n=h.nextElementSibling;
+        while(n&&n.tagName!=='H3'&&n.tagName!=='H2'){buf.push(ssText(n));n=n.nextElementSibling}
+        list.push({id:id,card:card,title:ssTitle(h),text:buf.join(' '),sub:true});
+      });
+      /* <details> 折叠块（常见问题的每一条问答就是这种结构）单独建条目：
+         章节级条目会把整个 FAQ 算成一大块，搜到也只会被带到 FAQ 顶部，
+         看不到具体是哪一条回答——拆开后点结果能直接展开并定位到那一条。 */
+      Array.prototype.forEach.call(sec.querySelectorAll('details'),function(d,i){
+        var sum=d.querySelector('summary');if(!sum)return;
+        var id=d.id;
+        if(!id){id=sec.id+'-d'+(i+1);d.id=id}
+        var buf=[];
+        Array.prototype.forEach.call(d.children,function(c){if(c!==sum)buf.push(ssText(c))});
+        list.push({id:id,card:card,title:ssTitle(sum),text:buf.join(' '),sub:true,details:true});
+      });
+    });
+    return list;
+  }
+  function ssScore(e,kws){
+    var head=(e.title+' '+e.card).toLowerCase(),body=e.text.toLowerCase();
+    var score=0,pos=-1;
+    for(var i=0;i<kws.length;i++){
+      var k=kws[i],p=head.indexOf(k);
+      if(p<0){
+        var b=body.indexOf(k);
+        if(b<0)return null;
+        score+=12;
+        if(pos<0)pos=b;
+      }else{
+        score+=(p===0)?80:50;
+        if(pos<0)pos=-2;
+      }
+    }
+    if(!e.sub)score-=6;   /* 章节级条目与同名小节重复时，让更精准的小节排前面 */
+    return {score:score,pos:pos};
+  }
+  function ssEsc(s){return s.replace(/[&<>"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]})}
+  function ssMark(s,kws){
+    var out=ssEsc(s);
+    for(var i=0;i<kws.length;i++){
+      if(!kws[i])continue;
+      var re=new RegExp('('+kws[i].replace(/[.*+?^${}()|[\]\\]/g,'\\$&')+')','gi');
+      out=out.replace(re,'<mark>$1</mark>');
+    }
+    return out;
+  }
+  function ssSnippet(s,kws){
+    var low=s.toLowerCase(),at=-1;
+    for(var i=0;i<kws.length&&at<0;i++){at=low.indexOf(kws[i])}
+    var start=Math.max(0,at-18),end=Math.min(s.length,start+64);
+    return (start>0?'…':'')+ssMark(s.slice(start,end),kws)+(end<s.length?'…':'');
+  }
+  function ssRender(q){
+    ssWrap.classList.toggle('searching',!!q);
+    ssWrap.classList.toggle('has-q',!!q);
+    if(!q){ssHits=[];ssCur=-1;ssRes.innerHTML='';ssRes.hidden=true;return}
+    if(!ssIdx)ssIdx=ssBuild();   /* 首次输入时才建索引：此时复制按钮等脚本插入的节点已就位 */
+    var kws=q.toLowerCase().split(/\s+/).filter(Boolean),hits=[];
+    ssIdx.forEach(function(e,i){
+      var r=ssScore(e,kws);
+      if(r)hits.push({e:e,score:r.score,pos:r.pos,ord:i});
+    });
+    hits.sort(function(a,b){return (b.score-a.score)||(a.ord-b.ord)});
+    ssHits=hits.slice(0,40);ssCur=-1;
+    if(!ssHits.length){
+      ssRes.innerHTML='<div class="ss-msg"><span class="zh">没有找到「'+ssEsc(q)+'」</span></div>';
+      ssRes.hidden=false;
+      return;
+    }
+    var h='<div class="ss-count">'+ssHits.length+' <span class="zh">条结果</span></div>';
+    ssHits.forEach(function(hit,i){
+      h+='<div class="ss-item" data-i="'+i+'" role="option">'
+        +(hit.e.sub?'<div class="ss-crumb">'+ssMark(hit.e.card,kws)+'</div>':'')
+        +'<div class="ss-t">'+ssMark(hit.e.title,kws)+'</div>'
+        +(hit.e.text?'<div class="ss-s">'+ssSnippet(hit.e.text,kws)+'</div>':'')
+        +'</div>';
+    });
+    ssRes.innerHTML=h;ssRes.hidden=false;
+  }
+  /* 命中高亮：点结果后在正文里把该次搜索的词标出来，几秒后自动淡出并从 DOM 清除。
+     清除是必要的——<mark> 会把文本节点切开，不收掉会干扰后续复制选中与下一次高亮。 */
+  var ssHitTimer=null;
+  function ssClearMarks(){
+    var ms=document.querySelectorAll('mark.ss-hit');
+    for(var i=0;i<ms.length;i++){
+      var m=ms[i],p=m.parentNode;
+      if(!p)continue;
+      p.replaceChild(document.createTextNode(m.textContent),m);
+      p.normalize();   /* 合并被 mark 切开的相邻文本节点 */
+    }
+  }
+  function ssRanges(text,kws){
+    var lower=text.toLowerCase(),rs=[];
+    for(var i=0;i<kws.length;i++){
+      var k=kws[i];if(!k)continue;
+      var from=0,p;
+      while((p=lower.indexOf(k,from))>=0){rs.push([p,p+k.length]);from=p+k.length}
+    }
+    rs.sort(function(a,b){return a[0]-b[0]||a[1]-b[1]});
+    var out=[];
+    rs.forEach(function(r){
+      var last=out[out.length-1];
+      if(last&&r[0]<=last[1]){if(r[1]>last[1])last[1]=r[1];return}   /* 多词重叠合并，别嵌套 <mark> */
+      out.push([r[0],r[1]]);
+    });
+    return out;
+  }
+  function ssHighlight(root,kws){
+    ssClearMarks();
+    if(!root||!kws.length)return 0;
+    var walker=document.createTreeWalker(root,NodeFilter.SHOW_TEXT,null);
+    var nodes=[],n;
+    while((n=walker.nextNode())){
+      if(!n.nodeValue||!n.nodeValue.trim())continue;
+      var p=n.parentNode;
+      if(!p||p.closest('script,style,mark,.en,.ss-res,.copy-btn'))continue;      /* .en 中文下不可见，不标 */
+      var d=p.closest('details');
+      if(d&&!d.open)continue;                                                  /* 未展开的折叠块看不见，不标 */
+      if(ssRanges(n.nodeValue,kws).length)nodes.push(n);
+      if(nodes.length>=400)break;
+    }
+    var count=0;
+    nodes.forEach(function(node){
+      var rs=ssRanges(node.nodeValue,kws);if(!rs.length)return;
+      var text=node.nodeValue,frag=document.createDocumentFragment(),pos=0;
+      rs.forEach(function(r){
+        if(r[0]>pos)frag.appendChild(document.createTextNode(text.slice(pos,r[0])));
+        var mk=document.createElement('mark');
+        mk.className='ss-hit';mk.textContent=text.slice(r[0],r[1]);
+        frag.appendChild(mk);pos=r[1];count++;
+      });
+      if(pos<text.length)frag.appendChild(document.createTextNode(text.slice(pos)));
+      node.parentNode.replaceChild(frag,node);
+    });
+    clearTimeout(ssHitTimer);
+    ssHitTimer=setTimeout(ssClearMarks,6000);   /* 与 CSS 动画时长一致，淡出完就收掉 */
+    return count;
+  }
+  function ssGo(i){
+    var hit=ssHits[i];if(!hit)return;
+    var el=document.getElementById(hit.e.id);if(!el)return;
+    /* 若当前在更新日志模式，正文小节是 display:none，先退回文档模式（keepScroll 保住滚动） */
+    if(document.body.classList.contains('changelog-only')&&window.toggleChangelog)window.toggleChangelog(false,true);
+    /* 目标可能藏在未展开的 <details> 里（如常见问题的每一条问答），
+       不展开就等于跳到一处看不见的内容——先把祖先折叠块全部打开。 */
+    var d=el.closest?el.closest('details'):null;
+    while(d){d.open=true;d=d.parentNode?d.parentNode.closest('details'):null}
+    var kws=ssInput.value.toLowerCase().split(/\s+/).filter(Boolean);
+    el.scrollIntoView({block:'start'});   /* html{scroll-padding-top:76px} 会让开吸顶顶栏 */
+    el.classList.remove('ss-flash');void el.offsetWidth;el.classList.add('ss-flash');
+    /* 高亮范围取「目标的最近章节」；目标是 details 时只标它自己，避免满屏都是黄条 */
+    var scope=el.closest?el.closest('section.card'):null;
+    if(scope&&hit.e.details)scope=el;
+    ssHighlight(scope||el,kws);
+    if(window.innerWidth<1180)openSide(false);
+  }
+  if(ssInput){
+    ssInput.addEventListener('input',function(){
+      clearTimeout(ssTimer);
+      var q=ssInput.value.trim();
+      ssTimer=setTimeout(function(){ssRender(q)},110);
+    });
+    ssInput.addEventListener('keydown',function(e){
+      if(e.key==='ArrowDown'||e.key==='ArrowUp'){
+        if(!ssHits.length)return;
+        e.preventDefault();
+        ssCur=(ssCur+(e.key==='ArrowDown'?1:-1)+ssHits.length)%ssHits.length;
+        Array.prototype.forEach.call(ssRes.querySelectorAll('.ss-item'),function(el,i){el.classList.toggle('cur',i===ssCur)});
+        var cur=ssRes.querySelector('.ss-item.cur');
+        if(cur&&cur.scrollIntoView)cur.scrollIntoView({block:'nearest'});
+      }else if(e.key==='Enter'){
+        if(ssHits.length){e.preventDefault();ssGo(ssCur>=0?ssCur:0)}
+      }else if(e.key==='Escape'){
+        if(ssInput.value){ssInput.value='';ssRender('')}else{ssInput.blur()}
+      }
+    });
+    ssRes.addEventListener('click',function(e){
+      var it=e.target&&e.target.closest?e.target.closest('.ss-item'):null;
+      if(!it)return;
+      ssGo(+it.getAttribute('data-i'));
+    });
+    ssClear.addEventListener('click',function(){ssInput.value='';ssRender('');ssInput.focus()});
+    /* 快捷键：/ 或 Ctrl/⌘+K 直接聚焦。**故意不在顶栏加搜索按钮**——
+       375px 顶栏本来就贴边（见 @media(max-width:400px) 里「实测溢出 8px」的注释），
+       加一个按钮就会重新溢出；窄屏用快捷键先把抽屉拉出来再聚焦。 */
+    document.addEventListener('keydown',function(e){
+      var tag=(e.target&&e.target.tagName||'').toUpperCase();
+      var inField=(tag==='INPUT'||tag==='TEXTAREA'||tag==='SELECT');
+      var combo=((e.key==='k'||e.key==='K')&&(e.ctrlKey||e.metaKey))||(e.key==='/'&&!inField&&!e.ctrlKey&&!e.metaKey&&!e.altKey);
+      if(!combo)return;
+      e.preventDefault();
+      if(window.innerWidth<1180)openSide(true);
+      ssInput.focus();ssInput.select();
+    });
+  }
   updateActive();
 })();
 document.querySelectorAll('.gate-icon').forEach(function(img){
@@ -2868,6 +3219,8 @@ document.querySelectorAll('.gate-icon').forEach(function(img){
       bs[i].classList.toggle('active',on);
     }
   }
+  /* 导给首屏的版本徽章用（它在另一个 IIFE 里，见 labelVer） */
+  window.toggleChangelog=toggleChangelog;
   window.toggleChangelog=toggleChangelog;
   document.addEventListener('click',function(e){
     var t=e.target;
