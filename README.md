@@ -1,4 +1,4 @@
-![banner.jpg](images/banner.jpg)
+![虚无十五界-banner.jpg](https://files.seeusercontent.com/2026/09/23/blK7/banner.jpg)
 
 [![🧭 项目首页](https://img.shields.io/badge/🧭-%E9%A1%B9%E7%9B%AE%E9%A6%96%E9%A1%B5-332a21?style=for-the-badge&labelColor=332a21&logoColor=e5aa2e)](https://fndream.github.io/BorderSurvivalModpack/?lang=zh)
 
@@ -190,8 +190,9 @@
 - 永夜骑士、边界维系者、神匠为世界之虫目标。
 - 世界之虫目标会引起水平距离384格范围内所有怪物的仇恨。
 - 位于世界之虫目标下方的怪物，会向上追击世界之虫目标16格。
-- 位于世界之虫目标上方的怪物，在**原版、放大化**世界中，若目标的位置大于等于Y48，会向下追击世界之虫目标∞格，否则为16格。
-- 位于世界之虫目标上方的怪物，在**浮屿、洞穴、虚空**世界中，会向下追击世界之虫目标∞格。
+  位于世界之虫目标上方的怪物，在**原版型、放大化**维度中，若世界之虫目标的位置在Y48以上，会向下追击世界之虫目标∞格，否则为16格。
+  位于世界之虫目标上方的怪物，在**下界**维度中，若世界之虫目标的位置在Y16以上，会向下追击世界之虫目标∞格，否则为16格。
+  位于世界之虫目标上方的怪物，在**末地、浮屿型、洞穴型、虚空型**维度中，会向下追击世界之虫目标∞格。
 - 除永夜骑士、夜骑以外的其他怪物，在追击世界之虫目标时不会进行反击。
 - 怪物在追击世界之虫目标时，若视线内存在玩家，将会优先转火攻击玩家。
 > 末影人不会自然转火未与其对视的玩家。  
@@ -547,25 +548,39 @@
 > 下面的规则指令也可在：**ESC->世界选项->编辑游戏规则->搜索“允许”关键词->生物** 快捷启用或禁用。
 
 >✅ 若需要苦力怕防爆效果，推荐使用以下指令：  
->```/gamerule creeper_griefing false```
+>```
+>/gamerule creeper_griefing false
+>```
 
 >✅ 若需要阻止末影人搬土，推荐使用以下指令：  
->```/gamerule endman_griefing false```
+>```
+>/gamerule endman_griefing false
+>```
 
 > ✅ 若需要阻止僵尸拆门，推荐使用以下指令：  
->```/gamerule zombie_griefing false```
+>```
+>/gamerule zombie_griefing false
+>```
 
 > ✅ 若需要恶魂火球防爆，推荐使用以下指令：  
-> ```/gamerule ghast_griefing false```
+> ```
+>/gamerule ghast_griefing false
+> ```
 
 > ✅ 若需要阻止劫掠兽破坏，推荐使用以下指令：  
-> ```/gamerule ravager_griefing false```
+> ```
+>/gamerule ravager_griefing false
+> ```
 
 > ✅ 若需要阻止生物踩坏耕地，推荐使用以下指令：  
-> ```/gamerule farmland_griefing false```
+> ```
+>/gamerule farmland_griefing false
+> ```
 
 > ✅ 若需要阻止玩家踩坏耕地，推荐使用以下指令：  
-> ```/gamerule farmland_player_griefing false```
+> ```
+>/gamerule farmland_player_griefing false
+> ```
 
 </details>
 
@@ -701,13 +716,15 @@
 
 **A：** 使用以下指令获得，需创造模式放置有效。
 
-```/function border_survival:get_sign```
+```
+/function border_survival:get_sign
+```
 
 ---
 
 **Q：功能牌右键没反应？**
 
-**A：** 这是由于模组没有被加载导致的，请检查整合包是否安装正确，且启动的游戏版本名是否为整合包所安装的版本名。
+**A：** 模组没有被加载，请检查整合包是否安装正确，且启动的游戏实例名是否为安装整合包时设置的实例名。
 
 ---
 
@@ -736,16 +753,18 @@
 **Q：为何不刷怪？**
 
 **A：** 请检查是否为和平模式。如果遇到世界默认为和平模式的情况，请提供世界名称反馈修复。  
-**B：** 因边界外部不会刷怪，如果边界等级小于10级，刷怪效率会较为缓慢。
+**B：** 因边界外部不会刷怪，如果边界能量小于10级，刷怪效率会较为缓慢。
 
 ---
 
 **Q：我在《存世》世界中利用虚无界门特性制造了一个多维度刷怪塔后，出现严重掉刻延迟？**
 
-**A：** Minecraft每额外加载一个维度，刻运算延迟便会增加一倍，当mspt超过50.0ms/刻后，tps便会降低，从而导致服务端延迟，这是正常现象。
+**A：** Minecraft每额外加载一个维度，刻运算延迟便可能增加一倍，当mspt超过50.0ms/刻后，tps便会降低，从而导致服务端延迟，这是正常现象。  
 **B：** 在做此类事情之前，请先使用假人让多个维度同时加载，并在执行以下指令后按住TAB键查看tps/mspt，再根据CPU性能(mspt数值)删减或酌情增加同时加载维度的数量。
 
-```/log tps```
+```
+/log tps
+```
 
 ---
 **Q：放置方块延迟？区块加载卡顿？活塞动画不流畅？**
