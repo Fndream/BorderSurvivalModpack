@@ -1,6 +1,9 @@
 ![VoidFifteenRealms-banner.jpg](https://files.seeusercontent.com/2026/09/23/blK7/banner.jpg)
 
 [![🧭 Project Website](https://img.shields.io/badge/🧭-Project%20Website-332a21?style=for-the-badge&labelColor=332a21&logoColor=e5aa2e)](https://fndream.github.io/BorderSurvivalModpack/?lang=en)
+[![Download Modpack](https://img.shields.io/badge/Download%20Modpack-332a21?style=for-the-badge&labelColor=332a21&logo=modrinth&logoColor=1bd96a)](https://modrinth.com/modpack/border-survival-persisting-worlds/versions)
+[![Download Worldpack](https://img.shields.io/badge/Download%20Worldpack-332a21?style=for-the-badge&labelColor=332a21&logo=github&logoColor=ffffff)](https://github.com/Fndream/BorderSurvivalModpack/tree/master/Worlds_26.3)
+
 
 ## 📓 Introduction
 
@@ -222,11 +225,11 @@ Break a Monster Spawner with a tool enchanted with Silk Touch. It then drops an 
 > A Chaos Smith in unloaded chunks does not count as existing.
 
 ### 🪵 Unbreakable Spirit Material
-Unbreakable Spirit Material is what the Chaos Smith makes by refining a Chaos Star — crafted from a Heart of the Sea, a Nether Star, and an End Crystal. Equipment forged from this material is unbreakable; see below.
+Unbreakable Spirit Material is what the Chaos Smith makes by refining a Chaos Star — crafted from a Heart of the Sea, a Nether Star, and an End Crystal. Equipment forged from this material is **Unbreakable**; see below.
 > **Right-clicking** the **Border Upgrade** sign **while holding** Unbreakable Spirit Material infuses the material into it, raising Border Energy by a set number of **levels**.
 
 ### ✨ Unbreakable Spirit Equipment
-Unbreakable Spirit Equipment is forged by the Chaos Smith from Unbreakable Spirit Material, and is unbreakable.
+Unbreakable Spirit Equipment is forged by the Chaos Smith from Unbreakable Spirit Material, and is **Unbreakable**.
 
 **The following Unbreakable Spirit equipment pieces grant effects while held in the offhand:**
 

@@ -1,6 +1,9 @@
 ![虚无十五界-banner.jpg](https://files.seeusercontent.com/2026/09/23/blK7/banner.jpg)
 
-[![🧭 项目首页](https://img.shields.io/badge/🧭-%E9%A1%B9%E7%9B%AE%E9%A6%96%E9%A1%B5-332a21?style=for-the-badge&labelColor=332a21&logoColor=e5aa2e)](https://fndream.github.io/BorderSurvivalModpack/?lang=zh)
+[![🧭 Project Website](https://img.shields.io/badge/🧭-Project%20Website-332a21?style=for-the-badge&labelColor=332a21&logoColor=e5aa2e)](https://fndream.github.io/BorderSurvivalModpack/?lang=en)
+[![Download Modpack](https://img.shields.io/badge/Download%20Modpack-332a21?style=for-the-badge&labelColor=332a21&logo=modrinth&logoColor=1bd96a)](https://modrinth.com/modpack/border-survival-persisting-worlds/versions)
+[![Download Worldpack](https://img.shields.io/badge/Download%20Worldpack-332a21?style=for-the-badge&labelColor=332a21&logo=github&logoColor=ffffff)](https://github.com/Fndream/BorderSurvivalModpack/tree/master/Worlds_26.3)
+
 
 ## 📓 简介
 
@@ -180,8 +183,8 @@
 ### 🏹 永恒神兵
 - 永夜骑士被玩家击败后，有 **1%** 的概率会掉落其手持的武器。
 - 若玩家主手持有抢夺武器，每级抢夺将会提高 **8.5%** 的掠夺成功率。
-> 永恒神兵具有消失诅咒，无法被火焰、熔岩、爆炸、闪电、仙人掌摧毁。  
-> 未额外附魔的永恒神兵，可源返初归为夜灵神兵。
+> 咒灵神兵具有消失诅咒，无法被火焰、熔岩、爆炸、闪电、仙人掌摧毁。  
+> 未额外附魔的咒灵神兵，可源返初归为夜灵神兵。
 
 ### 🍖 掉落物
 - 被 **永夜骑士、监守者、远古守卫者、守卫者、铁傀儡** 击败的生物视为被玩家击败。
