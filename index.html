@@ -113,6 +113,10 @@ body.changelog-only .cta a.ghost[data-changelog]:hover{background:linear-gradien
 .topbar::after{content:"";position:absolute;left:0;right:0;bottom:0;height:2px;background:linear-gradient(90deg,#f97316,#fbbf24,#fb923c)}
 .topbar .wrap{display:flex;align-items:center;gap:10px;height:var(--top-h)}
 .brand{font-weight:800;white-space:nowrap;font-size:1.02rem}
+/* logo 改成 <a> 回主页后要显式接管颜色/下划线，否则会吃到全局 a 的样式 */
+.brand:link,.brand:visited{color:inherit;text-decoration:none}
+.brand:hover{color:var(--accent);transform:translateY(-1px)}
+.brand{transition:.15s;cursor:pointer}
 .icon-btn{border:1.5px solid var(--border);background:var(--btn-bg);border-radius:999px;padding:7px 15px;font-size:.88rem;font-weight:700;cursor:pointer;color:var(--text);transition:.15s;font-family:inherit;line-height:1.3;display:inline-flex;align-items:center;justify-content:center;gap:4px}
 .icon-btn:hover{border-color:var(--accent);color:var(--btn-on-hover);transform:translateY(-1px)}
 .icon-btn.menu-btn{display:none;padding:7px 12px}
@@ -570,7 +574,7 @@ li::marker{color:#d99a2e}
 <header class="topbar">
   <div class="wrap">
     <button id="menuBtn" class="icon-btn menu-btn" type="button" aria-label="目录 Contents"><span class="ic">📑</span><span class="zh">目录</span><span class="en">Contents</span></button>
-    <div class="brand">🧭 <span class="zh">边界生存</span><span class="en">Border Survival</span></div>
+    <a class="brand" id="brandHome" data-home href="#" title="回到主页">🧭 <span class="zh">边界生存</span><span class="en">Border Survival</span></a>
     <div class="top-spacer"></div>
     <a class="top-dl primary" data-mapdl href="https://github.com/Fndream/BorderSurvivalModpack/tree/master/Worlds_26.3"><span class="ic">🍁 </span><span class="zh">下载</span><span class="en">Download</span></a>
     <a class="top-dl" href="https://github.com/Fndream/BorderSurvivalModpack/issues"><span class="ic">💬 </span>Issues</a>
@@ -2521,6 +2525,8 @@ li::marker{color:#d99a2e}
     /* 目录按语言重建：单语小节（另一种语言下正文整节隐藏）在侧栏也不该留空条目。
        放最后调，等 className 已经改完，buildToc 才能读到新语言。 */
     if(window.buildToc){window.buildToc()}
+    /* 侧栏搜索同理：索引与标题/摘要都分语言，切完要当场重建并重渲染 */
+    if(window.ssOnLangChange)window.ssOnLangChange()
   }
   function openLangPop(on){langWrap.classList.toggle('open',on);langBtn.setAttribute('aria-expanded',on?'true':'false')}
   langBtn.addEventListener('click',function(e){e.stopPropagation();openLangPop(!langWrap.classList.contains('open'))});
@@ -2903,14 +2909,21 @@ li::marker{color:#d99a2e}
       ssInput=document.getElementById('ssInput'),
       ssClear=document.getElementById('ssClear'),
       ssRes=document.getElementById('ssRes');
-  var ssIdx=null,ssHits=[],ssCur=-1,ssTimer=null;
+  var ssIdx=null,ssIdxLang='',ssHits=[],ssCur=-1,ssTimer=null;
+  /* 索引必须随语言重建：正文是 `.zh`/`.en` 成对写在同一个 DOM 里的，
+     若固定只剔掉一种语言，英文模式下会把 `.zh` 全收进索引 → 搜英文一个都搜不到。
+     所以按当前语言取「另一种语言的容器」：英文剔 .zh、中文剔 .en。 */
+  function ssOther(){return (window.curLang&&window.curLang()==='en')?'.zh':'.en'}
+  function ssLang(){return ssOther()==='.zh'?'en':'zh'}
   function ssText(node){
-    /* .en 在中文下不可见，但 textContent 照样取得到 → 会把整段英文混进索引，必须剔掉。
+    /* 另一种语言的 span 在当前语言下不可见，但 textContent 照样取得到，
+       不剔掉就会混进索引（英文模式下搜中文，或中文模式搜到英文句子）。
        注意 querySelectorAll 只搜**后代**不搜自身：直接对 div.en 调它会一个都找不到，
        所以先在根节点上判一次（否则「永恒神兵」这类小节的摘要会带出整段英文）。 */
-    if(node.classList&&(node.classList.contains('en')||node.classList.contains('copy-btn')))return '';
+    var other=ssOther();
+    if(node.classList&&(node.classList.contains(other.slice(1))||node.classList.contains('copy-btn')))return '';
     var c=node.cloneNode(true);
-    var junk=c.querySelectorAll('.en,.copy-btn,script,style');
+    var junk=c.querySelectorAll(other+',.copy-btn,script,style');
     for(var i=0;i<junk.length;i++){if(junk[i].parentNode)junk[i].parentNode.removeChild(junk[i])}
     return (c.textContent||'').replace(/\s+/g,' ').trim();
   }
@@ -2919,7 +2932,7 @@ li::marker{color:#d99a2e}
   function ssTitle(node){
     if(!node)return '';
     var c=node.cloneNode(true);
-    var junk=c.querySelectorAll('.en,.chip,.muted,.copy-btn,script,style');
+    var junk=c.querySelectorAll(ssOther()+',.chip,.muted,.copy-btn,script,style');
     for(var i=0;i<junk.length;i++){if(junk[i].parentNode)junk[i].parentNode.removeChild(junk[i])}
     return (c.textContent||'').replace(/\s+/g,' ').trim();
   }
@@ -2954,6 +2967,14 @@ li::marker{color:#d99a2e}
       });
     });
     return list;
+  }
+  /* 索引按语言缓存：中↔英各留一份，来回切语言不用重扫全文；
+     但两种语言的标题/摘要不同，故 ssIdxLang 必须跟着当前语言核对。
+     懒建：首次输入时才扫（那时复制按钮等脚本插入的节点已就位，见 ssRender）。 */
+  function ssGetIdx(){
+    var l=ssLang();
+    if(!ssIdx||ssIdxLang!==l){ssIdx=ssBuild();ssIdxLang=l}
+    return ssIdx
   }
   function ssScore(e,kws){
     var head=(e.title+' '+e.card).toLowerCase(),body=e.text.toLowerCase();
@@ -2993,20 +3014,19 @@ li::marker{color:#d99a2e}
     ssWrap.classList.toggle('searching',!!q);
     ssWrap.classList.toggle('has-q',!!q);
     if(!q){ssHits=[];ssCur=-1;ssRes.innerHTML='';ssRes.hidden=true;return}
-    if(!ssIdx)ssIdx=ssBuild();   /* 首次输入时才建索引：此时复制按钮等脚本插入的节点已就位 */
     var kws=q.toLowerCase().split(/\s+/).filter(Boolean),hits=[];
-    ssIdx.forEach(function(e,i){
+    ssGetIdx().forEach(function(e,i){
       var r=ssScore(e,kws);
       if(r)hits.push({e:e,score:r.score,pos:r.pos,ord:i});
     });
     hits.sort(function(a,b){return (b.score-a.score)||(a.ord-b.ord)});
     ssHits=hits.slice(0,40);ssCur=-1;
     if(!ssHits.length){
-      ssRes.innerHTML='<div class="ss-msg"><span class="zh">没有找到「'+ssEsc(q)+'」</span></div>';
+      ssRes.innerHTML='<div class="ss-msg"><span class="zh">没有找到「'+ssEsc(q)+'」</span><span class="en">No results for \u201c'+ssEsc(q)+'\u201d</span></div>';
       ssRes.hidden=false;
       return;
     }
-    var h='<div class="ss-count">'+ssHits.length+' <span class="zh">条结果</span></div>';
+    var h='<div class="ss-count">'+ssHits.length+' <span class="zh">条结果</span><span class="en">results</span></div>';
     ssHits.forEach(function(hit,i){
       h+='<div class="ss-item" data-i="'+i+'" role="option">'
         +(hit.e.sub?'<div class="ss-crumb">'+ssMark(hit.e.card,kws)+'</div>':'')
@@ -3052,7 +3072,7 @@ li::marker{color:#d99a2e}
     while((n=walker.nextNode())){
       if(!n.nodeValue||!n.nodeValue.trim())continue;
       var p=n.parentNode;
-      if(!p||p.closest('script,style,mark,.en,.ss-res,.copy-btn'))continue;      /* .en 中文下不可见，不标 */
+      if(!p||p.closest('script,style,mark,'+ssOther()+',.ss-res,.copy-btn'))continue;   /* 另一种语言当前不可见，不标 */
       var d=p.closest('details');
       if(d&&!d.open)continue;                                                  /* 未展开的折叠块看不见，不标 */
       if(ssRanges(n.nodeValue,kws).length)nodes.push(n);
@@ -3093,6 +3113,17 @@ li::marker{color:#d99a2e}
     ssHighlight(scope||el,kws);
     if(window.innerWidth<1180)openSide(false);
   }
+  /* 语言切换钩子：setLang() 末尾会调。索引/标题/摘要全是语言相关的，
+     切完语言必须丢掉旧索引并用新语言重渲染当前查询，否则结果标题/摘要还是上一种语言。 */
+  window.ssOnLangChange=function(){
+    ssIdx=null;ssIdxLang='';
+    if(!ssInput)return;
+    ssInput.placeholder=ssLang()==='en'?'Search':'搜索';
+    var q=ssInput.value.trim();
+    if(q)ssRender(q);
+    else{ssWrap.classList.remove('searching');ssRes.innerHTML='';ssRes.hidden=true}
+  };
+  window.ssOnLangChange();   /* 首屏 setLang() 跑在本 IIFE 之前，那时钩子还不存在，placeholder 要在此补一次 */
   if(ssInput){
     ssInput.addEventListener('input',function(){
       clearTimeout(ssTimer);
@@ -3363,6 +3394,22 @@ document.querySelectorAll('.gate-icon').forEach(function(img){
   /* 导给首屏的版本徽章用（它在另一个 IIFE 里，见 labelVer） */
   window.toggleChangelog=toggleChangelog;
   window.toggleChangelog=toggleChangelog;
+  /* 点顶栏 logo 回主页：算的是「当前站点的主页面 URL」——只删 ?mode=update 与 hash，
+     语言参数（?lang=）保留；同时剥掉英文/日志存根目录（/en/、/update/、/en/update/），
+     否则从存根页进来时相对路径会解析成 /en/ 之类的子目录。
+     用 location.pathname 推导而非写死 https://fndream.github.io/…，
+     这样本地 file:// 双击打开时也照样在本地跳。 */
+  function homeURL(){
+    var u;
+    try{u=new URL(location.href)}catch(err){return location.href.split('#')[0]}
+    if(u.protocol==='file:')return location.href.split('#')[0].split('?')[0];
+    u.searchParams.delete('mode');
+    u.hash='';
+    u.pathname=u.pathname.replace(/[^/]*$/,'').replace(/\/(?:en\/update|update\/en|en|update)\/$/i,'/');
+    return u.href
+  }
+  var brandHome=document.getElementById('brandHome');
+  if(brandHome){brandHome.setAttribute('href',homeURL());brandHome.setAttribute('title','回到主页 · Back to home')}
   document.addEventListener('click',function(e){
     var t=e.target;
     if(!t||!t.closest){return}
@@ -3371,6 +3418,10 @@ document.querySelectorAll('.gate-icon').forEach(function(img){
     if(t.closest('[data-mapdl-close]')){closeMapDl();return}
     var a=t.closest('a');
     if(!a){return}
+    /* logo 回主页必须同标签页：后面那条「外部 http 链接一律 window.open(_blank)」的兜底
+       会把 logo 弹到新标签，所以这里要先拦下来自己走 location.assign。
+       先于 data-changelog/data-mapdl 判断，同级无冲突但顺序上语义更清晰。 */
+    if(a.hasAttribute('data-home')){e.preventDefault();window.location.assign(homeURL());return}
     if(a.hasAttribute('data-changelog')){e.preventDefault();toggleChangelog();return}
     if(a.hasAttribute('data-mapdl')){e.preventDefault();openMapDl();return}
     /* 页脚「使用协议」等站内锚点：更新日志模式下目标 section 被隐藏，先退回文档模式再让浏览器执行锚点跳转 */
