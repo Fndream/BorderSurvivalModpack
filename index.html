@@ -146,6 +146,10 @@ body.changelog-only .cta a.ghost[data-changelog]:hover{background:linear-gradien
    玩家来查攻略时大多只记得一个名词（聚灵石、刷怪笼、灿金、虚无界门…），
    所以拿「章节标题 + 该小节正文」一起建索引，空格分词按 AND 匹配，命中即跳到该小节。 */
 .side-search{padding:9px 10px 8px;border-bottom:1px solid #3b3227}
+/* 更新日志模式下侧栏只留版本目录，不显示搜索框（搜的是文档名词，与版本日志无关）。
+   位置注意：这条靠 `.side-search.searching~.toc{display:none}` 上方/下方都不行，
+   所以还要在 toggleChangelog() 里把查询状态清掉（见 ssReset），否则 searching 残留会把目录也藏了。 */
+body.changelog-only .side-search{display:none}
 /* ⚠ 侧栏在**两个主题下都是深棕**（V2.1 皮肤把 .sidebar 写死成 #332a21 / #1d1811，
    见下方 V2.1 块的 .sidebar 规则），所以搜索 UI 不能用 var(--btn-bg)/var(--text)/var(--muted)
    这类随主题翻转的变量：亮色主题下它们是浅色奶白/深棕，一个奶白输入框扣在深色侧栏上，
@@ -3123,6 +3127,8 @@ li::marker{color:#d99a2e}
     if(q)ssRender(q);
     else{ssWrap.classList.remove('searching');ssRes.innerHTML='';ssRes.hidden=true}
   };
+  /* 切日志模式时清搜索：CSS 把搜索框藏了，但 .searching 残留会让 `~.toc` 继续隐藏目录 */
+  window.ssReset=function(){if(ssInput)ssInput.value='';ssRender('')};
   window.ssOnLangChange();   /* 首屏 setLang() 跑在本 IIFE 之前，那时钩子还不存在，placeholder 要在此补一次 */
   if(ssInput){
     ssInput.addEventListener('input',function(){
@@ -3158,6 +3164,7 @@ li::marker{color:#d99a2e}
       var inField=(tag==='INPUT'||tag==='TEXTAREA'||tag==='SELECT');
       var combo=((e.key==='k'||e.key==='K')&&(e.ctrlKey||e.metaKey))||(e.key==='/'&&!inField&&!e.ctrlKey&&!e.metaKey&&!e.altKey);
       if(!combo)return;
+      if(document.body.classList.contains('changelog-only'))return;   /* 日志模式下搜索框是隐藏的，聚焦它没意义 */
       e.preventDefault();
       if(window.innerWidth<1180)openSide(true);
       ssInput.focus();ssInput.select();
@@ -3390,6 +3397,8 @@ document.querySelectorAll('.gate-icon').forEach(function(img){
       bs[i].setAttribute('aria-pressed',on?'true':'false');
       bs[i].classList.toggle('active',on);
     }
+    /* 日志模式不显示侧栏搜索框，同步把查询状态清掉（否则 .searching 会连带藏掉版本目录） */
+    if(window.ssReset)window.ssReset()
   }
   /* 导给首屏的版本徽章用（它在另一个 IIFE 里，见 labelVer） */
   window.toggleChangelog=toggleChangelog;
