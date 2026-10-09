@@ -231,7 +231,7 @@ Unbreakable Spirit Material is what the Chaos Smith makes by refining a Chaos St
 ### ✨ Unbreakable Spirit Equipment
 Unbreakable Spirit Equipment is forged by the Chaos Smith from Unbreakable Spirit Material, and is **Unbreakable**.
 
-**The following Unbreakable Spirit equipment pieces grant effects while held in the offhand:**
+**The following Unbreakable Spirit Equipment pieces grant effects while held in the offhand:**
 
 - **Chaos Star**: Regeneration II
 - **Spirit Shears**: Haste II
