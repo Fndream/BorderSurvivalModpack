@@ -108,6 +108,12 @@ body.changelog-only .cl-off{display:none}
 body.changelog-only .cta a.ghost[data-changelog],
 body.changelog-only .cta a.ghost[data-changelog]:hover{background:linear-gradient(135deg,#f0c04c,#e0a528);color:#33291f;border-color:transparent}
 
+/* 更新日志顶部的「英文文档由 AI 辅助翻译」提示（#changelog-v1 之前）。
+   它是普通 div，上面两条按 section.card / .cl-entry 开关的规则都不作用于它，
+   故需自己显式开关，否则文档模式下也会跟着显示。 */
+.cl-note{margin:22px 0}
+body:not(.changelog-only) .cl-note{display:none!important}
+
 /* ===== 顶栏 ===== */
 .topbar{position:sticky;top:0;z-index:60;background:var(--topbar-bg);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid var(--border)}
 .topbar::after{content:"";position:absolute;left:0;right:0;bottom:0;height:2px;background:linear-gradient(90deg,#f97316,#fbbf24,#fb923c)}
@@ -2143,6 +2149,10 @@ li::marker{color:#d99a2e}
     <p><strong>2020-05-23 - </strong><span class="zh"><strong>海岛村庄 - 1.15.2</strong></span><span class="en"><strong>Island Village - 1.15.2</strong></span></p>
   </section>
 
+  <div class="cl-note en">
+    <div class="note"><strong>Note:</strong> This English documentation is an AI-assisted translation, with a human explaining the general meaning of each sentence. The translation may not be 100% accurate; in all cases, the <a href="https://fndream.github.io/BorderSurvivalModpack/?lang=zh">Chinese Version</a> is the authoritative version.</div>
+  </div>
+
   <section class="card cl-entry" id="changelog-v1">
     <h2>🍁 <span class="zh">14.0-rc6 <span class="chip cl-chip">26.3</span> <span class="chip cl-chip">2026-10-08</span></span><span class="en">14.0-rc6 <span class="chip cl-chip">26.3</span> <span class="chip cl-chip">2026-10-08</span></span></h2>
     <div class="zh">
@@ -3420,6 +3430,16 @@ document.querySelectorAll('.gate-icon').forEach(function(img){
   }
   var brandHome=document.getElementById('brandHome');
   if(brandHome){brandHome.setAttribute('href',homeURL());brandHome.setAttribute('title','回到主页 · Back to home')}
+  /* 站内跳转不另开标签页：同源链接（?lang=zh / ?mode=update 等切页与切锚点）
+     全部交给浏览器的默认行为，在当前标签页导航；只有真正的站外链接才走
+     window.open(_blank) 兜底。判定用「主机名 == location.host 或 == canonical 的主机名」，
+     两边都试是因为本地 file:// 预览时 location.host 为空串，而那些链接写的是线上域名。 */
+  var siteHost=(function(){try{return new URL(document.querySelector('link[rel="canonical"]').href).host}catch(err){return ''}})();
+  function isInternalHref(a){
+    if(!/^(https?):\/\//i.test(a.getAttribute('href')||'')){return true}
+    try{var h=new URL(a.href,location.href).host;return h===location.host||(!!siteHost&&h===siteHost)}
+    catch(err){return false}
+  }
   document.addEventListener('click',function(e){
     var t=e.target;
     if(!t||!t.closest){return}
@@ -3438,8 +3458,7 @@ document.querySelectorAll('.gate-icon').forEach(function(img){
     var ah=a.getAttribute('href')||'';
     if((ah==='#agreement'||ah==='#faq')&&document.body.classList.contains('changelog-only')){toggleChangelog(false,true)}
     if(a.target==='_blank'){return}
-    var href=a.getAttribute('href')||'';
-    if(!/^(https?):\/\//i.test(href)){return}
+    if(isInternalHref(a)){return}
     e.preventDefault();
     window.open(a.href,'_blank','noopener');
   });
