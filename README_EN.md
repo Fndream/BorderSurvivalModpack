@@ -9,7 +9,7 @@
 
 This is a world series built around vanilla-style border survival. You start in a cramped space, gather what you need with your wits, declare war on the night with courage, and push the World Border outward with experience. It is made for players who already know how vanilla plays.
 
-## 📗 Before You Play
+## 📗 Before Play
 - This is not a regular modpack. The **core mod** and the **dedicated world save** depend on each other, so this series' save must be imported after installing the modpack. The **FAQ** walks you through it.
 - **The series stays true to vanilla, with no fixed goals.** It exists because the series' very first player **loved the look of the World Border and preferred long-form vanilla survival**. Those two preferences are what became this series.
 - For a quick overview, skim the **Core Features, Resource Features, Expansion Features, World-Exclusive Features, World Library, Game Rules, and Helper Mod Keybinds**.
@@ -17,6 +17,8 @@ This is a world series built around vanilla-style border survival. You start in 
 - Playing with **resource packs** and **shader packs** of one's own choosing is recommended.
 - Supported languages: **Simplified Chinese, Traditional Chinese, Classical Chinese [recommended], English**.
 - When the language is switched inside the game, some text only updates after leaving and re-entering the save.
+
+> **Note:** This English documentation is an AI-assisted translation, with a human explaining the general meaning of each sentence. The translation may not be 100% accurate; in all cases, the [Chinese Version](https://fndream.github.io/BorderSurvivalModpack/?lang=zh) is the authoritative version.
 
 ## 🔆 Core Features
 <details>
