@@ -304,15 +304,15 @@ Unbreakable Spirit Equipment is forged by the Chaos Smith from Unbreakable Spiri
 <details>
 <summary>Click here to expand the world library</summary>
 
-### 🔥 **Void Fifteen Realms — Persisting Worlds Array Island**
+### 🔥 **Void Fifteen Worlds — Persisting Worlds Array Island**
 🔥 **Type: Year 6 — Void**  
 ✨ **Difficulty: 🔥🔥🔥**
 
-<img src="https://files.seeusercontent.com/2026/09/23/fbT3/0d48ad2.jpg" width="400" alt="Void Fifteen Realms - Persisting Worlds Array Island">
+<img src="https://files.seeusercontent.com/2026/09/23/fbT3/0d48ad2.jpg" width="400" alt="Void Fifteen Worlds - Persisting Worlds Array Island">
 
 ---
 > Void Realms, Blocks become doorways, Primordial fire reveals, World Persists…  
-> A Void Fifteen Realms - Persisting Worlds world built around the fishing pool of the original Persisting Worlds author's save, which now serves as the world spawn point. It includes:  
+> A Void Fifteen Worlds - Persisting Worlds world built around the fishing pool of the original Persisting Worlds author's save, which now serves as the world spawn point. It includes:  
 > Border Energy 00: a Rainbow-colored Beacon  
 > Border Energy 16: a Seven-tier Stairway to the Sky  
 > Border Energy 28: an auto-sorting warehouse for Spirit Emeralds (84 sorting cells + 4 cache tiers + 16-block proximity hub)  
@@ -323,11 +323,11 @@ Unbreakable Spirit Equipment is forged by the Chaos Smith from Unbreakable Spiri
 > Release date: 2026-09-01 - 26.2
 ---
 
-### 🔥 **Void Fifteen Realms — Persisting Worlds**
+### 🔥 **Void Fifteen Worlds — Persisting Worlds**
 🔆 **Type: Year 6 — Void**  
 ✨ **Difficulty: 🔥🔥🔥🔥🔥**
 
-<img src="https://files.seeusercontent.com/2026/09/23/tJj4/a19fbb4.jpg" width="400" alt="Void Fifteen Realms - Persisting Worlds">
+<img src="https://files.seeusercontent.com/2026/09/23/tJj4/a19fbb4.jpg" width="400" alt="Void Fifteen Worlds - Persisting Worlds">
 
 ---
 > Void Realms, Blocks become doorways, Primordial fire reveals, World Persists…
