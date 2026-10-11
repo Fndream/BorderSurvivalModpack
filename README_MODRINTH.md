@@ -6,18 +6,18 @@
 
 ## 📓 Introduction
 
-This is a world series built around vanilla-style border survival. You start in a cramped space, gather what you need with your wits, declare war on the night with courage, and push the World Border outward with experience. It is made for players who already know how vanilla plays.
+This is a world series built around vanilla-style border survival. You start in a cramped space, gather what you need by your wits, brave the night, and push the World Border outward with experience.
 
 ## 📗 Before Play
 - This is not a regular modpack. The **core mod** and the **dedicated world save** depend on each other, so this series' save must be imported after installing the modpack. The **FAQ** walks you through it.
 - **The series stays true to vanilla, with no fixed goals.** It exists because the series' very first player **loved the look of the World Border and preferred long-form vanilla survival**. Those two preferences are what became this series.
 - For a quick overview, skim the **Core Features, Resource Features, Expansion Features, World-Exclusive Features, World Library, Game Rules, and Helper Mod Keybinds**.
 - **Or just jump straight in. Half the fun is not knowing what is out there.**
-- Playing with **resource packs** and **shader packs** of one's own choosing is recommended.
+- Playing with your favorite **resource packs** and **shader packs** can further enhance the world's immersion.
 - Supported languages: **Simplified Chinese, Traditional Chinese, Classical Chinese [recommended], English**.
 - When the language is switched inside the game, some text only updates after leaving and re-entering the save.
 
-> **Note:** This English documentation is an AI-assisted translation, with a human explaining the general meaning of each sentence. The translation may not be 100% accurate; in all cases, the [Chinese Version](https://fndream.github.io/BorderSurvivalModpack/?lang=zh) is the authoritative version.
+> **Note:** This English documentation is an AI-assisted translation, with a human providing the general meaning of each sentence. The translation may not be 100% accurate; in all cases, the [Chinese Version](https://fndream.github.io/BorderSurvivalModpack/?lang=zh) is the authoritative version.
 
 ## 🔆 Core Features
 <details>
@@ -34,7 +34,7 @@ Every level of Border Energy adds 0.5 blocks to the World Border's radius. Spend
 
 **📋️ Function Signs**
 
-Every world in this series puts three function signs at the world spawn point. Walk up, right-click one, and its function fires.
+Every world in this series places three function signs at the world spawn point. Walk up and right-click one to trigger its function.
 
 - **Border Upgrade** — Spends experience levels to raise Border Energy.
 - **Switch Mode** — Flips between Day/Night Mode and Imprisoned Mode. See **Expansion Features** for what border modes actually do.
@@ -66,7 +66,7 @@ Fishing sometimes turns up items that are common in certain biomes.
 
 **🐱 Cats**
 
-Share a bed with a cat and it may give some special gifts:
+Sleep in the same bed as a cat, and it may give you a special gift:
 
 - Gift loot pool now includes: Leaves, Diamond.
 
@@ -695,6 +695,8 @@ Unbreakable Spirit Equipment is forged by the Chaos Smith from Unbreakable Spiri
 ## 📚 Save Upgrades
 <details>
 <summary>Click here to expand</summary>
+
+> ❗ Once a world is released, it usually won't stop being updated unless an update overhauls Overworld terrain generation — such as the 1.18 update, which broke every world in this series created in a version older than 1.17 — or a special world becomes corrupted due to a compatibility issue.
 
 **🍁 Save upgrade: 26.2 -> 26.3**
 
