@@ -1,9 +1,6 @@
 ![VoidFifteenRealms-banner.jpg](https://files.seeusercontent.com/2026/09/23/blK7/banner.jpg)
 
 [![🧭 Project Website](https://img.shields.io/badge/🧭-Project%20Website-332a21?style=for-the-badge&labelColor=332a21&logoColor=e5aa2e)](https://fndream.github.io/BorderSurvivalModpack/?lang=en)
-[![Download Modpack](https://img.shields.io/badge/Download%20Modpack-332a21?style=for-the-badge&labelColor=332a21&logo=modrinth&logoColor=1bd96a)](https://modrinth.com/modpack/border-survival-persisting-worlds/versions)
-[![Download Worldpack](https://img.shields.io/badge/Download%20Worldpack-332a21?style=for-the-badge&labelColor=332a21&logo=github&logoColor=ffffff)](https://github.com/Fndream/BorderSurvivalModpack/tree/master/Worlds_26.3)
-
 
 ## 📓 Introduction
 
