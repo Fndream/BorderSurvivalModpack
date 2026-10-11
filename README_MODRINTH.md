@@ -44,7 +44,7 @@ Every world in this series places three function signs at the world spawn point.
 
 **🧱 Advancements**
 
-> ❗ This series sets no fixed goals. Advancements are **not a quest guide** — they exist to showcase features, give text hints, and give the journey a sense of occasion.  
+> ❗ This series sets no fixed goals. Advancements are **not a quest guide** — they exist to showcase features, give text hints, and make the journey feel like an occasion.  
 > ❗ **This series never provides a step-by-step walkthrough.**
 
 <img src="https://files.seeusercontent.com/2026/07/31/r7lK/en.png" alt="Advancements" height="400">
@@ -66,13 +66,13 @@ Fishing sometimes turns up items that are common in certain biomes.
 
 **🐱 Cats**
 
-Sleep in the same bed as a cat, and it may give you a special gift:
+Sleeping in the same bed as a cat may grant it a special gift:
 
 - Gift loot pool now includes: Leaves, Diamond.
 
 **🌹 Sniffers**
 
-When a Sniffer finishes digging, it may toss out some small flowers:
+When a Sniffer finishes digging, it may dig up some small flowers:
 
 - Dig loot pool now includes: Dandelion, Poppy, Blue Orchid, Allium, Azure Bluet, Tulip, Oxeye Daisy, Cornflower, Lily of the Valley, Open Eyeblossom, Spore Blossom, Dead Bush.
 
@@ -84,7 +84,7 @@ Hand a Piglin a gold ingot and it may toss out some special Nether Fortress loot
 
 **💎 Loot Chests**
 
-Open the matching loot chest and some special resources may be found:
+Opening the matching loot chest may reveal some special resources:
 
 - Plains Village Houses now include: Sunflower, Rose Bush, Peony, Lilac, Pink Petals, Wildflowers, Leaf Litter, Glow Lichen.
 - Acacia Village Houses now include: Armadillo Scute, Bush, Firefly Bush, Red Shrub.
@@ -113,7 +113,7 @@ Open the matching loot chest and some special resources may be found:
 
 **⬛ Monster Spawners**
 
-Break a Monster Spawner with a tool enchanted with Silk Touch. It then drops an empty spawner.
+Breaking a Monster Spawner with a tool enchanted with Silk Touch makes it drop an empty spawner.
 
 > **Monster Spawner spawn conditions:**  
 > Spawn range: 4 blocks horizontally, 1 block vertically, ignoring biomes.  
@@ -144,7 +144,7 @@ Break a Monster Spawner with a tool enchanted with Silk Touch. It then drops an 
 
 **📙 Grindstone Enchantments (grind-enchantments mod)**
 
-- A grindstone can move an enchantment from equipment into a book, or move the first enchantment of an enchanted book onto another book.
+- A grindstone can transfer an enchantment from equipment into a book, or move the first enchantment from an enchanted book onto another book.
 
 
 </details>
@@ -212,7 +212,7 @@ Break a Monster Spawner with a tool enchanted with Silk Touch. It then drops an 
 
 - When a player defeats an Evernight Knight, it has a **1%** chance to drop the weapon it was holding.
 - Holding a Looting weapon in the player's main hand adds **8.5%** per level of Looting to that drop chance.
-> Cursed Eternal Weapons carry Curse of Vanishing and cannot be destroyed by fire, lava, explosions, lightning, or Cactus.  
+> Cursed Eternal Weapons carry Curse of Vanishing and cannot be destroyed by fire, lava, explosions, lightning, or cactus.  
 > A Cursed Eternal Weapon with no extra enchantments can be reverted to a Night Spirit Eternal Weapon.
 
 **🍖 Mob Drops**
@@ -255,7 +255,7 @@ Break a Monster Spawner with a tool enchanted with Silk Touch. It then drops an 
 
 **🪵 Unbreakable Spirit Material**
 
-Unbreakable Spirit Material is what the Chaos Smith makes by refining a Chaos Star — crafted from a Heart of the Sea, a Nether Star, and an End Crystal. Equipment forged from this material is **Unbreakable**; see below.
+Unbreakable Spirit Material is what the Chaos Smith makes by refining a Chaos Star, which is crafted from a Heart of the Sea, a Nether Star, and an End Crystal. Equipment forged from this material is **Unbreakable**; see below.
 > **Right-clicking** the **Border Upgrade** sign **while holding** Unbreakable Spirit Material infuses the material into it, raising Border Energy by a set number of **levels**.
 
 **✨ Unbreakable Spirit Equipment**
@@ -322,7 +322,7 @@ Unbreakable Spirit Equipment is forged by the Chaos Smith from Unbreakable Spiri
 **🔥 Void Portal - Persisting Worlds**
 
 - Traveling to a dimension requires building a portal frame from that dimension's theme blocks and activating it with a fire source.
-- Unlike a Nether Portal, a Void Portal searches for the nearest portal of the same type within a 256-block radius of the target dimension's world spawn point, regardless of where you entered from. If it finds none, it builds a portal structure near the world spawn point.
+- Unlike a Nether Portal, a Void Portal searches for the nearest portal of the same type within a 256-block radius of the target dimension's world spawn point, regardless of where the portal was entered from. If it finds none, it builds a portal structure near the world spawn point.
 - Every dimension in **Persisting Worlds** keeps its own Border Energy, except the Nether and the End.
 - Every dimension in **Persisting Worlds** has its own Sustainer, except the Nether and the End.
 - Evernight Knights only descend into the Overworld or a dimension in **Persisting Worlds** whose Border Energy has reached **level 100**, except the Nether and the End.
@@ -334,7 +334,7 @@ Unbreakable Spirit Equipment is forged by the Chaos Smith from Unbreakable Spiri
 
 ## 🧭 World Library
 
-> **You must use a dedicated world save.** Create your own world instead and the game will not work properly.  
+> **A dedicated world save must be used.** Creating a world from scratch instead prevents the game from working properly.  
 > Worlds are sorted by **type and overall difficulty, hardest first**. More stars usually mean a harder survival or more grinding.
 
 <details>
@@ -349,15 +349,16 @@ Unbreakable Spirit Equipment is forged by the Chaos Smith from Unbreakable Spiri
 
 ---
 > Void Realms, Blocks become doorways, Primordial fire reveals, World Persists…  
-> A Void Fifteen Worlds - Persisting Worlds world built around the fishing pool of the original Persisting Worlds author's save, which now serves as the world spawn point. It includes:  
+> A world in the Void Fifteen Worlds - Persisting Worlds series, built around the fishing pool from the original Persisting Worlds author's save, which now serves as the world spawn point. It includes:  
 > Border Energy 00: a Rainbow-colored Beacon  
 > Border Energy 16: a Seven-tier Stairway to the Sky  
-> Border Energy 28: an auto-sorting warehouse for Spirit Emeralds (84 sorting cells + 4 cache tiers + 16-block proximity hub)  
+> Border Energy 28: an auto-sorting warehouse for Spirit Emeralds (84 sorting cells, 4 cache tiers, and a proximity hub that grabs anything within 16 blocks)  
 > Border Energy 42: a ring-shaped treasure fishing pool that never freezes  
 > Border Energy 90: an outer ring of micro-biomes for Void Portals  
 > Border Energy 99: the complete array island
 > 
 > Release date: 2026-09-01 - 26.2
+
 ---
 
 **🔥 Void Fifteen Worlds — Persisting Worlds**
@@ -400,7 +401,7 @@ Unbreakable Spirit Equipment is forged by the Chaos Smith from Unbreakable Spiri
 > Its people dance in the pools, its monsters swarm the hollow earth…  
 > It is a lush, magnificent cave; it is a barren, threadbare world…  
 > It is a dim, lightless dimension, and a paradise dotted with starlight…  
-> —A diary left behind by a certain Chaos Smith
+> — A diary left behind by a certain Chaos Smith
 > 
 > Portal frame: Moss Block  
 > Release date: 2024-08-17 - 1.21.1
@@ -433,7 +434,7 @@ Unbreakable Spirit Equipment is forged by the Chaos Smith from Unbreakable Spiri
 
 ---
 > A world where both the Overworld and the Nether are made entirely of void.  
-> **Only attempt this if you have plenty of time and a thorough understanding of both vanilla and core mechanics.**
+> **Only worth attempting with plenty of time on hand and a thorough understanding of both vanilla and core mechanics.**
 > 
 > Release date: 2024-11-10 - 1.21.1
 
@@ -478,7 +479,7 @@ Unbreakable Spirit Equipment is forged by the Chaos Smith from Unbreakable Spiri
 <img src="https://files.seeusercontent.com/2026/06/26/kJw5/5d446c5.jpg" width="400" alt="Abundant Rain Realm - Lush Floating Island">
 
 ---
-> A jungle isle on a giant, lush floating island.  
+> A remote jungle isle on a giant, lush floating island.  
 > **This world's terrain is generated by kinbee's [RevampedFloatingIslands](https://modrinth.com/datapack/revamped-floating-islands) datapack!**
 > 
 > Portal frame: Clay  
@@ -495,7 +496,7 @@ Unbreakable Spirit Equipment is forged by the Chaos Smith from Unbreakable Spiri
 
 ---
 > A frozen land, and peaks that pierce the clouds.  
-> Ice spires piercing the surface, an ocean sealed to every horizon.
+> Ice spires piercing the surface, a frozen ocean stretching to every horizon.
 > 
 > Portal frame: Blue Ice  
 > Release date: 2024-04-24 - 1.20.4
@@ -586,7 +587,7 @@ Unbreakable Spirit Equipment is forged by the Chaos Smith from Unbreakable Spiri
 
 ---
 > Above a coast spanning three biomes sits a lively seaside town.  
-> Warm Ocean biome, good for players who love the sea and building underwater.  
+> A Warm Ocean biome, good for players who love the sea and building underwater.  
 > A tribute to this series' very first world, Island Village.
 > 
 > Portal frame: Smooth Sandstone  
@@ -696,7 +697,7 @@ Unbreakable Spirit Equipment is forged by the Chaos Smith from Unbreakable Spiri
 <details>
 <summary>Click here to expand</summary>
 
-> ❗ Once a world is released, it usually won't stop being updated unless an update overhauls Overworld terrain generation — such as the 1.18 update, which broke every world in this series created in a version older than 1.17 — or a special world becomes corrupted due to a compatibility issue.
+> ❗ Once a world is released, it usually won't stop being maintained unless an update overhauls Overworld terrain generation — such as the 1.18 update, which broke every world in this series created in a version older than 1.17 — or a special world becomes corrupted due to a compatibility issue.
 
 **🍁 Save upgrade: 26.2 -> 26.3**
 
@@ -725,13 +726,13 @@ Most of the mods here are optimization and helper mods, and the game itself is v
 >❗ **Never remove a mod tagged `[Core]`.**
 
 >❗ If you want to add your own mods, note that this can cause compatibility problems: broken features, crashes, or a corrupted save. We recommend prefixing added mod filenames with a tag such as `[custom]` so they are easy to replace when the modpack updates.  
-> ❗Only small decorative, display, helper, or time-saving mods are recommended. (For example: Litematica, MusicNotification, voxy, Advancement Plaques, Auto Fishing, FallingTree, Vein Miner.)  
-> ❗Mods that change vanilla mechanics, add new items, blocks, or entities, alter terrain generation, or upset combat balance are not recommended.
+> ❗ Only small decorative, display, helper, or time-saving mods are recommended. (For example: Litematica, MusicNotification, voxy, Advancement Plaques, Auto Fishing, FallingTree, Vein Miner.)  
+> ❗ Mods that change vanilla mechanics, add new items, blocks, or entities, alter terrain generation, or upset combat balance are not recommended.
 
 > **❌ Never use an entity-carrying mod (such as CarryOn) to carry this series' special entities (the Sustainer, the Evernight Knight, the Chaos Smith). Parts of their data are known to reset or corrupt when carried, which causes their features to malfunction.**
 
-> ❗This series does not offer official support for any unofficial mods you add. If adding them triggers unexpected interactions with this pack, that is on you.  
-> ❗Note: by the terms of use, a modified copy of this modpack is for your own use only. You may not redistribute the original or modified files in public.
+> ❗ This series does not offer official support for any unofficial mods you add. If adding them triggers unexpected interactions with this pack, that is on you.  
+> ❗ Note: by the terms of use, a modified copy of this modpack is for your own use only. You may not redistribute the original or modified files in public.
 
 
 </details>
@@ -752,7 +753,7 @@ Most of the mods here are optimization and helper mods, and the game itself is v
 
 **Installing the modpack:**
 
-1. Drop `BorderSurvival 14.0.mrpack` onto any launcher that supports Modrinth modpacks — the launcher picks it up automatically.
+1. Drag the `BorderSurvival 14.0.mrpack` file into the window of any Minecraft launcher that supports Modrinth modpacks — it picks the file up automatically.
 2. Enter the instance name `BorderSurvival` (or any name you like) and confirm. Wait for the installation to finish.
 3. If the installation fails because of a network problem, retry until it succeeds.
 
@@ -760,17 +761,17 @@ Most of the mods here are optimization and helper mods, and the game itself is v
 1. Use your launcher's import feature, or open the saves directory `.minecraft/versions/BorderSurvival/saves` by hand. If there is no `saves` directory, make a new folder named `saves`.
 2. Move `边界生存-海岛村庄 (Island Village) 26.3-v1.zip` into the `saves` directory from **step 1**.
 3. With an archive tool, extract the save folder from inside the worldpack. It is the one named `边界生存-海岛村庄 (Island Village)`, **without** the version suffix — extract it into the `saves` directory from **step 1**.
-4. Launch the game and choose `Singleplayer`. If the world pack installed correctly, you will see an existing save to enter rather than the screen to create a new world.
+4. Launch the game and choose `Singleplayer`. If the worldpack installed correctly, you will see an existing save to enter rather than the screen to create a new world.
 
 ---
 
 **Q: How do I update the modpack to get the latest features?**
 
-**Option A — update the mods only** (this only works if the Minecraft version has not changed):
+**A:** Update the mods only (this only works if the Minecraft version has not changed):
 1. Use the launcher's mod update feature to bring the `Border Survival Core` mod up to date for this instance's Minecraft version.
 2. Then update every mod named in the [changelog](https://fndream.github.io/BorderSurvivalModpack/?mode=update&lang=en) to the listed version. (Starting with 26.3, the changelog spells out every mod version change.)
 
-**Option B — copy over your stuff and reinstall the new version:**
+**B:** Copy your stuff over and reinstall the new version:
 1. Download the new modpack and install it with your launcher.
 2. Copy the following folders from your old game instance into the new one:
     - `resourcepacks`
@@ -807,21 +808,21 @@ Most of the mods here are optimization and helper mods, and the game itself is v
 **Q: Why is my Border Energy draining?**
 
 **A:** The chunk the Sustainer stands in needs to be loaded, and since Minecraft 1.21.9 there is no world spawn chunk that loads itself.  
-**B.** You can use the Carpet mod to add a fake player in the Overworld and TP it somewhere safe, or build a chunk loader from an ender pearl bubble column, so the chunk holding the Sustainer stays loaded.
+**B:** You can use the Carpet mod to add a fake player in the Overworld and TP it somewhere safe, or build a chunk loader from an ender pearl bubble column, so the chunk holding the Sustainer stays loaded.
 
 ---
 
 **Q: Why do I die the instant I enter the End?**
 
 **A:** The World Border has not reached the Obsidian Platform, so the portal puts you on the main island, which is far outside the World Border, and you suffocate.  
-**B.** The World Border needs to reach at least a 100-block radius before you try the End again.
+**B:** The World Border needs to reach at least a 100-block radius before you try the End again.
 
 ---
 
 **Q: Why are no monsters spawning?**
 
 **A:** Check whether the game is set to Peaceful Mode. If a world defaults to Peaceful, please report its name so it can be corrected.  
-**B.** Monsters do not spawn outside the World Border, and spawning is slow while Border Energy is below level 10.
+**B:** Monsters do not spawn outside the World Border, and spawning is slow while Border Energy is below level 10.
 
 ---
 
@@ -846,7 +847,7 @@ Most of the mods here are optimization and helper mods, and the game itself is v
 
 1. Install the Fabric server for your Minecraft version yourself.
 2. Install the modpack, then copy every file from the modpack's `mods` and `config` directories into your server's `mods` and `config` folders.
-3. Extract the world pack into the server root and rename the world save to `world`, or to whatever `level-name` says in `server.properties`.
+3. Extract the worldpack into the server root and rename the world save to `world`, or to whatever `level-name` says in `server.properties`.
 4. Delete the **`mcwifipnp`** mod.
 5. Copy `config/carpet/default_carpet.conf` into the world save folder (usually `world`) and rename it `carpet.conf` to enable the **`carpet`** mod features.
 6. Once the setup is done, start the server.
