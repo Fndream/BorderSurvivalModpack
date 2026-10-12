@@ -118,7 +118,6 @@ Breaking a Monster Spawner with a tool enchanted with Silk Touch makes it drop a
 - Renewable wither skeletons: lightning striking a Skeleton turns it into a Wither Skeleton.
 - Renewable coral: use bone meal on coral to grow it to maturity.
 - Renewable shulkers: Shulkers respawn in End Cities.
-- Spider Jockeys drop Enchanted Golden Apples.
 - Stackable Shulker Boxes: empty Shulker Boxes dropped on the ground stack into one.
 - Empty Shulker Boxes always stack: empty Shulker Boxes also stack inside the inventory.
 - Persistent fake players: fake players stay when you quit.
