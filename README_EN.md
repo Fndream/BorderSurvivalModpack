@@ -9,7 +9,7 @@ This is a world series built around vanilla-style border survival. You start in 
 ## 📗 Before Play
 - This is not a regular modpack. The **core mod** and the **dedicated world save** depend on each other, so this series' save must be imported after installing the modpack. The **FAQ** walks you through it.
 - **The series stays true to vanilla, with no fixed goals.** It exists because the series' very first player **loved the look of the World Border and preferred long-form vanilla survival**. Those two preferences are what became this series.
-- For a quick overview, skim the **Core Features, Resource Features, Expansion Features, World-Exclusive Features, World Library, Game Rules, and Helper Mod Keybinds**.
+- For a quick overview, skim the **Core Features, Resource Features, Fantasy Features, World-Exclusive Features, World Library, Game Rules, and Helper Mod Keybinds**.
 - **Or just jump straight in. Half the fun is not knowing what is out there.**
 - Playing with your favorite **resource packs** and **shader packs** can further enhance the world's immersion.
 - Supported languages: **Simplified Chinese, Traditional Chinese, Classical Chinese [recommended], English**.
@@ -32,8 +32,8 @@ Every level of Border Energy adds 0.5 blocks to the World Border's radius. Spend
 Every world in this series places three function signs at the world spawn point. Walk up and right-click one to trigger its function.
 
 - **Border Upgrade** — Spends experience levels to raise Border Energy.
-- **Switch Mode** — Flips between Day/Night Mode and Imprisoned Mode. See **Expansion Features** for what border modes actually do.
-- **Summon Chaos Smith** — Calls a Chaos Smith to the player's position, only once per game day. Only one can be alive in loaded chunks at a time. See **Expansion Features** for more on the Chaos Smith.
+- **Switch Mode** — Flips between Day/Night Mode and Imprisoned Mode. See **Fantasy Features** for what border modes actually do.
+- **Summon Chaos Smith** — Calls a Chaos Smith to the player's position, only once per game day. Only one can be alive in loaded chunks at a time. See **Fantasy Features** for more on the Chaos Smith.
 
 > Function signs have a hardness of -1 and a blast resistance of 3,600,000.
 
@@ -131,7 +131,7 @@ Breaking a Monster Spawner with a tool enchanted with Silk Touch makes it drop a
 
 </details>
 
-## 🌙 Expansion Features
+## 🌙 Fantasy Features
 <details>
 <summary>Click here to expand</summary>
 
