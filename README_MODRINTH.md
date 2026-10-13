@@ -6,16 +6,22 @@
 
 ## 📓 Introduction
 
-This is a world series built around vanilla-style border survival. You start in a cramped space, gather what you need by your wits, brave the night, and push the World Border outward with experience — then create your own ideal world.
+This is a world series built around vanilla-style border survival. You start in a cramped space, gather what you need by your wits, brave the night, push the World Border outward with experience, create your own ideal world.
 
 ## 📗 Before Play
-- This is not a regular modpack. The **core mod** and the **dedicated world save** depend on each other, so this series' save must be imported after installing the modpack. The **FAQ** walks you through it.
-- **The series stays true to vanilla, with no fixed goals.** It exists because the series' very first player **loved the look of the World Border and preferred long-form vanilla survival**. Those two preferences are what became this series.
-- For a quick overview, skim the **Core Features, Resource Features, Fantasy Features, World-Exclusive Features, World Library, Game Rules, and Helper Mod Keybinds**.
-- **Or just jump straight in. Half the fun is not knowing what is out there.**
-- Playing with your favorite **resource packs** and **shader packs** can further enhance the world's immersion.
-- Supported languages: **Simplified Chinese, Traditional Chinese, Classical Chinese [recommended], English**.
-- When the language is switched inside the game, some text only updates after leaving and re-entering the save.
+This series is not a conventional modpack. Its core consists of a series-exclusive world and core mods that depend on each other to run. After installing the modpack, you must import the series-exclusive world; only then can you play the game normally. For detailed installation instructions, see the FAQ.
+
+This series keeps a vanilla style and has no fixed goals. It came into being because the first player of the series loved the visual effects of the world border and enjoyed playing long-term vanilla survival; it was created by combining the two.
+
+Before you begin, you can skim the series **Core Features, Resource Features, Fantasy Features, World-Exclusive Features, World Library, Game Rules, and Helper Mod Keybinds** to get a general first impression.
+
+You can also just jump right in and enjoy the unfamiliarity and the fun of figuring things out.
+
+Playing with your favorite resource packs and shader packs is recommended to enhance the world's immersion.
+
+Supported languages: Simplified Chinese, Traditional Chinese, Classical Chinese [Recommended], English.
+
+If you switch languages in-game, you must exit and re-enter the save for some text to update correctly.
 
 > **Note:** This English documentation is an AI-assisted translation, with a human providing the general meaning of each sentence. The translation may not be 100% accurate; in all cases, the [Chinese Version](https://fndream.github.io/BorderSurvivalModpack/?lang=zh) is the authoritative version.
 
@@ -337,7 +343,7 @@ Unbreakable Spirit Equipment is forged by the Chaos Smith from Unbreakable Spiri
 > Worlds are sorted by **type and overall difficulty, hardest first**. More stars usually mean a harder survival or more grinding.
 
 <details>
-<summary>Click here to expand the world library</summary>
+<summary>Click here to expand</summary>
 
 **🔥 Void Fifteen Worlds — Persisting Worlds Array Island**
 
