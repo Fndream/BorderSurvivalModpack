@@ -4,7 +4,7 @@
 
 ## 📓 Introduction
 
-This is a world series built around vanilla-style border survival. You start in a cramped space, gather what you need by your wits, brave the night, and push the World Border outward with experience.
+This is a world series built around vanilla-style border survival. You start in a cramped space, gather what you need by your wits, brave the night, and push the World Border outward with experience — then create your own ideal world.
 
 ## 📗 Before Play
 - This is not a regular modpack. The **core mod** and the **dedicated world save** depend on each other, so this series' save must be imported after installing the modpack. The **FAQ** walks you through it.
