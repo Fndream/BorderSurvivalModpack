@@ -63,32 +63,32 @@ Every world in this series places three function signs at the world spawn point.
 <summary>Click here to expand</summary>
 
 
-**🎣 Fishing**
+**🎣 Fishing**<sup>[v2.5]</sup>
 
 Fishing sometimes turns up items that are common in certain biomes.
 
 - Junk loot pool now includes: Seagrass, Kelp, Sugar Cane, Cactus, Bamboo, Sea Pickle, Cocoa Beans, Prismarine Shard, Prismarine Crystals, Coral, Coral Fan, Chorus Flower.
 - Treasure loot pool now includes: Budding Amethyst, Obsidian, Ice, Packed Ice, Blue Ice, Coral Block, "? ? ?".
 
-**🐱 Cats**
+**🐱 Cats**<sup>[v11.9]</sup>
 
 Sleeping in the same bed as a cat may grant it a special gift:
 
 - Gift loot pool now includes: Leaves, Diamond.
 
-**🌹 Sniffers**
+**🌹 Sniffers**<sup>[v10.6]</sup>
 
 When a Sniffer finishes digging, it may dig up some small flowers:
 
 - Dig loot pool now includes: Dandelion, Poppy, Blue Orchid, Allium, Azure Bluet, Tulip, Oxeye Daisy, Cornflower, Lily of the Valley, Open Eyeblossom, Spore Blossom, Dead Bush.
 
-**🐽 Piglins**
+**🐽 Piglins**<sup>[v5.3.17]</sup>
 
 Hand a Piglin a gold ingot and it may toss out some special Nether Fortress loot:
 
 - Barter loot pool now includes: Blaze Rod, Nether Wart, Wither Skeleton Skull.
 
-**💎 Loot Chests**
+**💎 Loot Chests**<sup>[v3.0]</sup>
 
 Opening the matching loot chest may reveal some special resources:
 
@@ -101,12 +101,12 @@ Opening the matching loot chest may reveal some special resources:
 - Bastion Remnant Hoglin Stables now include: Crimson Nylium, Warped Nylium.
 - Trial Chamber Vaults and Ominous Trial Chamber Vaults now include: Breeze Rod.
 
-**⚫ Ender Dragon**
+**⚫ Ender Dragon**<sup>[v11.3]</sup>
 
 - Defeating the Ender Dragon spawns a Dragon Head on the End Podium.
 - Defeating a respawned Ender Dragon spawns a Dragon Egg and a Dragon Head on the End Podium.
 
-**⬛ Deepslate**
+**⬛ Deepslate**<sup>[v13.0]</sup>
 
 - Lava that meets water below Y=0 turns into Deepslate or Cobbled Deepslate.
 
@@ -117,7 +117,7 @@ Opening the matching loot chest may reveal some special resources:
 
 ![recipe](https://files.seeusercontent.com/2026/07/30/aMg0/Snipaste_2026-07-30_19-53-54.png)
 
-**⬛ Monster Spawners**
+**⬛ Monster Spawners**<sup>[beta_200618]</sup>
 
 Breaking a Monster Spawner with a tool enchanted with Silk Touch makes it drop an empty spawner.
 
@@ -162,17 +162,17 @@ Breaking a Monster Spawner with a tool enchanted with Silk Touch makes it drop a
 
 - Two modes: **Imprisoned Mode** and **Day/Night Mode**. The two can be switched between in game.
 
-**🔵 Imprisoned Mode**
+**🔵 Imprisoned Mode**<sup>[beta_200523]</sup>
 
 - The default mode.
 
-**🌗 Day/Night Mode**
+**🌗 Day/Night Mode**<sup>[beta_200523]</sup>
 
 - During the day in Day/Night Mode, everything behaves exactly as it does in Imprisoned Mode.
 - At night in Day/Night Mode, the **monster cap** rises to **140**, **monsters per spawn** rises to **10**, the **chance that monsters spawn wearing armor** rises to **30%**, and monsters spawn **regardless of light level**.
 - At night in Day/Night Mode, if Border Energy is at level 50 or higher, the space inside the World Border doubles.
 
-**🌙 Day/Night Mode - Eternal Night**
+**🌙 Day/Night Mode - Eternal Night**<sup>[v8.3]</sup>
 
 - One minute before a night in Day/Night Mode ends, an Eternal Night descends if Border Energy has reached **level 100**.
 - Once the Eternal Night descends, Evernight Knights from another realm appear around the world spawn point.
@@ -181,7 +181,7 @@ Breaking a Monster Spawner with a tool enchanted with Silk Touch makes it drop a
 - The Eternal Night descends again after surviving or sleeping through **0–4** more nights in Day/Night Mode.
 > In Peaceful Mode an active Eternal Night ends immediately, and no new one will ever begin.
 
-**🧊 Eternal Rain Night / Eternal Snow Night**
+**🧊 Eternal Rain Night / Eternal Snow Night**<sup>[v11.18]</sup>
 
 - Once the Eternal Night descends, under their influence the World Border can be stained with any of six colors: **Pale White, Danger Red, Sun Orange, Bright Gold, Deep Blue, Dark Purple**.
 - Their influence disrupts the climate, and the stronger it is, the greater the chance that monsters spawn wearing armor.
@@ -190,7 +190,7 @@ Breaking a Monster Spawner with a tool enchanted with Silk Touch makes it drop a
 - Once every Evernight Knight is defeated, the climate recovers, the World Border's colors fade back, and the color signals when the next Eternal Night will arrive.
 > The arrival of the next Eternal Night can also be read off the moon phase on the Day/Night clock.
 
-**🐎 Evernight Knight**
+**🐎 Evernight Knight**<sup>[v8.3]</sup>
 
 - An Evernight Knight's max health climbs with Border Energy.
 - An Evernight Knight regenerates health while no player is nearby.
@@ -201,30 +201,30 @@ Breaking a Monster Spawner with a tool enchanted with Silk Touch makes it drop a
 > Evernight Knights are extremely dangerous. Adequate defenses and healing supplies are recommended before attempting to duel one.  
 > Evernight Knights never leave their current dimension and never ride vehicles.
 
-**🔱 Evernight Legion**
+**🔱 Evernight Legion**<sup>[v9.0]</sup>
 
 
 - After surviving 3 Eternal Nights, the next Eternal Night brings an **Undead Legion** or an **Illager Legion**.
 - After surviving 8 Eternal Nights, the next Eternal Night brings the **Eternal Legion**.
 
-**💙 Eternal Heart**
+**💙 Eternal Heart**<sup>[v11.14]</sup>
 
 - When a player defeats a legion boss, it drops an **Eternal Heart**.
 > **Right-clicking** an **Eternal Heart** destroys it, and the Evernight Knights will no longer fight as one in the current or next Eternal Night.  
 > An Eternal Heart is treated as a Heart of the Sea.
 
-**🏹 Eternal Divine Weapons**
+**🏹 Eternal Divine Weapons**<sup>[v11.15]</sup>
 
 - When a player defeats an Evernight Knight, it has a **1%** chance to drop the weapon it was holding.
 - Holding a Looting weapon in the player's main hand adds **8.5%** per level of Looting to that drop chance.
 > Cursed Eternal Weapons carry Curse of Vanishing and cannot be destroyed by fire, lava, explosions, lightning, or cactus.  
 > A Cursed Eternal Weapon with no extra enchantments can be reverted to a Night Spirit Eternal Weapon.
 
-**🍖 Mob Drops**
+**🍖 Mob Drops**<sup>[v11.10]</sup>
 
 - Mobs defeated by **Evernight Knights, Wardens, Elder Guardians, Guardians, and Iron Golems** count as player kills.
 
-**🐞 World Bugs**
+**🐞 World Bugs**<sup>[v8.1]</sup>
 
 - Evernight Knights, Sustainers, and Chaos Smiths are World Bug targets.
 - The World Bug target draws the aggro of every monster within 384 blocks horizontally.
@@ -240,7 +240,7 @@ Breaking a Monster Spawner with a tool enchanted with Silk Touch makes it drop a
 > A Creeper chasing the World Bug target sees through blocks once it is within a Euclidean distance of 8 blocks and 4 blocks vertically, and will ignite itself on the spot if its path is blocked.  
 > Creepers never voluntarily back away from the World Bug target.
 
-**🐈 Sustainer**
+**🐈 Sustainer**<sup>[v12.0]</sup>
 
 - A Sustainer appears at the world spawn point and keeps Border Energy stable.
 - Without a Sustainer near the world spawn point, Border Energy drains continuously.
@@ -251,19 +251,19 @@ Breaking a Monster Spawner with a tool enchanted with Silk Touch makes it drop a
 > Sustainers are baby cats and can be tamed and give gifts like any other cat.  
 > Sustainers never leave their current dimension and never ride vehicles.
 
-**🔆 Chaos Smith**
+**🔆 Chaos Smith**<sup>[beta_200523]</sup>
 
 - A Chaos Smith is an armorer villager who masters Chaos Star smithing and shares a deep history with the Evernight Knights. Trading with one yields special items — see below.
 - Because it is a World Bug, every monster wants to eliminate it.
 > Chaos Smiths are armorer villagers, and they breed and restock like other villagers.  
 > A Chaos Smith in unloaded chunks does not count as existing.
 
-**🪵 Unbreakable Spirit Material**
+**🪵 Unbreakable Spirit Material**<sup>[beta_200523]</sup>
 
-Unbreakable Spirit Material is what the Chaos Smith makes by refining a Chaos Star, which is crafted from a Heart of the Sea, a Nether Star, and an End Crystal. Equipment forged from this material is **Unbreakable**; see below.
+Unbreakable Spirit Material is what the Chaos Smith makes by refining a Chaos Star<sup>[v10.1]</sup>, which is crafted from a Heart of the Sea, a Nether Star, and an End Crystal. Equipment forged from this material is **Unbreakable**; see below.
 > **Right-clicking** the **Border Upgrade** sign **while holding** Unbreakable Spirit Material infuses the material into it, raising Border Energy by a set number of **levels**.
 
-**✨ Unbreakable Spirit Equipment**
+**✨ Unbreakable Spirit Equipment**<sup>[beta_200523]</sup>
 
 Unbreakable Spirit Equipment is forged by the Chaos Smith from Unbreakable Spirit Material, and is **Unbreakable**.
 
@@ -283,14 +283,14 @@ Unbreakable Spirit Equipment is forged by the Chaos Smith from Unbreakable Spiri
 - **Spirit Wolf Armor**: Resistance II; while worn by a Wolf, it also grants Instant Health.
 - **Spirit Flint and Steel**: the holder, plus Evernight Knights, Chaos Smiths, Illagers, Witches, Wandering Traders, and Trader Llamas, glow continuously.
 
-**📦 ? ? ?**
+**📦 ? ? ?**<sup>[v3.0]</sup>
 
 - The mysterious chest is forged by the Chaos Smith from a Spirit Emerald. Once placed and opened, it yields one of the following:
   - a high chance of a random structure loot chest;
   - a moderate chance of a random village loot chest;
   - a low chance of a random treasure loot chest.
 
-**🍀 Spirit Emerald**
+**🍀 Spirit Emerald**<sup>[v11.14]</sup>
 
 > A Spirit Emerald is treated as an Emerald.
 - **Gathering items**:
@@ -313,18 +313,18 @@ Unbreakable Spirit Equipment is forged by the Chaos Smith from Unbreakable Spiri
 
 > ❗ The following features belong to one specific world and only work there.
 
-**🌸 Guardian - Cherry Mountain (Cherry Valley)**
+**🌸 Guardian - Cherry Mountain (Cherry Valley)**<sup>[v8.1]</sup>
 
 - <del>A Chaos Smith exists, and every monster wants to eliminate it. When it dies, Border Energy drains.</del> (replaced by the Sustainer)
 
-**🌑 Evernight - Night Garden**
+**🌑 Evernight - Night Garden**<sup>[v11.0]</sup>
 
 - The world runs on a night-only cycle. There is no day.
 - This world is locked in Day/Night Mode and cannot be switched out of it.
 - Villager schedules are reversed: villagers and the players can only sleep after tick 23000.
 - <del>A Sustainer exists, and every monster wants to eliminate it. When it dies, Border Energy drains.</del> (now always present)
 
-**🔥 Void Portal - Persisting Worlds**
+**🔥 Void Portal - Persisting Worlds**<sup>[v13.0]</sup>
 
 - Traveling to a dimension requires building a portal frame from that dimension's theme blocks and activating it with a fire source.
 - Unlike a Nether Portal, a Void Portal searches for the nearest portal of the same type within a 256-block radius of the target dimension's world spawn point, regardless of where the portal was entered from. If it finds none, it builds a portal structure near the world spawn point.
@@ -628,37 +628,37 @@ Unbreakable Spirit Equipment is forged by the Chaos Smith from Unbreakable Spiri
 
 > You can also toggle every rule below quickly: **ESC -> World Options -> Edit Game Rules -> search "Griefing" -> Mobs**.
 
-> ✅ To stop Creepers from destroying blocks:  
+> ✅ To stop Creepers from destroying blocks:<sup>[v10.0.5]</sup>  
 > ```
 > /gamerule creeper_griefing false
 > ```
 
-> ✅ To stop Endermen from picking up blocks:  
+> ✅ To stop Endermen from picking up blocks:<sup>[v10.0.5]</sup>  
 > ```
 > /gamerule endman_griefing false
 > ```
 
-> ✅ To stop Zombies from breaking doors:  
+> ✅ To stop Zombies from breaking doors:<sup>[v10.0.5]</sup>  
 > ```
 > /gamerule zombie_griefing false
 > ```
 
-> ✅ To stop Ghasts from wrecking terrain with fireballs:  
+> ✅ To stop Ghasts from wrecking terrain with fireballs:<sup>[v10.3.1]</sup>  
 > ```
 > /gamerule ghast_griefing false
 > ```
 
-> ✅ To stop Ravagers from destroying blocks:  
+> ✅ To stop Ravagers from destroying blocks:<sup>[v11.12]</sup>  
 > ```
 > /gamerule ravager_griefing false
 > ```
 
-> ✅ To stop mobs from trampling farmland:  
+> ✅ To stop mobs from trampling farmland:<sup>[v13.0]</sup>  
 > ```
 > /gamerule farmland_griefing false
 > ```
 
-> ✅ To stop players from trampling farmland:  
+> ✅ To stop players from trampling farmland:<sup>[v13.0]</sup>  
 > ```
 > /gamerule farmland_player_griefing false
 > ```
