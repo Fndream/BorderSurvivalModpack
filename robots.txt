@@ -1,0 +1,13 @@
+# 边界生存 Border Survival —— 静态站，GitHub Pages 托管
+# 整站只有 index.html 一个可索引文档：侧栏目录、语言切换、文档⇄更新日志双模式全是客户端 JS，
+# 但正文、章节标题、更新日志条目全都写在 HTML 里，爬虫不用渲染就能读全。
+#
+# ⚠ 刻意不写 Disallow：
+#   /en、/update、/en/update 只是把「路径」翻译成「?lang= / ?mode=查询参数」的存根页，
+#   它们各自带 <meta name="robots" noindex>。一旦在这里 Disallow，爬虫抓不到页面，
+#   也就读不到页面里的 noindex —— 等于把这几个重复 URL 放开。留 Allow 让它们被抓到、被 noindex 才是对的。
+
+User-agent: *
+Allow: /
+
+Sitemap: https://fndream.github.io/BorderSurvivalModpack/sitemap.xml
