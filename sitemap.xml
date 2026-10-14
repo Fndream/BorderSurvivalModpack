@@ -1,8 +1,4 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- 整站只有一份文档，所以 sitemap 只有一个 URL。
-     /?lang=en、/?lang=lzh 是同一文档的客户端变体（class 切换，非独立 URL），
-     canonical 已把它们归一到根 URL，故不单独列出——列了就是告诉爬虫这里有重复页。
-     ⚠ 发新版后记得把 lastmod 往后改；changefreq / priority Google 不再采用，留着是给人看的。 -->
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://fndream.github.io/BorderSurvivalModpack/</loc>
