@@ -186,7 +186,7 @@ Breaking a Monster Spawner with a tool enchanted with Silk Touch makes it drop a
 ### 💙 Eternal Heart
 - When a player defeats a legion boss, it drops an **Eternal Heart**.
 > **Right-clicking** an **Eternal Heart** destroys it, makes an Eternal Night arrive that same night for certain, and the Evernight Knights will no longer fight as one in the current or next Eternal Night.  
-> Destroying an Eternal Heart during an Eternal Night changes the World Border to Danger Red, unless the World Border is already showing Pale White.  
+> Destroying an Eternal Heart during an Eternal Night changes the World Border State to Danger Red, unless the World Border State is already showing Pale White.  
 > An Eternal Heart is treated as a Heart of the Sea.
 
 ### 🏹 Eternal Divine Weapons
