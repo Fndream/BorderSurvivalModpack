@@ -773,11 +773,15 @@ Most of the mods here are optimization and helper mods, and the game itself is v
 
 **Q: How do I update the modpack to get the latest features?**
 
-**A:** Update the mods only (this only works if the Minecraft version has not changed):
-1. Use the launcher's mod update feature to bring the `Border Survival Core` mod up to date for this instance's Minecraft version.
+**A: Update through the launcher**
+1. Download the new modpack.
+2. Find the modpack update option in a launcher that supports it, then follow the launcher's steps to import the new modpack file.
+
+**B:** Update the mods by hand (this only works if the Minecraft version has not changed):
+1. Use the launcher's mod update feature, or download the `Border Survival Core` mod by hand, to bring it up to date for this instance's Minecraft version.
 2. Then update every mod named in the [changelog](https://fndream.github.io/BorderSurvivalModpack/?mode=update&lang=en) to the listed version. (Starting with 26.3, the changelog spells out every mod version change.)
 
-**B:** Copy your stuff over and reinstall the new version:
+**C:** Copy your stuff over and reinstall the new version:
 1. Download the new modpack and install it with your launcher.
 2. Copy the following folders from your old game instance into the new one:
     - `resourcepacks`
