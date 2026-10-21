@@ -21,7 +21,7 @@ Supported languages: Simplified Chinese, Traditional Chinese, Classical Chinese 
 
 If you switch languages in-game, you must exit and re-enter the save for some text to update correctly.
 
-> **Note:** This English documentation is an AI-assisted translation, with a human providing the general meaning of each sentence. The translation may not be 100% accurate; in all cases, the [Chinese Version](https://fndream.github.io/BorderSurvivalModpack/?lang=zh) is the authoritative version.
+> **Note:** This English documentation is an AI translation of the [Chinese Version](https://fndream.github.io/BorderSurvivalModpack/?lang=zh), with a human providing the general meaning of each sentence. It may not be 100% accurate, so refer back to the Chinese version whenever something isn't clear. You may visit the [Project Website official homepage](https://fndream.github.io/BorderSurvivalModpack/?lang=en) to switch languages and read either version.
 
 ## 🔆 Core Features
 <details>
