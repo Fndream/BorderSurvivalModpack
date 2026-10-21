@@ -51,7 +51,7 @@ Every world in this series places three function signs at the world spawn point.
 **🧱 Advancements**
 
 > ❗ This series sets no fixed goals. Advancements are **not a quest guide** — they exist to showcase features, give text hints, and make the journey feel like an occasion.  
-> ❗ **This series does not provide any explicit tutorials.**
+> ❗ **This series never offers any overt tutorials.**
 
 <img src="https://files.seeusercontent.com/2026/07/31/r7lK/en.png" alt="Advancements" height="400">
 
