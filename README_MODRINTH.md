@@ -11,7 +11,11 @@ This is a world series built around vanilla-style border survival. You start in 
 ## 📗 Before Play
 This series is not a conventional modpack. Its core consists of a series-exclusive world and core mods that depend on each other to run. After installing the modpack, you must import the series-exclusive world; only then can you play the game normally. For detailed installation instructions, see the FAQ.
 
-This series keeps a vanilla style and has no fixed goals. It came into being because the first player of the series loved the visual effects of the world border and enjoyed playing long-term vanilla survival; it was created by combining the two.
+This series keeps a vanilla style and has no fixed goals. It came into being because the first player of the series loved the visual effects of the world border and enjoyed playing long-term vanilla survival with a focus on building; it was created by combining the two.
+
+The worlds in this series vary in type and difficulty, including Vanilla, Floating Island, Cave, and Void, plus a Void-type world called **Persisting Worlds** in which all worlds are connected to each other.
+
+In this series, even with no knowledge of redstone, its mechanics and vanilla mechanics still provide a moderate, steady supply of resources and building materials in a lightweight, simple way throughout the entire playthrough.
 
 Before you begin, you can skim the series **Core Features, Resource Features, Fantasy Features, World-Exclusive Features, World Library, Game Rules, and Helper Mod Keybinds** to get a general first impression.
 
@@ -858,15 +862,8 @@ Most of the mods here are optimization and helper mods, and the game itself is v
 1. Install the Fabric server for your Minecraft version yourself.
 2. Install the modpack, then copy every file from the modpack's `mods` and `config` directories into your server's `mods` and `config` folders.
 3. Extract the worldpack into the server root and rename the world save to `world`, or to whatever `level-name` says in `server.properties`.
-4. Delete the **`mcwifipnp`** mod.
-5. Copy `config/carpet/default_carpet.conf` into the world save folder (usually `world`) and rename it `carpet.conf` to enable the **`carpet`** mod features.
-6. Once the setup is done, start the server.
-
----
-
-**Q:** My server will not start after I overwrite the server's mods with the modpack's.  
-
-**A:** The **`mcwifipnp`** mod must be deleted.
+4. Copy `config/carpet/default_carpet.conf` into the world save folder (usually `world`) and rename it `carpet.conf` to enable the **`carpet`** mod features.
+5. Once the setup is done, start the server.
 
 ---
 
