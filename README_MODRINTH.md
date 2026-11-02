@@ -21,6 +21,8 @@ Before you begin, you can skim the series **Core Features, Resource Features, Fa
 
 You can also just jump right in and enjoy the unfamiliarity and the fun of figuring things out.
 
+When you run into trouble, you can look up the relevant entries on [MinecraftWiki](https://minecraft.wiki/) and the [official documentation](https://fndream.github.io/BorderSurvivalModpack/?lang=en), then put them into practice.
+
 Playing with your favorite resource packs and shader packs is recommended to enhance the world's immersion.
 
 Supported languages: Simplified Chinese, Traditional Chinese, Classical Chinese [Recommended], English.
@@ -36,7 +38,7 @@ If you switch languages in-game, you must exit and re-enter the save for some te
 
 **📕 World Border**
 
-The World Border is a vanilla feature that arrived in Minecraft 1.8. The [Minecraft Wiki – World Border](https://en.minecraft.wiki/w/World_border) page has the details.
+The World Border is a vanilla feature that arrived in Minecraft 1.8. The [Minecraft Wiki – World Border](https://minecraft.wiki/w/World_border) page has the details.
 
 **🥬 Border Energy**
 

@@ -19,6 +19,8 @@
 
 **亦可即入，領生疏與摸索之樂。**
 
+當遇困阻時，可往 [MinecraftWiki](https://zh.minecraft.wiki/) 與[官方文書](https://fndream.github.io/BorderSurvivalModpack/?lang=zh)搜其詞條，閱而**躬行**。
+
 宜配所好之**資囊**與**影包**而遊，以增生界之沉浸。
 
 所支語言：**簡體中文、繁體中文、文言華夏【推薦】、English**。
