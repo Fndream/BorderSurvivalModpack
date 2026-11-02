@@ -13,7 +13,7 @@ This series is not a conventional modpack. Its core consists of a series-exclusi
 
 This series keeps a vanilla style and has no fixed goals. It came into being because the first player of the series loved the visual effects of the world border and enjoyed playing long-term vanilla survival with a focus on building; it was created by combining the two.
 
-The worlds in this series vary in type and difficulty, including Vanilla, Floating Island, Cave, and Void, plus a Void-type world called **Persisting Worlds** from which all worlds can be reached.
+This series has worlds of different types and difficulties, including Vanilla, Floating Island, Cave, and Void, plus a Void-type world called **Persisting Worlds** from which all worlds can be reached.
 
 In this series, even with no knowledge of redstone, its mechanics and vanilla mechanics still provide a moderate, steady supply of resources and building materials in a lightweight, simple way throughout the entire playthrough.
 
