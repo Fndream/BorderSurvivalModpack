@@ -21,7 +21,7 @@
 
 当遇到困难时，可前往[MinecraftWiki](https://zh.minecraft.wiki/)与[官方文档](https://fndream.github.io/BorderSurvivalModpack/?lang=zh)搜索相关词条查阅并**实践**。
 
-推荐搭配自己喜欢的**资源包**和**光影包**游玩，增强世界的沉浸感。
+推荐搭配自己喜欢的**资源包**和**光影包**游玩，以增强世界的沉浸感。
 
 支持语言：**简体中文、繁体中文、文言华夏[推荐]、English**。
 
