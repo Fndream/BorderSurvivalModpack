@@ -11,7 +11,7 @@ This is a world series built around vanilla-style border survival. You start in 
 ## 📗 Before Play
 This series is not a conventional modpack. Its core consists of a series-exclusive world and core mods that depend on each other to run. After installing the modpack, you must import the series-exclusive world; only then can you play the game normally. For detailed installation instructions, see the FAQ.
 
-This series keeps a vanilla style and has no fixed goals. It came into being because the first player of the series loved the visual effects of the world border and enjoyed playing long-term vanilla survival with a focus on building; it was created by combining the two.
+This series keeps a vanilla style and has no fixed goals. It came into being because the first player of the series loved the visual effects of the world border and enjoyed playing **long-term vanilla survival**; it was created by combining the two.
 
 This series has worlds of different types and difficulties, including Vanilla, Floating Island, Cave, and Void, plus a Void-type world called **Persisting Worlds** from which all worlds can be reached.
 
