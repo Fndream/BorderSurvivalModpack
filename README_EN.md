@@ -1,4 +1,4 @@
-![VoidFifteenRealms-banner.jpg](https://files.seeusercontent.com/2026/09/23/blK7/banner.jpg)
+![VoidFifteenRealms-banner.jpg](https://files.seeuserdata.com/2026/09/23/blK7/banner.jpg)
 
 [![🧭 Project Website](https://img.shields.io/badge/🧭-Project%20Website-332a21?style=for-the-badge&labelColor=332a21&logoColor=e5aa2e)](https://fndream.github.io/BorderSurvivalModpack/?lang=en)
 
@@ -7,9 +7,9 @@
 This is a world series built around vanilla-style border survival. You start in a cramped space, gather what you need by your wits, brave the night, push the World Border outward with experience.
 
 ## 📗 Before Play
-This series is not a conventional modpack. Its core consists of a series-exclusive world and core mods that depend on each other to run. After installing the modpack, you must import the series-exclusive world; only then can you play the game normally. For detailed installation instructions, see the FAQ.
+This series is not a conventional modpack. Its core consists of a series-exclusive world and core mods that depend on each other to run. After installing the modpack, you must import the series-exclusive world; only then can you play the game normally. For detailed installation instructions, see the **FAQ**.
 
-This series keeps a vanilla style and has no fixed goals. It came into being because the first player of the series loved the visual effects of the world border and enjoyed playing **long-term vanilla survival**; it was created by combining the two.
+This series keeps a vanilla style and has no fixed goals. It came into being because the first player of the series **loved the visual effects of the world border and enjoyed playing long-term vanilla survival**; it was created by combining the two.
 
 This series has worlds of different types and difficulties, including Vanilla, Floating Island, Cave, and Void, plus a Void-type world called **Persisting Worlds** from which all worlds can be reached.
 
@@ -53,7 +53,7 @@ Every world in this series places three function signs at the world spawn point.
 > ❗ This series sets no fixed goals. Advancements are **not a quest guide** — they exist to showcase features, give text hints, and make the journey feel like an occasion.  
 > ❗ **This series never offers any overt tutorials.**
 
-<img src="https://files.seeusercontent.com/2026/07/31/r7lK/en.png" alt="Advancements" height="400">
+<img src="https://files.seeuserdata.com/2026/07/31/r7lK/en.png" alt="Advancements" height="400">
 
 
 </details>
@@ -88,7 +88,7 @@ Hand a Piglin a gold ingot and it may toss out some special Nether Fortress loot
 Opening the matching loot chest may reveal some special resources:
 
 - Plains Village Houses now include: Sunflower, Rose Bush, Peony, Lilac, Pink Petals, Wildflowers, Leaf Litter, Glow Lichen.
-- Acacia Village Houses now include: Armadillo Scute, Bush, Firefly Bush, Red Shrub.
+- Savanna Village Houses now include: Armadillo Scute, Bush, Firefly Bush, Red Shrub.
 - Village Mason Houses now include: Pointed Dripstone, Sulfur Spike.
 - Shipwreck Supply Chests now include: Pale Moss Block, Pale Hanging Moss.
 - Buried Treasure now includes: Turtle Egg.
@@ -107,7 +107,7 @@ Opening the matching loot chest may reveal some special resources:
 
 > Recipes unlock automatically once the ingredients are obtained. They can be checked in the little green book to the left of the Crafting Table.
 
-![recipe](https://files.seeusercontent.com/2026/07/30/aMg0/Snipaste_2026-07-30_19-53-54.png)
+![recipe](https://files.seeuserdata.com/2026/07/30/aMg0/Snipaste_2026-07-30_19-53-54.png)
 
 ### ⬛ Monster Spawners
 Breaking a Monster Spawner with a tool enchanted with Silk Touch makes it drop an empty spawner.
@@ -274,7 +274,7 @@ Unbreakable Spirit Equipment is forged by the Chaos Smith from Unbreakable Spiri
     - If **General** and **Container** Spirit Emeralds are both in range, the nearest General one takes the item first, then the Container ones share it out equally.
 - **Converting to building blocks**: a Stonecutter converts a Spirit Emerald into a set amount of basic blocks:
 
-![Stonecutter](https://files.seeusercontent.com/2026/07/31/Bn4e/e0c5562.png)
+![Stonecutter](https://files.seeuserdata.com/2026/07/31/Bn4e/e0c5562.png)
 
 
 </details>
@@ -319,7 +319,7 @@ Unbreakable Spirit Equipment is forged by the Chaos Smith from Unbreakable Spiri
 🔥 **Type: Year 6 — Void**  
 ✨ **Difficulty: 🔥🔥🔥**
 
-<img src="https://files.seeusercontent.com/2026/09/23/fbT3/0d48ad2.jpg" width="400" alt="Void Fifteen Worlds - Persisting Worlds Array Island">
+<img src="https://files.seeuserdata.com/2026/09/23/fbT3/0d48ad2.jpg" width="400" alt="Void Fifteen Worlds - Persisting Worlds Array Island">
 
 ---
 > Void Realms, Blocks become doorways, Primordial fire reveals, World Persists…  
@@ -339,10 +339,10 @@ Unbreakable Spirit Equipment is forged by the Chaos Smith from Unbreakable Spiri
 🔆 **Type: Year 6 — Void**  
 ✨ **Difficulty: 🔥🔥🔥🔥🔥**
 
-<img src="https://files.seeusercontent.com/2026/09/23/tJj4/a19fbb4.jpg" width="400" alt="Void Fifteen Worlds - Persisting Worlds">
+<img src="https://files.seeuserdata.com/2026/09/23/tJj4/a19fbb4.jpg" width="400" alt="Void Fifteen Worlds - Persisting Worlds">
 
 ---
-> Void Realms, Blocks become doorways, Primordial fire reveals, World Persists…
+> Void Realms, Blocks become doorways, Primordial fire reveals, World Persists…  
 > 
 > Release date: 2026-06-23 - 26.2
 
@@ -351,7 +351,7 @@ Unbreakable Spirit Equipment is forged by the Chaos Smith from Unbreakable Spiri
 🥥 **Type: Year 5 — Floating Island**  
 ⚡ **Difficulty: 🌙🌙🌙🌙🌙🌙**  
 
-<img src="https://files.seeusercontent.com/2026/06/26/C9dl/36aad17.jpg" width="400" alt="Cursed Evernight World - Night Garden">
+<img src="https://files.seeuserdata.com/2026/06/26/C9dl/36aad17.jpg" width="400" alt="Cursed Evernight World - Night Garden">
 
 ---
 > A realm where the heavens lose their color, where curses and the Evernight cycle…  
@@ -364,7 +364,7 @@ Unbreakable Spirit Equipment is forged by the Chaos Smith from Unbreakable Spiri
 🛖 **Type: Year 4 — Cave**  
 ✨ **Difficulty: 🌿🌿🌿🌿🌿**
 
-<img src="https://files.seeusercontent.com/2026/06/26/zs8K/d40646d.jpg" width="400" alt="Gloom Axolotl World - Lush Caves">
+<img src="https://files.seeuserdata.com/2026/06/26/zs8K/d40646d.jpg" width="400" alt="Gloom Axolotl World - Lush Caves">
 
 ---
 > Legend tells of a land of axolotls…  
@@ -378,12 +378,11 @@ Unbreakable Spirit Equipment is forged by the Chaos Smith from Unbreakable Spiri
 > Release date: 2024-08-17 - 1.21.1
 
 ---
-
 ### 🌺 **Paradise Beyond World — Cherry Valley**
 🍀 **Type: Year 3 — Vanilla**    
 ✨ **Difficulty: 🌸🌸**
 
-<img src="https://files.seeusercontent.com/2026/06/26/xfV3/29cb24f.jpg" width="400" alt="Paradise Beyond World - Cherry Valley">
+<img src="https://files.seeuserdata.com/2026/06/26/xfV3/29cb24f.jpg" width="400" alt="Paradise Beyond World - Cherry Valley">
 
 ---
 > Once, a Chaos Smith was imprisoned in a valley of cherry blossoms.  
@@ -394,12 +393,11 @@ Unbreakable Spirit Equipment is forged by the Chaos Smith from Unbreakable Spiri
 > Release date: 2024-02-09 - 1.20.4
 
 ---
-
 ### ⛅ **Void**
 🔆 **Type: Void**  
 ⚡ **Difficulty: 🔆🔆🔆🔆🔆🔆**
 
-<img src="https://files.seeusercontent.com/2026/06/26/3anO/da8f020.jpg" width="400" alt="Void">
+<img src="https://files.seeuserdata.com/2026/06/26/3anO/da8f020.jpg" width="400" alt="Void">
 
 ---
 > A world where both the Overworld and the Nether are made entirely of void.  
@@ -408,12 +406,11 @@ Unbreakable Spirit Equipment is forged by the Chaos Smith from Unbreakable Spiri
 > Release date: 2024-11-10 - 1.21.1
 
 ---
-
 ### 🦠 **Painted Cavern — Sulfur Caves**
 🛖 **Type: Cave**  
 ✨ **Difficulty: ⭐⭐⭐⭐⭐**
 
-<img src="https://files.seeusercontent.com/2026/06/26/tH4c/f2bd16e.jpg" width="400" alt="Painted Cavern - Sulfur Caves">
+<img src="https://files.seeuserdata.com/2026/06/26/tH4c/f2bd16e.jpg" width="400" alt="Painted Cavern - Sulfur Caves">
 
 ---
 > A 26.2-themed world: an underground realm like an ancient scroll painting.
@@ -422,12 +419,11 @@ Unbreakable Spirit Equipment is forged by the Chaos Smith from Unbreakable Spiri
 > Release date: 2026-06-23 - 26.2
 
 ---
-
 ### 🌳 **Lake Peak Sanctuary — Spruce Floating Island**
 🥥 **Type: Floating Island**     
 ✨ **Difficulty: ⭐⭐⭐**
 
-<img src="https://files.seeusercontent.com/2026/06/26/Ac4g/18eae77.jpg" width="400" alt="Lake Peak Sanctuary - Spruce Floating Island">
+<img src="https://files.seeuserdata.com/2026/06/26/Ac4g/18eae77.jpg" width="400" alt="Lake Peak Sanctuary - Spruce Floating Island">
 
 ---
 > A floating isle ringed with spruces, a paradise for city builders.  
@@ -437,12 +433,11 @@ Unbreakable Spirit Equipment is forged by the Chaos Smith from Unbreakable Spiri
 > Release date: 2025-12-18 - 1.21.10
 
 ---
-
 ### 🌿 **Abundant Rain Realm — Lush Floating Island**
 🥥 **Type: Floating Island**  
 ✨ **Difficulty: ⭐⭐⭐**
 
-<img src="https://files.seeusercontent.com/2026/06/26/kJw5/5d446c5.jpg" width="400" alt="Abundant Rain Realm - Lush Floating Island">
+<img src="https://files.seeuserdata.com/2026/06/26/kJw5/5d446c5.jpg" width="400" alt="Abundant Rain Realm - Lush Floating Island">
 
 ---
 > A remote jungle isle on a giant, lush floating island.  
@@ -452,12 +447,11 @@ Unbreakable Spirit Equipment is forged by the Chaos Smith from Unbreakable Spiri
 > Release date: 2025-12-18 - 1.21.10
 
 ---
-
 ### 🧊 **Extreme Ice Realm — Frozen Icebergs**
 💠 **Type: Amplified**  
 ✨ **Difficulty: ⭐⭐⭐⭐**
 
-<img src="https://files.seeusercontent.com/2026/06/26/A6im/9e53fe7.jpg" width="400" alt="Extreme Ice Realm - Frozen Icebergs">
+<img src="https://files.seeuserdata.com/2026/06/26/A6im/9e53fe7.jpg" width="400" alt="Extreme Ice Realm - Frozen Icebergs">
 
 ---
 > A frozen land, and peaks that pierce the clouds.  
@@ -467,12 +461,11 @@ Unbreakable Spirit Equipment is forged by the Chaos Smith from Unbreakable Spiri
 > Release date: 2024-04-24 - 1.20.4
 
 ---
-
 ### 🌴 **Coral Rain Bamboo Land — Jungle Island**
 🍀 **Type: Vanilla**  
 ✨ **Difficulty: ⭐⭐⭐**
 
-<img src="https://files.seeusercontent.com/2026/06/26/eI5s/0d02daf.jpg" width="400" alt="Coral Rain Bamboo Land - Jungle Island">
+<img src="https://files.seeuserdata.com/2026/06/26/eI5s/0d02daf.jpg" width="400" alt="Coral Rain Bamboo Land - Jungle Island">
 
 ---
 > An island of coral sea, jungle, and bamboo groves.
@@ -481,12 +474,11 @@ Unbreakable Spirit Equipment is forged by the Chaos Smith from Unbreakable Spiri
 > Release date: 2025-02-02 - 1.21.4
 
 ---
-
 ### 🍁 **Sunfall Gorge Forest — Dappled Valley**
 🍀 **Type: Vanilla**  
 ✨ **Difficulty: ⭐⭐**
 
-<img src="https://files.seeusercontent.com/2026/09/21/hI4w/2026-09-21_1638.jpg" width="400" alt="Sunfall Gorge Forest - Dappled Valley">
+<img src="https://files.seeuserdata.com/2026/09/21/hI4w/2026-09-21_1638.jpg" width="400" alt="Sunfall Gorge Forest - Dappled Valley">
 
 ---
 > A 26.3-themed world: a basin holding Dappled Forest and Cherry Grove.
@@ -495,12 +487,11 @@ Unbreakable Spirit Equipment is forged by the Chaos Smith from Unbreakable Spiri
 > Release date: 2026-09-25 - 26.3
 
 ---
-
 ### 🌿 **Savanna In Swamp — Swamp Savanna**
 🍀 **Type: Vanilla**  
 ✨ **Difficulty: ⭐⭐**
 
-<img src="https://files.seeusercontent.com/2026/06/26/oH8i/dd7d1bf.jpg" width="400" alt="Savanna In Swamp - Swamp Savanna">
+<img src="https://files.seeuserdata.com/2026/06/26/oH8i/dd7d1bf.jpg" width="400" alt="Savanna In Swamp - Swamp Savanna">
 
 ---
 > A 1.19-themed world: Savanna and Plains Villages ringed by Mangrove Swamp.
@@ -509,12 +500,11 @@ Unbreakable Spirit Equipment is forged by the Chaos Smith from Unbreakable Spiri
 > Release date: 2022-06-18 - 1.19
 
 ---
-
 ### 🪵 **Lowland Forest Pool — Verdant Lake**
 🍀 **Type: Vanilla**  
 ✨ **Difficulty: ⭐⭐**
 
-<img src="https://files.seeusercontent.com/2026/06/26/hlC8/d4ae6bd.jpg" width="400" alt="Lowland Forest Pool - Verdant Lake">
+<img src="https://files.seeuserdata.com/2026/06/26/hlC8/d4ae6bd.jpg" width="400" alt="Lowland Forest Pool - Verdant Lake">
 
 ---
 > A 1.20-themed world: Cherry Forest ringed by steep peaks, plus Plains and a heart-shaped lake.
@@ -523,12 +513,11 @@ Unbreakable Spirit Equipment is forged by the Chaos Smith from Unbreakable Spiri
 > Release date: 2025-12-21 - 1.21.10
 
 ---
-
 ### 🌸 **Summit Cherry Blossoms — Cherry Plain**
 🍀 **Type: Vanilla**  
 ✨ **Difficulty: ⭐⭐**
 
-<img src="https://files.seeusercontent.com/2026/06/26/zy4Q/db372d6.jpg" width="400" alt="Summit Cherry Blossoms - Cherry Plain">
+<img src="https://files.seeuserdata.com/2026/06/26/zy4Q/db372d6.jpg" width="400" alt="Summit Cherry Blossoms - Cherry Plain">
 
 ---
 > A 1.20-themed world: Cherry Forest ringed by steep peaks.
@@ -537,12 +526,11 @@ Unbreakable Spirit Equipment is forged by the Chaos Smith from Unbreakable Spiri
 > Release date: 2024-01-29 - 1.20.4
 
 ---
-
 ### 🌵 **Three Biomes Shore — Coastal Settlement**
 🍀 **Type: Vanilla**    
 ✨ **Difficulty: ⭐**
 
-<img src="https://files.seeusercontent.com/2026/06/26/gu3P/eb05458.jpg" width="400" alt="Three Biomes Shore - Coastal Settlement">
+<img src="https://files.seeuserdata.com/2026/06/26/gu3P/eb05458.jpg" width="400" alt="Three Biomes Shore - Coastal Settlement">
 
 ---
 > Above a coast spanning three biomes sits a lively seaside town.  
@@ -553,12 +541,11 @@ Unbreakable Spirit Equipment is forged by the Chaos Smith from Unbreakable Spiri
 > Release date: 2024-02-03 - 1.20.4
 
 ---
-
 ### 🔱 **Departure Land — Island Village**
 🍀 **Type: Vanilla**    
 ✨ **Difficulty: ⭐**
 
-<img src="https://files.seeusercontent.com/2026/09/21/5bMo/fa88de3.jpg" width="400" alt="Departure Land - Island Village">
+<img src="https://files.seeuserdata.com/2026/09/21/5bMo/fa88de3.jpg" width="400" alt="Departure Land - Island Village">
 
 ---
 > "A dream. A place to start over."
@@ -567,7 +554,6 @@ Unbreakable Spirit Equipment is forged by the Chaos Smith from Unbreakable Spiri
 > Release date: 2026-09-25 - 26.3
 
 ---
-
 </details>
 
 ## 📕 Game Rules
@@ -665,6 +651,18 @@ Unbreakable Spirit Equipment is forged by the Chaos Smith from Unbreakable Spiri
 - All other worlds:
     1. Just import the save into the new modpack version. It upgrades on its own, or you can use the Optimize World feature.
 
+### 🟨 Save upgrade: 1.21.10 -> 26.2
+**❗ Always back up your save before upgrading, in case anything goes wrong!**
+- Vanilla / Amplified worlds: just import the save into the new modpack version. It upgrades on its own, or you can use the Optimize World feature.
+- All other world types (including Void, Floating Island, Cave):
+    1. **Back up the save**, import it into the new modpack version (26.2).
+    2. Launch the game, select the save, choose `Upgrade and Open World`, choose `I Know What I'm Doing` to upgrade the save format.
+    3. At `Join World Now?` choose `No` to decline joining immediately.
+    4. Download the 26.2 version of the corresponding world. (The following steps require precise file replacement/deletion — do not touch any other files.)
+    5. Replace the `data/minecraft/world_gen_settings.dat` file from the 26.2 world zip into the save directory.
+    6. Delete everything in the save's datapacks folder except `init`, leaving only an `init` folder.
+    7. Done — you can now enter the game.
+
 </details>
 
 ## 📖 Notes
@@ -745,7 +743,7 @@ Most of the mods here are optimization and helper mods, and the game itself is v
 **A:** Get a fresh one with this command. You need to be in Creative Mode to place it.
 
 ```
-/function border_survival:get_sign
+function border_survival:get_sign
 ```
 
 ---
@@ -791,7 +789,7 @@ Most of the mods here are optimization and helper mods, and the game itself is v
 **B:** **Before building anything like that:** use a fake player to keep several dimensions loaded at once, run the command below, hold TAB to watch TPS/MSPT, then add or remove loaded dimensions based on your CPU, judging by the mspt figure.
 
 ```
-/log tps
+function border_survival:log_tps
 ```
 
 ---
