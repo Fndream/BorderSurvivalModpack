@@ -303,9 +303,9 @@ Unbreakable Spirit Equipment is forged by the Chaos Smith from Unbreakable Spiri
 - **Gathering items**:
     - **General Spirit Emerald**: hold one in the player's offhand or place it in any Item Frame, and it pulls every item entity inside the 16-block (33x33x33) cube around it into its own position.
     - **Container Spirit Emerald**: if the Item Frame holding it is attached to a Chest, Barrel, or Shulker Box, it only gathers item types found in that container. Attached to an empty container, it gathers nothing at all.
-    - When several **General** Spirit Emeralds sit near one item entity, the nearest one takes it.
-    - When several valid **Container** Spirit Emeralds sit near one item entity, the item splits into several entities, which they gather equally.
-    - If **General** and **Container** Spirit Emeralds are both in range, the nearest General one takes the item first, then the Container ones share it out equally.
+    - When several General Spirit Emeralds sit near one item entity, the nearest one takes it.
+    - When several valid Container Spirit Emeralds sit near one item entity, the item splits into several entities, which they gather equally.
+    - If General and Container Spirit Emeralds are both in range, the nearest General one takes the item first, then the Container ones share it out equally.
 - **Converting to building blocks**: a Stonecutter converts a Spirit Emerald into a set amount of basic blocks:
 
 ![Stonecutter](https://files.seeusercontent.com/2026/07/31/Bn4e/e0c5562.png)
